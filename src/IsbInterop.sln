@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{11B3F6BB-8C97-4717-A545-B321BE406C69}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{12B4DF5E-6CA5-42B4-9FB5-E4D111F3D01C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsbInterop.Tests.Integration", "Tests\IsbInterop.Tests.Integration\IsbInterop.Tests.Integration.csproj", "{14BDC4DB-3CC1-41B6-AD6A-7E8F71A4DE14}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IsbInterop", "IsbInterop\IsbInterop.vbproj", "{B6DB8F1A-C156-4237-AAB8-FD4EE537358A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsbInterop.CSharp", "IsbInterop.CSharp\IsbInterop.CSharp.csproj", "{00E2D276-C353-4DE5-869F-4618A19F171B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14BDC4DB-3CC1-41B6-AD6A-7E8F71A4DE14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14BDC4DB-3CC1-41B6-AD6A-7E8F71A4DE14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14BDC4DB-3CC1-41B6-AD6A-7E8F71A4DE14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14BDC4DB-3CC1-41B6-AD6A-7E8F71A4DE14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6DB8F1A-C156-4237-AAB8-FD4EE537358A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6DB8F1A-C156-4237-AAB8-FD4EE537358A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6DB8F1A-C156-4237-AAB8-FD4EE537358A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6DB8F1A-C156-4237-AAB8-FD4EE537358A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E2D276-C353-4DE5-869F-4618A19F171B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E2D276-C353-4DE5-869F-4618A19F171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E2D276-C353-4DE5-869F-4618A19F171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E2D276-C353-4DE5-869F-4618A19F171B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14BDC4DB-3CC1-41B6-AD6A-7E8F71A4DE14} = {12B4DF5E-6CA5-42B4-9FB5-E4D111F3D01C}
+	EndGlobalSection
+EndGlobal
