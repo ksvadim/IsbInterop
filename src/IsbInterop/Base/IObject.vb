@@ -54,10 +54,24 @@ Namespace Base
     Function GetDetailDataSet(dataSetNumber As Integer) As IDataSet
 
     ''' <summary>
+    ''' Получить окружение.
+    ''' </summary>
+    ''' <typeparam name="TP">Тип параметров.</typeparam>
+    ''' <returns>Список переменных окружения объекта.</returns>
+    Function GetEnvironment(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP)
+
+    ''' <summary>
     ''' Получить форму-карточку текущего представления объекта.
     ''' </summary>
     ''' <returns>Форма-карточка.</returns>
     Function GetForm() As IForm
+
+    ''' <summary>
+    ''' Получить параметры объекта.
+    ''' </summary>
+    ''' <typeparam name="TP">Тип параметров.</typeparam>
+    ''' <returns>Список параметров объекта.</returns>
+    Function GetParams(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP)
 
     ''' <summary>
     ''' Получить информацию об объекте.
@@ -88,4 +102,4 @@ Namespace Base
     ''' </summary>
     Sub Save()
   End Interface
-End NameSpace
+End Namespace

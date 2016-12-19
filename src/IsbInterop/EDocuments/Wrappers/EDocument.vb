@@ -40,7 +40,7 @@ Namespace EDocuments.Wrappers
     ''' <returns>Список версий электронного документа.</returns>
     Public Function GetVersions() As IList(Of IEDocumentVersion) Implements IEDocument.GetVersions
       Dim rcwVersions = Me.GetRcwProperty("Versions")
-      Return New ListT(Of EDocumentVersion, IEDocumentVersion)(rcwVersions)
+      Return New List(Of IEDocumentVersion)(rcwVersions)
     End Function
 
     ''' <summary>

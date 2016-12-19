@@ -1,7 +1,7 @@
 ﻿''' <summary>
-''' Пустой объект.
+''' Базовая обертка над объектом IS-Builder.
 ''' </summary>
-Friend Class EmptyIsbObject
+Friend Class BaseIsbObjectWrapper
     Inherits IsbComObjectWrapper
 
     ''' <summary>

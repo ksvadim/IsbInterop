@@ -1,4 +1,5 @@
-﻿using IsbInterop.Data;
+﻿using IsbInterop.Accessory;
+using IsbInterop.Data;
 using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Presentation;
 
@@ -13,7 +14,7 @@ namespace IsbInterop.Base
     /// Признак открытости набора данных.
     /// </summary>
     bool Active { get; }
-    
+
     /// <summary>
     /// ИД объекта.
     /// </summary>
@@ -60,10 +61,24 @@ namespace IsbInterop.Base
     IDataSet GetDetailDataSet(int dataSetNumber);
 
     /// <summary>
+    /// Получить окружение.
+    /// </summary>
+    /// <typeparam name="TP">Тип параметров.</typeparam>
+    /// <returns>Список переменных окружения объекта.</returns>
+    IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper;
+
+    /// <summary>
     /// Получить форму-карточку текущего представления объекта.
     /// </summary>
     /// <returns>Форма-карточка.</returns>
     IForm GetForm();
+
+    /// <summary>
+    /// Получить параметры объекта.
+    /// </summary>
+    /// <typeparam name="TP">Тип параметров.</typeparam>
+    /// <returns>Список параметров объекта.</returns>
+    IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper;
 
     /// <summary>
     /// Получить информацию об объекте.

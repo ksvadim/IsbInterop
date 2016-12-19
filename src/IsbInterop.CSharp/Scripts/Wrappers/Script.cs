@@ -18,7 +18,7 @@ namespace IsbInterop.Scripts.Wrappers
     public IIsbComObjectWrapper Execute()
     {
       var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, null);
-      return new EmptyIsbObject(rcwObject);
+      return new BaseIsbObjectWrapper(rcwObject);
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ namespace IsbInterop.Scripts.Wrappers
     public IIsbComObjectWrapper Execute(TimeSpan timeout)
     {
       var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, timeout);
-      return new EmptyIsbObject(rcwObject);
+      return new BaseIsbObjectWrapper(rcwObject);
     }
 
     /// <summary>

@@ -4,6 +4,22 @@
   ''' </summary>
   Public Interface IList(Of Out T As IIsbComObjectWrapper)
     Inherits IForEach(Of T)
+
+    ''' <summary>
+    ''' Добавить элемент.
+    ''' </summary>
+    ''' <typeparam name="TP">Тип параметра.</typeparam>
+    ''' <param name="name">Имя элемента.</param>
+    ''' <param name="value">Значение элемента.</param>
+    Sub Add(Of TP As IIsbComObjectWrapper)(name As String, value As TP)
+
+    ''' <summary>
+    ''' Добавить элемент.
+    ''' </summary>
+    ''' <param name="name">Имя элемента.</param>
+    ''' <param name="value">Значение элемента.</param>
+    Sub Add(name As String, value As Object)
+
     ''' <summary>
     ''' Получить значение элемента списка по индексу.
     ''' </summary>
@@ -18,4 +34,4 @@
     ''' <param name="value">Значение элемента.</param>
     Sub SetVar(name As String, value As Object)
   End Interface
-End NameSpace
+End Namespace

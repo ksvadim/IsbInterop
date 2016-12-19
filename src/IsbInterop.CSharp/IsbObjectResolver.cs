@@ -20,7 +20,7 @@ namespace IsbInterop
     {
       var builder = new ContainerBuilder();
 
-      builder.RegisterType<EmptyIsbObject>()
+      builder.RegisterType<BaseIsbObjectWrapper>()
         .As<IIsbComObjectWrapper>();
 
       builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())

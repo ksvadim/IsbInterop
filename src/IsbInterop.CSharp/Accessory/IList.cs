@@ -3,8 +3,23 @@
   /// <summary>
   /// Список.
   /// </summary>
-  public interface IList<out T> : IForEach<T> where T: IIsbComObjectWrapper
+  public interface IList<out T> : IForEach<T> where T : IIsbComObjectWrapper
   {
+    /// <summary>
+    /// Добавить элемент.
+    /// </summary>
+    /// <typeparam name="TP">Тип параметра.</typeparam>
+    /// <param name="name">Имя элемента.</param>
+    /// <param name="value">Значение элемента.</param>
+    void Add<TP>(string name, TP value) where TP : IIsbComObjectWrapper;
+
+    /// <summary>
+    /// Добавить элемент.
+    /// </summary>
+    /// <param name="name">Имя элемента.</param>
+    /// <param name="value">Значение элемента.</param>
+    void Add(string name, object value);
+
     /// <summary>
     /// Получить значение элемента списка по индексу.
     /// </summary>

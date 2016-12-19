@@ -150,7 +150,7 @@
     <Compile Include="EDocuments\Wrappers\EDocumentFactory.vb" />
     <Compile Include="EDocuments\Wrappers\EDocumentInfo.vb" />
     <Compile Include="EDocuments\Wrappers\EDocumentVersion.vb" />
-    <Compile Include="EmptyIsbObject.vb" />
+    <Compile Include="BaseIsbObjectWrapper.vb" />
     <Compile Include="FatalIsbInteropException.vb" />
     <Compile Include="Folders\IFolder.vb" />
     <Compile Include="Folders\IFolderFactory.vb" />

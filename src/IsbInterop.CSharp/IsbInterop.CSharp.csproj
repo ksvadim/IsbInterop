@@ -83,7 +83,7 @@
     <Compile Include="Data\IPickRequisite.cs" />
     <Compile Include="DataTypes\Enumerable\TDataSetState.cs" />
     <Compile Include="Data\Wrappers\PickRequisite.cs" />
-    <Compile Include="EmptyIsbObject.cs" />
+    <Compile Include="BaseIsbObjectWrapper.cs" />
     <Compile Include="ComUtils.cs" />
     <Compile Include="Accessory\IApplication.cs" />
     <Compile Include="Data\IPickRequisiteItem.cs" />

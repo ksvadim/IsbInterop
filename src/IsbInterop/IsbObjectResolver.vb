@@ -14,7 +14,7 @@ Public Module IsbObjectResolver
   Sub New()
     Dim builder = New ContainerBuilder()
 
-    builder.RegisterType(Of EmptyIsbObject)().[As](Of IIsbComObjectWrapper)()
+    builder.RegisterType(Of BaseIsbObjectWrapper)().[As](Of IIsbComObjectWrapper)()
 
     builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).
       AssignableTo(GetType(IsbComObjectWrapper)).

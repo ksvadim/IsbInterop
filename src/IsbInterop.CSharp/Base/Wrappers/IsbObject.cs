@@ -1,9 +1,10 @@
-﻿using IsbInterop.Data;
+﻿using IsbInterop.Accessory;
+using IsbInterop.Accessory.Wrappers;
+using IsbInterop.Data;
 using IsbInterop.Data.Wrappers;
 using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Presentation;
 using IsbInterop.Presentation.Wrappers;
-using IsbInterop.Properties;
 
 namespace IsbInterop.Base.Wrappers
 {
@@ -48,7 +49,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     public bool Active
     {
-      get { return (bool) this.GetRcwProperty("Active"); }
+      get { return (bool)this.GetRcwProperty("Active"); }
     }
 
     /// <summary>
@@ -56,7 +57,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     public int Id
     {
-      get { return (int) this.GetRcwProperty("ID"); }
+      get { return (int)this.GetRcwProperty("ID"); }
     }
 
     /// <summary>
@@ -64,7 +65,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     public string Name
     {
-      get { return (string) this.GetRcwProperty("Name"); }
+      get { return (string)this.GetRcwProperty("Name"); }
     }
 
     /// <summary>
@@ -72,7 +73,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     public TDataSetState State
     {
-      get { return (TDataSetState) this.GetRcwProperty("State"); }
+      get { return (TDataSetState)this.GetRcwProperty("State"); }
     }
 
     /// <summary>
@@ -80,7 +81,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     public TCompType ComponentType
     {
-      get { return (TCompType) this.GetRcwProperty("ComponentType"); }
+      get { return (TCompType)this.GetRcwProperty("ComponentType"); }
     }
 
     /// <summary>
@@ -88,7 +89,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     public string SqlTableName
     {
-      get { return (string) this.GetRcwProperty("SQLTableName"); }
+      get { return (string)this.GetRcwProperty("SQLTableName"); }
     }
 
     #endregion
@@ -102,7 +103,7 @@ namespace IsbInterop.Base.Wrappers
     /// <returns>ИД условия в запросе.</returns>
     public int AddWhere(string queryWhereSection)
     {
-      return (int) this.InvokeRcwInstanceMethod("AddWhere", queryWhereSection);
+      return (int)this.InvokeRcwInstanceMethod("AddWhere", queryWhereSection);
     }
 
     /// <summary>
@@ -138,6 +139,17 @@ namespace IsbInterop.Base.Wrappers
     }
 
     /// <summary>
+    /// Получить окружение.
+    /// </summary>
+    /// <typeparam name="TP">Тип параметров.</typeparam>
+    /// <returns>Список переменных окружения объекта.</returns>
+    public IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper
+    {
+      var rcwEnvironment = this.GetRcwProperty("Environment");
+      return new List<TP>(rcwEnvironment);
+    }
+
+    /// <summary>
     /// Получить форму-карточку текущего представления объекта.
     /// </summary>
     /// <returns>Форма-карточка.</returns>
@@ -145,6 +157,17 @@ namespace IsbInterop.Base.Wrappers
     {
       var rcwForm = this.GetRcwProperty("Form");
       return new Form(rcwForm);
+    }
+
+    /// <summary>
+    /// Получить параметры объекта.
+    /// </summary>
+    /// <typeparam name="TP">Тип параметра.</typeparam>
+    /// <returns>Список параметров объекта.</returns>
+    public IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper
+    {
+      var rcwParams = this.GetRcwProperty("Params");
+      return new List<TP>(rcwParams);
     }
 
     /// <summary>

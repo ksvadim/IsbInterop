@@ -17,7 +17,7 @@ Namespace Scripts.Wrappers
     ''' <returns>Результат.</returns>
     Public Function Execute() As IIsbComObjectWrapper Implements IScript.Execute
       Dim rcwObjectResult = Me.InvokeRcwInstanceMethod("Execute", Nothing, Nothing)
-      Return New EmptyIsbObject(rcwObjectResult)
+      Return New BaseIsbObjectWrapper(rcwObjectResult)
     End Function
 
     ''' <summary>
@@ -27,7 +27,7 @@ Namespace Scripts.Wrappers
     ''' <returns>Результат.</returns>
     Public Function Execute(timeout As TimeSpan) As IIsbComObjectWrapper Implements IScript.Execute
       Dim rcwObjectResult = Me.InvokeRcwInstanceMethod("Execute", Nothing, timeout)
-      Return New EmptyIsbObject(rcwObjectResult)
+      Return New BaseIsbObjectWrapper(rcwObjectResult)
     End Function
 
     ''' <summary>

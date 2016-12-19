@@ -110,12 +110,32 @@ Namespace Base.Wrappers
     End Function
 
     ''' <summary>
+    ''' Получить окружение.
+    ''' </summary>
+    ''' <typeparam name="TP">Тип параметров.</typeparam>
+    ''' <returns>Список переменных окружения объекта.</returns>
+    Public Function GetEnvironment(Of TP As IIsbComObjectWrapper)() As  Accessory.IList(Of TP) Implements IObject(Of TI).GetEnvironment
+      Dim rcwEnvironment = Me.GetRcwProperty("Environment")
+      Return New Accessory.Wrappers.List(Of TP)(rcwEnvironment)
+    End Function
+
+    ''' <summary>
     ''' Получить форму-карточку текущего представления объекта.
     ''' </summary>
     ''' <returns>Форма-карточка.</returns>
     Public Function GetForm() As IForm Implements IObject(Of TI).GetForm
       Dim rcwForm = Me.GetRcwProperty("Form")
       Return New Form(rcwForm)
+    End Function
+
+    ''' <summary>
+    ''' Получить параметры объекта.
+    ''' </summary>
+    ''' <typeparam name="TP">Тип параметров.</typeparam>
+    ''' <returns>Список параметров объекта.</returns>
+    Public Function GetParams(Of TP As IIsbComObjectWrapper)() As  Accessory.IList(Of TP) Implements IObject(Of TI).GetParams
+      Dim rcwParams = Me.GetRcwProperty("Params")
+      Return New Accessory.Wrappers.List(Of TP)(rcwParams)
     End Function
 
     ''' <summary>

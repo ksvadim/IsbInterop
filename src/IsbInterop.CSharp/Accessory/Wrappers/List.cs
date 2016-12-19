@@ -1,4 +1,6 @@
-﻿namespace IsbInterop.Accessory.Wrappers
+﻿using System;
+
+namespace IsbInterop.Accessory.Wrappers
 {
   /// <summary>
   /// Обертка над IList.
@@ -6,6 +8,30 @@
   internal class List<TI> : ForEach<TI>, IList<TI>
     where TI : IIsbComObjectWrapper
   {
+    /// <summary>
+    /// Добавить элемент.
+    /// </summary>
+    /// <typeparam name="TP">Тип параметра.</typeparam>
+    /// <param name="name">Имя элемента.</param>
+    /// <param name="value">Значение элемента.</param>
+    public void Add<TP>(string name, TP value) where TP : IIsbComObjectWrapper
+    {
+      if (value is TI)
+        this.InvokeRcwInstanceMethod("Add", new object[] { name, ((IUnsafeRcwObjectAccessor)value).UnsafeRcwObject });
+      else
+        throw new InvalidOperationException(string.Format("Cannot convert value to {0}", typeof(TI)));
+    }
+
+    /// <summary>
+    /// Добавить элемент.
+    /// </summary>
+    /// <param name="name">Имя элемента.</param>
+    /// <param name="value">Значение элемента.</param>
+    public void Add(string name, object value)
+    {
+      this.InvokeRcwInstanceMethod("Add", new object[] { name, value });
+    }
+
     /// <summary>
     /// Получить значение элемента списка по индексу.
     /// </summary>

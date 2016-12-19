@@ -42,7 +42,7 @@ namespace IsbInterop.EDocuments.Wrappers
     public IList<IEDocumentVersion> GetVersions()
     {
       var rcwVersions = this.GetRcwProperty("Versions");
-      return new ListT<EDocumentVersion, IEDocumentVersion>(rcwVersions);
+      return new List<IEDocumentVersion>(rcwVersions);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ namespace IsbInterop.EDocuments.Wrappers
     /// </summary>
     /// <param name="openForWrite">Признак открытия для редактирования.</param>
     /// <param name="versionNumber">Номер версии.</param>
-    public void Open (bool openForWrite, int versionNumber)
+    public void Open(bool openForWrite, int versionNumber)
     {
       this.InvokeRcwInstanceMethod("Open", new object[] { openForWrite, versionNumber });
     }
