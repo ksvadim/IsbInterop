@@ -6,5 +6,5 @@
 [assembly: AssemblyCopyright("Copyright © ksvadim")]
 
 // General Product Information.
-[assembly: AssemblyInformationalVersion("1.0.1.1000")]
+[assembly: AssemblyInformationalVersion("1.0.2.1000")]
 [assembly: AssemblyProduct("IsbInterop")]
