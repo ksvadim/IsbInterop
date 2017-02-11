@@ -44,6 +44,19 @@ namespace IsbInterop.Accessory.Wrappers
     }
 
     /// <summary>
+    /// Получить значение по имени.
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns>Имя искомого элемента.</returns>
+    public TI GetValueByName(string name)
+    {
+      var rcwObject = this.InvokeRcwInstanceMethod("ValueByName", new object[] { name });
+      var value = IsbObjectResolver.Resolve<TI>(rcwObject);
+
+      return value;
+    }
+
+    /// <summary>
     /// Установить значение элемента.
     /// </summary>
     /// <param name="name">Имя элемента.</param>

@@ -39,6 +39,17 @@
       Return IsbObjectResolver.Resolve(Of TI)(rcwObjectResult)
     End Function
 
+
+    ''' <summary>
+    ''' Получить значение по имени.
+    ''' </summary>
+    ''' <param name="name"></param>
+    ''' <returns>Имя искомого элемента.</returns>
+    Public Function GetValueByName(name As String) As TI Implements IList(Of TI).GetValueByName
+      Dim rcwObject = Me.InvokeRcwInstanceMethod("ValueByName", New Object() {name})
+      Return IsbObjectResolver.Resolve(Of TI)(rcwObject)
+    End Function
+
     ''' <summary>
     ''' Установить значение элемента.
     ''' </summary>

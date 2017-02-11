@@ -28,6 +28,13 @@
     Function GetValues(index As Integer) As T
 
     ''' <summary>
+    ''' Получить значение по имени.
+    ''' </summary>
+    ''' <param name="name"></param>
+    ''' <returns>Имя искомого элемента.</returns>
+    Function GetValueByName(name As String) As T
+
+    ''' <summary>
     ''' Установить значение элемента.
     ''' </summary>
     ''' <param name="name">Имя элемента.</param>

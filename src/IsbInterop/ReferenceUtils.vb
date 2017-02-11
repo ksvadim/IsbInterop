@@ -70,7 +70,7 @@ Public Module ReferenceUtils
             Throw New ArgumentException("restrictingValues")
         End If
 
-        Dim restrictingCondition = String.Join(", ", restrictingValues.[Select](Function(v) GetRequisiteSqlFieldValue(requisite, v)))
+        Dim restrictingCondition = String.Join(", ", restrictingValues.[Select](Function(v) String.Format("'{0}'", GetRequisiteSqlFieldValue(requisite, v))))
 
         Dim queryWhereSection = String.Format("{0}.{1} in ({2})", reference.SqlTableName, requisite.FieldName, restrictingCondition)
 

@@ -72,15 +72,7 @@ namespace IsbInterop
         throw new ArgumentException("restrictingValues");
 
       var restrictingCondition = string.Join(", ",
-        restrictingValues.Select(v => GetRequisiteSqlFieldValue(requisite, v)));
-
-      //var restrictingCondition = GetRequisiteSqlFieldValue(requisite, restrictingValues.FirstOrDefault());
-
-      //foreach (var restrictingValue in restrictingValues.Skip(1))
-      //{
-      //  var requisiteSqlFieldValue = GetRequisiteSqlFieldValue(requisite, restrictingValue);
-      //  restrictingCondition += string.Format(", {0}", requisiteSqlFieldValue);
-      //}
+        restrictingValues.Select(v => string.Format("'{0}'", GetRequisiteSqlFieldValue(requisite, v))));
 
       var queryWhereSection = string.Format("{0}.{1} in ({2})", reference.SqlTableName,
         requisite.FieldName, restrictingCondition);

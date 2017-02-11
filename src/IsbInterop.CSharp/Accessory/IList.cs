@@ -28,6 +28,13 @@
     T GetValues(int index);
 
     /// <summary>
+    /// Получить значение по имени.
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns>Имя искомого элемента.</returns>
+    T GetValueByName(string name);
+
+    /// <summary>
     /// Установить значение элемента.
     /// </summary>
     /// <param name="name">Имя элемента.</param>
