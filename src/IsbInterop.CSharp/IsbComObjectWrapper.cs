@@ -8,7 +8,7 @@ namespace IsbInterop
   /// <summary>
   /// Базовый объект.
   /// </summary>
-  public abstract class IsbComObjectWrapper : CriticalFinalizerObject, IIsbComObjectWrapper, IUnsafeRcwObjectAccessor
+  public abstract class IsbComObjectWrapper : CriticalFinalizerObject, IIsbComObjectWrapper, IUnsafeRcwHolder
   {
     #region Поля и свойства
 
@@ -37,7 +37,7 @@ namespace IsbInterop
     /// <summary>
     /// COM-объект IS-Builder.
     /// </summary>
-    object IUnsafeRcwObjectAccessor.UnsafeRcwObject
+    object IUnsafeRcwHolder.RcwObject
     {
       get { return this.RcwObject; }
     }

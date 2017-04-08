@@ -169,7 +169,7 @@
     <Compile Include="Accessory\Wrappers\ForEach.cs" />
     <Compile Include="IsbComObjectWrapper.cs" />
     <Compile Include="Base\Wrappers\IsbObject.cs" />
-    <Compile Include="IUnsafeRcwObjectAccessor.cs" />
+    <Compile Include="IUnsafeRcwHolder.cs" />
     <Compile Include="Accessory\Wrappers\LoginPoint.cs" />
     <Compile Include="Base\Wrappers\ObjectInfo.cs" />
     <Compile Include="Data\Wrappers\PickRequisiteItems.cs" />

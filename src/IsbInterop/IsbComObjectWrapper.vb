@@ -7,7 +7,7 @@ Imports System.Runtime.InteropServices
 Public MustInherit Class IsbComObjectWrapper
   Inherits CriticalFinalizerObject
   Implements IIsbComObjectWrapper
-  Implements IUnsafeRcwObjectAccessor
+  Implements IUnsafeRcwHolder
 
 #Region "Поля и свойства"
 
@@ -37,7 +37,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <summary>
   ''' COM-объект IS-Builder.
   ''' </summary>
-  Private ReadOnly Property IUnsafeRcwObjectAccessor_UnsafeRcwObject As Object Implements IUnsafeRcwObjectAccessor.UnsafeRcwObject
+  Private ReadOnly Property IUnsafeRcwObjectAccessor_UnsafeRcwObject As Object Implements IUnsafeRcwHolder.UnsafeRcwObject
     Get
       Return RcwObject
     End Get

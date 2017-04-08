@@ -17,7 +17,7 @@ namespace IsbInterop.Accessory.Wrappers
     public void Add<TP>(string name, TP value) where TP : IIsbComObjectWrapper
     {
       if (value is TI)
-        this.InvokeRcwInstanceMethod("Add", new object[] { name, ((IUnsafeRcwObjectAccessor)value).UnsafeRcwObject });
+        this.InvokeRcwInstanceMethod("Add", new object[] { name, ((IUnsafeRcwHolder)value).RcwObject });
       else
         throw new InvalidOperationException(string.Format("Cannot convert value to {0}", typeof(TI)));
     }
@@ -63,10 +63,10 @@ namespace IsbInterop.Accessory.Wrappers
     /// <param name="value">Значение элемента.</param>
     public void SetVar(string name, object value)
     {
-      var isbObject = value as IUnsafeRcwObjectAccessor;
+      var isbObject = value as IUnsafeRcwHolder;
 
       if (isbObject != null)
-        this.InvokeRcwInstanceMethod("SetVar", new object[] { name, isbObject.UnsafeRcwObject });
+        this.InvokeRcwInstanceMethod("SetVar", new object[] { name, isbObject.RcwObject });
       else
         this.InvokeRcwInstanceMethod("SetVar", new object[] { name, value });
     }

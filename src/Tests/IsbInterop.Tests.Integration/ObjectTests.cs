@@ -105,7 +105,7 @@ namespace IsbInterop.Tests.Integration
         var scriptParams = script.GetParams();
         scriptParams.SetVar(ReferenceConfiguration.Scripts.ConstantValue.Params.ConstName, "Weight");
         var param = scriptParams.GetValues(0);
-        var rcwObject = ((IUnsafeRcwObjectAccessor)param).UnsafeRcwObject;
+        var rcwObject = ((IUnsafeRcwHolder)param).UnsafeRcwObject;
 
         Assert.NotNull(rcwObject);
       }
@@ -125,7 +125,7 @@ namespace IsbInterop.Tests.Integration
         var param = scriptParams.GetValues(0);
         param.Dispose();
 
-        TestDelegate getRcwAction = () => { var a = ((IUnsafeRcwObjectAccessor)param).UnsafeRcwObject; };
+        TestDelegate getRcwAction = () => { var a = ((IUnsafeRcwHolder)param).UnsafeRcwObject; };
 
         Assert.Throws<ObjectDisposedException>(getRcwAction);
       }

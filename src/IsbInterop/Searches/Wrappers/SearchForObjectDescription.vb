@@ -18,7 +18,7 @@ Namespace Searches.Wrappers
                 Throw New ArgumentNullException("objectInfo")
             End If
 
-            InvokeRcwInstanceMethod("InitializeSearch", DirectCast(objectInfo, IUnsafeRcwObjectAccessor).UnsafeRcwObject)
+            InvokeRcwInstanceMethod("InitializeSearch", DirectCast(objectInfo, IUnsafeRcwHolder).UnsafeRcwObject)
         End Sub
 
         ''' <summary>

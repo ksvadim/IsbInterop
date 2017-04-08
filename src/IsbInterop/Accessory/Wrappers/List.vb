@@ -14,7 +14,7 @@
     ''' <param name="value">Значение элемента.</param>
     Public Sub Add(Of TP As IIsbComObjectWrapper)(name As String, value As TP) Implements IList(Of TI).Add
       If TypeOf value Is TI Then
-        InvokeRcwInstanceMethod("Add", New Object() {name, DirectCast(value, IUnsafeRcwObjectAccessor).UnsafeRcwObject})
+        InvokeRcwInstanceMethod("Add", New Object() {name, DirectCast(value, IUnsafeRcwHolder).UnsafeRcwObject})
       Else
         Throw New InvalidOperationException(String.Format("Cannot convert value to {0}", GetType(TI)))
       End If
@@ -56,7 +56,7 @@
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>
     Public Sub SetVar(name As String, value As Object) Implements IList(Of TI).SetVar
-      Dim isbObject = TryCast(value, IUnsafeRcwObjectAccessor)
+      Dim isbObject = TryCast(value, IUnsafeRcwHolder)
 
       If isbObject IsNot Nothing Then
         Me.InvokeRcwInstanceMethod("SetVar", New Object() {name, isbObject.UnsafeRcwObject})

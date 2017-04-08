@@ -35,7 +35,7 @@ namespace IsbInterop.ServiceForms.Wrappers
     /// <param name="value">Значение.</param>
     public void SetTreeRootContents(IFolderInfo value)
     {
-      this.SetRcwProperty("TreeRootContents", ((IUnsafeRcwObjectAccessor)value).UnsafeRcwObject);
+      this.SetRcwProperty("TreeRootContents", ((IUnsafeRcwHolder)value).RcwObject);
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ namespace IsbInterop.ServiceForms.Wrappers
     /// <param name="value">Значение.</param>
     public void SetTreeRootContents(IContents<IFolderInfo> value)
     {
-      this.SetRcwProperty("TreeRootContents", ((IUnsafeRcwObjectAccessor)value).UnsafeRcwObject);
+      this.SetRcwProperty("TreeRootContents", ((IUnsafeRcwHolder)value).RcwObject);
     }
 
     /// <summary>
