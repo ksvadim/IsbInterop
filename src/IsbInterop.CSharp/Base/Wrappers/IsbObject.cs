@@ -135,7 +135,7 @@ namespace IsbInterop.Base.Wrappers
     {
       var rcwDataSet = this.InvokeRcwInstanceMethod("DetailDataSet", dataSetNumber);
 
-      return new DataSet(rcwDataSet);
+      return new DataSet(rcwDataSet, this.Scope);
     }
 
     /// <summary>
@@ -146,7 +146,7 @@ namespace IsbInterop.Base.Wrappers
     public IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper
     {
       var rcwEnvironment = this.GetRcwProperty("Environment");
-      return new List<TP>(rcwEnvironment);
+      return new List<TP>(rcwEnvironment, this.Scope);
     }
 
     /// <summary>
@@ -156,7 +156,7 @@ namespace IsbInterop.Base.Wrappers
     public IForm GetForm()
     {
       var rcwForm = this.GetRcwProperty("Form");
-      return new Form(rcwForm);
+      return new Form(rcwForm, Scope);
     }
 
     /// <summary>
@@ -167,7 +167,7 @@ namespace IsbInterop.Base.Wrappers
     public IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper
     {
       var rcwParams = this.GetRcwProperty("Params");
-      return new List<TP>(rcwParams);
+      return new List<TP>(rcwParams, this.Scope);
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ namespace IsbInterop.Base.Wrappers
     public virtual IRequisite GetRequisite(string requisiteName)
     {
       var rcwRequisite = this.GetRcwProperty("Requisites", requisiteName);
-      return DerivedRequisiteFactory.CreateRequisite(rcwRequisite);
+      return DerivedRequisiteFactory.CreateRequisite(rcwRequisite, this.Scope);
     }
 
     /// <summary>
@@ -221,7 +221,8 @@ namespace IsbInterop.Base.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="externalObject">Внешний объект.</param>
-    protected IsbObject(object externalObject) : base(externalObject) { }
+    /// <param name="scope">Область видимости.</param>
+    protected IsbObject(object externalObject, IScope scope) : base(externalObject, scope) { }
 
     #endregion
   }

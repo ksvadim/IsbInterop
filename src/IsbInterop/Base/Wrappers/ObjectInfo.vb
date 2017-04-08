@@ -1,4 +1,5 @@
 ﻿Namespace Base.Wrappers
+
     ''' <summary>
     ''' Обертка над IObjectInfo.
     ''' </summary>
@@ -9,18 +10,18 @@
         ''' <summary>
         ''' ИД объекта.
         ''' </summary>
-        Public ReadOnly Property Id() As Integer Implements IObjectInfo.Id
+        Public ReadOnly Property Id As Integer Implements IObjectInfo.Id
             Get
-                Return CInt(Me.GetRcwProperty("ID"))
+                Return GetRcwProperty("ID")
             End Get
         End Property
 
         ''' <summary>
         ''' Имя объекта.
         ''' </summary>
-        Public ReadOnly Property Name() As String Implements IObjectInfo.Name
+        Public ReadOnly Property Name As String Implements IObjectInfo.Name
             Get
-                Return DirectCast(Me.GetRcwProperty("Name"), String)
+                Return DirectCast(GetRcwProperty("Name"), String)
             End Get
         End Property
 
@@ -29,8 +30,9 @@
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwObjectInfo">COM-объект ObjectInfo.</param>
-        Public Sub New(rcwObjectInfo As Object)
-            MyBase.New(rcwObjectInfo)
+        ''' <param name="scope">Область видимости.</param>
+        Public Sub New(rcwObjectInfo As Object, scope As IScope)
+            MyBase.New(rcwObjectInfo, scope)
         End Sub
     End Class
 End Namespace

@@ -10,6 +10,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwICustomJob">COM-объект ICustomJob.</param>
-    protected CustomJob(object rcwICustomJob) : base(rcwICustomJob) { }
+    /// <param name="scope">Область видимости.</param>
+    protected CustomJob(object rcwICustomJob, IScope scope) : base(rcwICustomJob, scope) { }
   }
 }

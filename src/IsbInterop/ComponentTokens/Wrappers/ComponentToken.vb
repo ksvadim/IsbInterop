@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base.Wrappers
 
 Namespace ComponentTokens.Wrappers
+
   ''' <summary>
   ''' Обертка над IComponentToken.
   ''' </summary>
@@ -12,16 +13,17 @@ Namespace ComponentTokens.Wrappers
     ''' </summary>
     ''' <returns>IComponentTokenInfo.</returns>
     Public Overrides Function GetInfo() As IComponentTokenInfo
-      Dim rcwIComponentTokenInfo = Me.GetRcwObjectInfo()
-      Return New ComponentTokenInfo(rcwIComponentTokenInfo)
+      Dim rcwIComponentTokenInfo = GetRcwObjectInfo()
+      Return New ComponentTokenInfo(rcwIComponentTokenInfo, Scope)
     End Function
 
     ''' <summary>
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwIComponentToken">СOM-объект IComponentToken.</param>
-    Public Sub New(rcwIComponentToken As Object)
-      MyBase.New(rcwIComponentToken)
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(rcwIComponentToken As Object, scope As IScope)
+      MyBase.New(rcwIComponentToken, scope)
     End Sub
   End Class
 End NameSpace

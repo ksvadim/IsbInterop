@@ -91,7 +91,8 @@ namespace IsbInterop.Data.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwRequisite">COM-объект реквизит.</param>
-    internal Requisite(object rcwRequisite) : base(rcwRequisite) { }
+    /// <param name="scope"></param>
+    internal Requisite(object rcwRequisite, IScope scope) : base(rcwRequisite, scope) { }
 
     #endregion
   }

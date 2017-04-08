@@ -13,13 +13,14 @@
     public IEdmsExplorer GetExplorer(bool isMain)
     {
       var rcwExplorer = this.InvokeRcwInstanceMethod("GetExplorer", isMain);
-      return new EdmsExplorer(rcwExplorer);
+      return new EdmsExplorer(rcwExplorer, Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIServiceFactory">COM-объект IServiceFactory.</param>
-    internal ServiceFactory(object rcwIServiceFactory) : base(rcwIServiceFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    internal ServiceFactory(object rcwIServiceFactory, IScope scope) : base(rcwIServiceFactory, scope) { }
   }
 }

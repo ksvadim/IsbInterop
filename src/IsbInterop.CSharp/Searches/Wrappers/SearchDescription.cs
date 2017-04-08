@@ -17,7 +17,7 @@ namespace IsbInterop.Searches.Wrappers
     public IContents<TI> Execute<TI>() where TI: IObjectInfo
     {
       var rcwContents = this.InvokeRcwInstanceMethod("Execute");
-      return new Contents<TI>(rcwContents);
+      return new Contents<TI>(rcwContents, this.Scope);
     }
 
     /// <summary>
@@ -36,6 +36,7 @@ namespace IsbInterop.Searches.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwISearchDescription">COM-объект ISearchDescription.</param>
-    protected SearchDescription(object rcwISearchDescription) : base(rcwISearchDescription) { }
+    /// <param name="scope">Область видимости.</param>
+    protected SearchDescription(object rcwISearchDescription, IScope scope) : base(rcwISearchDescription, scope) { }
   }
 }

@@ -40,7 +40,7 @@ namespace IsbInterop.Accessory.Wrappers
     public virtual TI GetValues(int index)
     {
       var rcwObject = this.GetRcwProperty("Values", index);
-      return IsbObjectResolver.Resolve<TI>(rcwObject);
+      return IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ namespace IsbInterop.Accessory.Wrappers
     public TI GetValueByName(string name)
     {
       var rcwObject = this.InvokeRcwInstanceMethod("ValueByName", new object[] { name });
-      var value = IsbObjectResolver.Resolve<TI>(rcwObject);
+      var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
 
       return value;
     }
@@ -75,6 +75,7 @@ namespace IsbInterop.Accessory.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIList">COM-объект IList.</param>
-    public List(object rcwIList) : base(rcwIList) { }
+    /// <param name="scope">Область видимости.</param>
+    public List(object rcwIList, IScope scope) : base(rcwIList, scope) { }
   }
 }

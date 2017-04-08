@@ -13,7 +13,7 @@
       get
       {
         var rcwItems = this.GetRcwProperty("Items");
-        return new PickRequisiteItems(rcwItems);
+        return new PickRequisiteItems(rcwItems, this.Scope);
       }
     }
 
@@ -21,6 +21,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwRequisite">COM-объект реквизит.</param>
-    internal PickRequisite(object rcwRequisite) : base(rcwRequisite) { }
+    /// <param name="scope">Область видимости.</param>
+    internal PickRequisite(object rcwRequisite, IScope scope) : base(rcwRequisite, scope) { }
   }
 }

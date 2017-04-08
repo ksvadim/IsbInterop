@@ -2,12 +2,14 @@
 Imports IsbInterop.Base
 
 Namespace Tasks.Wrappers
+
   ''' <summary>
   ''' Обертка над IAttachmentList.
   ''' </summary>
   Friend Class AttachmentList
     Inherits ForEach(Of IAttachment)
     Implements IAttachmentList
+
     ''' <summary>
     ''' Добавить вложение.
     ''' </summary>
@@ -21,8 +23,9 @@ Namespace Tasks.Wrappers
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwIAttachment">СOM-объект IAttachment.</param>
-    Public Sub New(rcwIAttachment As Object)
-      MyBase.New(rcwIAttachment)
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(rcwIAttachment As Object, scope As IScope)
+      MyBase.New(rcwIAttachment, scope)
     End Sub
   End Class
 End NameSpace

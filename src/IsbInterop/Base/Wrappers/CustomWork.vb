@@ -15,16 +15,17 @@ Namespace Base.Wrappers
     ''' <param name="isForFamilyTask">Признак доступности вложений для семейства задач.</param>
     ''' <returns>Список вложений.</returns>
     Public Function GetAttachments(isForFamilyTask As Boolean) As IAttachmentList Implements ICustomWork(Of TI).GetAttachments
-      Dim rcwIAttachmentList = Me.InvokeRcwInstanceMethod("GetAttachments", isForFamilyTask)
-      Return New AttachmentList(rcwIAttachmentList)
+      Dim rcwIAttachmentList = InvokeRcwInstanceMethod("GetAttachments", isForFamilyTask)
+      Return New AttachmentList(rcwIAttachmentList, Scope)
     End Function
 
     ''' <summary>
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwICustomWork">COM-объект ICustomWork.</param>
-    Protected Sub New(rcwICustomWork As Object)
-      MyBase.New(rcwICustomWork)
+    ''' <param name="scope">Область видимости.</param>
+    Protected Sub New(rcwICustomWork As Object, scope As IScope)
+      MyBase.New(rcwICustomWork, scope)
     End Sub
   End Class
 End Namespace

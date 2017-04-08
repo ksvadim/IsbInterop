@@ -98,7 +98,7 @@ namespace IsbInterop.Data.Wrappers
     public IComponent GetComponent()
     {
       var requisiteRcw = this.GetRcwProperty("Component");
-      return new Component(requisiteRcw);
+      return new Component(requisiteRcw, this.Scope);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ namespace IsbInterop.Data.Wrappers
     private IRequisite InternalGetRequisite(string requisiteName)
     {
       var requisiteRcw = this.GetRcwProperty("Requisites", requisiteName);
-      return new Requisite(requisiteRcw);
+      return new Requisite(requisiteRcw, this.Scope);
     }
 
     /// <summary>
@@ -147,7 +147,8 @@ namespace IsbInterop.Data.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIDataSet">COM-объект IDataSet.</param>
-    internal DataSet(object rcwIDataSet) : base(rcwIDataSet) { }
+    /// <param name="scope">Область видимости.</param>
+    internal DataSet(object rcwIDataSet, IScope scope) : base(rcwIDataSet, scope) { }
 
     #endregion
   }

@@ -9,6 +9,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIReferenceInfo">COM-объект IReferenceInfo.</param>
-    public ReferenceInfo(object rcwIReferenceInfo) : base(rcwIReferenceInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public ReferenceInfo(object rcwIReferenceInfo, IScope scope) : base(rcwIReferenceInfo, scope) { }
   }
 }

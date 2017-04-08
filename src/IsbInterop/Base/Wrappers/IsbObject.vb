@@ -11,65 +11,65 @@ Namespace Base.Wrappers
     Inherits IsbComObjectWrapper
     Implements IObject(Of TI)
 
-#Region "Поля и свойства"
+    #Region "Поля и свойства"
 
     ''' <summary>
     ''' Признак открытости набора данных.
     ''' </summary>
-    Public ReadOnly Property Active() As Boolean Implements IObject(Of TI).Active
+    Public ReadOnly Property Active As Boolean Implements IObject(Of TI).Active
       Get
-        Return CBool(Me.GetRcwProperty("Active"))
+        Return GetRcwProperty("Active")
       End Get
     End Property
 
     ''' <summary>
     ''' ИД объекта.
     ''' </summary>
-    Public ReadOnly Property Id() As Integer Implements IObject(Of TI).Id
+    Public ReadOnly Property Id As Integer Implements IObject(Of TI).Id
       Get
-        Return CInt(Me.GetRcwProperty("ID"))
+        Return GetRcwProperty("ID")
       End Get
     End Property
 
     ''' <summary>
     ''' Имя объекта.
     ''' </summary>
-    Public ReadOnly Property Name() As String Implements IObject(Of TI).Name
+    Public ReadOnly Property Name As String Implements IObject(Of TI).Name
       Get
-        Return DirectCast(Me.GetRcwProperty("Name"), String)
+        Return DirectCast(GetRcwProperty("Name"), String)
       End Get
     End Property
 
     ''' <summary>
     ''' Состояние.
     ''' </summary>
-    Public ReadOnly Property State() As TDataSetState Implements IObject(Of TI).State
+    Public ReadOnly Property State As TDataSetState Implements IObject(Of TI).State
       Get
-        Return DirectCast(Me.GetRcwProperty("State"), TDataSetState)
+        Return GetRcwProperty("State")
       End Get
     End Property
 
     ''' <summary>
     ''' Тип объекта.
     ''' </summary>
-    Public ReadOnly Property ComponentType() As TCompType
+    Public ReadOnly Property ComponentType As TCompType
       Get
-        Return DirectCast(Me.GetRcwProperty("ComponentType"), TCompType)
+        Return GetRcwProperty("ComponentType")
       End Get
     End Property
 
     ''' <summary>
     ''' Имя таблицы объекта.
     ''' </summary>
-    Public ReadOnly Property SqlTableName() As String Implements IObject(Of TI).SqlTableName
+    Public ReadOnly Property SqlTableName As String Implements IObject(Of TI).SqlTableName
       Get
-        Return DirectCast(Me.GetRcwProperty("SQLTableName"), String)
+        Return DirectCast(GetRcwProperty("SQLTableName"), String)
       End Get
     End Property
 
-#End Region
+    #End Region
 
-#Region "Методы"
+    #Region "Методы"
 
     ''' <summary>
     ''' Добавить условие Where к запросу.
@@ -77,7 +77,7 @@ Namespace Base.Wrappers
     ''' <param name="queryWhereSection">Секция where запроса.</param>
     ''' <returns>ИД условия в запросе.</returns>
     Public Function AddWhere(queryWhereSection As String) As Integer Implements IObject(Of TI).AddWhere
-      Return CInt(Me.InvokeRcwInstanceMethod("AddWhere", queryWhereSection))
+      Return InvokeRcwInstanceMethod("AddWhere", queryWhereSection)
     End Function
 
     ''' <summary>
@@ -85,7 +85,7 @@ Namespace Base.Wrappers
     ''' </summary>
     ''' <param name="queryConditionId">ИД условия в запросе.</param>
     Public Sub DelWhere(queryConditionId As Integer) Implements IObject(Of TI).DelWhere
-      Me.InvokeRcwInstanceMethod("DelWhere", queryConditionId)
+      InvokeRcwInstanceMethod("DelWhere", queryConditionId)
     End Sub
 
     ''' <summary>
@@ -95,7 +95,7 @@ Namespace Base.Wrappers
       ' Для записей справочников, записей DataSet: если внутри using изменили запись и свалился наш код с исключением,
       ' то Finalize пытается закрыть запись, но закрыть несохраненную запись нельзя.
       ' Клиентский код должен корректно обрабатывать такие ситуации.
-      Me.InvokeRcwInstanceMethod("Finalize")
+      InvokeRcwInstanceMethod("Finalize")
     End Sub
 
     ''' <summary>
@@ -104,9 +104,9 @@ Namespace Base.Wrappers
     ''' <param name="dataSetNumber">Номер детального раздела.</param>
     ''' <returns>Детальный раздел.</returns>
     Public Function GetDetailDataSet(dataSetNumber As Integer) As IDataSet Implements IObject(Of TI).GetDetailDataSet
-      Dim rcwDataSet = Me.InvokeRcwInstanceMethod("DetailDataSet", dataSetNumber)
+      Dim rcwDataSet = InvokeRcwInstanceMethod("DetailDataSet", dataSetNumber)
 
-      Return New Data.Wrappers.DataSet(rcwDataSet)
+      Return New Data.Wrappers.DataSet(rcwDataSet, Scope)
     End Function
 
     ''' <summary>
@@ -115,8 +115,8 @@ Namespace Base.Wrappers
     ''' <typeparam name="TP">Тип параметров.</typeparam>
     ''' <returns>Список переменных окружения объекта.</returns>
     Public Function GetEnvironment(Of TP As IIsbComObjectWrapper)() As  Accessory.IList(Of TP) Implements IObject(Of TI).GetEnvironment
-      Dim rcwEnvironment = Me.GetRcwProperty("Environment")
-      Return New Accessory.Wrappers.List(Of TP)(rcwEnvironment)
+      Dim rcwEnvironment = GetRcwProperty("Environment")
+      Return New Accessory.Wrappers.List(Of TP)(rcwEnvironment, Scope)
     End Function
 
     ''' <summary>
@@ -124,8 +124,8 @@ Namespace Base.Wrappers
     ''' </summary>
     ''' <returns>Форма-карточка.</returns>
     Public Function GetForm() As IForm Implements IObject(Of TI).GetForm
-      Dim rcwForm = Me.GetRcwProperty("Form")
-      Return New Form(rcwForm)
+      Dim rcwForm = GetRcwProperty("Form")
+      Return New Form(rcwForm, Scope)
     End Function
 
     ''' <summary>
@@ -133,9 +133,9 @@ Namespace Base.Wrappers
     ''' </summary>
     ''' <typeparam name="TP">Тип параметров.</typeparam>
     ''' <returns>Список параметров объекта.</returns>
-    Public Function GetParams(Of TP As IIsbComObjectWrapper)() As  Accessory.IList(Of TP) Implements IObject(Of TI).GetParams
-      Dim rcwParams = Me.GetRcwProperty("Params")
-      Return New Accessory.Wrappers.List(Of TP)(rcwParams)
+    Public Function GetParams(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP) Implements IObject(Of TI).GetParams
+      Dim rcwParams = GetRcwProperty("Params")
+      Return New Accessory.Wrappers.List(Of TP)(rcwParams, Scope)
     End Function
 
     ''' <summary>
@@ -151,22 +151,22 @@ Namespace Base.Wrappers
     ''' <returns>Реквизит.</returns>
     ''' <remarks>Умышленно делаем метод виртуальным, чтобы использовать вместе с IRequisiteAutoCleaner.</remarks>
     Public Overridable Function GetRequisite(requisiteName As String) As IRequisite Implements IObject(Of TI).GetRequisite
-      Dim rcwRequisite = Me.GetRcwProperty("Requisites", requisiteName)
-      Return DerivedRequisiteFactory.CreateRequisite(rcwRequisite)
+      Dim rcwRequisite = GetRcwProperty("Requisites", requisiteName)
+      Return DerivedRequisiteFactory.CreateRequisite(rcwRequisite, Scope)
     End Function
 
     ''' <summary>
     ''' Обновить набор данных.
     ''' </summary>
     Public Sub Refresh() Implements IObject(Of TI).Refresh
-      Me.InvokeRcwInstanceMethod("Refresh")
+      InvokeRcwInstanceMethod("Refresh")
     End Sub
 
     ''' <summary>
     ''' Сохранить объект.
     ''' </summary>
     Public Sub Save() Implements IObject(Of TI).Save
-      Me.InvokeRcwInstanceMethod("Save")
+      InvokeRcwInstanceMethod("Save")
     End Sub
 
     ''' <summary>
@@ -174,22 +174,23 @@ Namespace Base.Wrappers
     ''' </summary>
     ''' <returns>COM-объект IObjectInfo.</returns>
     Protected Function GetRcwObjectInfo() As Object
-      Return Me.GetRcwProperty("Info")
+      Return GetRcwProperty("Info")
     End Function
 
-#End Region
+    #End Region
 
-#Region "Конструкторы"
+    #Region "Конструкторы"
 
     ''' <summary>
     ''' Конструктор.
     ''' </summary>
     ''' <param name="externalObject">Внешний объект.</param>
-    Protected Sub New(externalObject As Object)
-      MyBase.New(externalObject)
+    ''' <param name="scope">Область видимости.</param>
+    Protected Sub New(externalObject As Object, scope As IScope)
+      MyBase.New(externalObject, scope)
     End Sub
 
-#End Region
+    #End Region
 
   End Class
 End Namespace

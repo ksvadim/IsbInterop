@@ -5,12 +5,13 @@
     Friend Class SystemInfo
         Inherits IsbComObjectWrapper
         Implements ISystemInfo
+
         ''' <summary>
         ''' Версия клиента.
         ''' </summary>
-        Public ReadOnly Property ClientVerson() As String Implements ISystemInfo.ClientVerson
+        Public ReadOnly Property ClientVerson As String Implements ISystemInfo.ClientVerson
             Get
-                Return DirectCast(Me.GetRcwProperty("ClientVersion"), String)
+                Return DirectCast(GetRcwProperty("ClientVersion"), String)
             End Get
         End Property
 
@@ -18,8 +19,9 @@
         ''' Конструктор.
         ''' </summary>
         ''' <param name="systemInfo">Объект с информацией о системе.</param>
-        Friend Sub New(systemInfo As Object)
-            MyBase.New(systemInfo)
+        ''' <param name="scope">Область видимости.</param>
+        Friend Sub New(systemInfo As Object, scope As IScope)
+            MyBase.New(systemInfo, scope)
         End Sub
     End Class
 End Namespace

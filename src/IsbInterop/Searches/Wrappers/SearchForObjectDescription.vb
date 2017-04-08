@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Searches.Wrappers
+
     ''' <summary>
     ''' Обертка над ISearchForObjectDescription.
     ''' </summary>
@@ -17,15 +18,16 @@ Namespace Searches.Wrappers
                 Throw New ArgumentNullException("objectInfo")
             End If
 
-            Me.InvokeRcwInstanceMethod("InitializeSearch", DirectCast(objectInfo, IUnsafeRcwObjectAccessor).UnsafeRcwObject)
+            InvokeRcwInstanceMethod("InitializeSearch", DirectCast(objectInfo, IUnsafeRcwObjectAccessor).UnsafeRcwObject)
         End Sub
 
         ''' <summary>
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwISearchForObjectDescription">COM-объект ISearchForObjectDescription.</param>
-        Friend Sub New(rcwISearchForObjectDescription As Object)
-            MyBase.New(rcwISearchForObjectDescription)
+        ''' <param name="scope">Область видимости.</param>
+        Friend Sub New(rcwISearchForObjectDescription As Object, scope As IScope)
+            MyBase.New(rcwISearchForObjectDescription, scope)
         End Sub
     End Class
 End Namespace

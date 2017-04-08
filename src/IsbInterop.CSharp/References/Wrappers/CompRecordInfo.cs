@@ -19,6 +19,7 @@ namespace IsbInterop.References.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwICompRecordInfo">COM-объект ICompRecordInfo.</param>
-    protected CompRecordInfo(object rcwICompRecordInfo) : base(rcwICompRecordInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    protected CompRecordInfo(object rcwICompRecordInfo, IScope scope) : base(rcwICompRecordInfo, scope) { }
   }
 }

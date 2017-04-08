@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base.Wrappers
 
 Namespace References.Wrappers
+
   ''' <summary>
   ''' Обертка над IReferenceFactory.
   ''' </summary>
@@ -13,9 +14,9 @@ Namespace References.Wrappers
     ''' <summary>
     ''' Получить имя фабрики.
     ''' </summary>
-    Public ReadOnly Property Name() As String Implements IReferenceFactory.Name
+    Public ReadOnly Property Name As String Implements IReferenceFactory.Name
       Get
-        Return DirectCast(Me.GetRcwProperty("Name"), String)
+        Return DirectCast(GetRcwProperty("Name"), String)
       End Get
     End Property
 
@@ -28,8 +29,8 @@ Namespace References.Wrappers
     ''' </summary>
     ''' <returns>Запись справочника.</returns>
     Public Function CreateNew() As IReference Implements IReferenceFactory.CreateNew
-      Dim rcwReferenceEntry = Me.InvokeRcwInstanceMethod("CreateNew")
-      Return New Reference(rcwReferenceEntry)
+      Dim rcwReferenceEntry = InvokeRcwInstanceMethod("CreateNew")
+      Return New Reference(rcwReferenceEntry, Scope)
     End Function
 
     ''' <summary>
@@ -39,8 +40,8 @@ Namespace References.Wrappers
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Объект IComponent.</returns>
     Public Function GetHistory(id As Integer) As IComponent Implements IReferenceFactory.GetHistory
-      Dim rcwComponent = Me.GetRcwProperty("History", id)
-      Return New Component(rcwComponent)
+      Dim rcwComponent = GetRcwProperty("History", id)
+      Return New Component(rcwComponent, Scope)
     End Function
 
     ''' <summary>
@@ -49,9 +50,9 @@ Namespace References.Wrappers
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>
     Public Overrides Function GetObjectById(id As Integer) As IReference
-      Dim referenceRcw = Me.GetRcwObjectById(id)
+      Dim referenceRcw = GetRcwObjectById(id)
 
-      Return New Reference(referenceRcw)
+      Return New Reference(referenceRcw, Scope)
     End Function
 
     ''' <summary>
@@ -60,8 +61,8 @@ Namespace References.Wrappers
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Info-объект.</returns>
     Public Overrides Function GetObjectInfo(id As Integer) As IReferenceInfo
-      Dim rcwIEdocumentInfo = Me.GetRcwObjectInfo(id)
-      Return New ReferenceInfo(rcwIEdocumentInfo)
+      Dim rcwIEdocumentInfo = GetRcwObjectInfo(id)
+      Return New ReferenceInfo(rcwIEdocumentInfo, Scope)
     End Function
 
     ''' <summary>
@@ -77,8 +78,8 @@ Namespace References.Wrappers
     ''' </summary>
     ''' <returns>Компонента справочника.</returns>
     Public Function GetComponent() As IReference Implements IReferenceFactory.GetComponent
-      Dim rcwReference = Me.InvokeRcwInstanceMethod("GetComponent")
-      Return New Reference(rcwReference)
+      Dim rcwReference = InvokeRcwInstanceMethod("GetComponent")
+      Return New Reference(rcwReference, Scope)
     End Function
 
     ''' <summary>
@@ -87,8 +88,8 @@ Namespace References.Wrappers
     ''' <param name="referenceEntryCode">Код записи справочника.</param>
     ''' <returns>Запись справочника.</returns>
     Public Function GetObjectByCode(referenceEntryCode As String) As IReference Implements IReferenceFactory.GetObjectByCode
-      Dim rcwReferenceEntry = Me.InvokeRcwInstanceMethod("GetObjectByCode", referenceEntryCode)
-      Return New Reference(rcwReferenceEntry)
+      Dim rcwReferenceEntry = InvokeRcwInstanceMethod("GetObjectByCode", referenceEntryCode)
+      Return New Reference(rcwReferenceEntry, Scope)
     End Function
 
 #End Region
@@ -99,8 +100,9 @@ Namespace References.Wrappers
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwIReferenceFactory">COM-объект IReferenceFactory.</param>
-    Friend Sub New(rcwIReferenceFactory As Object)
-      MyBase.New(rcwIReferenceFactory)
+    ''' <param name="scope">Область видимости.</param>
+    Friend Sub New(rcwIReferenceFactory As Object, scope As IScope)
+      MyBase.New(rcwIReferenceFactory, scope)
     End Sub
 
 #End Region

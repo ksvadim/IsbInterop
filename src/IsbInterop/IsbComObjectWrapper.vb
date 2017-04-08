@@ -1,6 +1,5 @@
-﻿Imports System.Reflection
+﻿Imports System.Runtime.ConstrainedExecution
 Imports System.Runtime.InteropServices
-Imports System.Runtime.ConstrainedExecution
 
 ''' <summary>
 ''' Базовый объект.
@@ -15,7 +14,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <summary>
   ''' COM-объект IS-Builder.
   ''' </summary>
-  Protected Property RcwObject() As Object
+  Protected Property RcwObject As Object
     Get
       If disposed Then
         Throw New ObjectDisposedException(Me.typeName)
@@ -23,13 +22,12 @@ Public MustInherit Class IsbComObjectWrapper
 
       Return _rcwObject
     End Get
-    Private Set(value As Object)
+    Private Set
       _rcwObject = value
     End Set
   End Property
 
   Private _rcwObject As Object
-
 
   ''' <summary>
   ''' Имя типа.
@@ -39,11 +37,16 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <summary>
   ''' COM-объект IS-Builder.
   ''' </summary>
-  Private ReadOnly Property IUnsafeRcwObjectAccessor_UnsafeRcwObject() As Object Implements IUnsafeRcwObjectAccessor.UnsafeRcwObject
+  Private ReadOnly Property IUnsafeRcwObjectAccessor_UnsafeRcwObject As Object Implements IUnsafeRcwObjectAccessor.UnsafeRcwObject
     Get
-      Return Me.RcwObject
+      Return RcwObject
     End Get
   End Property
+
+  ''' <summary>
+  ''' Область видимости.
+  ''' </summary>
+  Friend Property Scope As IScope
 
 #End Region
 
@@ -56,31 +59,31 @@ Public MustInherit Class IsbComObjectWrapper
   ''' </summary>
   Protected Overrides Sub Finalize()
     Try
-      Me.Dispose(False)
+      Dispose(False)
     Finally
       MyBase.Finalize()
     End Try
   End Sub
 
   Public Sub Dispose() Implements IDisposable.Dispose
-    Me.Dispose(True)
+    Dispose(True)
     GC.SuppressFinalize(Me)
   End Sub
 
   Protected Overridable Sub Dispose(disposing As Boolean)
-    If Me.disposed Then
+    If disposed Then
       Return
     End If
 
     If disposing Then
-      If Me._rcwObject IsNot Nothing Then
-        If Marshal.IsComObject(Me._rcwObject) Then
-          Marshal.ReleaseComObject(Me._rcwObject)
+      If _rcwObject IsNot Nothing Then
+        If Marshal.IsComObject(_rcwObject) Then
+          Marshal.ReleaseComObject(_rcwObject)
         End If
         Me._rcwObject = Nothing
       End If
 
-      Me.disposed = True
+      disposed = True
     End If
   End Sub
 
@@ -95,7 +98,7 @@ Public MustInherit Class IsbComObjectWrapper
   '''' <param name="parameter">Параметр.</param>
   '''' <returns>Результат.</returns>
   Protected Function InvokeRcwInstanceMethod(methodName As String, parameter As Object) As Object
-    Return ComUtils.InvokeRcwInstanceMethod(Me.RcwObject, methodName, parameter)
+    Return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameter)
   End Function
 
   ''' <summary>
@@ -105,7 +108,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <param name="parameters">Параметры.</param>
   ''' <returns>Результат.</returns>
   Protected Function InvokeRcwInstanceMethod(methodName As String, Optional parameters As Object() = Nothing) As Object
-    Return ComUtils.InvokeRcwInstanceMethod(Me.RcwObject, methodName, parameters)
+    Return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameters)
   End Function
 
   ''' <summary>
@@ -116,7 +119,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <param name="timeout">Таймаут.</param>
   ''' <returns>Результат.</returns>
   Protected Function InvokeRcwInstanceMethod(methodName As String, parameters As Object(), timeout As TimeSpan?) As Object
-    Return ComUtils.InvokeRcwInstanceMethod(Me.RcwObject, methodName, parameters, timeout)
+    Return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameters, timeout)
   End Function
 
 
@@ -127,7 +130,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <param name="parameter">Параметр.</param>
   ''' <returns>Результат.</returns>
   Protected Function GetRcwProperty(propertyName As String, parameter As Object) As Object
-    Return ComUtils.GetRcwProperty(Me.RcwObject, propertyName, parameter)
+    Return ComUtils.GetRcwProperty(RcwObject, propertyName, parameter)
   End Function
 
   ''' <summary>
@@ -137,7 +140,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <param name="parameters">Параметры.</param>
   ''' <returns>Результат.</returns>
   Protected Function GetRcwProperty(propertyName As String, Optional parameters As Object() = Nothing) As Object
-    Return ComUtils.GetRcwProperty(Me.RcwObject, propertyName, parameters)
+    Return ComUtils.GetRcwProperty(RcwObject, propertyName, parameters)
   End Function
 
   ''' <summary>
@@ -146,7 +149,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <param name="propertyName">Имя свойства.</param>
   ''' <param name="value">Значение.</param>
   Protected Sub SetRcwProperty(propertyName As String, value As Object)
-    ComUtils.SetRcwProperty(Me.RcwObject, propertyName, value)
+    ComUtils.SetRcwProperty(RcwObject, propertyName, value)
   End Sub
 
 #End Region
@@ -163,9 +166,15 @@ Public MustInherit Class IsbComObjectWrapper
   ''' Конструктор.
   ''' </summary>
   ''' <param name="rcwObject">COM-объект IS-Builder.</param>
-  Protected Sub New(rcwObject As Object)
+  ''' <param name="scope">Область видимости.</param>
+  Protected Sub New(rcwObject As Object, scope As IScope)
     Me.RcwObject = rcwObject
-    Me.typeName = Information.TypeName(rcwObject)
+    typeName = Information.TypeName(rcwObject)
+    Me.Scope = scope
+
+    If scope IsNot Nothing Then
+      DirectCast(scope, Scope).Add(Me)
+    End If
   End Sub
 
 #End Region

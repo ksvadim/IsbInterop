@@ -14,13 +14,14 @@ namespace IsbInterop.ComponentTokens.Wrappers
     public override IComponentTokenInfo GetInfo()
     {
       var rcwIComponentTokenInfo = this.GetRcwObjectInfo();
-      return new ComponentTokenInfo(rcwIComponentTokenInfo);
+      return new ComponentTokenInfo(rcwIComponentTokenInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIComponentToken">СOM-объект IComponentToken.</param>
-    public ComponentToken(object rcwIComponentToken) : base(rcwIComponentToken) { }
+    /// <param name="scope">Область видимости.</param>
+    public ComponentToken(object rcwIComponentToken, IScope scope) : base(rcwIComponentToken, scope) { }
   }
 }

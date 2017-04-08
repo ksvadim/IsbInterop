@@ -51,6 +51,8 @@ namespace IsbInterop.EDocuments.Wrappers
     /// <summary>
     /// Конструктор.
     /// </summary>
-    public EDocumentVersion(object version) : base(version) { }
+    /// <param name="version">Версия документа.</param>
+    /// <param name="scope">Область видимости.</param>
+    public EDocumentVersion(object version, IScope scope) : base(version, scope) { }
   }
 }

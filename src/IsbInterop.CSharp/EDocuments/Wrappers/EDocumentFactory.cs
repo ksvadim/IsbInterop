@@ -66,7 +66,7 @@ namespace IsbInterop.EDocuments.Wrappers
       var rcwIEDocument = this.InvokeRcwInstanceMethod("CreateNewFromFile", new object[] { edocumentTypeCode, edocumentKindCode, 
         edocumentEditorCode, aSourceFileName, inExtendedFormat});
 
-      return new EDocument(rcwIEDocument);
+      return new EDocument(rcwIEDocument, this.Scope);
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ namespace IsbInterop.EDocuments.Wrappers
     {
       var rcwObject = this.GetRcwObjectById(id);
 
-      return new EDocument(rcwObject);
+      return new EDocument(rcwObject, this.Scope);
     }
 
     /// <summary>
@@ -89,13 +89,13 @@ namespace IsbInterop.EDocuments.Wrappers
     public override IEDocumentInfo GetObjectInfo(int id)
     {
       var rcwIEdocumentInfo = this.GetRcwObjectInfo(id);
-      return new EDocumentInfo(rcwIEdocumentInfo);
+      return new EDocumentInfo(rcwIEdocumentInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIEDocumentFactory">Фабрика электронных документов.</param>
-    internal EDocumentFactory(object rcwIEDocumentFactory) : base(rcwIEDocumentFactory) { }
+    internal EDocumentFactory(object rcwIEDocumentFactory, IScope scope) : base(rcwIEDocumentFactory, scope) { }
   }
 }

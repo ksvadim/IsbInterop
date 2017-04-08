@@ -15,13 +15,14 @@ namespace IsbInterop.Presentation.Wrappers
     public IAction FindAction(string name)
     {
       var actionRcw = this.InvokeRcwInstanceMethod("FindAction", name);
-      return actionRcw != null ? new Action(actionRcw) : null;
+      return actionRcw != null ? new Action(actionRcw, this.Scope) : null;
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIActionList">COM-объект IActionList.</param>
-    public ActionList(object rcwIActionList) : base(rcwIActionList) { }
+    /// <param name="scope">Область видимости.</param>
+    public ActionList(object rcwIActionList, IScope scope) : base(rcwIActionList, scope) { }
   }
 }

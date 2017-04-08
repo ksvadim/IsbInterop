@@ -17,13 +17,14 @@ namespace IsbInterop.Base.Wrappers
     public IAttachmentList GetAttachments(bool isForFamilyTask)
     {
       var rcwIAttachmentList = this.InvokeRcwInstanceMethod("GetAttachments", isForFamilyTask);
-      return new AttachmentList(rcwIAttachmentList);
+      return new AttachmentList(rcwIAttachmentList, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwICustomWork">COM-объект ICustomWork.</param>
-    protected CustomWork(object rcwICustomWork) : base(rcwICustomWork) { }
+    /// <param name="scope">Область видимости.</param>
+    protected CustomWork(object rcwICustomWork, IScope scope) : base(rcwICustomWork, scope) { }
   }
 }

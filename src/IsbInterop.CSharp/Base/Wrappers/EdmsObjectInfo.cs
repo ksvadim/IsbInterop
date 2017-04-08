@@ -5,10 +5,11 @@
   /// </summary>
   internal class EdmsObjectInfo : ObjectInfo, IEdmsObjectInfo
   {
-     /// <summary>
+    /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIEdmsObjectInfo">COM-объект IEdmsObjectInfo.</param>
-    public EdmsObjectInfo(object rcwIEdmsObjectInfo) : base(rcwIEdmsObjectInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public EdmsObjectInfo(object rcwIEdmsObjectInfo, IScope scope) : base(rcwIEdmsObjectInfo, scope) { }
   }
 }

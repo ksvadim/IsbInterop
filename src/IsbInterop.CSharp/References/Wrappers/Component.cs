@@ -71,7 +71,7 @@ namespace IsbInterop.References.Wrappers
     public IForm GetComponentForm()
     {
       var rcwForm = this.GetRcwProperty("ComponentForm");
-      return new Form(rcwForm);
+      return new Form(rcwForm, this.Scope);
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ namespace IsbInterop.References.Wrappers
     public override IObjectInfo GetInfo()
     {
       var rcwIObjectInfo = this.GetRcwObjectInfo();
-      return new ObjectInfo(rcwIObjectInfo);
+      return new ObjectInfo(rcwIObjectInfo, this.Scope);
     }
 
     /// <summary>
@@ -140,7 +140,8 @@ namespace IsbInterop.References.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIComponent">COM-объект IComponent.</param>
-    public Component(object rcwIComponent) : base(rcwIComponent) { }
+    /// <param name="scope">Область видимости.</param>
+    public Component(object rcwIComponent, IScope scope) : base(rcwIComponent, scope) { }
 
     #endregion
   }

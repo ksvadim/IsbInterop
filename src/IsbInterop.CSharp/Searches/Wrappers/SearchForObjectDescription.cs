@@ -24,6 +24,7 @@ namespace IsbInterop.Searches.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwISearchForObjectDescription">COM-объект ISearchForObjectDescription.</param>
-    internal SearchForObjectDescription(object rcwISearchForObjectDescription) : base(rcwISearchForObjectDescription) { }
+    /// <param name="scope">Область видимости.</param>
+    internal SearchForObjectDescription(object rcwISearchForObjectDescription, IScope scope) : base(rcwISearchForObjectDescription, scope) { }
   }
 }

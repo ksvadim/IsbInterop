@@ -1,8 +1,7 @@
-﻿using IsbInterop.Accessory;
-using IsbInterop.Accessory.Wrappers;
-using IsbInterop.Base;
+﻿using IsbInterop.Base;
 using IsbInterop.Base.Wrappers;
 using System;
+using IsbInterop.Accessory;
 
 namespace IsbInterop.Scripts.Wrappers
 {
@@ -18,7 +17,7 @@ namespace IsbInterop.Scripts.Wrappers
     public IIsbComObjectWrapper Execute()
     {
       var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, null);
-      return new BaseIsbObjectWrapper(rcwObject);
+      return new BaseIsbObjectWrapper(rcwObject, Scope);
     }
 
     /// <summary>
@@ -29,7 +28,7 @@ namespace IsbInterop.Scripts.Wrappers
     public IIsbComObjectWrapper Execute(TimeSpan timeout)
     {
       var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, timeout);
-      return new BaseIsbObjectWrapper(rcwObject);
+      return new BaseIsbObjectWrapper(rcwObject, Scope);
     }
 
     /// <summary>
@@ -41,7 +40,7 @@ namespace IsbInterop.Scripts.Wrappers
     public T Execute<T>() where T : IIsbComObjectWrapper
     {
       var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, null);
-      return IsbObjectResolver.Resolve<T>(rcwObject);
+      return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
     }
 
     /// <summary>
@@ -54,7 +53,7 @@ namespace IsbInterop.Scripts.Wrappers
     public T Execute<T>(TimeSpan timeout) where T : IIsbComObjectWrapper
     {
       var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, timeout);
-      return IsbObjectResolver.Resolve<T>(rcwObject);
+      return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
     }
 
     /// <summary>
@@ -72,13 +71,14 @@ namespace IsbInterop.Scripts.Wrappers
     /// <returns>IsbObjectList.</returns>
     public IList<IIsbComObjectWrapper> GetParams()
     {
-      var parameters = this.GetRcwProperty("Params");
-      return new List<IIsbComObjectWrapper>(parameters);
+      return GetParams<IIsbComObjectWrapper>();
     }
+
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="script">Скрипт DIRECTUM.</param>
-    public Script(object script) : base(script) { }
+    /// <param name="scope">Область видимости.</param>
+    public Script(object script, IScope scope) : base(script, scope) { }
   }
 }

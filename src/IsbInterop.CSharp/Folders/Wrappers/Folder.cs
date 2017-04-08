@@ -14,13 +14,14 @@ namespace IsbInterop.Folders.Wrappers
     public override IFolderInfo GetInfo()
     {
       var rcwIFolderInfo = this.GetRcwObjectInfo();
-      return new FolderInfo(rcwIFolderInfo);
+      return new FolderInfo(rcwIFolderInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIFolder">СOM-объект IFolder.</param>
-    public Folder(object rcwIFolder) : base(rcwIFolder) { }
+    /// <param name="scope">Область видимости.</param>
+    public Folder(object rcwIFolder, IScope scope) : base(rcwIFolder, scope) { }
   }
 }

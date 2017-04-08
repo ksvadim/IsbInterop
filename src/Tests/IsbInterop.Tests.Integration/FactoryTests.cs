@@ -27,11 +27,11 @@ namespace IsbInterop.Tests.Integration
     [Test]
     public void Factory_GetKind_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         var objectKind = referenceFactory.Kind;
 
         Assert.AreEqual(objectKind, TContentKind.ckReference);
@@ -41,11 +41,11 @@ namespace IsbInterop.Tests.Integration
     [Test]
     public void Factory_GetNonExistentObject_ThrowsIsbIntropException()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         Assert.Catch<IsbInteropException>(() => referenceFactory.GetObjectById(-1));
       }
     }
@@ -53,21 +53,23 @@ namespace IsbInterop.Tests.Integration
     [Test]
     public void References_EditObjectWithoutSave_CloseRecordShouldFail()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
+      {
+        var referencesFactory = scope.Application.GetReferencesFactory();
 
-      using (var referencesFactory = app.GetReferencesFactory())
         Assert.Catch<IsbInteropException>(() =>
         {
-          using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
-          using (var reference = referenceFactory.GetObjectById(tempOrganizationId))
-          {
-            var noteRequisite = reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note);
-            noteRequisite.Value = Guid.NewGuid().ToString();
+          var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+          var reference = referenceFactory.GetObjectById(tempOrganizationId);
 
-            reference.CloseRecord();
-            reference.Close();
-          }
+          var noteRequisite = reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note);
+          noteRequisite.Value = Guid.NewGuid().ToString();
+
+          reference.CloseRecord();
+          reference.Close();
         });
+      }
     }
   }
 }

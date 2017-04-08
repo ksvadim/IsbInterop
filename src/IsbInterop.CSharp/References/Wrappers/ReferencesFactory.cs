@@ -13,7 +13,7 @@
     public IReferenceFactory GetReferenceFactory(string referenceFactoryName)
     {
       var rcwReferenceFactory = this.GetRcwProperty("ReferenceFactory", referenceFactoryName);
-      var referenceFactory = new ReferenceFactory(rcwReferenceFactory);
+      var referenceFactory = new ReferenceFactory(rcwReferenceFactory, this.Scope);
 
       return referenceFactory;
     }
@@ -22,6 +22,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwReferencesFactory">COM-объект ReferencesFactory.</param>
-    internal ReferencesFactory(object rcwReferencesFactory) : base(rcwReferencesFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    internal ReferencesFactory(object rcwReferencesFactory, IScope scope) : base(rcwReferencesFactory, scope) { }
   }
 }

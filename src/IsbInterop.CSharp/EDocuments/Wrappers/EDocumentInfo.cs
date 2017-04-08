@@ -11,6 +11,7 @@ namespace IsbInterop.EDocuments.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIEDocumentInfo">COM-объект IEDocumentInfo.</param>
-    public EDocumentInfo(object rcwIEDocumentInfo) : base(rcwIEDocumentInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public EDocumentInfo(object rcwIEDocumentInfo, IScope scope) : base(rcwIEDocumentInfo, scope) { }
   }
 }

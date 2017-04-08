@@ -34,7 +34,7 @@ namespace IsbInterop.ComponentTokens.Wrappers
     public override IComponentToken GetObjectById(int id)
     {
       var rcwComponentToken = this.GetRcwObjectById(id);
-      return new ComponentToken(rcwComponentToken);
+      return new ComponentToken(rcwComponentToken, this.Scope);
     }
 
     /// <summary>
@@ -45,13 +45,14 @@ namespace IsbInterop.ComponentTokens.Wrappers
     public override IComponentTokenInfo GetObjectInfo(int id)
     {
       var rcwIComponentTokenInfo = this.GetRcwObjectInfo(id);
-      return new ComponentTokenInfo(rcwIComponentTokenInfo);
+      return new ComponentTokenInfo(rcwIComponentTokenInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIComponentTokenFactory">COM-объект IComponentTokenFactory.</param>
-    public ComponentTokenFactory(object rcwIComponentTokenFactory) : base(rcwIComponentTokenFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    public ComponentTokenFactory(object rcwIComponentTokenFactory, IScope scope) : base(rcwIComponentTokenFactory, scope) { }
   }
 }

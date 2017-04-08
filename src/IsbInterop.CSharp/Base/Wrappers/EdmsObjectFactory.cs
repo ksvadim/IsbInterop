@@ -33,13 +33,14 @@ namespace IsbInterop.Base.Wrappers
     public IComponent GetHistory(int id)
     {
       var rcwComponent = this.GetRcwProperty("History", id);
-      return new Component(rcwComponent);
+      return new Component(rcwComponent, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwEdmsObjectFactory">COM-объект фабрики.</param>
-    protected EdmsObjectFactory(object rcwEdmsObjectFactory) : base(rcwEdmsObjectFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    protected EdmsObjectFactory(object rcwEdmsObjectFactory, IScope scope) : base(rcwEdmsObjectFactory, scope) { }
   }
 }

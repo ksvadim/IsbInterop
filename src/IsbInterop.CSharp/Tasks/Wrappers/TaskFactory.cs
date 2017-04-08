@@ -14,7 +14,7 @@ namespace IsbInterop.Tasks.Wrappers
     public ITask CreateNew()
     {
       var rcwITask = this.InvokeRcwInstanceMethod("CreateNew");
-      return new Task(rcwITask);
+      return new Task(rcwITask, this.Scope);
     }
 
     /// <summary>
@@ -25,7 +25,7 @@ namespace IsbInterop.Tasks.Wrappers
     public override ITask GetObjectById(int id)
     {
       var rcwObject = this.GetRcwObjectById(id);
-      return new Task(rcwObject);
+      return new Task(rcwObject, this.Scope);
     }
 
     /// <summary>
@@ -36,13 +36,14 @@ namespace IsbInterop.Tasks.Wrappers
     public override ITaskInfo GetObjectInfo(int id)
     {
       var rcwITaskInfo = this.GetRcwObjectInfo(id);
-      return new TaskInfo(rcwITaskInfo);
+      return new TaskInfo(rcwITaskInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwITaskFactory">COM-объект ITaskFactory.</param>
-    public TaskFactory(object rcwITaskFactory) : base(rcwITaskFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    public TaskFactory(object rcwITaskFactory, IScope scope) : base(rcwITaskFactory, scope) { }
   }
 }

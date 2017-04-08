@@ -54,6 +54,7 @@ namespace IsbInterop.Base.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIEdmsObject">COM-объект IEdmsObject.</param>
-    protected EdmsObject(object rcwIEdmsObject) : base(rcwIEdmsObject) { }
+    /// <param name="scope">Область видимости.</param>
+    protected EdmsObject(object rcwIEdmsObject, IScope scope) : base(rcwIEdmsObject, scope) { }
   }
 }

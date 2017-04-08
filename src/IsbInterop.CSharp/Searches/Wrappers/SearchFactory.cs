@@ -13,13 +13,14 @@
     public ISearchForObjectDescription Load(string searchName)
     {
       var rcwSearchForObjectDescription = this.InvokeRcwInstanceMethod("Load", searchName);
-      return new SearchForObjectDescription(rcwSearchForObjectDescription);
+      return new SearchForObjectDescription(rcwSearchForObjectDescription, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwISearchFactory">COM-объект ISearchFactory.</param>
-    internal SearchFactory(object rcwISearchFactory) : base(rcwISearchFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    internal SearchFactory(object rcwISearchFactory, IScope scope) : base(rcwISearchFactory, scope) { }
   }
 }

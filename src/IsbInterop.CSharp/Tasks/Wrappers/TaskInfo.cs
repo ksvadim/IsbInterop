@@ -5,10 +5,11 @@
   /// </summary>
   internal class TaskInfo : CustomWorkInfo, ITaskInfo
   {
-     /// <summary>
+    /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwITaskInfo">COM-объект ITaskInfo.</param>
-    public TaskInfo(object rcwITaskInfo) : base(rcwITaskInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public TaskInfo(object rcwITaskInfo, IScope scope) : base(rcwITaskInfo, scope) { }
   }
 }

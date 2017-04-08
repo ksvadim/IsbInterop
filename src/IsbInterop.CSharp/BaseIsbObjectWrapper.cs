@@ -9,6 +9,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
-    public BaseIsbObjectWrapper(object rcwObject) : base(rcwObject) { }
+    /// <param name="scope">Область видимости.</param>
+    public BaseIsbObjectWrapper(object rcwObject, IScope scope) : base(rcwObject, scope) { }
   }
 }

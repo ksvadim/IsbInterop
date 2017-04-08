@@ -2,6 +2,7 @@
 Imports IsbInterop.Accessory.Wrappers
 
 Namespace Data.Wrappers
+
     ''' <summary>
     ''' Обертка над IConnection.
     ''' </summary>
@@ -14,16 +15,17 @@ Namespace Data.Wrappers
         ''' </summary>
         ''' <returns>Информация о системе.</returns>
         Public Function GetSystemInfo() As ISystemInfo Implements IConnection.GetSystemInfo
-            Dim rcwSystemInfo = Me.GetRcwProperty("SystemInfo")
-            Return New SystemInfo(rcwSystemInfo)
+            Dim rcwSystemInfo = GetRcwProperty("SystemInfo")
+            Return New SystemInfo(rcwSystemInfo, Scope)
         End Function
 
         ''' <summary>
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwConnection">СOM-объект IConnection.</param>
-        Friend Sub New(rcwConnection As Object)
-            MyBase.New(rcwConnection)
+        ''' <param name="scope">Область видимости.</param>
+        Friend Sub New(rcwConnection As Object, scope As IScope)
+            MyBase.New(rcwConnection, scope)
         End Sub
     End Class
 End Namespace

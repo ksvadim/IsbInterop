@@ -22,6 +22,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIAttachment">СOM-объект IAttachment.</param>
-    public AttachmentList(object rcwIAttachment) : base(rcwIAttachment) { }
+    /// <param name="scope">Область видимости.</param>
+    public AttachmentList(object rcwIAttachment, IScope scope) : base(rcwIAttachment, scope) { }
   }
 }

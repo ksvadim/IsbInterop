@@ -64,7 +64,8 @@ namespace IsbInterop.References.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="reference">Справочник DIRECTUM.</param>
-    public Reference(object reference) : base(reference) { }
+    /// <param name="scope">Область видимости.</param>
+    public Reference(object reference, IScope scope) : base(reference, scope) { }
 
     #endregion
   }

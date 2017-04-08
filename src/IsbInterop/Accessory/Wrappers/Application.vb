@@ -26,22 +26,28 @@ Namespace Accessory.Wrappers
     Inherits IsbComObjectWrapper
     Implements IApplication
 
+    #Region "Поля и свойства"
+
     ''' <summary>
     ''' ИД процесса Application.
     ''' </summary>
-    Public ReadOnly Property PID() As Integer Implements IApplication.PID
+    Public ReadOnly Property PID As Integer Implements IApplication.PID
       Get
-        Return CInt(Me.GetRcwProperty("PID"))
+        Return GetRcwProperty("PID")
       End Get
     End Property
+
+    #End Region
+
+    #Region "Методы"
 
     ''' <summary>
     ''' Получить фабрику вариантов запуска.
     ''' </summary>
     ''' <returns>Фабрика вариантов запуска.</returns>
     Public Function GetComponentTokenFactory() As IComponentTokenFactory Implements IApplication.GetComponentTokenFactory
-      Dim rcwIComponentTokenFactory = Me.GetRcwProperty("ComponentTokenFactory")
-      Return New ComponentTokenFactory(rcwIComponentTokenFactory)
+      Dim rcwIComponentTokenFactory = GetRcwProperty("ComponentTokenFactory")
+      Return New ComponentTokenFactory(rcwIComponentTokenFactory, Scope)
     End Function
 
     ''' <summary>
@@ -51,8 +57,8 @@ Namespace Accessory.Wrappers
     ''' <param name="objectId">ИД объекта.</param>
     ''' <returns>Объект-блокировка.</returns>
     Public Function CreateLock(objectType As TCompType, objectId As Integer) As ILock Implements IApplication.CreateLock
-      Dim rcwILock = Me.InvokeRcwInstanceMethod("CreateLock", New Object() {objectType, objectId})
-      Return New Lock(rcwILock)
+      Dim rcwILock = InvokeRcwInstanceMethod("CreateLock", New Object() {objectType, objectId})
+      Return New Lock(rcwILock, Scope)
     End Function
 
     ''' <summary>
@@ -60,8 +66,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Объект-соединение.</returns>
     Public Function GetConnection() As IConnection Implements IApplication.GetConnection
-      Dim rcwIConnection = Me.GetRcwProperty("Connection")
-      Return New Connection(rcwIConnection)
+      Dim rcwIConnection = GetRcwProperty("Connection")
+      Return New Connection(rcwIConnection, Scope)
     End Function
 
     ''' <summary>
@@ -69,8 +75,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика электронных документов.</returns>
     Public Function GetEDocumentFactory() As IEDocumentFactory Implements IApplication.GetEDocumentFactory
-      Dim rcwIEDocumentFactory = Me.GetRcwProperty("EDocumentFactory")
-      Return New EDocumentFactory(rcwIEDocumentFactory)
+      Dim rcwIEDocumentFactory = GetRcwProperty("EDocumentFactory")
+      Return New EDocumentFactory(rcwIEDocumentFactory, Scope)
     End Function
 
     ''' <summary>
@@ -78,8 +84,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика папок.</returns>
     Function GetFolderFactory() As IFolderFactory Implements IApplication.GetFolderFactory
-      Dim rcwIFolderFactory = Me.GetRcwProperty("FolderFactory")
-      Return New FolderFactory(rcwIFolderFactory)
+      Dim rcwIFolderFactory = GetRcwProperty("FolderFactory")
+      Return New FolderFactory(rcwIFolderFactory, Scope)
     End Function
 
     ''' <summary>
@@ -87,8 +93,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика заданий</returns>
     Public Function GetJobFactory() As IJobFactory Implements IApplication.GetJobFactory
-      Dim rcwIJobFactory = Me.GetRcwProperty("JobFactory")
-      Return New JobFactory(rcwIJobFactory)
+      Dim rcwIJobFactory = GetRcwProperty("JobFactory")
+      Return New JobFactory(rcwIJobFactory, Scope)
     End Function
 
     ''' <summary>
@@ -96,8 +102,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика типов справочников.</returns>
     Public Function GetReferencesFactory() As IReferencesFactory Implements IApplication.GetReferencesFactory
-      Dim rcwIReferencesFactory = Me.GetRcwProperty("ReferencesFactory")
-      Return New ReferencesFactory(rcwIReferencesFactory)
+      Dim rcwIReferencesFactory = GetRcwProperty("ReferencesFactory")
+      Return New ReferencesFactory(rcwIReferencesFactory, Scope)
     End Function
 
     ''' <summary>
@@ -105,8 +111,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика сценариев.</returns>
     Public Function GetScriptFactory() As IScriptFactory Implements IApplication.GetScriptFactory
-      Dim rcwIScriptFactory = Me.GetRcwProperty("ScriptFactory")
-      Return New ScriptFactory(rcwIScriptFactory)
+      Dim rcwIScriptFactory = GetRcwProperty("ScriptFactory")
+      Return New ScriptFactory(rcwIScriptFactory, Scope)
     End Function
 
     ''' <summary>
@@ -114,8 +120,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика поисков.</returns>
     Public Function GetSearchFactory() As ISearchFactory Implements IApplication.GetSearchFactory
-      Dim rcwISearchFactory = Me.GetRcwProperty("SearchFactory")
-      Return New SearchFactory(rcwISearchFactory)
+      Dim rcwISearchFactory = GetRcwProperty("SearchFactory")
+      Return New SearchFactory(rcwISearchFactory, Scope)
     End Function
 
     ''' <summary>
@@ -123,8 +129,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика служебных объектов.</returns>
     Public Function GetServiceFactory() As IServiceFactory Implements IApplication.GetServiceFactory
-      Dim rcwIServiceFactory = Me.GetRcwProperty("ServiceFactory")
-      Return New ServiceFactory(rcwIServiceFactory)
+      Dim rcwIServiceFactory = GetRcwProperty("ServiceFactory")
+      Return New ServiceFactory(rcwIServiceFactory, Scope)
     End Function
 
     ''' <summary>
@@ -132,8 +138,8 @@ Namespace Accessory.Wrappers
     ''' </summary>
     ''' <returns>Фабрика задач.</returns>
     Public Function GetTaskFactory() As ITaskFactory Implements IApplication.GetTaskFactory
-      Dim rcwITaskFactory = Me.GetRcwProperty("TaskFactory")
-      Return New TaskFactory(rcwITaskFactory)
+      Dim rcwITaskFactory = GetRcwProperty("TaskFactory")
+      Return New TaskFactory(rcwITaskFactory, Scope)
     End Function
 
     ''' <summary>
@@ -143,12 +149,20 @@ Namespace Accessory.Wrappers
       Me.InvokeRcwInstanceMethod("Finalize")
     End Sub
 
+    #End Region
+
+    #Region "Конструкторы"
+
     ''' <summary>
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwApplication">COM-объект IApplication.</param>
-    Friend Sub New(rcwApplication As Object)
-      MyBase.New(rcwApplication)
+    ''' <param name="scope">Область видимости.</param>
+    Friend Sub New(rcwApplication As Object, scope As IScope)
+      MyBase.New(rcwApplication, scope)
     End Sub
+
+    #End Region
+
   End Class
 End Namespace

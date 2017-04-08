@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.DataTypes.Enumerable
 
 Namespace EDocuments.Wrappers
+
   ''' <summary>
   ''' Обертка над IEDocumentVersion.
   ''' </summary>
@@ -11,12 +12,12 @@ Namespace EDocuments.Wrappers
     ''' <summary>
     ''' Текущее сосотяние версии.
     ''' </summary>
-    Public ReadOnly Property CurrentState() As TEDocumentVersionState Implements IEDocumentVersion.CurrentState
+    Public ReadOnly Property CurrentState As TEDocumentVersionState Implements IEDocumentVersion.CurrentState
       Get
-        Dim state As Integer = CInt(Me.GetRcwProperty("CurrentState"))
+        Dim state = CInt(GetRcwProperty("CurrentState"))
 
         If [Enum].IsDefined(GetType(TEDocumentVersionState), state) Then
-          Return DirectCast(state, TEDocumentVersionState)
+          Return state
         Else
           Return TEDocumentVersionState.vsUnknown
         End If
@@ -26,35 +27,37 @@ Namespace EDocuments.Wrappers
     ''' <summary>
     ''' Скрытая версия.
     ''' </summary>
-    Public ReadOnly Property IsHidden() As Boolean Implements IEDocumentVersion.IsHidden
+    Public ReadOnly Property IsHidden As Boolean Implements IEDocumentVersion.IsHidden
       Get
-        Return CBool(Me.GetRcwProperty("IsHidden"))
+        Return GetRcwProperty("IsHidden")
       End Get
     End Property
 
     ''' <summary>
     ''' Номер версии.
     ''' </summary>
-    Public ReadOnly Property Number() As Integer Implements IEDocumentVersion.Number
+    Public ReadOnly Property Number As Integer Implements IEDocumentVersion.Number
       Get
-        Return CInt(Me.GetRcwProperty("Number"))
+        Return GetRcwProperty("Number")
       End Get
     End Property
 
     ''' <summary>
     ''' Размер версии.
     ''' </summary>
-    Public ReadOnly Property Size() As Integer Implements IEDocumentVersion.Size
+    Public ReadOnly Property Size As Integer Implements IEDocumentVersion.Size
       Get
-        Return CInt(Me.GetRcwProperty("Size"))
+        Return GetRcwProperty("Size")
       End Get
     End Property
 
     ''' <summary>
     ''' Конструктор.
     ''' </summary>
-    Public Sub New(version As Object)
-      MyBase.New(version)
+    ''' <param name="version">Версия документа.</param>
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(version As Object, scope As IScope)
+      MyBase.New(version, scope)
     End Sub
   End Class
 End Namespace

@@ -32,6 +32,7 @@ namespace IsbInterop.Presentation.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIForm">СOM-объект IAction.</param>
-    public Action(object rcwIForm) : base(rcwIForm) { }
+    /// <param name="scope">Область видимости.</param>
+    public Action(object rcwIForm, IScope scope) : base(rcwIForm, scope) { }
   }
 }

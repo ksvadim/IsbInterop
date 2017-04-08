@@ -9,6 +9,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIControlJobInfo">COM-объект IControlJobInfo.</param>
-    public ControlJobInfo(object rcwIControlJobInfo) : base(rcwIControlJobInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public ControlJobInfo(object rcwIControlJobInfo, IScope scope) : base(rcwIControlJobInfo, scope) { }
   }
 }

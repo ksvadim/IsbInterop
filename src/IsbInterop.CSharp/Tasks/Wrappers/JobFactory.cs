@@ -18,16 +18,16 @@ namespace IsbInterop.Tasks.Wrappers
     {
       TCompType objectType;
       var rcwObject = this.GetRcwObjectById(id, out objectType);
-       switch (objectType)
+      switch (objectType)
       {
-         case (TCompType.ctJob):
-          return new Job(rcwObject);
-         case (TCompType.ctNotice):
-          return new Notice(rcwObject);
-         case (TCompType.ctControlJob):
-          return new ControlJob(rcwObject);
-         default:
-           return new DefaultCustomJob(rcwObject);
+        case (TCompType.ctJob):
+          return new Job(rcwObject, this.Scope);
+        case (TCompType.ctNotice):
+          return new Notice(rcwObject, this.Scope);
+        case (TCompType.ctControlJob):
+          return new ControlJob(rcwObject, this.Scope);
+        default:
+          return new DefaultCustomJob(rcwObject, this.Scope);
       }
     }
 
@@ -43,13 +43,13 @@ namespace IsbInterop.Tasks.Wrappers
       switch (objectType)
       {
         case (TCompType.ctJob):
-          return new JobInfo(rcwObject);
+          return new JobInfo(rcwObject, this.Scope);
         case (TCompType.ctNotice):
-          return new NoticeInfo(rcwObject);
+          return new NoticeInfo(rcwObject, this.Scope);
         case (TCompType.ctControlJob):
-         return new ControlJobInfo(rcwObject);
+          return new ControlJobInfo(rcwObject, this.Scope);
         default:
-          return new CustomJobInfo(rcwObject);
+          return new CustomJobInfo(rcwObject, this.Scope);
       }
     }
 
@@ -57,6 +57,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwITaskFactory">COM-объект ITaskFactory.</param>
-    public JobFactory(object rcwITaskFactory) : base(rcwITaskFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    public JobFactory(object rcwITaskFactory, IScope scope) : base(rcwITaskFactory, scope) { }
   }
 }

@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.DataTypes.Enumerable
 
 Namespace Base.Wrappers
+
   ''' <summary>
   ''' Обертка над IEdmsObject.
   ''' </summary>
@@ -16,7 +17,7 @@ Namespace Base.Wrappers
     ''' <remarks>Метод является системным, использовать его не рекомендуется. 
     ''' При обращении к объекту метод вызывается автоматически.</remarks>
     Public Sub EnterEditMode() Implements IEdmsObject(Of TI).EnterEditMode
-      Me.InvokeRcwInstanceMethod("EnterEditMode")
+      InvokeRcwInstanceMethod("EnterEditMode")
     End Sub
 
     ''' <summary>
@@ -26,7 +27,7 @@ Namespace Base.Wrappers
     ''' <remarks>Метод является системным, использовать его не рекомендуется. 
     ''' При освобождении объекта метод вызывается автоматически.</remarks>
     Public Sub LeaveEditMode() Implements IEdmsObject(Of TI).LeaveEditMode
-      Me.InvokeRcwInstanceMethod("LeaveEditMode")
+      InvokeRcwInstanceMethod("LeaveEditMode")
     End Sub
 
     ''' <summary>
@@ -36,8 +37,8 @@ Namespace Base.Wrappers
     ''' <param name="errorMessage">системное сообщение об ошибке IS-Builder.</param>
     ''' <returns>True, если редактирование возможно в режиме editMode, иначе false.</returns>
     Public Function TryEdit(editMode As TEditMode, ByRef errorMessage As String) As Boolean Implements IEdmsObject(Of TI).TryEdit
-      Dim methodParams As Object() = New Object() {CInt(editMode), Nothing}
-      Dim canEdit As Boolean = CBool(Me.InvokeRcwInstanceMethod("TryEdit", methodParams))
+      Dim methodParams = New Object() {CInt(editMode), Nothing}
+      Dim canEdit  = CBool(InvokeRcwInstanceMethod("TryEdit", methodParams))
 
       If canEdit Then
         errorMessage = String.Empty
@@ -52,8 +53,9 @@ Namespace Base.Wrappers
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwIEdmsObject">COM-объект IEdmsObject.</param>
-    Protected Sub New(rcwIEdmsObject As Object)
-      MyBase.New(rcwIEdmsObject)
+    ''' <param name="scope">Область видимости.</param>
+    Protected Sub New(rcwIEdmsObject As Object, scope As IScope)
+      MyBase.New(rcwIEdmsObject, scope)
     End Sub
   End Class
 End Namespace

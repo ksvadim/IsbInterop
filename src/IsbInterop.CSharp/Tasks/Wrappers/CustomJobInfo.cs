@@ -7,10 +7,11 @@ namespace IsbInterop.Tasks.Wrappers
   /// </summary>
   internal class CustomJobInfo : CustomWorkInfo, ICustomJobInfo
   {
-     /// <summary>
+    /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwICustomJobInfo">COM-объект ICustomJobInfo.</param>
-    public CustomJobInfo(object rcwICustomJobInfo) : base(rcwICustomJobInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public CustomJobInfo(object rcwICustomJobInfo, IScope scope) : base(rcwICustomJobInfo, scope) { }
   }
 }

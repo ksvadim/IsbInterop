@@ -32,7 +32,7 @@ namespace IsbInterop.EDocuments.Wrappers
     public override IEDocumentInfo GetInfo()
     {
       var rcwIEDocumentInfo = this.GetRcwObjectInfo();
-      return new EDocumentInfo(rcwIEDocumentInfo);
+      return new EDocumentInfo(rcwIEDocumentInfo, this.Scope);
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ namespace IsbInterop.EDocuments.Wrappers
     public IList<IEDocumentVersion> GetVersions()
     {
       var rcwVersions = this.GetRcwProperty("Versions");
-      return new List<IEDocumentVersion>(rcwVersions);
+      return new List<IEDocumentVersion>(rcwVersions, this.Scope);
     }
 
     /// <summary>
@@ -85,6 +85,7 @@ namespace IsbInterop.EDocuments.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIEDocument">СOM-объект IEDocument.</param>
-    public EDocument(object rcwIEDocument) : base(rcwIEDocument) { }
+    /// <param name="scope">Область видимости.</param>
+    public EDocument(object rcwIEDocument, IScope scope) : base(rcwIEDocument, scope) { }
   }
 }

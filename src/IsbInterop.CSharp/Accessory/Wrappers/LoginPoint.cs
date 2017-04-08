@@ -64,6 +64,34 @@ namespace IsbInterop
     /// <returns>Объект приложения IApplication, или null.</returns>
     public IApplication GetApplication(string connectionParams, bool storeInCache = true)
     {
+      var rcwApplication = GetRcwApplication(connectionParams, storeInCache);
+
+      return rcwApplication == null ? null :
+        new Application(rcwApplication, null);
+    }
+
+    /// <summary>
+    /// Получить объект приложения.
+    /// </summary>
+    /// <param name="connectionParams">Параметры подключения.</param>
+    /// <param name="errorCode">Код ошибки.</param>
+    /// <returns>Объект приложения IApplication, либо null, если его не удалось получить.</returns>
+    public IApplication GetApplicationEx(string connectionParams, out int errorCode)
+    {
+      var rcwApplication = GetRcwApplicationEx(connectionParams, out errorCode);
+
+      return rcwApplication == null ? null :
+        new Application(rcwApplication, null);
+    }
+
+    /// <summary>
+    /// Получить RCW-объект приложения.
+    /// </summary>
+    /// <param name="connectionParams">Параметры подключения.</param>
+    /// <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш: True, если нужно добавить информацию, иначе False.</param>
+    /// <returns>RCW-объект IApplication.</returns>
+    internal object GetRcwApplication(string connectionParams, bool storeInCache = true)
+    {
       var parameters = new object[] { connectionParams, storeInCache };
 
       object rcwApplication = ThreadUtils.Invoke(() =>
@@ -88,17 +116,16 @@ namespace IsbInterop
         return rcwApplication;
       }, applicationCreationTimeout);
 
-      return rcwApplication == null ? null :
-        new Application(rcwApplication);
+      return rcwApplication;
     }
 
     /// <summary>
-    /// Получить объект приложения.
+    /// Получить RCW-объект приложения.
     /// </summary>
     /// <param name="connectionParams">Параметры подключения.</param>
     /// <param name="errorCode">Код ошибки.</param>
     /// <returns>Объект приложения IApplication, либо null, если его не удалось получить.</returns>
-    public IApplication GetApplicationEx(string connectionParams, out int errorCode)
+    internal object GetRcwApplicationEx(string connectionParams, out int errorCode)
     {
       var parameters = new object[] { connectionParams, DefaultErrorCode };
 
@@ -129,14 +156,13 @@ namespace IsbInterop
 
       errorCode = (int)parameters[1];
 
-      return rcwApplication == null ? null :
-        new Application(rcwApplication);
+      return rcwApplication;
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwLoginPoint">COM-объект LoginPoint.</param>
-    private LoginPoint(object rcwLoginPoint) : base(rcwLoginPoint) { }
+    private LoginPoint(object rcwLoginPoint) : base(rcwLoginPoint, null) { }
   }
 }

@@ -1,4 +1,5 @@
 ﻿Namespace Data.Wrappers
+
     ''' <summary>
     ''' Обертка над IRequisite.
     ''' </summary>
@@ -9,10 +10,10 @@
         ''' <summary>
         ''' Список описаний допустимых значений реквизита.
         ''' </summary>
-        Public ReadOnly Property Items() As IPickRequisiteItems Implements IPickRequisite.Items
+        Public ReadOnly Property Items As IPickRequisiteItems Implements IPickRequisite.Items
             Get
                 Dim rcwItems = Me.GetRcwProperty("Items")
-                Return New PickRequisiteItems(rcwItems)
+                Return New PickRequisiteItems(rcwItems, Scope)
             End Get
         End Property
 
@@ -20,8 +21,9 @@
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwRequisite">COM-объект реквизит.</param>
-        Friend Sub New(rcwRequisite As Object)
-            MyBase.New(rcwRequisite)
+        ''' <param name="scope">Область видимости.</param>
+        Friend Sub New(rcwRequisite As Object, scope As IScope)
+            MyBase.New(rcwRequisite, scope)
         End Sub
 
     End Class

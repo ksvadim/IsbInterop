@@ -2,6 +2,7 @@
 Imports IsbInterop.References.Wrappers
 
 Namespace Base.Wrappers
+
     ''' <summary>
     ''' Обертка над IEdmsObjectFactory.
     ''' </summary>
@@ -29,16 +30,16 @@ Namespace Base.Wrappers
         ''' <returns>Объект IComponent.</returns>
         Public Function GetHistory(id As Integer) As IComponent Implements IEdmsObjectFactory(Of T, TI).GetHistory
             Dim rcwComponent = Me.GetRcwProperty("History", id)
-            Return New Component(rcwComponent)
+            Return New Component(rcwComponent, Scope)
         End Function
 
         ''' <summary>
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwEdmsObjectFactory">COM-объект фабрики.</param>
-        Protected Sub New(rcwEdmsObjectFactory As Object)
-            MyBase.New(rcwEdmsObjectFactory)
+        ''' <param name="scope">Область видимости.</param>
+        Protected Sub New(rcwEdmsObjectFactory As Object, scope As IScope)
+            MyBase.New(rcwEdmsObjectFactory, scope)
         End Sub
     End Class
-
 End Namespace

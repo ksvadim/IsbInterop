@@ -3,12 +3,14 @@ Imports IsbInterop.Base.Wrappers
 Imports IsbInterop.DataTypes.Enumerable
 
 Namespace Tasks.Wrappers
+
   ''' <summary>
   ''' Обертка над IJobFactory.
   ''' </summary>
   Friend Class JobFactory
     Inherits EdmsObjectFactory(Of ICustomJob(Of ICustomJobInfo), ICustomJobInfo)
     Implements IJobFactory
+
     ''' <summary>
     ''' Получить объект по его ИД.
     ''' </summary>
@@ -16,16 +18,16 @@ Namespace Tasks.Wrappers
     ''' <returns>Объект.</returns>
     Public Overrides Function GetObjectById(id As Integer) As ICustomJob(Of ICustomJobInfo)
       Dim objectType As TCompType
-      Dim edmsObjectRcw = Me.GetRcwObjectById(id, objectType)
+      Dim edmsObjectRcw = GetRcwObjectById(id, objectType)
       Select Case objectType
         Case (TCompType.ctJob)
-          Return New Job(edmsObjectRcw)
+          Return New Job(edmsObjectRcw, Scope)
         Case (TCompType.ctNotice)
-          Return New Notice(edmsObjectRcw)
+          Return New Notice(edmsObjectRcw, Scope)
         Case (TCompType.ctControlJob)
-          Return New ControlJob(edmsObjectRcw)
+          Return New ControlJob(edmsObjectRcw, Scope)
         Case Else
-          Return New DefaultCustomJob(edmsObjectRcw)
+          Return New DefaultCustomJob(edmsObjectRcw, Scope)
       End Select
     End Function
 
@@ -36,16 +38,16 @@ Namespace Tasks.Wrappers
     ''' <returns>Info-объект.</returns>
     Public Overrides Function GetObjectInfo(id As Integer) As ICustomJobInfo
       Dim objectType As TCompType
-      Dim edmsObjectInfoRcw = Me.GetRcwObjectInfo(id, objectType)
+      Dim edmsObjectInfoRcw = GetRcwObjectInfo(id, objectType)
       Select Case objectType
         Case (TCompType.ctJob)
-          Return New JobInfo(edmsObjectInfoRcw)
+          Return New JobInfo(edmsObjectInfoRcw, Scope)
         Case (TCompType.ctNotice)
-          Return New NoticeInfo(edmsObjectInfoRcw)
+          Return New NoticeInfo(edmsObjectInfoRcw, Scope)
         Case (TCompType.ctControlJob)
-          Return New ControlJobInfo(edmsObjectInfoRcw)
+          Return New ControlJobInfo(edmsObjectInfoRcw, Scope)
         Case Else
-          Return New CustomJobInfo(edmsObjectInfoRcw)
+          Return New CustomJobInfo(edmsObjectInfoRcw, Scope)
       End Select
     End Function
 
@@ -53,8 +55,9 @@ Namespace Tasks.Wrappers
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwITaskFactory">COM-объект ITaskFactory.</param>
-    Public Sub New(rcwITaskFactory As Object)
-      MyBase.New(rcwITaskFactory)
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(rcwITaskFactory As Object, scope As IScope)
+      MyBase.New(rcwITaskFactory, scope)
     End Sub
   End Class
 End Namespace

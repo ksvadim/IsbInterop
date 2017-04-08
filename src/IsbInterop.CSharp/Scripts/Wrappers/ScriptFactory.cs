@@ -17,7 +17,7 @@ namespace IsbInterop.Scripts.Wrappers
     public IScript GetObjectByName(string scriptName)
     {
       var rcwScript = this.InvokeRcwInstanceMethod("GetObjectByName", scriptName);
-      return new Script(rcwScript);
+      return new Script(rcwScript, this.Scope);
     }
 
     /// <summary>
@@ -44,6 +44,7 @@ namespace IsbInterop.Scripts.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIScriptFactory">COM-объект фабрика сценариев.</param>
-    internal ScriptFactory(object rcwIScriptFactory) : base(rcwIScriptFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    internal ScriptFactory(object rcwIScriptFactory, IScope scope) : base(rcwIScriptFactory, scope) { }
   }
 }

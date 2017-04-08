@@ -12,7 +12,7 @@
     public IActionList GetActions()
     {
       var rcwActions = this.GetRcwProperty("Actions");
-      return new ActionList(rcwActions);
+      return new ActionList(rcwActions, this.Scope);
     }
 
     /// <summary>
@@ -39,6 +39,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIForm">СOM-объект IForm.</param>
-    public Form(object rcwIForm) : base(rcwIForm) { }
+    /// <param name="scope">Область видимости.</param>
+    public Form(object rcwIForm, IScope scope) : base(rcwIForm, scope) { }
   }
 }

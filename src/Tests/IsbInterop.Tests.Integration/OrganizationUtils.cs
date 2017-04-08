@@ -12,14 +12,17 @@
     /// <returns>ИД организации.</returns>
     public static int CreateOrganization(string name)
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+      
         var tempOrganization = referenceFactory.CreateNew();
         tempOrganization.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Name).Value = name;
         tempOrganization.GetRequisite(ReferenceConfiguration.Organizations.Requisites.JuridicalName).Value = name;
         tempOrganization.Save();
+
         return tempOrganization.Id;
       }
     }
@@ -30,10 +33,12 @@
     /// <param name="id">ИД организации.</param>
     public static void RemoveOrganization(int id)
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+
         referenceFactory.DeleteById(id);
       }
     }

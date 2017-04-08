@@ -1,12 +1,13 @@
-﻿using System;
-using IsbInterop.Accessory;
+﻿using IsbInterop.Accessory;
+using IsbInterop.Base;
+using System;
 
 namespace IsbInterop.Scripts
 {
   /// <summary>
   /// Сценарий.
   /// </summary>
-  public interface IScript : IIsbComObjectWrapper
+  public interface IScript : IObject<IObjectInfo>
   {
     /// <summary>
     /// Выполнить скрипт.

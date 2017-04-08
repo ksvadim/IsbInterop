@@ -28,7 +28,7 @@
     public TI GetValue()
     {
       var rcwObject = this.GetRcwProperty("Value");
-      var value = IsbObjectResolver.Resolve<TI>(rcwObject);
+      var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
 
       return value;
     }
@@ -53,6 +53,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="contentsObject">Объект IContents.</param>
-    protected ForEach(object contentsObject) : base(contentsObject) { }
+    /// <param name="scope">Область видимости.</param>
+    protected ForEach(object contentsObject, IScope scope) : base(contentsObject, scope) { }
   }
 }

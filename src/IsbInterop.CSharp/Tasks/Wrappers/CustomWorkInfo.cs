@@ -8,10 +8,11 @@ namespace IsbInterop.Tasks.Wrappers
   /// </summary>
   internal class CustomWorkInfo : EdmsObjectInfo, ICustomWorkInfo
   {
-     /// <summary>
+    /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwICustomWorkInfo">COM-объект ICustomWorkInfo.</param>
-    public CustomWorkInfo(object rcwICustomWorkInfo) : base(rcwICustomWorkInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public CustomWorkInfo(object rcwICustomWorkInfo, IScope scope) : base(rcwICustomWorkInfo, scope) { }
   }
 }

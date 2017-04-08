@@ -135,8 +135,9 @@ Namespace Accessory.Wrappers
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwILock">COM-объект ILock.</param>
-        Friend Sub New(rcwILock As Object)
-            MyBase.New(rcwILock)
+        ''' <param name="scope">Область видимости.</param>
+        Friend Sub New(rcwILock As Object, scope As IScope)
+            MyBase.New(rcwILock, scope)
         End Sub
 
 #End Region

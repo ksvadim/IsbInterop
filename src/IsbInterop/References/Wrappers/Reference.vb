@@ -18,15 +18,15 @@ Namespace References.Wrappers
     ''' </summary>
     ''' <param name="disposing">Флаг вызова метода Dispose.</param>
     Protected Overrides Sub Dispose(disposing As Boolean)
-      If Me.disposed Then
+      If disposed Then
         Return
       End If
 
       If disposing Then
-        Me.requisiteContainer.DisposeRequisites()
+        requisiteContainer.DisposeRequisites()
       End If
 
-      Me.disposed = True
+      disposed = True
 
       MyBase.Dispose(disposing)
     End Sub
@@ -42,7 +42,7 @@ Namespace References.Wrappers
     ''' </summary>
     Private ReadOnly Property LocalRequisiteContainer() As IRequisiteContainer Implements IRequisiteAutoCleaner.RequisiteContainer
       Get
-        Return Me.requisiteContainer
+        Return requisiteContainer
       End Get
     End Property
 
@@ -56,7 +56,7 @@ Namespace References.Wrappers
     ''' <param name="requisiteName">Имя реквизита.</param>
     ''' <returns>Реквизит.</returns>
     Public Overrides Function GetRequisite(requisiteName As String) As IRequisite Implements IRequisiteAutoCleaner.GetRequisite
-      Dim requisite = Me.requisiteContainer.GetRequisite(requisiteName, AddressOf MyBase.GetRequisite)
+      Dim requisite = requisiteContainer.GetRequisite(requisiteName, AddressOf MyBase.GetRequisite)
       Return requisite
     End Function
 
@@ -68,8 +68,9 @@ Namespace References.Wrappers
     ''' Конструктор.
     ''' </summary>
     ''' <param name="reference">Справочник DIRECTUM.</param>
-    Public Sub New(reference As Object)
-      MyBase.New(reference)
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(reference As Object, scope As IScope)
+      MyBase.New(reference, scope)
     End Sub
 
 #End Region

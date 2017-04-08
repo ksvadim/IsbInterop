@@ -26,7 +26,7 @@ namespace IsbInterop.ServiceForms.Wrappers
     public IContents<IFolderInfo> GetTreeRootContents()
     {
       var rcwTreeRootContents = this.GetRcwProperty("TreeRootContents");
-      return new Contents<IFolderInfo>(rcwTreeRootContents);
+      return new Contents<IFolderInfo>(rcwTreeRootContents, this.Scope);
     }
 
     /// <summary>
@@ -59,6 +59,7 @@ namespace IsbInterop.ServiceForms.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIEdmsExplorer">СOM-объект IEdmsExplorer.</param>
-    public EdmsExplorer(object rcwIEdmsExplorer) : base(rcwIEdmsExplorer) { }
+    /// <param name="scope">Область видимости.</param>
+    public EdmsExplorer(object rcwIEdmsExplorer, IScope scope) : base(rcwIEdmsExplorer, scope) { }
   }
 }

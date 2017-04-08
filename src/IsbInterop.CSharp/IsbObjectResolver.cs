@@ -37,14 +37,17 @@ namespace IsbInterop
     /// </summary>
     /// <typeparam name="TI">Интерфейс объекта.</typeparam>
     /// <param name="rcwObject">COM-объект.</param>
+    /// <param name="scope">Область видимости.</param>
     /// <returns>Объект.</returns>
     //[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
-    public static TI Resolve<TI>(object rcwObject) where TI : IIsbComObjectWrapper
+    public static TI Resolve<TI>(object rcwObject, IScope scope) where TI : IIsbComObjectWrapper
     {
       TI result;
       try
       {
-        result = container.Resolve<TI>(new TypedParameter(typeof(object), rcwObject));
+        result = container.Resolve<TI>(
+          new TypedParameter(typeof(object), rcwObject), 
+          new TypedParameter(typeof(IScope), scope));
       }
       catch (ComponentNotRegisteredException)
       {

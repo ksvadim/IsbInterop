@@ -25,13 +25,16 @@ namespace IsbInterop.Accessory.Wrappers
   /// </summary>
   internal class Application : IsbComObjectWrapper, IApplication
   {
+    #region Поля и свойства
+
     /// <summary>
     /// ИД процесса.
     /// </summary>
-    public int PID
-    {
-      get { return (int)this.GetRcwProperty("PID"); }
-    }
+    public int PID => (int)GetRcwProperty("PID");
+
+    #endregion
+
+    #region Методы
 
     /// <summary>
     /// Получить фабрику вариантов запуска.
@@ -39,8 +42,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика вариантов запуска.</returns>
     public IComponentTokenFactory GetComponentTokenFactory()
     {
-      var rcwIComponentTokenFactory = this.GetRcwProperty("ComponentTokenFactory");
-      return new ComponentTokenFactory(rcwIComponentTokenFactory);
+      var rcwIComponentTokenFactory = GetRcwProperty("ComponentTokenFactory");
+      return new ComponentTokenFactory(rcwIComponentTokenFactory, Scope);
     }
 
     /// <summary>
@@ -51,8 +54,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Объект-блокировка.</returns>
     public ILock CreateLock(TCompType objectType, int objectId)
     {
-      var rcwILock = this.InvokeRcwInstanceMethod("CreateLock", new object[] { objectType, objectId });
-      return new Lock(rcwILock);
+      var rcwILock = InvokeRcwInstanceMethod("CreateLock", new object[] { objectType, objectId });
+      return new Lock(rcwILock, Scope);
     }
 
     /// <summary>
@@ -61,8 +64,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Объект-соединение.</returns>
     public IConnection GetConnection()
     {
-      var rcwIConnection = this.GetRcwProperty("Connection");
-      return new Connection(rcwIConnection);
+      var rcwIConnection = GetRcwProperty("Connection");
+      return new Connection(rcwIConnection, Scope);
     }
 
     /// <summary>
@@ -71,8 +74,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика электронных документов.</returns>
     public IEDocumentFactory GetEDocumentFactory()
     {
-      var rcwIEDocumentFactory = this.GetRcwProperty("EDocumentFactory");
-      return new EDocumentFactory(rcwIEDocumentFactory);
+      var rcwIEDocumentFactory = GetRcwProperty("EDocumentFactory");
+      return new EDocumentFactory(rcwIEDocumentFactory, Scope);
     }
 
     /// <summary>
@@ -81,8 +84,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика папок.</returns>
     public IFolderFactory GetFolderFactory()
     {
-      var rcwIFolderFactory = this.GetRcwProperty("FolderFactory");
-      return new FolderFactory(rcwIFolderFactory);
+      var rcwIFolderFactory = GetRcwProperty("FolderFactory");
+      return new FolderFactory(rcwIFolderFactory, Scope);
     }
 
     /// <summary>
@@ -91,8 +94,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика заданий.</returns>
     public IJobFactory GetJobFactory()
     {
-      var rcwIJobFactory = this.GetRcwProperty("JobFactory");
-      return new JobFactory(rcwIJobFactory);
+      var rcwIJobFactory = GetRcwProperty("JobFactory");
+      return new JobFactory(rcwIJobFactory, Scope);
     }
 
     /// <summary>
@@ -101,8 +104,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика типов справочников.</returns>
     public IReferencesFactory GetReferencesFactory()
     {
-      var rcwIReferencesFactory = this.GetRcwProperty("ReferencesFactory");
-      return new ReferencesFactory(rcwIReferencesFactory);
+      var rcwIReferencesFactory = GetRcwProperty("ReferencesFactory");
+      return new ReferencesFactory(rcwIReferencesFactory, Scope);
     }
 
     /// <summary>
@@ -111,8 +114,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика сценариев.</returns>
     public IScriptFactory GetScriptFactory()
     {
-      var rcwIScriptFactory = this.GetRcwProperty("ScriptFactory");
-      return new ScriptFactory(rcwIScriptFactory);
+      var rcwIScriptFactory = GetRcwProperty("ScriptFactory");
+      return new ScriptFactory(rcwIScriptFactory, Scope);
     }
 
     /// <summary>
@@ -121,8 +124,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика поисков.</returns>
     public ISearchFactory GetSearchFactory()
     {
-      var rcwISearchFactory = this.GetRcwProperty("SearchFactory");
-      return new SearchFactory(rcwISearchFactory);
+      var rcwISearchFactory = GetRcwProperty("SearchFactory");
+      return new SearchFactory(rcwISearchFactory, Scope);
     }
 
     /// <summary>
@@ -131,8 +134,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика служебных объектов.</returns>
     public IServiceFactory GetServiceFactory()
     {
-      var rcwIServiceFactory = this.GetRcwProperty("ServiceFactory");
-      return new ServiceFactory(rcwIServiceFactory);
+      var rcwIServiceFactory = GetRcwProperty("ServiceFactory");
+      return new ServiceFactory(rcwIServiceFactory, Scope);
     }
 
     /// <summary>
@@ -141,8 +144,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// <returns>Фабрика задач.</returns>
     public ITaskFactory GetTaskFactory()
     {
-      var rcwITaskFactory = this.GetRcwProperty("TaskFactory");
-      return new TaskFactory(rcwITaskFactory);
+      var rcwITaskFactory = GetRcwProperty("TaskFactory");
+      return new TaskFactory(rcwITaskFactory, Scope);
     }
 
     /// <summary>
@@ -153,10 +156,17 @@ namespace IsbInterop.Accessory.Wrappers
       this.InvokeRcwInstanceMethod("Finalize");
     }
 
+    #endregion
+
+    #region Конструкторы
+
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwApplication">COM-объект IApplication.</param>
-    internal Application(object rcwApplication) : base(rcwApplication) { }
+    /// <param name="scope">Область видимости.</param>
+    internal Application(object rcwApplication, IScope scope) : base(rcwApplication, scope) { }
+
+    #endregion
   }
 }

@@ -130,7 +130,8 @@ namespace IsbInterop.Accessory.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwILock">COM-объект ILock.</param>
-    internal Lock(object rcwILock) : base(rcwILock) { }
+    /// <param name="scope">Область видимости.</param>
+    internal Lock(object rcwILock, IScope scope) : base(rcwILock, scope) { }
 
     #endregion
   }

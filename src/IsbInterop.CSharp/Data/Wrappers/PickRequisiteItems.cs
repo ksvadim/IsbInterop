@@ -22,6 +22,7 @@ namespace IsbInterop.Data.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIPickRequisiteItems">COM-объект IPickRequisiteItems.</param>
-    internal PickRequisiteItems(object rcwIPickRequisiteItems) : base(rcwIPickRequisiteItems) { }
+    /// <param name="scope">Область видимости.</param>
+    internal PickRequisiteItems(object rcwIPickRequisiteItems, IScope scope) : base(rcwIPickRequisiteItems, scope) { }
   }
 }

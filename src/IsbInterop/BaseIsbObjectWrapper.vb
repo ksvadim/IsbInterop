@@ -2,13 +2,14 @@
 ''' Базовая обертка над объектом IS-Builder.
 ''' </summary>
 Friend Class BaseIsbObjectWrapper
-    Inherits IsbComObjectWrapper
+  Inherits IsbComObjectWrapper
 
-    ''' <summary>
-    ''' Конструктор.
-    ''' </summary>
-    ''' <param name="rcwObject">COM-объект.</param>
-    Public Sub New(rcwObject As Object)
-        MyBase.New(rcwObject)
-    End Sub
+  ''' <summary>
+  ''' Конструктор.
+  ''' </summary>
+  ''' <param name="rcwObject">COM-объект.</param>
+  ''' <param name="scope">Область видимости.</param>
+  Public Sub New(rcwObject As Object, scope As IScope)
+    MyBase.New(rcwObject, scope)
+  End Sub
 End Class

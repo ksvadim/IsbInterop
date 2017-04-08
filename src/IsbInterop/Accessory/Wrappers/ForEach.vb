@@ -8,18 +8,18 @@
     ''' <summary>
     ''' Количество элементов в списке.
     ''' </summary>
-    Public ReadOnly Property Count() As Integer Implements IForEach(Of TI).Count
+    Public ReadOnly Property Count As Integer Implements IForEach(Of TI).Count
       Get
-        Return CInt(Me.GetRcwProperty("Count"))
+        Return GetRcwProperty("Count")
       End Get
     End Property
 
     ''' <summary>
     ''' Признак конца набора данных.
     ''' </summary>
-    Public ReadOnly Property EOF() As Boolean Implements IForEach(Of TI).EOF
+    Public ReadOnly Property EOF As Boolean Implements IForEach(Of TI).EOF
       Get
-        Return CBool(Me.GetRcwProperty("EOF"))
+        Return GetRcwProperty("EOF")
       End Get
     End Property
 
@@ -29,7 +29,7 @@
     ''' <returns>Реквизит.</returns>
     Public Function GetValue() As TI Implements IForEach(Of TI).GetValue
       Dim curentValueRcw = Me.GetRcwProperty("Value")
-      Dim value = IsbObjectResolver.Resolve(Of TI)(curentValueRcw)
+      Dim value = IsbObjectResolver.Resolve(Of TI)(curentValueRcw, Scope)
 
       Return value
     End Function
@@ -52,8 +52,9 @@
     ''' Конструктор.
     ''' </summary>
     ''' <param name="contentsObject">Объект IContents.</param>
-    Protected Sub New(contentsObject As Object)
-      MyBase.New(contentsObject)
+    ''' <param name="scope">Область видимости.</param>
+    Protected Sub New(contentsObject As Object, scope As IScope)
+      MyBase.New(contentsObject, scope)
     End Sub
   End Class
 End Namespace

@@ -1,4 +1,5 @@
 ﻿Namespace References.Wrappers
+
     ''' <summary>
     ''' Обертка над IReferenceInfo.
     ''' </summary>
@@ -10,8 +11,9 @@
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwIReferenceInfo">COM-объект IReferenceInfo.</param>
-        Public Sub New(rcwIReferenceInfo As Object)
-            MyBase.New(rcwIReferenceInfo)
+        ''' <param name="scope">Область видимости.</param>
+        Public Sub New(rcwIReferenceInfo As Object, scope As IScope)
+            MyBase.New(rcwIReferenceInfo, scope)
         End Sub
 
     End Class

@@ -3,6 +3,7 @@ Imports IsbInterop.References
 Imports IsbInterop.References.Wrappers
 
 Namespace Data.Wrappers
+
   ''' <summary>
   ''' Обертка над IDataSet.
   ''' </summary>
@@ -16,18 +17,18 @@ Namespace Data.Wrappers
     ''' <summary>
     ''' Имя таблицы детального раздела.
     ''' </summary>
-    Public ReadOnly Property SqlTableName() As String Implements IDataSet.SqlTableName
+    Public ReadOnly Property SqlTableName As String Implements IDataSet.SqlTableName
       Get
-        Return DirectCast(Me.GetRcwProperty("SQLTableName"), String)
+        Return DirectCast(GetRcwProperty("SQLTableName"), String)
       End Get
     End Property
 
     ''' <summary>
     ''' Состояние.
     ''' </summary>
-    Public ReadOnly Property State() As TDataSetState Implements IDataSet.State
+    Public ReadOnly Property State As TDataSetState Implements IDataSet.State
       Get
-        Return DirectCast(Me.GetRcwProperty("State"), TDataSetState)
+        Return GetRcwProperty("State")
       End Get
     End Property
 
@@ -42,15 +43,15 @@ Namespace Data.Wrappers
     ''' </summary>
     ''' <param name="disposing">Флаг вызова метода Dispose.</param>
     Protected Overrides Sub Dispose(disposing As Boolean)
-      If Me.disposed Then
+      If disposed Then
         Return
       End If
 
       If disposing Then
-        Me.requisiteContainer.DisposeRequisites()
+        requisiteContainer.DisposeRequisites()
       End If
 
-      Me.disposed = True
+      disposed = True
 
       MyBase.Dispose(disposing)
     End Sub
@@ -64,9 +65,9 @@ Namespace Data.Wrappers
     ''' <summary>
     ''' Контейнер реквизитов.
     ''' </summary>
-    Private ReadOnly Property LocalRequisiteContainer() As IRequisiteContainer Implements IRequisiteAutoCleaner.RequisiteContainer
+    Private ReadOnly Property LocalRequisiteContainer As IRequisiteContainer Implements IRequisiteAutoCleaner.RequisiteContainer
       Get
-        Return Me.requisiteContainer
+        Return requisiteContainer
       End Get
     End Property
 
@@ -78,21 +79,21 @@ Namespace Data.Wrappers
     ''' Добавить запись.
     ''' </summary>
     Public Sub Append() Implements IDataSet.Append
-      Me.InvokeRcwInstanceMethod("Append")
+      InvokeRcwInstanceMethod("Append")
     End Sub
 
     ''' <summary>
     ''' Применить изменения.
     ''' </summary>
     Public Sub ApplyUpdates() Implements IDataSet.ApplyUpdates
-      Me.InvokeRcwInstanceMethod("ApplyUpdates")
+      InvokeRcwInstanceMethod("ApplyUpdates")
     End Sub
 
     ''' <summary>
     ''' Закрыть запись.
     ''' </summary>
     Public Sub CloseRecord() Implements IDataSet.CloseRecord
-      Me.InvokeRcwInstanceMethod("CloseRecord")
+      InvokeRcwInstanceMethod("CloseRecord")
     End Sub
 
     ''' <summary>
@@ -100,8 +101,8 @@ Namespace Data.Wrappers
     ''' </summary>
     ''' <returns>Компонента.</returns>
     Public Function GetComponent() As IComponent Implements IDataSet.GetComponent
-      Dim requisiteRcw = Me.GetRcwProperty("Component")
-      Return New Component(requisiteRcw)
+      Dim requisiteRcw = GetRcwProperty("Component")
+      Return New Component(requisiteRcw, Scope)
     End Function
 
     ''' <summary>
@@ -110,7 +111,7 @@ Namespace Data.Wrappers
     ''' <param name="requisiteName">Имя реквизита.</param>
     ''' <returns>Реквизит.</returns>
     Public Function GetRequisite(requisiteName As String) As IRequisite Implements IDataSet.GetRequisite, IRequisiteAutoCleaner.GetRequisite
-      Dim requisite = Me.requisiteContainer.GetRequisite(requisiteName, AddressOf Me.InternalGetRequisite)
+      Dim requisite = requisiteContainer.GetRequisite(requisiteName, AddressOf InternalGetRequisite)
       Return requisite
     End Function
 
@@ -120,22 +121,22 @@ Namespace Data.Wrappers
     ''' <param name="requisiteName">Имя реквизита.</param>
     ''' <returns>Реквизит.</returns>
     Private Function InternalGetRequisite(requisiteName As String) As Requisite
-      Dim requisiteRcw = Me.GetRcwProperty("Requisites", requisiteName)
-      Return New Requisite(requisiteRcw)
+      Dim requisiteRcw = GetRcwProperty("Requisites", requisiteName)
+      Return New Requisite(requisiteRcw, Scope)
     End Function
 
     ''' <summary>
     ''' Открыть запись.
     ''' </summary>
     Public Sub OpenRecord() Implements IDataSet.OpenRecord
-      Me.InvokeRcwInstanceMethod("OpenRecord")
+      InvokeRcwInstanceMethod("OpenRecord")
     End Sub
 
     ''' <summary>
     ''' Обновить детальный раздел.
     ''' </summary>
     Public Sub Refresh() Implements IDataSet.Refresh
-      Me.InvokeRcwInstanceMethod("Refresh")
+      InvokeRcwInstanceMethod("Refresh")
     End Sub
 
 #End Region
@@ -146,8 +147,9 @@ Namespace Data.Wrappers
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwIDataSet">COM-объект IDataSet.</param>
-    Friend Sub New(rcwIDataSet As Object)
-      MyBase.New(rcwIDataSet)
+    ''' <param name="scope">Область видимости.</param>
+    Friend Sub New(rcwIDataSet As Object, scope As IScope)
+      MyBase.New(rcwIDataSet, scope)
     End Sub
 
 #End Region

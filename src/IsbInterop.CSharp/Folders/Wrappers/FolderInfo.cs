@@ -11,6 +11,7 @@ namespace IsbInterop.Folders.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="folderInfo">Объект с информацией о папке DIRECTUM.</param>
-    public FolderInfo(object folderInfo) : base(folderInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public FolderInfo(object folderInfo, IScope scope) : base(folderInfo, scope) { }
   }
 }

@@ -4,12 +4,14 @@ Imports IsbInterop.Base.Wrappers
 Imports IsbInterop.DataTypes.Enumerable
 
 Namespace EDocuments.Wrappers
+
   ''' <summary>
   ''' Обертка над IEDocument.
   ''' </summary>
   Friend Class EDocument
     Inherits EdmsObject(Of IEDocumentInfo)
     Implements IEDocument
+
     ''' <summary>
     ''' Экспорт электронного документа.
     ''' </summary>
@@ -22,7 +24,7 @@ Namespace EDocuments.Wrappers
     Public Sub Export(versionNumber As Integer, fileName As String, Optional needLock As Boolean = True,
                       Optional needCompress As Boolean = True, Optional inExtendedFormat As Boolean = True,
                       Optional signatureType As TExportedSignaturesType = TExportedSignaturesType.estAll) Implements IEDocument.Export
-      Me.InvokeRcwInstanceMethod("Export", New Object() {versionNumber, fileName, needLock, needCompress, inExtendedFormat, CInt(signatureType)})
+      InvokeRcwInstanceMethod("Export", New Object() {versionNumber, fileName, needLock, needCompress, inExtendedFormat, CInt(signatureType)})
     End Sub
 
     ''' <summary>
@@ -30,8 +32,8 @@ Namespace EDocuments.Wrappers
     ''' </summary>
     ''' <returns>IEDocumentInfo.</returns>
     Public Overrides Function GetInfo() As IEDocumentInfo
-      Dim rcwIEDocumentInfo = Me.GetRcwObjectInfo()
-      Return New EDocumentInfo(rcwIEDocumentInfo)
+      Dim rcwIEDocumentInfo = GetRcwObjectInfo()
+      Return New EDocumentInfo(rcwIEDocumentInfo, Scope)
     End Function
 
     ''' <summary>
@@ -39,8 +41,8 @@ Namespace EDocuments.Wrappers
     ''' </summary>
     ''' <returns>Список версий электронного документа.</returns>
     Public Function GetVersions() As IList(Of IEDocumentVersion) Implements IEDocument.GetVersions
-      Dim rcwVersions = Me.GetRcwProperty("Versions")
-      Return New List(Of IEDocumentVersion)(rcwVersions)
+      Dim rcwVersions = GetRcwProperty("Versions")
+      Return New List(Of IEDocumentVersion)(rcwVersions, Scope)
     End Function
 
     ''' <summary>
@@ -55,7 +57,7 @@ Namespace EDocuments.Wrappers
     Public Sub ImportFromFile(versionNumber As Integer, versionNote As String, fileName As String,
                               Optional needLock As Boolean = True, Optional editorCode As String = "",
                               Optional inExtendedFormat As Boolean = True) Implements IEDocument.ImportFromFile
-      Me.InvokeRcwInstanceMethod("ImportFromFile", New Object() {versionNumber, versionNote, fileName, needLock, editorCode, inExtendedFormat})
+      InvokeRcwInstanceMethod("ImportFromFile", New Object() {versionNumber, versionNote, fileName, needLock, editorCode, inExtendedFormat})
     End Sub
 
     ''' <summary>
@@ -66,7 +68,7 @@ Namespace EDocuments.Wrappers
     ''' <param name="checkSigns">Признак необходимости проверки подписей при импорте.</param>
     Public Sub ImportSignsFromExtendedFormat(versionNumber As Integer, fileName As String,
                                              checkSigns As Boolean) Implements IEDocument.ImportSignsFromExtendedFormat
-      Me.InvokeRcwInstanceMethod("ImportSignsFromExtendedFormat", New Object() {versionNumber, fileName, checkSigns})
+      InvokeRcwInstanceMethod("ImportSignsFromExtendedFormat", New Object() {versionNumber, fileName, checkSigns})
     End Sub
 
     ''' <summary>
@@ -75,15 +77,16 @@ Namespace EDocuments.Wrappers
     ''' <param name="openForWrite">Признак открытия для редактирования.</param>
     ''' <param name="versionNumber">Номер версии.</param>
     Public Sub Open(openForWrite As Boolean, versionNumber As Integer) Implements IEDocument.Open
-      Me.InvokeRcwInstanceMethod("Open", New Object() {openForWrite, versionNumber})
+      InvokeRcwInstanceMethod("Open", New Object() {openForWrite, versionNumber})
     End Sub
 
     ''' <summary>
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwIEDocument">СOM-объект IEDocument.</param>
-    Public Sub New(rcwIEDocument As Object)
-      MyBase.New(rcwIEDocument)
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(rcwIEDocument As Object, scope As IScope)
+      MyBase.New(rcwIEDocument, scope)
     End Sub
   End Class
 End Namespace

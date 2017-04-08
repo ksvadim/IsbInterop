@@ -11,11 +11,12 @@ Friend NotInheritable Class DerivedRequisiteFactory
   ''' Создать реквизит.
   ''' </summary>
   ''' <param name="rcwRequisite">RCW-объект реквизита.</param>
+  ''' <param name="scope">Область видимости.</param>
   ''' <returns>Реквизит с заданным типом.</returns>
-  Public Shared Function CreateRequisite(rcwRequisite As Object) As IRequisite
+  Public Shared Function CreateRequisite(rcwRequisite As Object, scope As IScope) As IRequisite
     Dim type = TReqDataType.rdtUnknown
 
-    Dim dataType As Integer = CInt(ComUtils.GetRcwProperty(rcwRequisite, "DataType"))
+    Dim dataType = CInt(ComUtils.GetRcwProperty(rcwRequisite, "DataType"))
 
     If [Enum].IsDefined(GetType(TReqDataType), dataType) Then
       type = DirectCast(dataType, TReqDataType)
@@ -23,12 +24,12 @@ Friend NotInheritable Class DerivedRequisiteFactory
 
     Select Case type
       Case TReqDataType.rdtPick
-        Return New PickRequisite(rcwRequisite)
+        Return New PickRequisite(rcwRequisite, scope)
       Case TReqDataType.rdtDate, TReqDataType.rdtInteger, TReqDataType.rdtNumeric,
           TReqDataType.rdtReference, TReqDataType.rdtString, TReqDataType.rdtText
-        Return New Requisite(rcwRequisite)
+        Return New Requisite(rcwRequisite, scope)
       Case Else
-        Return New Requisite(rcwRequisite)
+        Return New Requisite(rcwRequisite, scope)
     End Select
   End Function
 

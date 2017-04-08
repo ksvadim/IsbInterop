@@ -17,6 +17,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="systemInfo">Объект с информацией о системе.</param>
-    internal SystemInfo(object systemInfo) : base(systemInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    internal SystemInfo(object systemInfo, IScope scope) : base(systemInfo, scope) { }
   }
 }

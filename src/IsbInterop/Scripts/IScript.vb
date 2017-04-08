@@ -1,11 +1,11 @@
-﻿Imports IsbInterop.Accessory
+﻿Imports IsbInterop.Base
 
 Namespace Scripts
   ''' <summary>
   ''' Сценарий.
   ''' </summary>
   Public Interface IScript
-    Inherits IIsbComObjectWrapper
+    Inherits IObject(Of IObjectInfo)
 
     ''' <summary>
     ''' Выполнить скрипт.
@@ -39,6 +39,6 @@ Namespace Scripts
     ''' Получить параметры.
     ''' </summary>
     ''' <returns>IsbObjectList.</returns>
-    Function GetParams() As IList(Of IIsbComObjectWrapper)
+    Overloads Function GetParams() As Accessory.IList(Of IIsbComObjectWrapper)
   End Interface
 End Namespace

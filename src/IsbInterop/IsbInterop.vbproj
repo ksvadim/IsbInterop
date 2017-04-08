@@ -83,10 +83,8 @@
     <Compile Include="Accessory\ISystemInfo.vb" />
     <Compile Include="Accessory\Wrappers\Application.vb" />
     <Compile Include="Accessory\Wrappers\Contents.vb" />
-    <Compile Include="Accessory\Wrappers\ForEachT.vb" />
     <Compile Include="Accessory\Wrappers\ForEach.vb" />
     <Compile Include="Accessory\Wrappers\List.vb" />
-    <Compile Include="Accessory\Wrappers\ListT.vb" />
     <Compile Include="Accessory\Wrappers\Lock.vb" />
     <Compile Include="Accessory\Wrappers\LoginPoint.vb" />
     <Compile Include="Accessory\Wrappers\SystemInfo.vb" />
@@ -115,6 +113,9 @@
     <Compile Include="ComponentTokens\Wrappers\ComponentToken.vb" />
     <Compile Include="ComponentTokens\Wrappers\ComponentTokenFactory.vb" />
     <Compile Include="ComponentTokens\Wrappers\ComponentTokenInfo.vb" />
+    <Compile Include="Context.vb" />
+    <Compile Include="ContextFactory.vb" />
+    <Compile Include="Scope.vb" />
     <Compile Include="ThreadUtils.vb" />
     <Compile Include="ComUtils.vb" />
     <Compile Include="ConfigurationUtils.vb" />

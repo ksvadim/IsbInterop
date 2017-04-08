@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base.Wrappers
 
 Namespace References.Wrappers
+
     ''' <summary>
     ''' Обертка над ICompRecordInfo.
     ''' </summary>
@@ -11,9 +12,9 @@ Namespace References.Wrappers
         ''' <summary>
         ''' Код записи.
         ''' </summary>
-        Public ReadOnly Property Code() As String Implements ICompRecordInfo.Code
+        Public ReadOnly Property Code As String Implements ICompRecordInfo.Code
             Get
-                Return DirectCast(Me.GetRcwProperty("Code"), String)
+                Return DirectCast(GetRcwProperty("Code"), String)
             End Get
         End Property
 
@@ -21,8 +22,9 @@ Namespace References.Wrappers
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwICompRecordInfo">COM-объект ICompRecordInfo.</param>
-        Protected Sub New(rcwICompRecordInfo As Object)
-            MyBase.New(rcwICompRecordInfo)
+        ''' <param name="scope">Область видимости.</param>
+        Protected Sub New(rcwICompRecordInfo As Object, scope As IScope)
+            MyBase.New(rcwICompRecordInfo, scope)
         End Sub
     End Class
 End Namespace

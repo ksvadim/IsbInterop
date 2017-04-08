@@ -25,12 +25,14 @@ namespace IsbInterop.Tests.Integration
     [Test, Category("UI")]
     public void Object_GetForm_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
-      using (var historyComponent = referenceFactory.GetHistory(tempOrganizationId))
-      using (var form = historyComponent.GetComponentForm())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+        var historyComponent = referenceFactory.GetHistory(tempOrganizationId);
+        var form = historyComponent.GetComponentForm();
+      
         form.ShowNoModal();
       }
     }

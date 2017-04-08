@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Accessory.Wrappers
 
 Namespace Data.Wrappers
+
     ''' <summary>
     ''' Обертка над IPickRequisiteItems.
     ''' </summary>
@@ -15,15 +16,16 @@ Namespace Data.Wrappers
         ''' <returns>ИД допустимого значения реквизита типа «Признак» – 
         ''' внутреннее значение реквизита, хранящееся на сервере.</returns>
         Public Function IdByValue(namedValue As String) As String Implements IPickRequisiteItems.IdByValue
-            Return DirectCast(Me.InvokeRcwInstanceMethod("IdByValue", namedValue), String)
+            Return DirectCast(InvokeRcwInstanceMethod("IdByValue", namedValue), String)
         End Function
 
         ''' <summary>
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwIPickRequisiteItems">COM-объект IPickRequisiteItems.</param>
-        Friend Sub New(rcwIPickRequisiteItems As Object)
-            MyBase.New(rcwIPickRequisiteItems)
+        ''' <param name="scope">Область видимости.</param>
+        Friend Sub New(rcwIPickRequisiteItems As Object, scope As IScope)
+            MyBase.New(rcwIPickRequisiteItems, scope)
         End Sub
     End Class
 End Namespace

@@ -15,7 +15,7 @@ namespace IsbInterop.Folders.Wrappers
     public override IFolder GetObjectById(int id)
     {
       var rcwObject = this.GetRcwObjectById(id);
-      return new Folder(rcwObject);
+      return new Folder(rcwObject, this.Scope);
     }
 
     /// <summary>
@@ -26,13 +26,14 @@ namespace IsbInterop.Folders.Wrappers
     public override IFolderInfo GetObjectInfo(int id)
     {
       var rcwIFolderInfo = this.GetRcwObjectInfo(id);
-      return new FolderInfo(rcwIFolderInfo);
+      return new FolderInfo(rcwIFolderInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIFolderFactory">COM-объект IFolderFactory.</param>
-    public FolderFactory(object rcwIFolderFactory) : base(rcwIFolderFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    public FolderFactory(object rcwIFolderFactory, IScope scope) : base(rcwIFolderFactory, scope) { }
   }
 }

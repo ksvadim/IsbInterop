@@ -15,13 +15,14 @@ namespace IsbInterop.Data.Wrappers
     public ISystemInfo GetSystemInfo()
     {
       var rcwSystemInfo = this.GetRcwProperty("SystemInfo");
-      return new SystemInfo(rcwSystemInfo);
+      return new SystemInfo(rcwSystemInfo, Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwConnection">СOM-объект IConnection.</param>
-    internal Connection(object rcwConnection) : base(rcwConnection) { }
+    /// <param name="scope">Область видимости.</param>
+    internal Connection(object rcwConnection, IScope scope) : base(rcwConnection, scope) { }
   }
 }

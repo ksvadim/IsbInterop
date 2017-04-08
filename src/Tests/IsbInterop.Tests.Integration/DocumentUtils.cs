@@ -15,20 +15,20 @@ namespace IsbInterop.Tests.Integration
     /// <returns>ИД электронного документа.</returns>
     public static int CreateDocument(string name, string filePath)
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-      using (var edocumentFactory = app.GetEDocumentFactory())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        using (var document = edocumentFactory.CreateNewFromFile(
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var document = edocumentFactory.CreateNewFromFile(
           ReferenceConfiguration.DocumentCardTypes.DefaultRecords.ArbitraryFormDocuments.Name,
           ReferenceConfiguration.DocumentKinds.DefaultRecords.OtherDocuments.Code,
           ReferenceConfiguration.DocumentEditors.DefaultRecords.TextEditor.Code,
-          filePath))
-        {
-          document.GetRequisite(PredefinedEDocumentsRequisites.SYSREQ_EDOC_NAME).Value = name;
-          document.Save();
+          filePath);
 
-          return document.Id;
-        }
+        document.GetRequisite(PredefinedEDocumentsRequisites.SYSREQ_EDOC_NAME).Value = name;
+        document.Save();
+
+        return document.Id;
       }
     }
 
@@ -38,10 +38,10 @@ namespace IsbInterop.Tests.Integration
     /// <param name="documentId">ИД документа.</param>
     public static void DeleteDocument(int documentId)
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var edocumentFactory = app.GetEDocumentFactory())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
         edocumentFactory.DeleteById(documentId);
       }
     }
@@ -53,12 +53,12 @@ namespace IsbInterop.Tests.Integration
     /// <param name="documentIdToBind">ИД документа, который нужно связать с исходным.</param>
     public static void BindDocument(int sourceDocumentId, int documentIdToBind)
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var edocumentFactory = app.GetEDocumentFactory())
-      using (var firstTestDocumentInfo = edocumentFactory.GetObjectInfo(sourceDocumentId))
-      using (var secondTestDocumentInfo = edocumentFactory.GetObjectInfo(documentIdToBind))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var firstTestDocumentInfo = edocumentFactory.GetObjectInfo(sourceDocumentId);
+        var secondTestDocumentInfo = edocumentFactory.GetObjectInfo(documentIdToBind);
         edocumentFactory.BindTo(firstTestDocumentInfo, secondTestDocumentInfo);
       }
     }

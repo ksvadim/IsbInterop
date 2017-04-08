@@ -1,107 +1,109 @@
 ﻿Imports IsbInterop.DataTypes.Enumerable
 
 Namespace Base.Wrappers
+
+  ''' <summary>
+  ''' Обертка над IFactory.
+  ''' </summary>
+  Public MustInherit Class Factory(Of T As IIsbComObjectWrapper, TI As IObjectInfo)
+    Inherits IsbComObjectWrapper
+    Implements IFactory(Of T, TI)
+
+    #Region "Поля и свойства"
+
     ''' <summary>
-    ''' Обертка над IFactory.
+    ''' Тип объектов фабрики.
     ''' </summary>
-    Public MustInherit Class Factory(Of T As IIsbComObjectWrapper, TI As IObjectInfo)
-        Inherits IsbComObjectWrapper
-        Implements IFactory(Of T, TI)
+    Public ReadOnly Property Kind As TContentKind Implements IFactory(Of T, TI).Kind
+      Get
+        Dim kindType = CInt(GetRcwProperty("Kind"))
 
-#Region "Поля и свойства"
+        If [Enum].IsDefined(GetType(TContentKind), kindType) Then
+          Return kindType
+        Else
+          Return TContentKind.ckUnknown
+        End If
+      End Get
+    End Property
 
-        ''' <summary>
-        ''' Тип объектов фабрики.
-        ''' </summary>
-        Public ReadOnly Property Kind() As TContentKind Implements IFactory(Of T, TI).Kind
-            Get
-                Dim kindType As Integer = CInt(Me.GetRcwProperty("Kind"))
+    #End Region
 
-                If [Enum].IsDefined(GetType(TContentKind), kindType) Then
-                    Return DirectCast(kindType, TContentKind)
-                Else
-                    Return TContentKind.ckUnknown
-                End If
-            End Get
-        End Property
+    #Region "Методы"
 
-#End Region
+    ''' <summary>
+    ''' Получить объект фабрики по ИД.
+    ''' </summary>
+    ''' <param name="id">ИД объекта.</param>
+    ''' <returns>Объект фабрики.</returns>
+    Public MustOverride Function GetObjectById(id As Integer) As T Implements IFactory(Of T, TI).GetObjectById
 
-#Region "Методы"
+    ''' <summary>
+    ''' Получить объект фабрики по ИД.
+    ''' </summary>
+    ''' <param name="id">ИД объекта.</param>
+    ''' <param name="objectType">Тип объекта.</param>
+    ''' <returns>Объект фабрики.</returns>
+    Protected Function GetRcwObjectById(id As Integer, ByRef objectType As TCompType) As Object
+      Dim rcwFactoryObject = GetRcwObjectById(id)
+      objectType = DirectCast(ComUtils.GetRcwProperty(rcwFactoryObject, "ComponentType"), TCompType)
 
-        ''' <summary>
-        ''' Получить объект фабрики по ИД.
-        ''' </summary>
-        ''' <param name="id">ИД объекта.</param>
-        ''' <returns>Объект фабрики.</returns>
-        Public MustOverride Function GetObjectById(ByVal id As Integer) As T Implements IFactory(Of T, TI).GetObjectById
+      Return rcwFactoryObject
+    End Function
 
-        ''' <summary>
-        ''' Получить объект фабрики по ИД.
-        ''' </summary>
-        ''' <param name="id">ИД объекта.</param>
-        ''' <param name="objectType">Тип объекта.</param>
-        ''' <returns>Объект фабрики.</returns>
-        Protected Function GetRcwObjectById(id As Integer, ByRef objectType As TCompType) As Object
-            Dim rcwFactoryObject = Me.GetRcwObjectById(id)
-            objectType = DirectCast(ComUtils.GetRcwProperty(rcwFactoryObject, "ComponentType"), TCompType)
+    ''' <summary>
+    ''' Получить объект фабрики по ИД.
+    ''' </summary>
+    ''' <param name="id">ИД объекта.</param>
+    ''' <returns>Объект фабрики.</returns>
+    Protected Function GetRcwObjectById(id As Integer) As Object
+      Return InvokeRcwInstanceMethod("GetObjectByID", id)
+    End Function
 
-            Return rcwFactoryObject
-        End Function
+    ''' <summary>
+    ''' Получить информацию об объекте.
+    ''' </summary>
+    ''' <param name="id">ИД объекта.</param>
+    ''' <returns>Info-объект.</returns>
+    Public MustOverride Function GetObjectInfo(id As Integer) As TI Implements IFactory(Of T, TI).GetObjectInfo
 
-        ''' <summary>
-        ''' Получить объект фабрики по ИД.
-        ''' </summary>
-        ''' <param name="id">ИД объекта.</param>
-        ''' <returns>Объект фабрики.</returns>
-        Protected Function GetRcwObjectById(id As Integer) As Object
-            Return Me.InvokeRcwInstanceMethod("GetObjectByID", id)
-        End Function
+    ''' <summary>
+    ''' Получить информацию об объекте.
+    ''' </summary>
+    ''' <param name="id">ИД объекта.</param>
+    ''' <param name="objectType">Тип объекта.</param>
+    ''' <returns>Info-объект.</returns>
+    Protected Function GetRcwObjectInfo(id As Integer, ByRef objectType As TCompType) As Object
+      Dim rcwFactoryObject = GetRcwObjectInfo(id)
+      objectType = DirectCast(GetRcwProperty("ComponentType"), TCompType)
 
-        ''' <summary>
-        ''' Получить информацию об объекте.
-        ''' </summary>
-        ''' <param name="id">ИД объекта.</param>
-        ''' <returns>Info-объект.</returns>
-        Public MustOverride Function GetObjectInfo(ByVal id As Integer) As TI Implements IFactory(Of T, TI).GetObjectInfo
+      Return rcwFactoryObject
+    End Function
 
-        ''' <summary>
-        ''' Получить информацию об объекте.
-        ''' </summary>
-        ''' <param name="id">ИД объекта.</param>
-        ''' <param name="objectType">Тип объекта.</param>
-        ''' <returns>Info-объект.</returns>
-        Protected Function GetRcwObjectInfo(id As Integer, ByRef objectType As TCompType) As Object
-            Dim rcwFactoryObject = Me.GetRcwObjectInfo(id)
-            objectType = DirectCast(Me.GetRcwProperty("ComponentType"), TCompType)
+    ''' <summary>
+    ''' Получить информацию об объекте.
+    ''' </summary>
+    ''' <param name="id">ИД объекта.</param>
+    ''' <returns>Info-объект.</returns>
+    Protected Function GetRcwObjectInfo(id As Integer) As Object
+      Dim rcwObjectInfo = GetRcwProperty("ObjectInfo", id)
 
-            Return rcwFactoryObject
-        End Function
+      Return rcwObjectInfo
+    End Function
 
-        ''' <summary>
-        ''' Получить информацию об объекте.
-        ''' </summary>
-        ''' <param name="id">ИД объекта.</param>
-        ''' <returns>Info-объект.</returns>
-        Protected Function GetRcwObjectInfo(id As Integer) As Object
-            Dim rcwObjectInfo = Me.GetRcwProperty("ObjectInfo", id)
+    #End Region
 
-            Return rcwObjectInfo
-        End Function
+    #Region "Конструкторы"
 
-#End Region
+    ''' <summary>
+    ''' Конструктор.
+    ''' </summary>
+    ''' <param name="rcwFactory">COM-объект фабрики.</param>
+    ''' <param name="scope">Область видимости.</param>
+    Protected Sub New(rcwFactory As Object, scope As IScope)
+      MyBase.New(rcwFactory, scope)
+    End Sub
 
-#Region "Конструкторы"
+    #End Region
 
-        ''' <summary>
-        ''' Конструктор.
-        ''' </summary>
-        ''' <param name="rcwFactory">COM-объект фабрики.</param>
-        Protected Sub New(rcwFactory As Object)
-            MyBase.New(rcwFactory)
-        End Sub
-
-#End Region
-
-    End Class
+  End Class
 End Namespace

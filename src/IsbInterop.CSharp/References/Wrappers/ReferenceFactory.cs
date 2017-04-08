@@ -29,7 +29,7 @@ namespace IsbInterop.References.Wrappers
     public IReference CreateNew()
     {
       var rcwReferenceEntry = this.InvokeRcwInstanceMethod("CreateNew");
-      return new Reference(rcwReferenceEntry);
+      return new Reference(rcwReferenceEntry, this.Scope);
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ namespace IsbInterop.References.Wrappers
     public IComponent GetHistory(int id)
     {
       var rcwComponent = this.GetRcwProperty("History", id);
-      return new Component(rcwComponent);
+      return new Component(rcwComponent, this.Scope);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ namespace IsbInterop.References.Wrappers
     {
       var rcwObject = this.GetRcwObjectById(id);
 
-      return new Reference(rcwObject);
+      return new Reference(rcwObject, this.Scope);
     }
 
     /// <summary>
@@ -64,7 +64,7 @@ namespace IsbInterop.References.Wrappers
     public override IReferenceInfo GetObjectInfo(int id)
     {
       var rcwIEdocumentInfo = this.GetRcwObjectInfo(id);
-      return new ReferenceInfo(rcwIEdocumentInfo);
+      return new ReferenceInfo(rcwIEdocumentInfo, this.Scope);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ namespace IsbInterop.References.Wrappers
     public IReference GetComponent()
     {
       var rcwReference = this.InvokeRcwInstanceMethod("GetComponent");
-      return new Reference(rcwReference);
+      return new Reference(rcwReference, this.Scope);
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ namespace IsbInterop.References.Wrappers
     public IReference GetObjectByCode(string referenceEntryCode)
     {
       var rcwReferenceEntry = this.InvokeRcwInstanceMethod("GetObjectByCode", referenceEntryCode);
-      return new Reference(rcwReferenceEntry);
+      return new Reference(rcwReferenceEntry, this.Scope);
     }
 
     #endregion
@@ -105,7 +105,8 @@ namespace IsbInterop.References.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIReferenceFactory">COM-объект IReferenceFactory.</param>
-    internal ReferenceFactory(object rcwIReferenceFactory) : base(rcwIReferenceFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    internal ReferenceFactory(object rcwIReferenceFactory, IScope scope) : base(rcwIReferenceFactory, scope) { }
 
     #endregion
   }

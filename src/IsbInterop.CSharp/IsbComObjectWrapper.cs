@@ -42,6 +42,11 @@ namespace IsbInterop
       get { return this.RcwObject; }
     }
 
+    /// <summary>
+    /// Область видимости.
+    /// </summary>
+    internal IScope Scope { get; private set; }
+
     #endregion
 
     #region IDisposable
@@ -163,10 +168,14 @@ namespace IsbInterop
     /// Конструктор.
     /// </summary>
     /// <param name="rcwObject">COM-объект IS-Builder.</param>
-    protected IsbComObjectWrapper(object rcwObject)
+    /// <param name="scope">Область видимости.</param>
+    protected IsbComObjectWrapper(object rcwObject, IScope scope)
     {
       this.RcwObject = rcwObject;
       this.typeName = Information.TypeName(rcwObject);
+      this.Scope = scope;
+
+      ((Scope)scope)?.Add(this);
     }
 
     #endregion

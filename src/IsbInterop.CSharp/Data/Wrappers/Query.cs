@@ -76,6 +76,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIQuery">COM-объект IQuery.</param>
-    protected Query(object rcwIQuery) : base(rcwIQuery) { }
+    /// <param name="scope">Область видимости.</param>
+    protected Query(object rcwIQuery, IScope scope) : base(rcwIQuery, scope) { }
   }
 }

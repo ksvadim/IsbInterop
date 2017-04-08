@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base.Wrappers
 
 Namespace Tasks.Wrappers
+
   ''' <summary>
   ''' Обертка над ITaskFactory.
   ''' </summary>
@@ -13,8 +14,8 @@ Namespace Tasks.Wrappers
     ''' </summary>
     ''' <returns>Новая задача.</returns>
     Public Function CreateNew() As ITask Implements ITaskFactory.CreateNew
-      Dim rcwITask = Me.InvokeRcwInstanceMethod("CreateNew")
-      Return New Task(rcwITask)
+      Dim rcwITask = InvokeRcwInstanceMethod("CreateNew")
+      Return New Task(rcwITask, Scope)
     End Function
 
     ''' <summary>
@@ -23,8 +24,8 @@ Namespace Tasks.Wrappers
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>
     Public Overrides Function GetObjectById(id As Integer) As ITask
-      Dim rcwITask = Me.GetRcwObjectById(id)
-      Return New Task(rcwITask)
+      Dim rcwITask = GetRcwObjectById(id)
+      Return New Task(rcwITask, Scope)
     End Function
 
     ''' <summary>
@@ -33,16 +34,17 @@ Namespace Tasks.Wrappers
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Info-объект.</returns>
     Public Overrides Function GetObjectInfo(id As Integer) As ITaskInfo
-      Dim rcwITaskInfo = Me.GetRcwObjectInfo(id)
-      Return New TaskInfo(rcwITaskInfo)
+      Dim rcwITaskInfo = GetRcwObjectInfo(id)
+      Return New TaskInfo(rcwITaskInfo, Scope)
     End Function
 
     ''' <summary>
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwITaskFactory">COM-объект ITaskFactory.</param>
-    Public Sub New(rcwITaskFactory As Object)
-      MyBase.New(rcwITaskFactory)
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(rcwITaskFactory As Object, scope As IScope)
+      MyBase.New(rcwITaskFactory, scope)
     End Sub
   End Class
 End Namespace

@@ -14,7 +14,7 @@
     ''' <param name="value">Значение элемента.</param>
     Public Sub Add(Of TP As IIsbComObjectWrapper)(name As String, value As TP) Implements IList(Of TI).Add
       If TypeOf value Is TI Then
-        Me.InvokeRcwInstanceMethod("Add", New Object() {name, DirectCast(value, IUnsafeRcwObjectAccessor).UnsafeRcwObject})
+        InvokeRcwInstanceMethod("Add", New Object() {name, DirectCast(value, IUnsafeRcwObjectAccessor).UnsafeRcwObject})
       Else
         Throw New InvalidOperationException(String.Format("Cannot convert value to {0}", GetType(TI)))
       End If
@@ -26,7 +26,7 @@
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>
     Public Sub Add(name As String, value As Object) Implements IList(Of TI).Add
-      Me.InvokeRcwInstanceMethod("Add", New Object() {name, value})
+      InvokeRcwInstanceMethod("Add", New Object() {name, value})
     End Sub
 
     ''' <summary>
@@ -36,7 +36,7 @@
     ''' <returns>Значение элемента с указанным индексом.</returns>
     Public Overridable Function GetValues(index As Integer) As TI Implements IList(Of TI).GetValues
       Dim rcwObjectResult = Me.GetRcwProperty("Values", index)
-      Return IsbObjectResolver.Resolve(Of TI)(rcwObjectResult)
+      Return IsbObjectResolver.Resolve(Of TI)(rcwObjectResult, Scope)
     End Function
 
 
@@ -46,8 +46,8 @@
     ''' <param name="name"></param>
     ''' <returns>Имя искомого элемента.</returns>
     Public Function GetValueByName(name As String) As TI Implements IList(Of TI).GetValueByName
-      Dim rcwObject = Me.InvokeRcwInstanceMethod("ValueByName", New Object() {name})
-      Return IsbObjectResolver.Resolve(Of TI)(rcwObject)
+      Dim rcwObject = InvokeRcwInstanceMethod("ValueByName", New Object() {name})
+      Return IsbObjectResolver.Resolve(Of TI)(rcwObject, Scope)
     End Function
 
     ''' <summary>
@@ -69,8 +69,9 @@
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwIList">COM-объект IList.</param>
-    Public Sub New(rcwIList As Object)
-      MyBase.New(rcwIList)
+    ''' <param name="scope">Область видимости.</param>
+    Public Sub New(rcwIList As Object, scope As IScope)
+      MyBase.New(rcwIList, scope)
     End Sub
   End Class
 End Namespace

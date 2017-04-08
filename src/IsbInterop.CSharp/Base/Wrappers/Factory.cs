@@ -105,7 +105,8 @@ namespace IsbInterop.Base.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwFactory">COM-объект фабрики.</param>
-    protected Factory(object rcwFactory) : base(rcwFactory) { }
+    /// <param name="scope">Область видимости.</param>
+    protected Factory(object rcwFactory, IScope scope) : base(rcwFactory, scope) { }
 
     #endregion
   }

@@ -9,6 +9,7 @@
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIAttachment">СOM-объект IAttachment.</param>
-    public Attachment(object rcwIAttachment) : base(rcwIAttachment) { }
+    /// <param name="scope">Область видимости.</param>
+    public Attachment(object rcwIAttachment, IScope scope) : base(rcwIAttachment, scope) { }
   }
 }

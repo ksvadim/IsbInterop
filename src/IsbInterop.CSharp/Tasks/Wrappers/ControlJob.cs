@@ -14,13 +14,14 @@ namespace IsbInterop.Tasks.Wrappers
     public override IControlJobInfo GetInfo()
     {
       var rcwIControlJobInfo = this.GetRcwObjectInfo();
-      return new ControlJobInfo(rcwIControlJobInfo);
+      return new ControlJobInfo(rcwIControlJobInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIControlJob">СOM-объект IControlJob.</param>
-    public ControlJob(object rcwIControlJob) : base(rcwIControlJob) { }
+    /// <param name="scope">Область видимости.</param>
+    public ControlJob(object rcwIControlJob, IScope scope) : base(rcwIControlJob, scope) { }
   }
 }

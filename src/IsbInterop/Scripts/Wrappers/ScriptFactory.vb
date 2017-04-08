@@ -2,6 +2,7 @@
 Imports IsbInterop.Base.Wrappers
 
 Namespace Scripts.Wrappers
+
     ''' <summary>
     ''' Обертка над IScriptFactory.
     ''' </summary>
@@ -15,8 +16,8 @@ Namespace Scripts.Wrappers
         ''' <param name="scriptName">Имя сценария.</param>
         ''' <returns>Сценарий.</returns>
         Public Function GetObjectByName(scriptName As String) As IScript Implements IScriptFactory.GetObjectByName
-            Dim rcwScript = Me.InvokeRcwInstanceMethod("GetObjectByName", scriptName)
-            Return New Script(rcwScript)
+            Dim rcwScript = InvokeRcwInstanceMethod("GetObjectByName", scriptName)
+            Return New Script(rcwScript, Scope)
         End Function
 
         ''' <summary>
@@ -41,8 +42,9 @@ Namespace Scripts.Wrappers
         ''' Конструктор.
         ''' </summary>
         ''' <param name="rcwIScriptFactory">COM-объект фабрика сценариев.</param>
-        Friend Sub New(rcwIScriptFactory As Object)
-            MyBase.New(rcwIScriptFactory)
+        ''' <param name="scope">Область видимости.</param>
+        Friend Sub New(rcwIScriptFactory As Object, scope As IScope)
+            MyBase.New(rcwIScriptFactory, scope)
         End Sub
     End Class
 End Namespace

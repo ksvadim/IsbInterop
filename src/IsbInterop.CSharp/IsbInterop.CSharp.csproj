@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
@@ -46,8 +48,6 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accessory\Wrappers\ForEachT.cs" />
-    <Compile Include="Accessory\Wrappers\ListT.cs" />
     <Compile Include="Base\ICustomJob.cs" />
     <Compile Include="Base\ICustomJobInfo.cs" />
     <Compile Include="Base\ICustomWork.cs" />
@@ -58,6 +58,8 @@
     <Compile Include="ComponentTokens\Wrappers\ComponentToken.cs" />
     <Compile Include="ComponentTokens\Wrappers\ComponentTokenFactory.cs" />
     <Compile Include="ComponentTokens\Wrappers\ComponentTokenInfo.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="ContextFactory.cs" />
     <Compile Include="DataTypes\Enumerable\TEditMode.cs" />
     <Compile Include="DataTypes\Enumerable\TEDocumentVersionState.cs" />
     <Compile Include="DataTypes\Enumerable\TExportedSignaturesType.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="DataTypes\Enumerable\TReqDataType.cs" />
     <Compile Include="DataTypes\Enumerable\TSearchShowMode.cs" />
     <Compile Include="Folders\Wrappers\FolderFactory.cs" />
+    <Compile Include="Scope.cs" />
     <Compile Include="ThreadUtils.cs" />
     <Compile Include="IsblSystemConstants\DataConstants\ObjectRequisites\PredefinedEdocumentsRequisites.cs" />
     <Compile Include="IsbObjectResolver.cs" />

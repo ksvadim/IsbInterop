@@ -32,19 +32,17 @@ namespace IsbInterop.Tests.Integration
       bool operationSucceed = false;
       var secondThread = new Thread(() => operationSucceed = this.ActWithReference(tempOrganizationId));
 
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        using (var reference = referenceFactory.GetObjectById(tempOrganizationId))
-        {
-          reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note).Value = "Punch";
-          secondThread.Start();
-          blocker.Set();
-          secondThread.Join();
-          reference.Save();
-        }
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+        var reference = referenceFactory.GetObjectById(tempOrganizationId);
+        reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note).Value = "Punch";
+        secondThread.Start();
+        blocker.Set();
+        secondThread.Join();
+        reference.Save();
       }
 
       Assert.IsTrue(operationSucceed);
@@ -59,19 +57,18 @@ namespace IsbInterop.Tests.Integration
     {
       try
       {
-        var app = IsbApplicationManager.Instance.GetApplication();
-
-        using (var referencesFactory = app.GetReferencesFactory())
-        using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+        var context = ContextFactory.CreateContext();
+        using (var scope = context.CreateScope())
         {
-          using (var reference = referenceFactory.GetObjectById(recodId))
-          {
-            reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note).Value = "Pinch";
-            blocker.WaitOne();
-            reference.Save();
-          }
+          var referencesFactory = scope.Application.GetReferencesFactory();
+          var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+          var reference = referenceFactory.GetObjectById(recodId);
+          reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note).Value = "Pinch";
+          blocker.WaitOne();
+          reference.Save();
+
+          return true;
         }
-        return true;
       }
       catch (Exception)
       {

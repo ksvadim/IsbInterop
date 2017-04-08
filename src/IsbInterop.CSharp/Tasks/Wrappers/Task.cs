@@ -14,13 +14,14 @@ namespace IsbInterop.Tasks.Wrappers
     public override ITaskInfo GetInfo()
     {
       var rcwITasInfo = this.GetRcwObjectInfo();
-      return new TaskInfo(rcwITasInfo);
+      return new TaskInfo(rcwITasInfo, this.Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwITask">СOM-объект ITask.</param>
-    public Task(object rcwITask) : base(rcwITask) { }
+    /// <param name="scope">Область видимости.</param>
+    public Task(object rcwITask, IScope scope) : base(rcwITask, scope) { }
   }
 }

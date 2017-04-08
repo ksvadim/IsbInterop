@@ -47,10 +47,10 @@ namespace IsbInterop.Tests.Integration
       OrganizationUtils.RemoveOrganization(this.tempOrganizationId);
       this.tempOrganizationId = 0;
 
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var edocumentFactory = app.GetEDocumentFactory())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
         edocumentFactory.DeleteById(this.firstTestDocumentId);
         this.firstTestDocumentId = 0;
         edocumentFactory.DeleteById(this.secondTestDocumentId);
@@ -61,11 +61,12 @@ namespace IsbInterop.Tests.Integration
     [Test]
     public void ReferenceInfo_Get_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+
         var referenceInfo = referenceFactory.GetObjectInfo(this.tempOrganizationId);
 
         Assert.NotNull(referenceInfo);
@@ -75,10 +76,10 @@ namespace IsbInterop.Tests.Integration
     [Test]
     public void EDocumentInfo_Get_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var edocumentFactory = app.GetEDocumentFactory())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
         var edocumentInfo = edocumentFactory.GetObjectInfo(this.firstTestDocumentId);
 
         Assert.NotNull(edocumentInfo);
@@ -88,28 +89,21 @@ namespace IsbInterop.Tests.Integration
     [Test]
     public void BoundEDocument_Search_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var searchFactory = app.GetSearchFactory())
-      using (ISearchForObjectDescription searchDescription = searchFactory.Load("BOUND_EDOCUMENT_SEARCH"))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        using (var edocumentFactory = app.GetEDocumentFactory())
+        var searchFactory = scope.Application.GetSearchFactory();
+        var searchDescription = searchFactory.Load("BOUND_EDOCUMENT_SEARCH");
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var edocumentInfo = edocumentFactory.GetObjectInfo(this.firstTestDocumentId);
+
+        searchDescription.InitializeSearch(edocumentInfo);
+        var documentInfos = searchDescription.Execute<IEDocumentInfo>();
+        while (!documentInfos.EOF)
         {
-          var edocumentInfo = edocumentFactory.GetObjectInfo(this.firstTestDocumentId);
-
-          searchDescription.InitializeSearch(edocumentInfo);
-          using (var documentInfos = searchDescription.Execute<IEDocumentInfo>())
-          {
-            while (!documentInfos.EOF)
-            {
-              using (var foundDocument = documentInfos.GetValue())
-              {
-                Assert.NotNull(foundDocument);
-              }
-
-              documentInfos.Next();
-            }
-          }
+          var foundDocument = documentInfos.GetValue();
+          Assert.NotNull(foundDocument);
+          documentInfos.Next();
         }
       }
     }

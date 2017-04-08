@@ -4,6 +4,7 @@ Imports IsbInterop.Base
 Imports IsbInterop.DataTypes.Enumerable
 
 Namespace Searches.Wrappers
+
   ''' <summary>
   ''' Обертка над ISearchDescription.
   ''' </summary>
@@ -17,7 +18,7 @@ Namespace Searches.Wrappers
     ''' <returns>Объект Contents.</returns>
     Public Function Execute(Of TI As IObjectInfo)() As IContents(Of TI) Implements ISearchDescription.Execute
       Dim rcwContents = Me.InvokeRcwInstanceMethod("Execute")
-      Return New Contents(Of TI)(rcwContents)
+      Return New Contents(Of TI)(rcwContents, Scope)
     End Function
 
     ''' <summary>
@@ -36,8 +37,9 @@ Namespace Searches.Wrappers
     ''' Конструктор.
     ''' </summary>
     ''' <param name="rcwISearchDescription">COM-объект ISearchDescription.</param>
-    Protected Sub New(rcwISearchDescription As Object)
-      MyBase.New(rcwISearchDescription)
+    ''' <param name="scope">Область видимости.</param>
+    Protected Sub New(rcwISearchDescription As Object, scope As IScope)
+      MyBase.New(rcwISearchDescription, scope)
     End Sub
   End Class
 End Namespace

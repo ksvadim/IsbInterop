@@ -11,6 +11,7 @@ namespace IsbInterop.Accessory.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="contentsObject">Объект IContents.</param>
-    public Contents(object contentsObject) : base(contentsObject) { }
+    /// <param name="scope">Область видимости.</param>
+    public Contents(object contentsObject, IScope scope) : base(contentsObject, scope) { }
   }
 }

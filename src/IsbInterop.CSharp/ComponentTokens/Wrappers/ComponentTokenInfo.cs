@@ -11,6 +11,7 @@ namespace IsbInterop.ComponentTokens.Wrappers
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIComponentTokenInfo">COM-объект IComponentTokenInfo.</param>
-    public ComponentTokenInfo(object rcwIComponentTokenInfo) : base(rcwIComponentTokenInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public ComponentTokenInfo(object rcwIComponentTokenInfo, IScope scope) : base(rcwIComponentTokenInfo, scope) { }
   }
 }

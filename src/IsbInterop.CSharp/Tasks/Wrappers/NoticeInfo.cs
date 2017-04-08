@@ -5,10 +5,11 @@
   /// </summary>
   internal class NoticeInfo : CustomJobInfo, INoticeInfo
   {
-     /// <summary>
+    /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwINoticeInfo">COM-объект IJobInfo.</param>
-    public NoticeInfo(object rcwINoticeInfo) : base(rcwINoticeInfo) { }
+    /// <param name="scope">Область видимости.</param>
+    public NoticeInfo(object rcwINoticeInfo, IScope scope) : base(rcwINoticeInfo, scope) { }
   }
 }
