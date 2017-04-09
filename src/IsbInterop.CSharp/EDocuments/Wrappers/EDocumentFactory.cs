@@ -82,20 +82,21 @@ namespace IsbInterop.EDocuments.Wrappers
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>
     public override IEDocumentInfo GetObjectInfo(int id)
     {
-      var rcwIEdocumentInfo = this.GetRcwObjectInfo(id);
-      return new EDocumentInfo(rcwIEdocumentInfo, this.Scope);
+      var rcwIEdocumentInfo = GetRcwObjectInfo(id);
+      return new EDocumentInfo(rcwIEdocumentInfo, Scope);
     }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwIEDocumentFactory">Фабрика электронных документов.</param>
+    /// <param name="scope">Область видимости.</param>
     internal EDocumentFactory(object rcwIEDocumentFactory, IScope scope) : base(rcwIEDocumentFactory, scope) { }
   }
 }

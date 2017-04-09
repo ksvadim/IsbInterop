@@ -10,13 +10,14 @@ Namespace Tasks.Wrappers
     Implements ITask
 
     ''' <summary>
-    ''' Получить ITaskInfo.
+    ''' Информация об объекте.
     ''' </summary>
-    ''' <returns>ITaskInfo.</returns>
-    Public Overrides Function GetInfo() As ITaskInfo
-      Dim rcwITasInfo = Me.GetRcwObjectInfo()
-      Return New TaskInfo(rcwITasInfo, Scope)
-    End Function
+    Public Overrides ReadOnly Property Info As ITaskInfo
+      Get
+        Dim rcwITasInfo = GetRcwObjectInfo()
+        Return New TaskInfo(rcwITasInfo, Scope)
+      End Get
+    End Property
 
     ''' <summary>
     ''' Конструктор.
@@ -27,4 +28,4 @@ Namespace Tasks.Wrappers
       MyBase.New(rcwITask, scope)
     End Sub
   End Class
-End NameSpace
+End Namespace

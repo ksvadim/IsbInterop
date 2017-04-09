@@ -20,7 +20,7 @@ Namespace Folders.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить информацию об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Info-объект.</returns>

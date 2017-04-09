@@ -18,6 +18,7 @@ namespace IsbInterop.Tasks.Wrappers
     {
       TCompType objectType;
       var rcwObject = this.GetRcwObjectById(id, out objectType);
+
       switch (objectType)
       {
         case (TCompType.ctJob):
@@ -32,7 +33,7 @@ namespace IsbInterop.Tasks.Wrappers
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>
@@ -40,6 +41,7 @@ namespace IsbInterop.Tasks.Wrappers
     {
       TCompType objectType;
       var rcwObject = this.GetRcwObjectInfo(id, out objectType);
+
       switch (objectType)
       {
         case (TCompType.ctJob):

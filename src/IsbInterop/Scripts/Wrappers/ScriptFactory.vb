@@ -29,21 +29,21 @@ Namespace Scripts.Wrappers
             Throw New NotSupportedException("This method is not supported by IS-Builder API.")
         End Function
 
-        ''' <summary>
-        ''' Получить информацию об объекте.
-        ''' </summary>
-        ''' <param name="id">ИД объекта.</param>
-        ''' <returns>Info-объект.</returns>
-        Public Overrides Function GetObjectInfo(id As Integer) As IObjectInfo
-            Throw New NotSupportedException("This method is not supported by IS-Builder API.")
-        End Function
+    ''' <summary>
+    ''' Получает информацию об объекте.
+    ''' </summary>
+    ''' <param name="id">ИД объекта.</param>
+    ''' <returns>Info-объект.</returns>
+    Public Overrides Function GetObjectInfo(id As Integer) As IObjectInfo
+      Throw New NotSupportedException("This method is not supported by IS-Builder API.")
+    End Function
 
-        ''' <summary>
-        ''' Конструктор.
-        ''' </summary>
-        ''' <param name="rcwIScriptFactory">COM-объект фабрика сценариев.</param>
-        ''' <param name="scope">Область видимости.</param>
-        Friend Sub New(rcwIScriptFactory As Object, scope As IScope)
+    ''' <summary>
+    ''' Конструктор.
+    ''' </summary>
+    ''' <param name="rcwIScriptFactory">COM-объект фабрика сценариев.</param>
+    ''' <param name="scope">Область видимости.</param>
+    Friend Sub New(rcwIScriptFactory As Object, scope As IScope)
             MyBase.New(rcwIScriptFactory, scope)
         End Sub
     End Class

@@ -9,37 +9,39 @@ namespace IsbInterop.Base.Wrappers
     where TI : IObjectInfo
   {
     /// <summary>
-    /// Метод переводит объект в режим редактирования. 
-    /// При этом объект блокируется от изменений другими пользователями. 
+    /// Переводит объект в режим редактирования.
+    /// При этом объект блокируется от изменений другими пользователями.
     /// Если объект уже заблокирован, то будет сгенерировано исключение.
     /// </summary>
-    /// <remarks>Метод является системным, использовать его не рекомендуется. 
-    /// При обращении к объекту метод вызывается автоматически.</remarks>
+    /// <remarks>
+    /// Метод является системным, использовать его не рекомендуется.
+    /// При обращении к объекту метод вызывается автоматически.
+    /// </remarks>
     public void EnterEditMode()
     {
-      this.InvokeRcwInstanceMethod("EnterEditMode");
+      InvokeRcwInstanceMethod("EnterEditMode");
     }
 
     /// <summary>
-    /// Метод переводит объект из режима редактирования в режим просмотра.
+    /// Переводит объект из режима редактирования в режим просмотра.
     /// После выполнения метода объект становится доступным для изменения другим пользователям.
     /// </summary>
-    /// <remarks>Метод является системным, использовать его не рекомендуется. 
+    /// <remarks>Метод является системным, использовать его не рекомендуется.
     /// При освобождении объекта метод вызывается автоматически.</remarks>
     public void LeaveEditMode()
     {
-      this.InvokeRcwInstanceMethod("LeaveEditMode");
+      InvokeRcwInstanceMethod("LeaveEditMode");
     }
 
     /// <summary>
-    /// Проверить возможность редактирования объекта.
+    /// Проверяет возможность редактирования документа.
     /// </summary>
     /// <param name="editMode">Режим редактирования.</param>
-    /// <param name="errorMessage">системное сообщение об ошибке IS-Builder.</param>
-    /// <returns>True, если редактирование возможно в режиме editMode, иначе false.</returns>
+    /// <param name="errorMessage">Сообщение об ошибке</param>
+    /// <returns>True, если редактирование возможно, иначе false.</returns>
     public bool TryEdit(TEditMode editMode, out string errorMessage)
     {
-      object[] methodParams = new object[] { (int)editMode, null };
+      var methodParams = new object[] { (int)editMode, null };
       bool canEdit = (bool)this.InvokeRcwInstanceMethod("TryEdit", methodParams);
 
       if (canEdit)

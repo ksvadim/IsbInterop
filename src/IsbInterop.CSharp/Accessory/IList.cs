@@ -25,7 +25,7 @@
     /// </summary>
     /// <param name="index">Индекс элемента в списке.</param>
     /// <returns>Значение элемента с указанным индексом.</returns>
-    T Values(int index);
+    T GetValues(int index);
 
     /// <summary>
     /// Получает значение элемента по имени.

@@ -11,6 +11,18 @@ namespace IsbInterop.EDocuments.Wrappers
   internal class EDocument : EdmsObject<IEDocumentInfo>, IEDocument
   {
     /// <summary>
+    /// Информация об объекте.
+    /// </summary>
+    public override IEDocumentInfo Info
+    {
+      get
+      {
+        var rcwIEDocumentInfo = GetRcwObjectInfo();
+        return new EDocumentInfo(rcwIEDocumentInfo, Scope);
+      }
+    }
+
+    /// <summary>
     /// Экспорт электронного документа.
     /// </summary>
     /// <param name="versionNumber">Номер версии.</param>
@@ -23,16 +35,6 @@ namespace IsbInterop.EDocuments.Wrappers
       bool needCompress = true, bool inExtendedFormat = true, TExportedSignaturesType signatureType = TExportedSignaturesType.estAll)
     {
       this.InvokeRcwInstanceMethod("Export", new object[] { versionNumber, fileName, needLock, needCompress, inExtendedFormat, (int)signatureType });
-    }
-
-    /// <summary>
-    /// Получить IEDocumentInfo.
-    /// </summary>
-    /// <returns>IEDocumentInfo.</returns>
-    public override IEDocumentInfo GetInfo()
-    {
-      var rcwIEDocumentInfo = this.GetRcwObjectInfo();
-      return new EDocumentInfo(rcwIEDocumentInfo, this.Scope);
     }
 
     /// <summary>

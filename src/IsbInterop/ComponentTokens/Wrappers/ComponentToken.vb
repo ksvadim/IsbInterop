@@ -8,14 +8,16 @@ Namespace ComponentTokens.Wrappers
   Friend Class ComponentToken
     Inherits EdmsObject(Of IComponentTokenInfo)
     Implements IComponentToken
+
     ''' <summary>
-    ''' Получить IComponentTokenInfo.
+    ''' Информация об объекте.
     ''' </summary>
-    ''' <returns>IComponentTokenInfo.</returns>
-    Public Overrides Function GetInfo() As IComponentTokenInfo
-      Dim rcwIComponentTokenInfo = GetRcwObjectInfo()
-      Return New ComponentTokenInfo(rcwIComponentTokenInfo, Scope)
-    End Function
+    Public Overrides ReadOnly Property Info As IComponentTokenInfo
+      Get
+        Dim rcwIComponentTokenInfo = GetRcwObjectInfo()
+        Return New ComponentTokenInfo(rcwIComponentTokenInfo, Scope)
+      End Get
+    End Property
 
     ''' <summary>
     ''' Конструктор.
@@ -26,4 +28,4 @@ Namespace ComponentTokens.Wrappers
       MyBase.New(rcwIComponentToken, scope)
     End Sub
   End Class
-End NameSpace
+End Namespace

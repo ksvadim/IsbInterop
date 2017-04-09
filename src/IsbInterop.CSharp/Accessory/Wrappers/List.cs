@@ -37,7 +37,7 @@ namespace IsbInterop.Accessory.Wrappers
     /// </summary>
     /// <param name="index">Индекс элемента в списке.</param>
     /// <returns>Значение элемента с указанным индексом.</returns>
-    public TI Values(int index)
+    public TI GetValues(int index)
     {
       var rcwObject = GetRcwProperty("Values", index);
       return IsbObjectResolver.Resolve<TI>(rcwObject, Scope);

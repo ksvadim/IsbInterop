@@ -2,6 +2,7 @@
 Imports IsbInterop.Tasks.Wrappers
 
 Namespace Base.Wrappers
+
   ''' <summary>
   ''' Обертка над ICustomWork.
   ''' </summary>
@@ -10,7 +11,7 @@ Namespace Base.Wrappers
     Implements ICustomWork(Of TI)
 
     ''' <summary>
-    ''' Получить список вложений.
+    ''' Получает список вложений.
     ''' </summary>
     ''' <param name="isForFamilyTask">Признак доступности вложений для семейства задач.</param>
     ''' <returns>Список вложений.</returns>

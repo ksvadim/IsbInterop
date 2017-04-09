@@ -29,14 +29,14 @@ namespace IsbInterop.Tasks.Wrappers
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>
     public override ITaskInfo GetObjectInfo(int id)
     {
-      var rcwITaskInfo = this.GetRcwObjectInfo(id);
-      return new TaskInfo(rcwITaskInfo, this.Scope);
+      var rcwITaskInfo = GetRcwObjectInfo(id);
+      return new TaskInfo(rcwITaskInfo, Scope);
     }
 
     /// <summary>

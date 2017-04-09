@@ -80,7 +80,7 @@ Namespace EDocuments.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить информацию об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Info-объект.</returns>
@@ -97,6 +97,5 @@ Namespace EDocuments.Wrappers
     Friend Sub New(rcwIEDocumentFactory As Object, scope As IScope)
       MyBase.New(rcwIEDocumentFactory, scope)
     End Sub
-
   End Class
 End Namespace

@@ -38,14 +38,14 @@ namespace IsbInterop.ComponentTokens.Wrappers
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>
     public override IComponentTokenInfo GetObjectInfo(int id)
     {
-      var rcwIComponentTokenInfo = this.GetRcwObjectInfo(id);
-      return new ComponentTokenInfo(rcwIComponentTokenInfo, this.Scope);
+      var rcwIComponentTokenInfo = GetRcwObjectInfo(id);
+      return new ComponentTokenInfo(rcwIComponentTokenInfo, Scope);
     }
 
     /// <summary>

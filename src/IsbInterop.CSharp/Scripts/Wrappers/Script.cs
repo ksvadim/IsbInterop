@@ -11,6 +11,17 @@ namespace IsbInterop.Scripts.Wrappers
   internal class Script : IsbObject<IObjectInfo>, IScript
   {
     /// <summary>
+    /// Информация об объекте.
+    /// </summary>
+    public override IObjectInfo Info
+    {
+      get
+      {
+        throw new NotSupportedException("This method is not supported by IS-Builder API.");
+      }
+    }
+
+    /// <summary>
     /// Выполнить скрипт.
     /// </summary>
     /// <returns>Результат.</returns>
@@ -54,15 +65,6 @@ namespace IsbInterop.Scripts.Wrappers
     {
       var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, timeout);
       return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
-    }
-
-    /// <summary>
-    /// Получить IObjectInfo.
-    /// </summary>
-    /// <returns>IObjectInfo.</returns>
-    public override IObjectInfo GetInfo()
-    {
-      throw new NotSupportedException("This method is not supported by IS-Builder API.");
     }
 
     /// <summary>

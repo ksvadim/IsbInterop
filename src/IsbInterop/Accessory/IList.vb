@@ -26,7 +26,7 @@
     ''' </summary>
     ''' <param name="index">Индекс элемента в списке.</param>
     ''' <returns>Значение элемента с указанным индексом.</returns>
-    Function Values(index As Integer) As T
+    Function GetValues(index As Integer) As T
 
     ''' <summary>
     ''' Получает значение элемента по имени.

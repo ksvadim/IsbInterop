@@ -53,18 +53,19 @@ Namespace Scripts.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить IObjectInfo.
+    ''' Информация об объекте.
     ''' </summary>
-    ''' <returns>IObjectInfo.</returns>
-    Public Overrides Function GetInfo() As IObjectInfo
-      Throw New NotSupportedException("This method is not supported by IS-Builder API.")
-    End Function
+    Public Overrides ReadOnly Property Info As IObjectInfo
+      Get
+        Throw New NotSupportedException("This method is not supported by IS-Builder API.")
+      End Get
+    End Property
 
     ''' <summary>
     ''' Получить параметры.
     ''' </summary>
     ''' <returns>IsbObjectList.</returns>
-    Overloads Public Function GetParams() As Accessory.IList(Of IIsbComObjectWrapper) Implements IScript.GetParams
+    Public Overloads Function GetParams() As Accessory.IList(Of IIsbComObjectWrapper) Implements IScript.GetParams
       Return Me.GetParams(Of IIsbComObjectWrapper)
     End Function
 

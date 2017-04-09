@@ -1,5 +1,4 @@
 ﻿using IsbInterop.DataTypes.Enumerable;
-using IsbInterop.Properties;
 using System;
 
 namespace IsbInterop.Base.Wrappers
@@ -20,7 +19,7 @@ namespace IsbInterop.Base.Wrappers
     {
       get
       {
-        int kindType = (int)this.GetRcwProperty("Kind");
+        int kindType = (int)GetRcwProperty("Kind");
 
         if (Enum.IsDefined(typeof(TContentKind), kindType))
           return (TContentKind)kindType;
@@ -41,38 +40,38 @@ namespace IsbInterop.Base.Wrappers
     public abstract T GetObjectById(int id);
 
     /// <summary>
-    /// Получить объект фабрики по ИД.
-    /// </summary>
-    /// <param name="id">ИД объекта.</param>
-    /// <param name="objectType">Тип объекта.</param>
-    /// <returns>Объект фабрики.</returns>
-    protected object GetRcwObjectById(int id, out TCompType objectType)
-    {
-      var rcwFactoryObject = this.GetRcwObjectById(id);
-      objectType = (TCompType)ComUtils.GetRcwProperty(rcwFactoryObject, "ComponentType");
-
-      return rcwFactoryObject;
-    }
-
-    /// <summary>
-    /// Получить объект фабрики по ИД.
-    /// </summary>
-    /// <param name="id">ИД объекта.</param>
-    /// <returns>Объект фабрики.</returns>
-    protected object GetRcwObjectById(int id)
-    {
-      return this.InvokeRcwInstanceMethod("GetObjectByID", id);
-    }
-
-    /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>
     public abstract TI GetObjectInfo(int id);
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает объект по ИД.
+    /// </summary>
+    /// <param name="id">ИД объекта.</param>
+    /// <param name="objectType">Тип объекта.</param>
+    /// <returns>Объект фабрики.</returns>
+    protected object GetRcwObjectById(int id, out TCompType objectType)
+    {
+      var rcwFactoryObject = GetRcwObjectById(id);
+      objectType = (TCompType)ComUtils.GetRcwProperty(rcwFactoryObject, "ComponentType");
+
+      return rcwFactoryObject;
+    }
+
+    /// <summary>
+    /// Получает объект по ИД.
+    /// </summary>
+    /// <param name="id">ИД объекта.</param>
+    /// <returns>Объект фабрики.</returns>
+    protected object GetRcwObjectById(int id)
+    {
+      return InvokeRcwInstanceMethod("GetObjectByID", id);
+    }
+
+    /// <summary>
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <param name="objectType">Тип объекта.</param>
@@ -86,7 +85,7 @@ namespace IsbInterop.Base.Wrappers
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>

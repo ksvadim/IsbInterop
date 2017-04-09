@@ -47,145 +47,127 @@ namespace IsbInterop.Base.Wrappers
     /// <summary>
     /// Признак открытости набора данных.
     /// </summary>
-    public bool Active
-    {
-      get { return (bool)this.GetRcwProperty("Active"); }
-    }
-
-    /// <summary>
-    /// ИД объекта.
-    /// </summary>
-    public int Id
-    {
-      get { return (int)this.GetRcwProperty("ID"); }
-    }
-
-    /// <summary>
-    /// Имя объекта.
-    /// </summary>
-    public string Name
-    {
-      get { return (string)this.GetRcwProperty("Name"); }
-    }
-
-    /// <summary>
-    /// Состояние.
-    /// </summary>
-    public TDataSetState State
-    {
-      get { return (TDataSetState)this.GetRcwProperty("State"); }
-    }
+    public bool Active => (bool)GetRcwProperty("Active");
 
     /// <summary>
     /// Тип объекта.
     /// </summary>
-    public TCompType ComponentType
+    public TCompType ComponentType => (TCompType)GetRcwProperty("ComponentType");
+
+    /// <summary>
+    /// Форма-карточка текущего представления объекта.
+    /// </summary>
+    public IForm Form
     {
-      get { return (TCompType)this.GetRcwProperty("ComponentType"); }
+      get
+      {
+        var rcwForm = GetRcwProperty("Form");
+        return new Form(rcwForm, Scope);
+      }
     }
 
     /// <summary>
-    /// Имя таблицы объекта.
+    /// ИД.
     /// </summary>
-    public string SqlTableName
-    {
-      get { return (string)this.GetRcwProperty("SQLTableName"); }
-    }
+    public int Id => (int)GetRcwProperty("ID");
+
+    /// <summary>
+    /// Информация об объекте.
+    /// </summary>
+    public abstract TI Info { get; }
+
+    /// <summary>
+    /// Имя объекта.
+    /// </summary>
+    public string Name => (string)GetRcwProperty("Name");
+
+    /// <summary>
+    /// Имя таблицы в базе данных.
+    /// </summary>
+    public string SqlTableName => (string)GetRcwProperty("SQLTableName");
+
+    /// <summary>
+    /// Состояние набора данных.
+    /// </summary>
+    public TDataSetState State => (TDataSetState)GetRcwProperty("State");
 
     #endregion
 
     #region Методы
 
     /// <summary>
-    /// Добавить условие Where к запросу.
+    /// Добавляет условие ограничения в запрос набора данных.
     /// </summary>
     /// <param name="queryWhereSection">Секция where запроса.</param>
     /// <returns>ИД условия в запросе.</returns>
     public int AddWhere(string queryWhereSection)
     {
-      return (int)this.InvokeRcwInstanceMethod("AddWhere", queryWhereSection);
+      return (int)InvokeRcwInstanceMethod("AddWhere", queryWhereSection);
     }
 
     /// <summary>
-    /// Удалить ограничение из запроса.
+    /// Удаляет условие ограничения набора данных.
     /// </summary>
     /// <param name="queryConditionId">ИД условия в запросе.</param>
     public void DelWhere(int queryConditionId)
     {
-      this.InvokeRcwInstanceMethod("DelWhere", queryConditionId);
+      InvokeRcwInstanceMethod("DelWhere", queryConditionId);
     }
 
     /// <summary>
-    /// Завершить работу с объектом.
+    /// Завершает работу с объектом.
     /// </summary>
     public void DoFinalize()
     {
       // Для записей справочников, записей DataSet: если внутри using изменили запись и свалился наш код с исключением,
       // то Finalize пытается закрыть запись, но закрыть несохраненную запись нельзя.
       // Клиентский код должен корректно обрабатывать такие ситуации.
-      this.InvokeRcwInstanceMethod("Finalize");
+      InvokeRcwInstanceMethod("Finalize");
     }
 
     /// <summary>
-    /// Получить детальный раздел.
+    /// Получает детальный раздел набора данных.
     /// </summary>
     /// <param name="dataSetNumber">Номер детального раздела.</param>
     /// <returns>Детальный раздел.</returns>
     public IDataSet GetDetailDataSet(int dataSetNumber)
     {
-      var rcwDataSet = this.InvokeRcwInstanceMethod("DetailDataSet", dataSetNumber);
-
-      return new DataSet(rcwDataSet, this.Scope);
+      var rcwDataSet = InvokeRcwInstanceMethod("DetailDataSet", dataSetNumber);
+      return new DataSet(rcwDataSet, Scope);
     }
 
     /// <summary>
-    /// Получить окружение.
+    /// Получает окружение.
     /// </summary>
     /// <typeparam name="TP">Тип параметров.</typeparam>
     /// <returns>Список переменных окружения объекта.</returns>
     public IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper
     {
-      var rcwEnvironment = this.GetRcwProperty("Environment");
-      return new List<TP>(rcwEnvironment, this.Scope);
+      var rcwEnvironment = GetRcwProperty("Environment");
+      return new List<TP>(rcwEnvironment, Scope);
     }
 
     /// <summary>
-    /// Получить форму-карточку текущего представления объекта.
-    /// </summary>
-    /// <returns>Форма-карточка.</returns>
-    public IForm GetForm()
-    {
-      var rcwForm = this.GetRcwProperty("Form");
-      return new Form(rcwForm, Scope);
-    }
-
-    /// <summary>
-    /// Получить параметры объекта.
+    /// Получает параметры объекта.
     /// </summary>
     /// <typeparam name="TP">Тип параметра.</typeparam>
     /// <returns>Список параметров объекта.</returns>
     public IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper
     {
-      var rcwParams = this.GetRcwProperty("Params");
-      return new List<TP>(rcwParams, this.Scope);
+      var rcwParams = GetRcwProperty("Params");
+      return new List<TP>(rcwParams, Scope);
     }
 
     /// <summary>
-    /// Получить IObjectInfo.
-    /// </summary>
-    /// <returns>IObjectInfo.</returns>
-    public abstract TI GetInfo();
-
-    /// <summary>
-    /// Получить реквизит.
+    /// Получает реквизит.
     /// </summary>
     /// <param name="requisiteName">Имя реквизита.</param>
     /// <returns>Реквизит.</returns>
     /// <remarks>Умышленно делаем метод виртуальным, чтобы использовать вместе с IRequisiteAutoCleaner.</remarks>
     public virtual IRequisite GetRequisite(string requisiteName)
     {
-      var rcwRequisite = this.GetRcwProperty("Requisites", requisiteName);
-      return DerivedRequisiteFactory.CreateRequisite(rcwRequisite, this.Scope);
+      var rcwRequisite = GetRcwProperty("Requisites", requisiteName);
+      return DerivedRequisiteFactory.CreateRequisite(rcwRequisite, Scope);
     }
 
     /// <summary>
@@ -193,15 +175,15 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     public void Refresh()
     {
-      this.InvokeRcwInstanceMethod("Refresh");
+      InvokeRcwInstanceMethod("Refresh");
     }
 
     /// <summary>
-    /// Сохранить объект.
+    /// Сохраняет объект.
     /// </summary>
     public void Save()
     {
-      this.InvokeRcwInstanceMethod("Save");
+      InvokeRcwInstanceMethod("Save");
     }
 
     /// <summary>
@@ -210,7 +192,7 @@ namespace IsbInterop.Base.Wrappers
     /// <returns>COM-объект IObjectInfo.</returns>
     protected object GetRcwObjectInfo()
     {
-      return this.GetRcwProperty("Info");
+      return GetRcwProperty("Info");
     }
 
     #endregion

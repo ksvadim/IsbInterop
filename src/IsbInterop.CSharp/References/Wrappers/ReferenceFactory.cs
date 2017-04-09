@@ -57,14 +57,14 @@ namespace IsbInterop.References.Wrappers
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>
     public override IReferenceInfo GetObjectInfo(int id)
     {
-      var rcwIEdocumentInfo = this.GetRcwObjectInfo(id);
-      return new ReferenceInfo(rcwIEdocumentInfo, this.Scope);
+      var rcwIEdocumentInfo = GetRcwObjectInfo(id);
+      return new ReferenceInfo(rcwIEdocumentInfo, Scope);
     }
 
     /// <summary>

@@ -10,7 +10,7 @@ namespace IsbInterop.Base.Wrappers
     where TI : IObjectInfo
   {
     /// <summary>
-    /// Получить список вложений.
+    /// Получает список вложений.
     /// </summary>
     /// <param name="isForFamilyTask">Признак доступности вложений для семейства задач.</param>
     /// <returns>Список вложений.</returns>

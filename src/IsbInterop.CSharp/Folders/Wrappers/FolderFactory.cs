@@ -19,14 +19,14 @@ namespace IsbInterop.Folders.Wrappers
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Info-объект.</returns>
     public override IFolderInfo GetObjectInfo(int id)
     {
-      var rcwIFolderInfo = this.GetRcwObjectInfo(id);
-      return new FolderInfo(rcwIFolderInfo, this.Scope);
+      var rcwIFolderInfo = GetRcwObjectInfo(id);
+      return new FolderInfo(rcwIFolderInfo, Scope);
     }
 
     /// <summary>

@@ -13,6 +13,17 @@ Namespace EDocuments.Wrappers
     Implements IEDocument
 
     ''' <summary>
+    ''' Информация об объекте.
+    ''' </summary>
+    Public Overrides ReadOnly Property Info As IEDocumentInfo
+      Get
+        Dim rcwIEDocumentInfo = GetRcwObjectInfo()
+        Return New EDocumentInfo(rcwIEDocumentInfo, Scope)
+      End Get
+    End Property
+
+
+    ''' <summary>
     ''' Экспорт электронного документа.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии.</param>
@@ -26,15 +37,6 @@ Namespace EDocuments.Wrappers
                       Optional signatureType As TExportedSignaturesType = TExportedSignaturesType.estAll) Implements IEDocument.Export
       InvokeRcwInstanceMethod("Export", New Object() {versionNumber, fileName, needLock, needCompress, inExtendedFormat, CInt(signatureType)})
     End Sub
-
-    ''' <summary>
-    ''' Получить IEDocumentInfo.
-    ''' </summary>
-    ''' <returns>IEDocumentInfo.</returns>
-    Public Overrides Function GetInfo() As IEDocumentInfo
-      Dim rcwIEDocumentInfo = GetRcwObjectInfo()
-      Return New EDocumentInfo(rcwIEDocumentInfo, Scope)
-    End Function
 
     ''' <summary>
     ''' Получить IsbObjectList версий документов.

@@ -32,13 +32,14 @@ Namespace Tasks.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить информацию об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Info-объект.</returns>
     Public Overrides Function GetObjectInfo(id As Integer) As ICustomJobInfo
       Dim objectType As TCompType
       Dim edmsObjectInfoRcw = GetRcwObjectInfo(id, objectType)
+
       Select Case objectType
         Case (TCompType.ctJob)
           Return New JobInfo(edmsObjectInfoRcw, Scope)

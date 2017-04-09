@@ -17,16 +17,16 @@ namespace IsbInterop.Base
     TContentKind Kind { get; }
 
     /// <summary>
-    /// Получить объект по его ИД.
+    /// Получает объект по ИД.
     /// </summary>
     /// <param name="id">ИД.</param>
     /// <returns>Объект.</returns>
     T GetObjectById(int id);
 
     /// <summary>
-    /// Получить информацию об объекте по его ИД.
+    /// Получает информацию об объекте.
     /// </summary>
-    /// <param name="id">ИД.</param>
+    /// <param name="id">ИД объекта.</param>
     /// <returns>Информация об объекте.</returns>
     TI GetObjectInfo(int id);
   }

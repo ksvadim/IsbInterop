@@ -13,27 +13,33 @@ namespace IsbInterop.Base.Wrappers
     where TI : IEdmsObjectInfo
   {
     /// <summary>
-    /// Метод удаляет объект типа Kind с идентификатором ID. 
-    /// Если такого объекта не существует, то будет сгенерировано исключение. 
-    /// Для фабрики электронных документов IEDocumentFactory метод инициирует процессы «Открытие справочника», «Удаление записи справочника», «Закрытие справочника».
+    /// Удаляет объект.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
+    /// <remarks>
+    /// Метод удаляет объект типа Kind с идентификатором ID.
+    /// Если такого объекта не существует, то будет сгенерировано исключение.
+    /// Для фабрики электронных документов IEDocumentFactory метод инициирует процессы:
+    /// «Открытие справочника», «Удаление записи справочника», «Закрытие справочника».
+    /// </remarks>
     public void DeleteById(int id)
     {
-      this.InvokeRcwInstanceMethod("DeleteByID", id);
+      InvokeRcwInstanceMethod("DeleteByID", id);
     }
 
     /// <summary>
-    /// Получить историю.
-    /// Возвращает историю работы с объектом типа Kind с идентификатором ID. 
-    /// Если такого объекта не существует, то будет сгенерировано исключение.
+    /// Возвращает историю работы с объектом.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Объект IComponent.</returns>
-    public IComponent GetHistory(int id)
+    /// <remarks>
+    /// Возвращает историю работы с объектом типа Kind с идентификатором ID.
+    /// Если такого объекта не существует, то будет сгенерировано исключение.
+    /// </remarks>
+    public IComponent History(int id)
     {
-      var rcwComponent = this.GetRcwProperty("History", id);
-      return new Component(rcwComponent, this.Scope);
+      var rcwComponent = GetRcwProperty("History", id);
+      return new Component(rcwComponent, Scope);
     }
 
     /// <summary>

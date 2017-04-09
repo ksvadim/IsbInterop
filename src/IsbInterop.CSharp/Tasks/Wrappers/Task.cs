@@ -8,13 +8,15 @@ namespace IsbInterop.Tasks.Wrappers
   internal class Task : CustomWork<ITaskInfo>, ITask
   {
     /// <summary>
-    /// Получить ITaskInfo.
+    /// Информация об объекте.
     /// </summary>
-    /// <returns>ITaskInfo.</returns>
-    public override ITaskInfo GetInfo()
+    public override ITaskInfo Info
     {
-      var rcwITasInfo = this.GetRcwObjectInfo();
-      return new TaskInfo(rcwITasInfo, this.Scope);
+      get
+      {
+        var rcwITasInfo = GetRcwObjectInfo();
+        return new TaskInfo(rcwITasInfo, Scope);
+      }
     }
 
     /// <summary>

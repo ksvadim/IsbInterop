@@ -16,9 +16,24 @@ namespace IsbInterop.Base
     bool Active { get; }
 
     /// <summary>
-    /// ИД объекта.
+    /// Тип объекта системы.
+    /// </summary>
+    TCompType ComponentType { get; }
+
+    /// <summary>
+    /// Форма-карточка текущего представления объекта.
+    /// </summary>
+    IForm Form { get; }
+
+    /// <summary>
+    /// ИД.
     /// </summary>
     int Id { get; }
+
+    /// <summary>
+    /// Информация об объекте.
+    /// </summary>
+    T Info { get; }
 
     /// <summary>
     /// Имя объекта.
@@ -26,85 +41,68 @@ namespace IsbInterop.Base
     string Name { get; }
 
     /// <summary>
-    /// Имя таблицы объекта.
+    /// Имя таблицы в базе данных.
     /// </summary>
     string SqlTableName { get; }
 
     /// <summary>
-    /// Состояние.
+    /// Состояние набора данных.
     /// </summary>
     TDataSetState State { get; }
 
     /// <summary>
-    /// Тип объекта системы.
-    /// </summary>
-    TCompType ComponentType { get; }
-
-    /// <summary>
-    /// Добавить условие ограничения в запрос набора данных.
+    /// Добавляет условие ограничения в запрос набора данных.
     /// </summary>
     /// <param name="condition">Условие ограничения выборки.</param>
     /// <returns>Идентификатор условия в запросе.</returns>
     int AddWhere(string condition);
 
     /// <summary>
-    /// Удалить условие ограничения набора данных.
+    /// Удаляет условие ограничения набора данных.
     /// </summary>
     /// <param name="conditionId">Идентификатор условия в запросе, полученный при вызове метода AddWhere.</param>
     void DelWhere(int conditionId);
 
     /// <summary>
-    /// Получить детальный раздел.
+    /// Завершает работу с объектом.
+    /// </summary>
+    void DoFinalize();
+
+    /// <summary>
+    /// Получает детальный раздел набора данных.
     /// </summary>
     /// <param name="dataSetNumber">Номер детального раздела.</param>
     /// <returns>Детальный раздел.</returns>
     IDataSet GetDetailDataSet(int dataSetNumber);
 
     /// <summary>
-    /// Получить окружение.
+    /// Получает окружение.
     /// </summary>
     /// <typeparam name="TP">Тип параметров.</typeparam>
     /// <returns>Список переменных окружения объекта.</returns>
     IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper;
 
     /// <summary>
-    /// Получить форму-карточку текущего представления объекта.
-    /// </summary>
-    /// <returns>Форма-карточка.</returns>
-    IForm GetForm();
-
-    /// <summary>
-    /// Получить параметры объекта.
+    /// Получает параметры объекта.
     /// </summary>
     /// <typeparam name="TP">Тип параметров.</typeparam>
     /// <returns>Список параметров объекта.</returns>
     IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper;
 
     /// <summary>
-    /// Получить информацию об объекте.
-    /// </summary>
-    /// <returns>Info-объект.</returns>
-    T GetInfo();
-
-    /// <summary>
-    /// Получить реквизит набора данных.
+    /// Получает реквизит набора данных.
     /// </summary>
     /// <param name="requisiteName">Имя реквизита.</param>
     /// <returns>Реквизит.</returns>
     IRequisite GetRequisite(string requisiteName);
 
     /// <summary>
-    /// Обновить набор данных.
+    /// Обновляет набор данных.
     /// </summary>
     void Refresh();
 
     /// <summary>
-    /// Завершить работу с объектом.
-    /// </summary>
-    void DoFinalize();
-
-    /// <summary>
-    /// Сохранить объект.
+    /// Сохраняет объект.
     /// </summary>
     void Save();
   }
