@@ -41,7 +41,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var edocumentFactory = scope.Application.EDocumentFactory;
         edocumentFactory.DeleteById(this.testDocumentId);
         this.testDocumentId = 0;
       }
@@ -54,7 +54,7 @@ namespace IsbInterop.Tests.Integration
       using (var scope = context.CreateScope())
       {
 
-        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referencesFactory = scope.Application.ReferencesFactory;
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         var reference = referenceFactory.GetObjectById(this.tempOrganizationId);
 
@@ -70,7 +70,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var edocumentFactory = scope.Application.EDocumentFactory;
 
         var document = edocumentFactory.GetObjectById(this.testDocumentId);
         documentId = document.Id;
@@ -85,7 +85,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var edocumentFactory = scope.Application.EDocumentFactory;
         var document = edocumentFactory.GetObjectById(this.testDocumentId);
         var documentVersionList = document.GetVersions();
         var version = documentVersionList.GetValues(0);
@@ -100,7 +100,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var scriptFactory = scope.Application.GetScriptFactory();
+        var scriptFactory = scope.Application.ScriptFactory;
         var script = scriptFactory.GetObjectByName(ReferenceConfiguration.Scripts.ConstantValue.ScriptName);
         var scriptParams = script.GetParams();
         scriptParams.SetVar(ReferenceConfiguration.Scripts.ConstantValue.Params.ConstName, "Weight");
@@ -117,7 +117,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var scriptFactory = scope.Application.GetScriptFactory();
+        var scriptFactory = scope.Application.ScriptFactory;
         var script = scriptFactory.GetObjectByName(ReferenceConfiguration.Scripts.ConstantValue.ScriptName);
 
         var scriptParams = script.GetParams();
@@ -137,7 +137,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referencesFactory = scope.Application.ReferencesFactory;
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         var reference = referenceFactory.GetObjectById(this.tempOrganizationId);
         var stateRequisite = reference.GetRequisite(ReferenceConfiguration.CommonRequisites.State) as IPickRequisite;
@@ -155,7 +155,7 @@ namespace IsbInterop.Tests.Integration
         var context = ContextFactory.CreateContext();
         using (var scope = context.CreateScope())
         {
-          var scriptFctory = scope.Application.GetScriptFactory();
+          var scriptFctory = scope.Application.ScriptFactory;
           var script = scriptFctory.GetObjectByName("MyTestScript");
         
           script.Execute();

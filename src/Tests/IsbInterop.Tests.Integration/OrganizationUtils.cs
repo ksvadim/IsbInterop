@@ -15,7 +15,7 @@
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referencesFactory = scope.Application.ReferencesFactory;
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
       
         var tempOrganization = referenceFactory.CreateNew();
@@ -36,7 +36,7 @@
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referencesFactory = scope.Application.ReferencesFactory;
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
 
         referenceFactory.DeleteById(id);

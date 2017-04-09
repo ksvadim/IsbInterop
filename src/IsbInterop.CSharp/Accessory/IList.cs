@@ -6,7 +6,7 @@
   public interface IList<out T> : IForEach<T> where T : IIsbComObjectWrapper
   {
     /// <summary>
-    /// Добавить элемент.
+    /// Добавляет элемент в список.
     /// </summary>
     /// <typeparam name="TP">Тип параметра.</typeparam>
     /// <param name="name">Имя элемента.</param>
@@ -14,28 +14,28 @@
     void Add<TP>(string name, TP value) where TP : IIsbComObjectWrapper;
 
     /// <summary>
-    /// Добавить элемент.
+    /// Добавляет элемент в список.
     /// </summary>
     /// <param name="name">Имя элемента.</param>
     /// <param name="value">Значение элемента.</param>
     void Add(string name, object value);
 
     /// <summary>
-    /// Получить значение элемента списка по индексу.
+    /// Получает значение элемента по индексу.
     /// </summary>
     /// <param name="index">Индекс элемента в списке.</param>
     /// <returns>Значение элемента с указанным индексом.</returns>
-    T GetValues(int index);
+    T Values(int index);
 
     /// <summary>
-    /// Получить значение по имени.
+    /// Получает значение элемента по имени.
     /// </summary>
-    /// <param name="name"></param>
-    /// <returns>Имя искомого элемента.</returns>
-    T GetValueByName(string name);
+    /// <param name="name">Имя искомого элемента.</param>
+    /// <returns>Значение искомого элемента.</returns>
+    T ValueByName(string name);
 
     /// <summary>
-    /// Установить значение элемента.
+    /// Устанавливает значение элемента.
     /// </summary>
     /// <param name="name">Имя элемента.</param>
     /// <param name="value">Значение элемента.</param>

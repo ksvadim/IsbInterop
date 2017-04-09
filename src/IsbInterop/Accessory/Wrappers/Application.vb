@@ -26,7 +26,7 @@ Namespace Accessory.Wrappers
     Inherits IsbComObjectWrapper
     Implements IApplication
 
-    #Region "Поля и свойства"
+#Region "Поля и свойства"
 
     ''' <summary>
     ''' ИД процесса Application.
@@ -37,21 +37,114 @@ Namespace Accessory.Wrappers
       End Get
     End Property
 
-    #End Region
+#End Region
 
-    #Region "Методы"
+#Region "Методы"
 
     ''' <summary>
-    ''' Получить фабрику вариантов запуска.
+    ''' Фабрика вариантов запуска.
     ''' </summary>
-    ''' <returns>Фабрика вариантов запуска.</returns>
-    Public Function GetComponentTokenFactory() As IComponentTokenFactory Implements IApplication.GetComponentTokenFactory
-      Dim rcwIComponentTokenFactory = GetRcwProperty("ComponentTokenFactory")
-      Return New ComponentTokenFactory(rcwIComponentTokenFactory, Scope)
-    End Function
+    Public ReadOnly Property ComponentTokenFactory As IComponentTokenFactory Implements IApplication.ComponentTokenFactory
+      Get
+        Dim rcwIComponentTokenFactory = GetRcwProperty("ComponentTokenFactory")
+        Return New ComponentTokenFactory(rcwIComponentTokenFactory, Scope)
+      End Get
+    End Property
 
     ''' <summary>
-    ''' Создать блокировку.
+    ''' Объект-соединение, посредством которого приложение связано с SQL-сервером.
+    ''' </summary>
+    Public ReadOnly Property Connection As IConnection Implements IApplication.Connection
+      Get
+        Dim rcwIConnection = GetRcwProperty("Connection")
+        Return New Connection(rcwIConnection, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Фабрика электронных документов.
+    ''' </summary>
+    ''' <returns>Фабрика электронных документов.</returns>
+    Public ReadOnly Property EDocumentFactory As IEDocumentFactory Implements IApplication.EDocumentFactory
+      Get
+        Dim rcwIEDocumentFactory = GetRcwProperty("EDocumentFactory")
+        Return New EDocumentFactory(rcwIEDocumentFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Фабрика папок.
+    ''' </summary>
+    Public ReadOnly Property FolderFactory As IFolderFactory Implements IApplication.FolderFactory
+      Get
+        Dim rcwIFolderFactory = GetRcwProperty("FolderFactory")
+        Return New FolderFactory(rcwIFolderFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Фабрика заданий.
+    ''' </summary>
+    Public ReadOnly Property JobFactory As IJobFactory Implements IApplication.JobFactory
+      Get
+        Dim rcwIJobFactory = GetRcwProperty("JobFactory")
+        Return New JobFactory(rcwIJobFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Фабрика типов справочников.
+    ''' </summary>
+    Public ReadOnly Property GetReferencesFactory As IReferencesFactory Implements IApplication.ReferencesFactory
+      Get
+        Dim rcwIReferencesFactory = GetRcwProperty("ReferencesFactory")
+        Return New ReferencesFactory(rcwIReferencesFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Фабрика сценариев.
+    ''' </summary>
+    Public ReadOnly Property ScriptFactory As IScriptFactory Implements IApplication.ScriptFactory
+      Get
+        Dim rcwIScriptFactory = GetRcwProperty("ScriptFactory")
+        Return New ScriptFactory(rcwIScriptFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Получить фабрику поисков.
+    ''' </summary>
+    Public ReadOnly Property SearchFactory As ISearchFactory Implements IApplication.SearchFactory
+      Get
+        Dim rcwISearchFactory = GetRcwProperty("SearchFactory")
+        Return New SearchFactory(rcwISearchFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Фабрика служебных объектов.
+    ''' </summary>
+    Public ReadOnly Property GetServiceFactory As IServiceFactory Implements IApplication.ServiceFactory
+      Get
+        Dim rcwIServiceFactory = GetRcwProperty("ServiceFactory")
+        Return New ServiceFactory(rcwIServiceFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Фабрика задач.
+    ''' </summary>
+    ''' <returns>Фабрика задач.</returns>
+    Public ReadOnly Property TaskFactory() As ITaskFactory Implements IApplication.TaskFactory
+      Get
+        Dim rcwITaskFactory = GetRcwProperty("TaskFactory")
+        Return New TaskFactory(rcwITaskFactory, Scope)
+      End Get
+    End Property
+
+    ''' <summary>
+    ''' Создает блокировку.
     ''' </summary>
     ''' <param name="objectType">Тип объекта.</param>
     ''' <param name="objectId">ИД объекта.</param>
@@ -62,96 +155,15 @@ Namespace Accessory.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить объект-соединение.
-    ''' </summary>
-    ''' <returns>Объект-соединение.</returns>
-    Public Function GetConnection() As IConnection Implements IApplication.GetConnection
-      Dim rcwIConnection = GetRcwProperty("Connection")
-      Return New Connection(rcwIConnection, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику электронных документов.
-    ''' </summary>
-    ''' <returns>Фабрика электронных документов.</returns>
-    Public Function GetEDocumentFactory() As IEDocumentFactory Implements IApplication.GetEDocumentFactory
-      Dim rcwIEDocumentFactory = GetRcwProperty("EDocumentFactory")
-      Return New EDocumentFactory(rcwIEDocumentFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику папок.
-    ''' </summary>
-    ''' <returns>Фабрика папок.</returns>
-    Function GetFolderFactory() As IFolderFactory Implements IApplication.GetFolderFactory
-      Dim rcwIFolderFactory = GetRcwProperty("FolderFactory")
-      Return New FolderFactory(rcwIFolderFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику заданий.
-    ''' </summary>
-    ''' <returns>Фабрика заданий</returns>
-    Public Function GetJobFactory() As IJobFactory Implements IApplication.GetJobFactory
-      Dim rcwIJobFactory = GetRcwProperty("JobFactory")
-      Return New JobFactory(rcwIJobFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику типов справочников.
-    ''' </summary>
-    ''' <returns>Фабрика типов справочников.</returns>
-    Public Function GetReferencesFactory() As IReferencesFactory Implements IApplication.GetReferencesFactory
-      Dim rcwIReferencesFactory = GetRcwProperty("ReferencesFactory")
-      Return New ReferencesFactory(rcwIReferencesFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику сценариев.
-    ''' </summary>
-    ''' <returns>Фабрика сценариев.</returns>
-    Public Function GetScriptFactory() As IScriptFactory Implements IApplication.GetScriptFactory
-      Dim rcwIScriptFactory = GetRcwProperty("ScriptFactory")
-      Return New ScriptFactory(rcwIScriptFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику поисков.
-    ''' </summary>
-    ''' <returns>Фабрика поисков.</returns>
-    Public Function GetSearchFactory() As ISearchFactory Implements IApplication.GetSearchFactory
-      Dim rcwISearchFactory = GetRcwProperty("SearchFactory")
-      Return New SearchFactory(rcwISearchFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику служебных объектов.
-    ''' </summary>
-    ''' <returns>Фабрика служебных объектов.</returns>
-    Public Function GetServiceFactory() As IServiceFactory Implements IApplication.GetServiceFactory
-      Dim rcwIServiceFactory = GetRcwProperty("ServiceFactory")
-      Return New ServiceFactory(rcwIServiceFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить фабрику задач.
-    ''' </summary>
-    ''' <returns>Фабрика задач.</returns>
-    Public Function GetTaskFactory() As ITaskFactory Implements IApplication.GetTaskFactory
-      Dim rcwITaskFactory = GetRcwProperty("TaskFactory")
-      Return New TaskFactory(rcwITaskFactory, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Завершить работу с приложением.
+    ''' Завершает работу с приложением.
     ''' </summary>
     Public Sub DoFinalize() Implements IApplication.DoFinalize
       Me.InvokeRcwInstanceMethod("Finalize")
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "Конструкторы"
+#Region "Конструкторы"
 
     ''' <summary>
     ''' Конструктор.
@@ -162,7 +174,7 @@ Namespace Accessory.Wrappers
       MyBase.New(rcwApplication, scope)
     End Sub
 
-    #End Region
+#End Region
 
   End Class
 End Namespace

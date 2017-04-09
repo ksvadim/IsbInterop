@@ -1,4 +1,5 @@
 ﻿Namespace Accessory.Wrappers
+
   ''' <summary>
   ''' Обертка над IList.
   ''' </summary>
@@ -7,7 +8,7 @@
     Implements IList(Of TI)
 
     ''' <summary>
-    ''' Добавить элемент.
+    ''' Добавляет элемент в список.
     ''' </summary>
     ''' <typeparam name="TP">Тип параметра.</typeparam>
     ''' <param name="name">Имя элемента.</param>
@@ -21,7 +22,7 @@
     End Sub
 
     ''' <summary>
-    ''' Добавить элемент.
+    ''' Добавляет элемент в список.
     ''' </summary>
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>
@@ -30,28 +31,27 @@
     End Sub
 
     ''' <summary>
-    ''' Получить значение элемента списка по индексу.
+    ''' Получает значение элемента списка по индексу.
     ''' </summary>
     ''' <param name="index">Индекс элемента в списке.</param>
     ''' <returns>Значение элемента с указанным индексом.</returns>
-    Public Overridable Function GetValues(index As Integer) As TI Implements IList(Of TI).GetValues
+    Public Function Values(index As Integer) As TI Implements IList(Of TI).Values
       Dim rcwObjectResult = Me.GetRcwProperty("Values", index)
       Return IsbObjectResolver.Resolve(Of TI)(rcwObjectResult, Scope)
     End Function
 
-
     ''' <summary>
-    ''' Получить значение по имени.
+    ''' Получает значение элемента по имени.
     ''' </summary>
-    ''' <param name="name"></param>
-    ''' <returns>Имя искомого элемента.</returns>
-    Public Function GetValueByName(name As String) As TI Implements IList(Of TI).GetValueByName
+    ''' <param name="name">Имя элемента.</param>
+    ''' <returns>Значение элемента.</returns>
+    Public Function ValueByName(name As String) As TI Implements IList(Of TI).ValueByName
       Dim rcwObject = InvokeRcwInstanceMethod("ValueByName", New Object() {name})
       Return IsbObjectResolver.Resolve(Of TI)(rcwObject, Scope)
     End Function
 
     ''' <summary>
-    ''' Установить значение элемента.
+    ''' Установливает значение элемента.
     ''' </summary>
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>

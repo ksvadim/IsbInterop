@@ -1,4 +1,5 @@
 ﻿Namespace Accessory
+
   ''' <summary>
   ''' Список.
   ''' </summary>
@@ -6,7 +7,7 @@
     Inherits IForEach(Of T)
 
     ''' <summary>
-    ''' Добавить элемент.
+    ''' Добавляет элемент в список.
     ''' </summary>
     ''' <typeparam name="TP">Тип параметра.</typeparam>
     ''' <param name="name">Имя элемента.</param>
@@ -14,28 +15,28 @@
     Sub Add(Of TP As IIsbComObjectWrapper)(name As String, value As TP)
 
     ''' <summary>
-    ''' Добавить элемент.
+    ''' Добавляет элемент в список.
     ''' </summary>
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>
     Sub Add(name As String, value As Object)
 
     ''' <summary>
-    ''' Получить значение элемента списка по индексу.
+    ''' Получает значение элемента списка по индексу.
     ''' </summary>
     ''' <param name="index">Индекс элемента в списке.</param>
     ''' <returns>Значение элемента с указанным индексом.</returns>
-    Function GetValues(index As Integer) As T
+    Function Values(index As Integer) As T
 
     ''' <summary>
-    ''' Получить значение по имени.
+    ''' Получает значение элемента по имени.
     ''' </summary>
-    ''' <param name="name"></param>
-    ''' <returns>Имя искомого элемента.</returns>
-    Function GetValueByName(name As String) As T
+    ''' <param name="name">Имя элемента.</param>
+    ''' <returns>Значение элемента.</returns>
+    Function ValueByName(name As String) As T
 
     ''' <summary>
-    ''' Установить значение элемента.
+    ''' Установливает значение элемента.
     ''' </summary>
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>

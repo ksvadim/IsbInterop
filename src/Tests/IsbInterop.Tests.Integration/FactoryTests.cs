@@ -30,7 +30,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referencesFactory = scope.Application.ReferencesFactory;
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         var objectKind = referenceFactory.Kind;
 
@@ -44,7 +44,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referencesFactory = scope.Application.ReferencesFactory;
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         Assert.Catch<IsbInteropException>(() => referenceFactory.GetObjectById(-1));
       }
@@ -56,7 +56,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referencesFactory = scope.Application.ReferencesFactory;
 
         Assert.Catch<IsbInteropException>(() =>
         {

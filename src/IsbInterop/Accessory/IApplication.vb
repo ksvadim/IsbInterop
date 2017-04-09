@@ -18,16 +18,61 @@ Namespace Accessory
     ''' <summary>
     ''' ИД процесса Application.
     ''' </summary>
-    ReadOnly Property PID() As Integer
+    ReadOnly Property PID As Integer
 
     ''' <summary>
-    ''' Получить фабрику вариантов запуска.
+    ''' Фабрика вариантов запуска.
     ''' </summary>
-    ''' <returns>Фабрика вариантов запуска.</returns>
-    Function GetComponentTokenFactory() As IComponentTokenFactory
+    ReadOnly Property ComponentTokenFactory As IComponentTokenFactory
 
     ''' <summary>
-    ''' Создать блокировку.
+    ''' Объект-соединение, посредством которого приложение связано с SQL-сервером.
+    ''' </summary>
+    ReadOnly Property Connection As IConnection
+
+    ''' <summary>
+    ''' Фабрика электронных документов.
+    ''' </summary>
+    ReadOnly Property EDocumentFactory As IEDocumentFactory
+
+    ''' <summary>
+    ''' Фабрика папок.
+    ''' </summary>
+    ReadOnly Property FolderFactory As IFolderFactory
+
+    ''' <summary>
+    ''' Фабрика заданий.
+    ''' </summary>
+    ''' <returns>Фабрика заданий.</returns>
+    ReadOnly Property JobFactory As IJobFactory
+
+    ''' <summary>
+    ''' Фабрика типов справочников.
+    ''' </summary>
+    ReadOnly Property ReferencesFactory As IReferencesFactory
+
+    ''' <summary>
+    ''' Фабрика сценариев.
+    ''' </summary>
+    ReadOnly Property ScriptFactory As IScriptFactory
+
+    ''' <summary>
+    ''' Фабрика поисков.
+    ''' </summary>
+    ReadOnly Property SearchFactory As ISearchFactory
+
+    ''' <summary>
+    ''' Фабрика служебных объектов.
+    ''' </summary>
+    ReadOnly Property ServiceFactory As IServiceFactory
+
+    ''' <summary>
+    ''' Фабрика задач.
+    ''' </summary>
+    ReadOnly Property TaskFactory As ITaskFactory
+
+    ''' <summary>
+    ''' Создает блокировку.
     ''' </summary>
     ''' <param name="objectType">Тип объекта.</param>
     ''' <param name="objectId">ИД объекта.</param>
@@ -35,61 +80,7 @@ Namespace Accessory
     Function CreateLock(objectType As TCompType, objectId As Integer) As ILock
 
     ''' <summary>
-    ''' Получить объект-соединение.
-    ''' </summary>
-    ''' <returns>Объект-соединение.</returns>
-    Function GetConnection() As IConnection
-
-    ''' <summary>
-    ''' Получить фабрику электронных документов.
-    ''' </summary>
-    ''' <returns></returns>
-    Function GetEDocumentFactory() As IEDocumentFactory
-
-    ''' <summary>
-    ''' Получить фабрику папок.
-    ''' </summary>
-    ''' <returns>Фабрика папок.</returns>
-    Function GetFolderFactory() As IFolderFactory
-
-    ''' <summary>
-    ''' Получить фабрику заданий.
-    ''' </summary>
-    ''' <returns>Фабрика заданий.</returns>
-    Function GetJobFactory() As IJobFactory
-
-    ''' <summary>
-    ''' Получить фабрику типов справочников.
-    ''' </summary>
-    ''' <returns>Фабрика типов справочников.</returns>
-    Function GetReferencesFactory() As IReferencesFactory
-
-    ''' <summary>
-    ''' Получить фабрику сценариев.
-    ''' </summary>
-    ''' <returns>Фабрика сценариев.</returns>
-    Function GetScriptFactory() As IScriptFactory
-
-    ''' <summary>
-    ''' Получить фабрику поисков.
-    ''' </summary>
-    ''' <returns>Фабрика поисков.</returns>
-    Function GetSearchFactory() As ISearchFactory
-
-    ''' <summary>
-    ''' Получить фабрику служебных объектов.
-    ''' </summary>
-    ''' <returns>Фабрика служебных объектов.</returns>
-    Function GetServiceFactory() As IServiceFactory
-
-    ''' <summary>
-    ''' Получить фабрику задач.
-    ''' </summary>
-    ''' <returns>Фабрика задач.</returns>
-    Function GetTaskFactory() As ITaskFactory
-
-    ''' <summary>
-    ''' Завершить работу с приложением.
+    ''' Завершает работу с приложением.
     ''' </summary>
     ''' <remarks>Имя изменено, т.к. в VB.Net Finalize соответствует деструктору.</remarks>
     Sub DoFinalize()

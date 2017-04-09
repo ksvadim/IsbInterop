@@ -32,22 +32,132 @@ namespace IsbInterop.Accessory.Wrappers
     /// </summary>
     public int PID => (int)GetRcwProperty("PID");
 
+    /// <summary>
+    /// Фабрика вариантов запуска.
+    /// </summary>
+    public IComponentTokenFactory ComponentTokenFactory
+    {
+      get
+      {
+        var rcwIComponentTokenFactory = GetRcwProperty("ComponentTokenFactory");
+        return new ComponentTokenFactory(rcwIComponentTokenFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Объект-соединение, посредством которого приложение связано с SQL-сервером.
+    /// </summary>
+    public IConnection Connection
+    {
+      get
+      {
+        var rcwIConnection = GetRcwProperty("Connection");
+        return new Connection(rcwIConnection, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика электронных документов.
+    /// </summary>
+    public IEDocumentFactory EDocumentFactory
+    {
+      get
+      {
+        var rcwIEDocumentFactory = GetRcwProperty("EDocumentFactory");
+        return new EDocumentFactory(rcwIEDocumentFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика папок.
+    /// </summary>
+    public IFolderFactory FolderFactory
+    {
+      get
+      {
+        var rcwIFolderFactory = GetRcwProperty("FolderFactory");
+        return new FolderFactory(rcwIFolderFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика заданий.
+    /// </summary>
+    public IJobFactory JobFactory
+    {
+      get
+      {
+        var rcwIJobFactory = GetRcwProperty("JobFactory");
+        return new JobFactory(rcwIJobFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика типов справочников.
+    /// </summary>
+    public IReferencesFactory ReferencesFactory
+    {
+      get
+      {
+        var rcwIReferencesFactory = GetRcwProperty("ReferencesFactory");
+        return new ReferencesFactory(rcwIReferencesFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика сценариев.
+    /// </summary>
+    public IScriptFactory ScriptFactory
+    {
+      get
+      {
+        var rcwIScriptFactory = GetRcwProperty("ScriptFactory");
+        return new ScriptFactory(rcwIScriptFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика поисков.
+    /// </summary>
+    public ISearchFactory SearchFactory
+    {
+      get
+      {
+        var rcwISearchFactory = GetRcwProperty("SearchFactory");
+        return new SearchFactory(rcwISearchFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика служебных объектов.
+    /// </summary>
+    public IServiceFactory ServiceFactory
+    {
+      get
+      {
+        var rcwIServiceFactory = GetRcwProperty("ServiceFactory");
+        return new ServiceFactory(rcwIServiceFactory, Scope);
+      }
+    }
+
+    /// <summary>
+    /// Фабрика задач.
+    /// </summary>
+    public ITaskFactory TaskFactory
+    {
+      get
+      {
+        var rcwITaskFactory = GetRcwProperty("TaskFactory");
+        return new TaskFactory(rcwITaskFactory, Scope);
+      }
+    }
+
     #endregion
 
     #region Методы
 
     /// <summary>
-    /// Получить фабрику вариантов запуска.
-    /// </summary>
-    /// <returns>Фабрика вариантов запуска.</returns>
-    public IComponentTokenFactory GetComponentTokenFactory()
-    {
-      var rcwIComponentTokenFactory = GetRcwProperty("ComponentTokenFactory");
-      return new ComponentTokenFactory(rcwIComponentTokenFactory, Scope);
-    }
-
-    /// <summary>
-    /// Создать блокировку.
+    /// Создает блокировку.
     /// </summary>
     /// <param name="objectType">Тип объекта.</param>
     /// <param name="objectId">ИД объекта.</param>
@@ -59,97 +169,7 @@ namespace IsbInterop.Accessory.Wrappers
     }
 
     /// <summary>
-    /// Получить объект-соединение.
-    /// </summary>
-    /// <returns>Объект-соединение.</returns>
-    public IConnection GetConnection()
-    {
-      var rcwIConnection = GetRcwProperty("Connection");
-      return new Connection(rcwIConnection, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику электронных документов.
-    /// </summary>
-    /// <returns>Фабрика электронных документов.</returns>
-    public IEDocumentFactory GetEDocumentFactory()
-    {
-      var rcwIEDocumentFactory = GetRcwProperty("EDocumentFactory");
-      return new EDocumentFactory(rcwIEDocumentFactory, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику папок.
-    /// </summary>
-    /// <returns>Фабрика папок.</returns>
-    public IFolderFactory GetFolderFactory()
-    {
-      var rcwIFolderFactory = GetRcwProperty("FolderFactory");
-      return new FolderFactory(rcwIFolderFactory, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику заданий.
-    /// </summary>
-    /// <returns>Фабрика заданий.</returns>
-    public IJobFactory GetJobFactory()
-    {
-      var rcwIJobFactory = GetRcwProperty("JobFactory");
-      return new JobFactory(rcwIJobFactory, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику типов справочников.
-    /// </summary>
-    /// <returns>Фабрика типов справочников.</returns>
-    public IReferencesFactory GetReferencesFactory()
-    {
-      var rcwIReferencesFactory = GetRcwProperty("ReferencesFactory");
-      return new ReferencesFactory(rcwIReferencesFactory, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику сценариев.
-    /// </summary>
-    /// <returns>Фабрика сценариев.</returns>
-    public IScriptFactory GetScriptFactory()
-    {
-      var rcwIScriptFactory = GetRcwProperty("ScriptFactory");
-      return new ScriptFactory(rcwIScriptFactory, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику поисков.
-    /// </summary>
-    /// <returns>Фабрика поисков.</returns>
-    public ISearchFactory GetSearchFactory()
-    {
-      var rcwISearchFactory = GetRcwProperty("SearchFactory");
-      return new SearchFactory(rcwISearchFactory, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику служебных объектов.
-    /// </summary>
-    /// <returns>Фабрика служебных объектов.</returns>
-    public IServiceFactory GetServiceFactory()
-    {
-      var rcwIServiceFactory = GetRcwProperty("ServiceFactory");
-      return new ServiceFactory(rcwIServiceFactory, Scope);
-    }
-
-    /// <summary>
-    /// Получить фабрику задач.
-    /// </summary>
-    /// <returns>Фабрика задач.</returns>
-    public ITaskFactory GetTaskFactory()
-    {
-      var rcwITaskFactory = GetRcwProperty("TaskFactory");
-      return new TaskFactory(rcwITaskFactory, Scope);
-    }
-
-    /// <summary>
-    /// Завершить работу с приложением.
+    /// Завершает работу с приложением.
     /// </summary>
     public void DoFinalize()
     {
@@ -165,6 +185,10 @@ namespace IsbInterop.Accessory.Wrappers
     /// </summary>
     /// <param name="rcwApplication">COM-объект IApplication.</param>
     /// <param name="scope">Область видимости.</param>
+    /// <remarks>
+    /// Используем метод DoFinalize вместо Finalize,
+    /// т.к. в VB Finalize это деструктор.
+    /// </remarks>
     internal Application(object rcwApplication, IScope scope) : base(rcwApplication, scope) { }
 
     #endregion

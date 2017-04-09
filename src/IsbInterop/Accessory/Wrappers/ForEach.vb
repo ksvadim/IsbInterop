@@ -1,10 +1,12 @@
 ﻿Namespace Accessory.Wrappers
+
   ''' <summary>
   ''' Обертка над IForEach.
   ''' </summary>
   Friend MustInherit Class ForEach(Of TI As IIsbComObjectWrapper)
     Inherits IsbComObjectWrapper
     Implements IForEach(Of TI)
+
     ''' <summary>
     ''' Количество элементов в списке.
     ''' </summary>
@@ -24,15 +26,16 @@
     End Property
 
     ''' <summary>
-    ''' Получить объект набора данных.
+    ''' Значение текущего элемента списка.
     ''' </summary>
-    ''' <returns>Реквизит.</returns>
-    Public Function GetValue() As TI Implements IForEach(Of TI).GetValue
-      Dim curentValueRcw = Me.GetRcwProperty("Value")
-      Dim value = IsbObjectResolver.Resolve(Of TI)(curentValueRcw, Scope)
+    Public ReadOnly Property Value As TI Implements IForEach(Of TI).Value
+      Get
+        Dim curentValueRcw = Me.GetRcwProperty("Value")
+        Dim itemValue = IsbObjectResolver.Resolve(Of TI)(curentValueRcw, Scope)
 
-      Return value
-    End Function
+        Return itemValue
+      End Get
+    End Property
 
     ''' <summary>
     ''' Перейти к следующему объекту набора данных.

@@ -12,15 +12,13 @@ Imports IsbInterop.Accessory.Wrappers
 Public Class LoginPoint
   Inherits IsbComObjectWrapper
   Implements ILoginPoint
-  ''' <summary>
-  ''' Код ошибки по умолчанию.
-  ''' </summary>
-  Private Const DefaultErrorCode As Integer = -1
+
+#Region "Поля и свойства"
 
   ''' <summary>
   ''' Таймаут на создание объекта приложения.
   ''' </summary>
-  Private ReadOnly applicationCreationTimeout As TimeSpan = TimeSpan.FromSeconds(20)
+  Private ReadOnly _applicationCreationTimeout As TimeSpan = TimeSpan.FromSeconds(20)
 
   ''' <summary>
   ''' ИД процесса.
@@ -31,8 +29,12 @@ Public Class LoginPoint
     End Get
   End Property
 
+#End Region
+
+#Region "Методы"
+
   ''' <summary>
-  ''' Получить объект ILoginPoint.
+  ''' Получает объект ILoginPoint.
   ''' </summary>
   ''' <returns>ILoginPoint.</returns>
   ''' <exception cref="FatalIsbInteropException">Исключение при неудачной попытке получить LoginPoint.</exception>
@@ -53,10 +55,11 @@ Public Class LoginPoint
   End Function
 
   ''' <summary>
-  ''' Получить объект приложения.
+  ''' Получает объект приложения.
   ''' </summary>
   ''' <param name="connectionParams">Параметры подключения.</param>
-  ''' <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш: True, если нужно добавить информацию, иначе False.</param>
+  ''' <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш:
+  ''' True, если нужно добавить информацию, иначе False.</param>
   ''' <returns>Объект приложения IApplication, или null.</returns>
   Public Function GetApplication(connectionParams As String, Optional storeInCache As Boolean = True) As IApplication Implements ILoginPoint.GetApplication
     Dim rcwApplication = GetRcwApplication(connectionParams, storeInCache)
@@ -77,10 +80,11 @@ Public Class LoginPoint
   End Function
 
   ''' <summary>
-  ''' Получить RCW-объект приложения.
+  ''' Получает RCW-объект приложения.
   ''' </summary>
   ''' <param name="connectionParams">Параметры подключения.</param>
-  ''' <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш: True, если нужно добавить информацию, иначе False.</param>
+  ''' <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш:
+  ''' True, если нужно добавить информацию, иначе False.</param>
   ''' <returns>RCW-объект IApplication.</returns>
   Friend Function GetRcwApplication(connectionParams As String, Optional storeInCache As Boolean = True) As Object
     Dim parameters = New Object() {connectionParams, storeInCache}
@@ -100,7 +104,7 @@ Public Class LoginPoint
 
                                                         Return rcwApplication
 
-                                                      End Function, applicationCreationTimeout)
+                                                      End Function, _applicationCreationTimeout)
 
     Return rcwApplication
   End Function
@@ -112,7 +116,8 @@ Public Class LoginPoint
   ''' <param name="errorCode">Код ошибки.</param>
   ''' <returns>Объект приложения IApplication, либо null, если его не удалось получить.</returns>
   Friend Function GetRcwApplicationEx(connectionParams As String, ByRef errorCode As Integer) As Object
-    Dim parameters = New Object() {connectionParams, DefaultErrorCode}
+    Const defaultErrorCode As Integer = -1
+    Dim parameters = New Object() {connectionParams, defaultErrorCode}
 
     Dim rcwApplication As Object = ThreadUtils.Invoke(Function()
                                                         Dim p = New ParameterModifier(2)
@@ -131,12 +136,16 @@ Public Class LoginPoint
                                                         End Try
                                                         Return rcwApplication
 
-                                                      End Function, applicationCreationTimeout)
+                                                      End Function, _applicationCreationTimeout)
 
     errorCode = CInt(parameters(1))
 
     Return rcwApplication
   End Function
+
+#End Region
+
+#Region "Конструкторы"
 
   ''' <summary>
   ''' Конструктор.
@@ -145,4 +154,7 @@ Public Class LoginPoint
   Private Sub New(rcwLoginPoint As Object)
     MyBase.New(rcwLoginPoint, Nothing)
   End Sub
+
+#End Region
+
 End Class

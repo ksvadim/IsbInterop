@@ -8,29 +8,25 @@
     /// <summary>
     /// Количество элементов в списке.
     /// </summary>
-    public int Count
-    {
-      get { return (int)this.GetRcwProperty("Count"); }
-    }
+    public int Count => (int)GetRcwProperty("Count");
 
     /// <summary>
     /// Признак конца набора данных.
     /// </summary>
-    public bool EOF
-    {
-      get { return (bool)this.GetRcwProperty("EOF"); }
-    }
+    public bool EOF => (bool)GetRcwProperty("EOF");
 
     /// <summary>
-    /// Получить объект набора данных.
+    /// Значение текущего элемента списка.
     /// </summary>
-    /// <returns>Реквизит.</returns>
-    public TI GetValue()
+    public TI Value
     {
-      var rcwObject = this.GetRcwProperty("Value");
-      var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
+      get
+      {
+        var rcwObject = GetRcwProperty("Value");
+        var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
 
-      return value;
+        return value;
+      }
     }
 
     /// <summary>

@@ -8,10 +8,7 @@
     /// <summary>
     /// Версия клиента.
     /// </summary>
-    public string ClientVerson
-    {
-      get { return (string)this.GetRcwProperty("ClientVersion"); }
-    }
+    public string ClientVerson => (string)GetRcwProperty("ClientVersion");
 
     /// <summary>
     /// Конструктор.

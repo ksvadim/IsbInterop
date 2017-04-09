@@ -9,7 +9,7 @@ namespace IsbInterop.Accessory.Wrappers
     where TI : IIsbComObjectWrapper
   {
     /// <summary>
-    /// Добавить элемент.
+    /// Добавляет элемент в список.
     /// </summary>
     /// <typeparam name="TP">Тип параметра.</typeparam>
     /// <param name="name">Имя элемента.</param>
@@ -17,47 +17,47 @@ namespace IsbInterop.Accessory.Wrappers
     public void Add<TP>(string name, TP value) where TP : IIsbComObjectWrapper
     {
       if (value is TI)
-        this.InvokeRcwInstanceMethod("Add", new object[] { name, ((IUnsafeRcwHolder)value).RcwObject });
+        InvokeRcwInstanceMethod("Add", new [] { name, ((IUnsafeRcwHolder)value).RcwObject });
       else
-        throw new InvalidOperationException(string.Format("Cannot convert value to {0}", typeof(TI)));
+        throw new InvalidOperationException($"Cannot convert value to {typeof(TI)}");
     }
 
     /// <summary>
-    /// Добавить элемент.
+    /// Добавляет элемент в список.
     /// </summary>
     /// <param name="name">Имя элемента.</param>
     /// <param name="value">Значение элемента.</param>
     public void Add(string name, object value)
     {
-      this.InvokeRcwInstanceMethod("Add", new object[] { name, value });
+      this.InvokeRcwInstanceMethod("Add", new [] { name, value });
     }
 
     /// <summary>
-    /// Получить значение элемента списка по индексу.
+    /// Получает значение элемента списка по индексу.
     /// </summary>
     /// <param name="index">Индекс элемента в списке.</param>
     /// <returns>Значение элемента с указанным индексом.</returns>
-    public virtual TI GetValues(int index)
+    public TI Values(int index)
     {
-      var rcwObject = this.GetRcwProperty("Values", index);
+      var rcwObject = GetRcwProperty("Values", index);
       return IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
     }
 
     /// <summary>
-    /// Получить значение по имени.
+    /// Получает значение элемента по имени.
     /// </summary>
-    /// <param name="name"></param>
-    /// <returns>Имя искомого элемента.</returns>
-    public TI GetValueByName(string name)
+    /// <param name="name">Имя искомого элемента.</param>
+    /// <returns>Значение искомого элемента.</returns>
+    public TI ValueByName(string name)
     {
-      var rcwObject = this.InvokeRcwInstanceMethod("ValueByName", new object[] { name });
+      var rcwObject = InvokeRcwInstanceMethod("ValueByName", new object[] { name });
       var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
 
       return value;
     }
 
     /// <summary>
-    /// Установить значение элемента.
+    /// Установливает значение элемента.
     /// </summary>
     /// <param name="name">Имя элемента.</param>
     /// <param name="value">Значение элемента.</param>
@@ -66,9 +66,9 @@ namespace IsbInterop.Accessory.Wrappers
       var isbObject = value as IUnsafeRcwHolder;
 
       if (isbObject != null)
-        this.InvokeRcwInstanceMethod("SetVar", new object[] { name, isbObject.RcwObject });
+        InvokeRcwInstanceMethod("SetVar", new [] { name, isbObject.RcwObject });
       else
-        this.InvokeRcwInstanceMethod("SetVar", new object[] { name, value });
+        InvokeRcwInstanceMethod("SetVar", new [] { name, value });
     }
 
     /// <summary>

@@ -18,7 +18,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var edocumentFactory = scope.Application.EDocumentFactory;
         var document = edocumentFactory.CreateNewFromFile(
           ReferenceConfiguration.DocumentCardTypes.DefaultRecords.ArbitraryFormDocuments.Name,
           ReferenceConfiguration.DocumentKinds.DefaultRecords.OtherDocuments.Code,
@@ -41,7 +41,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var edocumentFactory = scope.Application.EDocumentFactory;
         edocumentFactory.DeleteById(documentId);
       }
     }
@@ -56,7 +56,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var edocumentFactory = scope.Application.EDocumentFactory;
         var firstTestDocumentInfo = edocumentFactory.GetObjectInfo(sourceDocumentId);
         var secondTestDocumentInfo = edocumentFactory.GetObjectInfo(documentIdToBind);
         edocumentFactory.BindTo(firstTestDocumentInfo, secondTestDocumentInfo);
