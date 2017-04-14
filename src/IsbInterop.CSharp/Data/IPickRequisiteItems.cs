@@ -11,7 +11,7 @@ namespace IsbInterop.Data
     /// Получить ИД по значению.
     /// </summary>
     /// <param name="namedValue">Допустимое значение реквизита.</param>
-    /// <returns>ИД допустимого значения реквизита типа «Признак» – 
+    /// <returns>ИД допустимого значения реквизита типа «Признак» –
     /// внутреннее значение реквизита, хранящееся на сервере.</returns>
     string IdByValue(string namedValue);
   }

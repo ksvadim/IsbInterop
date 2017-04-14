@@ -7,60 +7,30 @@ namespace IsbInterop.Data.Wrappers
   /// <summary>
   /// Обертка над IDataSet.
   /// </summary>
-  internal class DataSet : Query, IDataSet, IRequisiteAutoCleaner
+  internal class DataSet : Query, IDataSet
   {
-    #region IDisposable
-
-    private bool disposed = false;
-
-    /// <summary>
-    /// Очистка.
-    /// </summary>
-    /// <param name="disposing">Флаг вызова метода Dispose.</param>
-    protected override void Dispose(bool disposing)
-    {
-      if (this.disposed)
-        return;
-
-      if (disposing)
-        this.requisiteContainer.DisposeRequisites();
-
-      this.disposed = true;
-
-      base.Dispose(disposing);
-    }
-
-    #endregion
-
-    #region IRequisiteAutoCleaner
-
-    /// <summary>
-    /// Контейнер реквизитов.
-    /// </summary>
-    IRequisiteContainer IRequisiteAutoCleaner.RequisiteContainer
-    {
-      get { return this.requisiteContainer; }
-    }
-    private readonly RequisiteContainer requisiteContainer = new RequisiteContainer();
-
-    #endregion
-
     #region Поля и свойства
 
     /// <summary>
     /// Имя таблицы детального раздела.
     /// </summary>
-    public string SqlTableName
-    {
-      get { return (string)this.GetRcwProperty("SQLTableName"); }
-    }
+    public string SqlTableName => (string)GetRcwProperty("SQLTableName");
 
     /// <summary>
     /// Состояние.
     /// </summary>
-    public TDataSetState State
+    public TDataSetState State => (TDataSetState)GetRcwProperty("State");
+
+    /// <summary>
+    /// Компонента.
+    /// </summary>
+    public IComponent GetComponent
     {
-      get { return (TDataSetState)this.GetRcwProperty("State"); }
+      get
+      {
+        var requisiteRcw = GetRcwProperty("Component");
+        return new Component(requisiteRcw, Scope);
+      }
     }
 
     #endregion
@@ -68,63 +38,42 @@ namespace IsbInterop.Data.Wrappers
     #region Методы
 
     /// <summary>
-    /// Добавить запись.
+    /// Добавляет запись.
     /// </summary>
     public void Append()
     {
-      this.InvokeRcwInstanceMethod("Append");
+      InvokeRcwInstanceMethod("Append");
     }
 
     /// <summary>
-    /// Применить изменения.
+    /// Применяет изменения.
     /// </summary>
     public void ApplyUpdates()
     {
-      this.InvokeRcwInstanceMethod("ApplyUpdates");
+      InvokeRcwInstanceMethod("ApplyUpdates");
     }
 
     /// <summary>
-    /// Закрыть запись.
+    /// Закрывает запись.
     /// </summary>
     public void CloseRecord()
     {
-      this.InvokeRcwInstanceMethod("CloseRecord");
+      InvokeRcwInstanceMethod("CloseRecord");
     }
 
     /// <summary>
-    /// Получить компоненту.
-    /// </summary>
-    /// <returns>Компонента.</returns>
-    public IComponent GetComponent()
-    {
-      var requisiteRcw = this.GetRcwProperty("Component");
-      return new Component(requisiteRcw, this.Scope);
-    }
-
-    /// <summary>
-    /// Получить реквизит.
+    /// Получает реквизит.
     /// </summary>
     /// <param name="requisiteName">Имя реквизита.</param>
     /// <returns>Реквизит.</returns>
     public IRequisite GetRequisite(string requisiteName)
     {
-      var requisite = this.requisiteContainer.GetRequisite(requisiteName, this.InternalGetRequisite);
-      return requisite;
+      var requisiteRcw = GetRcwProperty("Requisites", requisiteName);
+      return new Requisite(requisiteRcw, Scope);
     }
 
     /// <summary>
-    /// Получить реквизит.
-    /// </summary>
-    /// <param name="requisiteName">Имя реквизита.</param>
-    /// <returns>Реквизит.</returns>
-    private IRequisite InternalGetRequisite(string requisiteName)
-    {
-      var requisiteRcw = this.GetRcwProperty("Requisites", requisiteName);
-      return new Requisite(requisiteRcw, this.Scope);
-    }
-
-    /// <summary>
-    /// Открыть запись.
+    /// Открывает запись.
     /// </summary>
     public void OpenRecord()
     {
@@ -132,7 +81,7 @@ namespace IsbInterop.Data.Wrappers
     }
 
     /// <summary>
-    /// Обновить детальный раздел.
+    /// Обновляет детальный раздел.
     /// </summary>
     public void Refresh()
     {

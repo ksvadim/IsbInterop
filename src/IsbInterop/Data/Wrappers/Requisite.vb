@@ -88,7 +88,7 @@ Namespace Data.Wrappers
         Return GetRcwProperty("Value")
       End Get
       Set(requisiteValue As Object)
-        Me.SetRcwProperty("Value", requisiteValue)
+        SetRcwProperty("Value", requisiteValue)
       End Set
     End Property
 

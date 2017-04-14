@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Accessory
 
 Namespace Data
+
   ''' <summary>
   ''' Соединение.
   ''' </summary>
@@ -8,10 +9,8 @@ Namespace Data
     Inherits IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Получить информацию о системе.
+    ''' Информация о системе.
     ''' </summary>
-    ''' <returns>Информация о системе.</returns>
-    Function GetSystemInfo() As ISystemInfo
-
+     ReadOnly Property SystemInfo As ISystemInfo
   End Interface
 End NameSpace

@@ -13,26 +13,17 @@ namespace IsbInterop.Data.Wrappers
     /// <summary>
     /// Значение реквизита в качестве даты.
     /// </summary>
-    public DateTime AsDate
-    {
-      get { return (DateTime)this.GetRcwProperty("AsDate"); }
-    }
+    public DateTime AsDate => (DateTime)GetRcwProperty("AsDate");
 
     /// <summary>
     /// Целочисленное значение реквизита.
     /// </summary>
-    public int AsInteger
-    {
-      get { return (int)this.GetRcwProperty("AsInteger"); }
-    }
+    public int AsInteger => (int)GetRcwProperty("AsInteger");
 
     /// <summary>
     /// Строковое значение реквизита.
     /// </summary>
-    public string AsString
-    {
-      get { return (string)this.GetRcwProperty("AsString"); }
-    }
+    public string AsString => (string)GetRcwProperty("AsString");
 
     /// <summary>
     /// Тип реквизита.
@@ -41,7 +32,7 @@ namespace IsbInterop.Data.Wrappers
     {
       get
       {
-        int dataType = (int)this.GetRcwProperty("DataType");
+        int dataType = (int)GetRcwProperty("DataType");
 
         if (Enum.IsDefined(typeof(TReqDataType), dataType))
           return (TReqDataType)dataType;
@@ -53,34 +44,25 @@ namespace IsbInterop.Data.Wrappers
     /// <summary>
     /// Имя поля реквизита в базе.
     /// </summary>
-    public string FieldName
-    {
-      get { return (string)this.GetRcwProperty("FieldName"); }
-    }
+    public string FieldName => (string)GetRcwProperty("FieldName");
 
     /// <summary>
     /// Признак, указывающий, что реквизит равен null.
     /// </summary>
-    public bool IsNull
-    {
-      get { return (bool)this.GetRcwProperty("IsNull"); }
-    }
+    public bool IsNull => (bool)GetRcwProperty("IsNull");
 
     /// <summary>
     /// Имя реквизита.
     /// </summary>
-    public string Name
-    {
-      get { return (string)this.GetRcwProperty("Name"); }
-    }
+    public string Name => (string)GetRcwProperty("Name");
 
     /// <summary>
     /// Значение реквизита.
     /// </summary>
     public object Value
     {
-      get { return this.GetRcwProperty("Value"); }
-      set { this.SetRcwProperty("Value", value); }
+      get { return GetRcwProperty("Value"); }
+      set { SetRcwProperty("Value", value); }
     }
 
     #endregion

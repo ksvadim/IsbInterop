@@ -8,9 +8,8 @@ namespace IsbInterop.Data
   public interface IConnection : IIsbComObjectWrapper
   {
     /// <summary>
-    /// Получить информацию о системе.
+    /// Информация о системе.
     /// </summary>
-    /// <returns>Информация о системе.</returns>
-    ISystemInfo GetSystemInfo();
+    ISystemInfo SystemInfo { get; }
   }
 }

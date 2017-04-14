@@ -12,7 +12,7 @@
         ''' </summary>
         Public ReadOnly Property Items As IPickRequisiteItems Implements IPickRequisite.Items
             Get
-                Dim rcwItems = Me.GetRcwProperty("Items")
+                Dim rcwItems = GetRcwProperty("Items")
                 Return New PickRequisiteItems(rcwItems, Scope)
             End Get
         End Property
@@ -25,6 +25,5 @@
         Friend Sub New(rcwRequisite As Object, scope As IScope)
             MyBase.New(rcwRequisite, scope)
         End Sub
-
     End Class
 End Namespace

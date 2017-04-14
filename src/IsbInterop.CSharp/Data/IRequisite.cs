@@ -9,11 +9,6 @@ namespace IsbInterop.Data
   public interface IRequisite : IIsbComObjectWrapper
   {
     /// <summary>
-    /// Значение реквизита.
-    /// </summary>
-    object Value { get; set; }
-
-    /// <summary>
     /// Целочисленное значение реквизита.
     /// </summary>
     int AsInteger { get; }
@@ -29,9 +24,9 @@ namespace IsbInterop.Data
     DateTime AsDate { get; }
 
     /// <summary>
-    /// Имя реквизита.
+    /// Тип реквизита.
     /// </summary>
-    string Name { get; }
+    TReqDataType DataType { get; }
 
     /// <summary>
     /// Имя поля реквизита в базе.
@@ -39,13 +34,18 @@ namespace IsbInterop.Data
     string FieldName { get; }
 
     /// <summary>
+    /// Имя реквизита.
+    /// </summary>
+    string Name { get; }
+
+    /// <summary>
     /// Признак, указывающий, что реквизит равен null.
     /// </summary>
     bool IsNull { get; }
 
     /// <summary>
-    /// Тип реквизита.
+    /// Значение реквизита.
     /// </summary>
-    TReqDataType DataType { get; }
+    object Value { get; set; }
   }
 }

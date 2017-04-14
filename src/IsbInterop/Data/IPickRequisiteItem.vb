@@ -6,9 +6,8 @@
     Inherits IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Внутренний идентификатор допустимого значения реквизита, хранящийся в базе данных.
+    ''' Внутренний ИД допустимого значения реквизита, хранящийся в базе данных.
     ''' </summary>
-    ReadOnly Property Id() As Integer
-
+    ReadOnly Property Id As Integer
   End Interface
 End NameSpace

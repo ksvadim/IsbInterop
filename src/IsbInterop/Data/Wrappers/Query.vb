@@ -26,45 +26,45 @@
     End Property
 
     ''' <summary>
-    ''' Добавить условие Where к запросу.
+    ''' Добавляет условие ограничения набора данных.
     ''' </summary>
-    ''' <param name="queryWhereSection">Секция where запроса.</param>
+    ''' <param name="condition">Условие ограничения выборки.</param>
     ''' <returns>ИД условия в запросе.</returns>
-    Public Function AddWhere(queryWhereSection As String) As Integer Implements IQuery.AddWhere
-      Return InvokeRcwInstanceMethod("AddWhere", queryWhereSection)
+    Public Function AddWhere(condition As String) As Integer Implements IQuery.AddWhere
+      Return InvokeRcwInstanceMethod("AddWhere", condition)
     End Function
 
     ''' <summary>
-    ''' Закрыть набор данных.
+    ''' Закрывает набор данных.
     ''' </summary>
     Public Sub Close() Implements IQuery.Close
       InvokeRcwInstanceMethod("Close")
     End Sub
 
     ''' <summary>
-    ''' Удалить ограничение из запроса.
+    ''' Удаляет условие ограничения набора данных.
     ''' </summary>
-    ''' <param name="queryConditionId">ИД условия в запросе.</param>
-    Public Sub DelWhere(queryConditionId As Integer) Implements IQuery.DelWhere
-      InvokeRcwInstanceMethod("DelWhere", queryConditionId)
+    ''' <param name="сonditionId">ИД условия в запросе.</param>
+    Public Sub DelWhere(сonditionId As Integer) Implements IQuery.DelWhere
+      InvokeRcwInstanceMethod("DelWhere", сonditionId)
     End Sub
 
     ''' <summary>
-    ''' Перейти к первой записи.
+    ''' Переходит к первой записи.
     ''' </summary>
     Public Sub First() Implements IQuery.First
       InvokeRcwInstanceMethod("First")
     End Sub
 
     ''' <summary>
-    ''' Перейти к следущей записи.
+    ''' Переходит к следущей записи.
     ''' </summary>
     Public Sub [Next]() Implements IQuery.[Next]
       InvokeRcwInstanceMethod("Next")
     End Sub
 
     ''' <summary>
-    ''' Перейти к предыдущей записи.
+    ''' Переходит к предыдущей записи.
     ''' </summary>
     Public Sub Prior() Implements IQuery.Prior
       Me.InvokeRcwInstanceMethod("Prior")

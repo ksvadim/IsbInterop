@@ -2,6 +2,7 @@
 Imports IsbInterop.References
 
 Namespace Data
+
   ''' <summary>
   ''' Набор данных.
   ''' </summary>
@@ -12,57 +13,56 @@ Namespace Data
     ''' <summary>
     ''' Имя таблицы детального раздела.
     ''' </summary>
-    ReadOnly Property SqlTableName() As String
+    ReadOnly Property SqlTableName As String
 
     ''' <summary>
     ''' Состояние.
     ''' </summary>
-    ReadOnly Property State() As TDataSetState
+    ReadOnly Property State As TDataSetState
 
     ''' <summary>
-    ''' Применить изменения.
+    ''' Компонента.
+    ''' </summary>
+    ReadOnly Property Component As IComponent
+
+    ''' <summary>
+    ''' Применяет изменения.
     ''' </summary>
     ''' <remarks>
-    ''' Метод сохраняет изменения набора данных: записывает все добавления, 
-    ''' изменения и удаления записей набора данных в базу данных. 
-    ''' После выполнения метода свойство State принимает значение dssBrowse. 
-    ''' Следует вызывать метод только для главного раздела набора данных. 
+    ''' Метод сохраняет изменения набора данных: записывает все добавления,
+    ''' изменения и удаления записей набора данных в базу данных.
+    ''' После выполнения метода свойство State принимает значение dssBrowse.
+    ''' Следует вызывать метод только для главного раздела набора данных.
     ''' Если вызвать метод для детального раздела, то будет сгенерировано исключение.
-    ''' Метод инициирует процесс «Сохранение записи справочника». 
+    ''' Метод инициирует процесс «Сохранение записи справочника».
     ''' </remarks>
     Sub ApplyUpdates()
 
     ''' <summary>
-    ''' Получить компоненту.
-    ''' </summary>
-    ''' <returns>Компонента.</returns>
-    Function GetComponent() As IComponent
-
-    ''' <summary>
-    ''' Получить реквизит.
+    ''' Получает реквизит.
     ''' </summary>
     ''' <param name="requisiteName">Имя реквизита.</param>
     ''' <returns>Реквизит.</returns>
     Function GetRequisite(requisiteName As String) As IRequisite
 
     ''' <summary>
-    ''' Открыть запись.
+    ''' Открывает запись.
     ''' </summary>
     Sub OpenRecord()
 
     ''' <summary>
-    ''' Закрыть запись.
+    ''' Закрывает запись.
     ''' </summary>
     Sub CloseRecord()
 
     ''' <summary>
-    ''' Добавить запись.
+    ''' Добавляет запись.
     ''' </summary>
     Sub Append()
 
     ''' <summary>
-    ''' Обновить детальный раздел.
+    ''' Обновляет детальный раздел.
     ''' </summary>
     Sub Refresh()
   End Interface
-End NameSpace
+End Namespace

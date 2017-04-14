@@ -10,7 +10,6 @@ Namespace Data.Wrappers
   Friend Class DataSet
     Inherits Query
     Implements IDataSet
-    Implements IRequisiteAutoCleaner
 
 #Region "Поля и свойства"
 
@@ -32,108 +31,61 @@ Namespace Data.Wrappers
       End Get
     End Property
 
-#End Region
-
-#Region "IDisposable"
-
-    Private disposed As Boolean = False
-
     ''' <summary>
-    ''' Очистка.
+    ''' Компонента.
     ''' </summary>
-    ''' <param name="disposing">Флаг вызова метода Dispose.</param>
-    Protected Overrides Sub Dispose(disposing As Boolean)
-      If disposed Then
-        Return
-      End If
-
-      If disposing Then
-        requisiteContainer.DisposeRequisites()
-      End If
-
-      disposed = True
-
-      MyBase.Dispose(disposing)
-    End Sub
-
-#End Region
-
-#Region "IRequisiteContainer"
-
-    Private ReadOnly requisiteContainer As IRequisiteContainer = New RequisiteContainer()
-
-    ''' <summary>
-    ''' Контейнер реквизитов.
-    ''' </summary>
-    Private ReadOnly Property LocalRequisiteContainer As IRequisiteContainer Implements IRequisiteAutoCleaner.RequisiteContainer
+    Public ReadOnly Property Component As IComponent Implements IDataSet.Component
       Get
-        Return requisiteContainer
+        Dim requisiteRcw = GetRcwProperty("Component")
+        Return New Component(requisiteRcw, Scope)
       End Get
     End Property
+
 
 #End Region
 
 #Region "Методы"
 
     ''' <summary>
-    ''' Добавить запись.
+    ''' Добавляет запись.
     ''' </summary>
     Public Sub Append() Implements IDataSet.Append
       InvokeRcwInstanceMethod("Append")
     End Sub
 
     ''' <summary>
-    ''' Применить изменения.
+    ''' Применяет изменения.
     ''' </summary>
     Public Sub ApplyUpdates() Implements IDataSet.ApplyUpdates
       InvokeRcwInstanceMethod("ApplyUpdates")
     End Sub
 
     ''' <summary>
-    ''' Закрыть запись.
+    ''' Закрывает запись.
     ''' </summary>
     Public Sub CloseRecord() Implements IDataSet.CloseRecord
       InvokeRcwInstanceMethod("CloseRecord")
     End Sub
 
     ''' <summary>
-    ''' Получить компоненту.
-    ''' </summary>
-    ''' <returns>Компонента.</returns>
-    Public Function GetComponent() As IComponent Implements IDataSet.GetComponent
-      Dim requisiteRcw = GetRcwProperty("Component")
-      Return New Component(requisiteRcw, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Получить реквизит.
+    ''' Получает реквизит.
     ''' </summary>
     ''' <param name="requisiteName">Имя реквизита.</param>
     ''' <returns>Реквизит.</returns>
-    Public Function GetRequisite(requisiteName As String) As IRequisite Implements IDataSet.GetRequisite, IRequisiteAutoCleaner.GetRequisite
-      Dim requisite = requisiteContainer.GetRequisite(requisiteName, AddressOf InternalGetRequisite)
-      Return requisite
-    End Function
-
-    ''' <summary>
-    ''' Получить реквизит.
-    ''' </summary>
-    ''' <param name="requisiteName">Имя реквизита.</param>
-    ''' <returns>Реквизит.</returns>
-    Private Function InternalGetRequisite(requisiteName As String) As Requisite
+    Public Function GetRequisite(requisiteName As String) As IRequisite Implements IDataSet.GetRequisite
       Dim requisiteRcw = GetRcwProperty("Requisites", requisiteName)
       Return New Requisite(requisiteRcw, Scope)
     End Function
 
     ''' <summary>
-    ''' Открыть запись.
+    ''' Открывает запись.
     ''' </summary>
     Public Sub OpenRecord() Implements IDataSet.OpenRecord
       InvokeRcwInstanceMethod("OpenRecord")
     End Sub
 
     ''' <summary>
-    ''' Обновить детальный раздел.
+    ''' Обновляет детальный раздел.
     ''' </summary>
     Public Sub Refresh() Implements IDataSet.Refresh
       InvokeRcwInstanceMethod("Refresh")

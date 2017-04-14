@@ -11,11 +11,11 @@ namespace IsbInterop.Data.Wrappers
     /// Получить ИД по значению.
     /// </summary>
     /// <param name="namedValue">Допустимое значение реквизита.</param>
-    /// <returns>ИД допустимого значения реквизита типа «Признак» – 
+    /// <returns>ИД допустимого значения реквизита типа «Признак» –
     /// внутреннее значение реквизита, хранящееся на сервере.</returns>
     public string IdByValue(string namedValue)
     {
-      return (string)this.InvokeRcwInstanceMethod("IdByValue", namedValue);
+      return (string)InvokeRcwInstanceMethod("IdByValue", namedValue);
     }
 
     /// <summary>
@@ -23,6 +23,7 @@ namespace IsbInterop.Data.Wrappers
     /// </summary>
     /// <param name="rcwIPickRequisiteItems">COM-объект IPickRequisiteItems.</param>
     /// <param name="scope">Область видимости.</param>
-    internal PickRequisiteItems(object rcwIPickRequisiteItems, IScope scope) : base(rcwIPickRequisiteItems, scope) { }
+    internal PickRequisiteItems(object rcwIPickRequisiteItems, IScope scope)
+      : base(rcwIPickRequisiteItems, scope) { }
   }
 }

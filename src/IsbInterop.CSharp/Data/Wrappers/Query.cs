@@ -8,68 +8,62 @@
     /// <summary>
     /// Признак конца набора данных.
     /// </summary>
-    public bool EOF
-    {
-      get { return (bool)this.GetRcwProperty("EOF"); }
-    }
+    public bool EOF => (bool)GetRcwProperty("EOF");
 
     /// <summary>
     /// Количество записей детального раздела.
     /// </summary>
-    public int RecordCount
-    {
-      get { return (int)this.GetRcwProperty("RecordCount"); }
-    }
+    public int RecordCount => (int)GetRcwProperty("RecordCount");
 
     /// <summary>
-    /// Добавить условие Where к запросу.
+    /// Добавляет условие ограничения набора данных.
     /// </summary>
-    /// <param name="queryWhereSection">Секция where запроса.</param>
+    /// <param name="condition">Условие ограничения выборки.</param>
     /// <returns>ИД условия в запросе.</returns>
-    public int AddWhere(string queryWhereSection)
+    public int AddWhere(string condition)
     {
-      return (int)this.InvokeRcwInstanceMethod("AddWhere", queryWhereSection);
+      return (int)InvokeRcwInstanceMethod("AddWhere", condition);
     }
 
     /// <summary>
-    /// Закрыть набор данных.
+    /// Закрывает набор данных.
     /// </summary>
     public void Close()
     {
-      this.InvokeRcwInstanceMethod("Close");
+      InvokeRcwInstanceMethod("Close");
     }
 
     /// <summary>
-    /// Удалить ограничение из запроса.
+    /// Удаляет условие ограничения набора данных.
     /// </summary>
-    /// <param name="queryConditionId">ИД условия в запросе.</param>
-    public void DelWhere(int queryConditionId)
+    /// <param name="сonditionId">ИД условия в запросе.</param>
+    public void DelWhere(int сonditionId)
     {
-      this.InvokeRcwInstanceMethod("DelWhere", queryConditionId);
+      InvokeRcwInstanceMethod("DelWhere", сonditionId);
     }
 
     /// <summary>
-    /// Перейти к первой записи.
+    /// Перехоидт к первой записи.
     /// </summary>
     public void First()
     {
-      this.InvokeRcwInstanceMethod("First");
+      InvokeRcwInstanceMethod("First");
     }
 
     /// <summary>
-    /// Перейти к следущей записи.
+    /// Переходит к следущей записи.
     /// </summary>
     public void Next()
     {
-      this.InvokeRcwInstanceMethod("Next");
+      InvokeRcwInstanceMethod("Next");
     }
 
     /// <summary>
-    /// Перейти к предыдущей записи.
+    /// Переходит к предыдущей записи.
     /// </summary>
     public void Prior()
     {
-      this.InvokeRcwInstanceMethod("Prior");
+      InvokeRcwInstanceMethod("Prior");
     }
 
     /// <summary>
