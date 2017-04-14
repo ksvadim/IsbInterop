@@ -10,14 +10,13 @@ Namespace Tasks.Wrappers
     Implements INotice
 
     ''' <summary>
-    ''' Информация об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
-    Public Overrides ReadOnly Property Info As INoticeInfo
-      Get
-        Dim rcwINoticeInfo = GetRcwObjectInfo()
-        Return New NoticeInfo(rcwINoticeInfo, Scope)
-      End Get
-    End Property
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As INoticeInfo
+      Dim rcwINoticeInfo = GetRcwObjectInfo()
+      Return New NoticeInfo(rcwINoticeInfo, Scope)
+    End Function
 
     ''' <summary>
     ''' Конструктор.

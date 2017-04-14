@@ -21,19 +21,9 @@ namespace IsbInterop.Base
     TCompType ComponentType { get; }
 
     /// <summary>
-    /// Форма-карточка текущего представления объекта.
-    /// </summary>
-    IForm Form { get; }
-
-    /// <summary>
     /// ИД.
     /// </summary>
     int Id { get; }
-
-    /// <summary>
-    /// Информация об объекте.
-    /// </summary>
-    T Info { get; }
 
     /// <summary>
     /// Имя объекта.
@@ -83,11 +73,23 @@ namespace IsbInterop.Base
     IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper;
 
     /// <summary>
+    /// Получает форму-карточку текущего представления объекта.
+    /// </summary>
+    /// <returns>Форма-карточка.</returns>
+    IForm GetForm();
+
+    /// <summary>
     /// Получает параметры объекта.
     /// </summary>
     /// <typeparam name="TP">Тип параметров.</typeparam>
     /// <returns>Список параметров объекта.</returns>
     IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper;
+
+    /// <summary>
+    /// Получает информацию об объекте.
+    /// </summary>
+    /// <returns>Информация об объекте.</returns>
+    T GetInfo();
 
     /// <summary>
     /// Получает реквизит набора данных.

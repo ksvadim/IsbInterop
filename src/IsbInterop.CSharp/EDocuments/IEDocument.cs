@@ -10,11 +10,6 @@ namespace IsbInterop.EDocuments
   public interface IEDocument : IEdmsObject<IEDocumentInfo>
   {
     /// <summary>
-    /// Список версий документов.
-    /// </summary>
-    IList<IEDocumentVersion> Versions { get; }
-
-    /// <summary>
     /// Экспортирует электронный документ.
     /// </summary>
     /// <param name="versionNumber">Номер версии.</param>
@@ -26,6 +21,12 @@ namespace IsbInterop.EDocuments
     void Export(int versionNumber, string fileName, bool needLock = true,
       bool needCompress = true, bool inExtendedFormat = true,
       TExportedSignaturesType signatureType = TExportedSignaturesType.estAll);
+
+    /// <summary>
+    /// Получить список версий документа.
+    /// </summary>
+    /// <returns>Список версий документа.</returns>
+    IList<IEDocumentVersion> GetVersions();
 
     /// <summary>
     /// Импортирует версию из файла.

@@ -9,8 +9,9 @@ Namespace Data
     Inherits IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Информация о системе.
+    ''' Получает информацию о системе.
     ''' </summary>
-     ReadOnly Property SystemInfo As ISystemInfo
+    ''' <returns>Информация о системе.</returns>
+    Function GetSystemInfo() As ISystemInfo
   End Interface
-End NameSpace
+End Namespace

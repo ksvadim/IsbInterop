@@ -10,14 +10,13 @@ Namespace Tasks.Wrappers
     Implements IControlJob
 
     ''' <summary>
-    ''' Информация об объекте.
+    ''' Получить информацию об объекте.
     ''' </summary>
-    Public Overrides ReadOnly Property Info As IControlJobInfo
-      Get
-        Dim rcwIControlJobInfo = Me.GetRcwObjectInfo()
-        Return New ControlJobInfo(rcwIControlJobInfo, Scope)
-      End Get
-    End Property
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As IControlJobInfo
+      Dim rcwIControlJobInfo = Me.GetRcwObjectInfo()
+      Return New ControlJobInfo(rcwIControlJobInfo, Scope)
+    End Function
 
     ''' <summary>
     ''' Конструктор.

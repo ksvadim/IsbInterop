@@ -11,30 +11,6 @@ namespace IsbInterop.EDocuments.Wrappers
   internal class EDocument : EdmsObject<IEDocumentInfo>, IEDocument
   {
     /// <summary>
-    /// Информация об объекте.
-    /// </summary>
-    public override IEDocumentInfo Info
-    {
-      get
-      {
-        var rcwIEDocumentInfo = GetRcwObjectInfo();
-        return new EDocumentInfo(rcwIEDocumentInfo, Scope);
-      }
-    }
-
-    /// <summary>
-    /// Список версий документов.
-    /// </summary>
-    public IList<IEDocumentVersion> Versions
-    {
-      get
-      {
-        var rcwVersions = GetRcwProperty("Versions");
-        return new List<IEDocumentVersion>(rcwVersions, Scope);
-      }
-    }
-
-    /// <summary>
     /// Экспортирует электронный документ.
     /// </summary>
     /// <param name="versionNumber">Номер версии.</param>
@@ -49,6 +25,26 @@ namespace IsbInterop.EDocuments.Wrappers
     {
       InvokeRcwInstanceMethod("Export", new object[] { versionNumber, fileName,
         needLock, needCompress, inExtendedFormat, (int)signatureType });
+    }
+
+    /// <summary>
+    /// Получить информацию об объекте.
+    /// </summary>
+    /// <returns>Информация об объекте</returns>
+    public override IEDocumentInfo GetInfo()
+    {
+      var rcwIEDocumentInfo = this.GetRcwObjectInfo();
+      return new EDocumentInfo(rcwIEDocumentInfo, this.Scope);
+    }
+
+    /// <summary>
+    /// Получить cписок версий документа.
+    /// </summary>
+    /// <returns>Список версий документа.</returns>
+    public IList<IEDocumentVersion> GetVersions()
+    {
+      var rcwVersions = GetRcwProperty("Versions");
+      return new List<IEDocumentVersion>(rcwVersions, Scope);
     }
 
     /// <summary>

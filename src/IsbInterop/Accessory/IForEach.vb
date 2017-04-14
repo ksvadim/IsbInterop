@@ -17,9 +17,10 @@
     ReadOnly Property EOF As Boolean
 
     ''' <summary>
-    ''' Значение текущего элемента списка.
+    ''' Получает значение текущего элемента.
     ''' </summary>
-    ReadOnly Property Value As T
+    ''' <returns>Значение элемента.</returns>
+    Function GetValue() As T
 
     ''' <summary>
     ''' Перейти к следующему объекту набора данных.

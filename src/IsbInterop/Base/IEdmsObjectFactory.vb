@@ -23,14 +23,14 @@ Namespace Base
     Sub DeleteById(id As Integer)
 
     ''' <summary>
-    ''' Возвращает историю работы с объектом.
+    ''' Получает историю работы с объектом.
     ''' </summary>
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Объект IComponent.</returns>
     ''' <remarks>
-    ''' Возвращает историю работы с объектом типа Kind с идентификатором ID.
+    ''' Получает историю работы с объектом типа Kind с идентификатором ID.
     ''' Если такого объекта не существует, то будет сгенерировано исключение.
     ''' </remarks>
-    Function History(id As Integer) As IComponent
+    Function GetHistory(id As Integer) As IComponent
   End Interface
 End Namespace

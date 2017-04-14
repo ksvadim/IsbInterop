@@ -50,7 +50,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.EDocumentFactory;
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
         edocumentFactory.DeleteById(this.firstTestDocumentId);
         this.firstTestDocumentId = 0;
         edocumentFactory.DeleteById(this.secondTestDocumentId);
@@ -64,7 +64,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.ReferencesFactory;
+        var referencesFactory = scope.Application.GetReferencesFactory();
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
 
         var referenceInfo = referenceFactory.GetObjectInfo(this.tempOrganizationId);
@@ -79,7 +79,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var edocumentFactory = scope.Application.EDocumentFactory;
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
         var edocumentInfo = edocumentFactory.GetObjectInfo(this.firstTestDocumentId);
 
         Assert.NotNull(edocumentInfo);
@@ -92,16 +92,16 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var searchFactory = scope.Application.SearchFactory;
+        var searchFactory = scope.Application.GetSearchFactory();
         var searchDescription = searchFactory.Load("BOUND_EDOCUMENT_SEARCH");
-        var edocumentFactory = scope.Application.EDocumentFactory;
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
         var edocumentInfo = edocumentFactory.GetObjectInfo(this.firstTestDocumentId);
 
         searchDescription.InitializeSearch(edocumentInfo);
         var documentInfos = searchDescription.Execute<IEDocumentInfo>();
         while (!documentInfos.EOF)
         {
-          var foundDocument = documentInfos.Value;
+          var foundDocument = documentInfos.GetValue();
           Assert.NotNull(foundDocument);
           documentInfos.Next();
         }

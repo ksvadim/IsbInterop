@@ -10,14 +10,13 @@ Namespace ComponentTokens.Wrappers
     Implements IComponentToken
 
     ''' <summary>
-    ''' Информация об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
-    Public Overrides ReadOnly Property Info As IComponentTokenInfo
-      Get
-        Dim rcwIComponentTokenInfo = GetRcwObjectInfo()
-        Return New ComponentTokenInfo(rcwIComponentTokenInfo, Scope)
-      End Get
-    End Property
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As IComponentTokenInfo
+      Dim rcwIComponentTokenInfo = GetRcwObjectInfo()
+      Return New ComponentTokenInfo(rcwIComponentTokenInfo, Scope)
+    End Function
 
     ''' <summary>
     ''' Конструктор.

@@ -53,13 +53,12 @@ Namespace Scripts.Wrappers
     End Function
 
     ''' <summary>
-    ''' Информация об объекте.
+    ''' Получить информацию об объекте.
     ''' </summary>
-    Public Overrides ReadOnly Property Info As IObjectInfo
-      Get
-        Throw New NotSupportedException("This method is not supported by IS-Builder API.")
-      End Get
-    End Property
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As IObjectInfo
+      Throw New NotSupportedException("This method is not supported by IS-Builder API.")
+    End Function
 
     ''' <summary>
     ''' Получить параметры.

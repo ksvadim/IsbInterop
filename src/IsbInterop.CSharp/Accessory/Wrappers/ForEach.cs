@@ -16,17 +16,15 @@
     public bool EOF => (bool)GetRcwProperty("EOF");
 
     /// <summary>
-    /// Значение текущего элемента списка.
+    /// Получает значение текущего элемента списка.
     /// </summary>
-    public TI Value
+    /// <returns>Значение текущего элемента списка.</returns>
+    public TI GetValue()
     {
-      get
-      {
-        var rcwObject = GetRcwProperty("Value");
-        var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
+      var rcwObject = GetRcwProperty("Value");
+      var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);
 
-        return value;
-      }
+      return value;
     }
 
     /// <summary>
@@ -34,7 +32,7 @@
     /// </summary>
     public void Next()
     {
-      this.InvokeRcwInstanceMethod("Next");
+      InvokeRcwInstanceMethod("Next");
     }
 
     /// <summary>
@@ -42,7 +40,7 @@
     /// </summary>
     public void Reset()
     {
-      this.InvokeRcwInstanceMethod("Reset");
+      InvokeRcwInstanceMethod("Reset");
     }
 
     /// <summary>

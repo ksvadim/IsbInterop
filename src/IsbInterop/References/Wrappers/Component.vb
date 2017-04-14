@@ -24,16 +24,6 @@ Namespace References.Wrappers
     End Property
 
     ''' <summary>
-    ''' Информация об объекте.
-    ''' </summary>
-    Public Overrides ReadOnly Property Info As IObjectInfo
-      Get
-        Dim rcwIObjectInfo = GetRcwObjectInfo()
-        Return New ObjectInfo(rcwIObjectInfo, Scope)
-      End Get
-    End Property
-
-    ''' <summary>
     ''' Количество записей в наборе данных.
     ''' </summary>
     Public ReadOnly Property RecordCount As Integer Implements IComponent.RecordCount
@@ -83,6 +73,15 @@ Namespace References.Wrappers
     Public Function GetComponentForm() As IForm Implements IComponent.GetComponentForm
       Dim rcwForm = GetRcwProperty("ComponentForm")
       Return New Form(rcwForm, Scope)
+    End Function
+
+    ''' <summary>
+    ''' Получить информацию об объекте.
+    ''' </summary>
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As IObjectInfo
+      Dim rcwIObjectInfo = GetRcwObjectInfo()
+      Return New ObjectInfo(rcwIObjectInfo, Scope)
     End Function
 
     ''' <summary>

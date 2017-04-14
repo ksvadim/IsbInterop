@@ -26,16 +26,15 @@
     End Property
 
     ''' <summary>
-    ''' Значение текущего элемента списка.
+    ''' Получить значение текущего элемента списка.
     ''' </summary>
-    Public ReadOnly Property Value As TI Implements IForEach(Of TI).Value
-      Get
-        Dim curentValueRcw = Me.GetRcwProperty("Value")
-        Dim itemValue = IsbObjectResolver.Resolve(Of TI)(curentValueRcw, Scope)
+    ''' <returns>Значение текущего элемента списка.</returns>
+    Public Function GetValue() As TI Implements IForEach(Of TI).GetValue
+      Dim curentValueRcw = Me.GetRcwProperty("Value")
+      Dim value = IsbObjectResolver.Resolve(Of TI)(curentValueRcw, Scope)
 
-        Return itemValue
-      End Get
-    End Property
+      Return value
+    End Function
 
     ''' <summary>
     ''' Перейти к следующему объекту набора данных.

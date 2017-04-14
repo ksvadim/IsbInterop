@@ -8,15 +8,13 @@ namespace IsbInterop.Tasks.Wrappers
   internal class Notice : CustomJob<INoticeInfo>, INotice
   {
     /// <summary>
-    /// Информация об объекте.
+    /// Получить информацию об объекте.
     /// </summary>
-    public override INoticeInfo Info
+    /// <returns>Информация об объекте.</returns>
+    public override INoticeInfo GetInfo()
     {
-      get
-      {
-        var rcwINoticeInfo = GetRcwObjectInfo();
-        return new NoticeInfo(rcwINoticeInfo, Scope);
-      }
+      var rcwINoticeInfo = GetRcwObjectInfo();
+      return new NoticeInfo(rcwINoticeInfo, Scope);
     }
 
     /// <summary>

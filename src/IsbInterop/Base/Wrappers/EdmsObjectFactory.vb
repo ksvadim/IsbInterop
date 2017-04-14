@@ -27,15 +27,15 @@ Namespace Base.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Возвращает историю работы с объектом.
+    ''' Получает историю работы с объектом.
     ''' </summary>
     ''' <param name="id">ИД объекта.</param>
     ''' <returns>Объект IComponent.</returns>
     ''' <remarks>
-    ''' Возвращает историю работы с объектом типа Kind с идентификатором ID.
+    ''' Получает историю работы с объектом типа Kind с идентификатором ID.
     ''' Если такого объекта не существует, то будет сгенерировано исключение.
     ''' </remarks>
-    Public Function History(id As Integer) As IComponent Implements IEdmsObjectFactory(Of T, TI).History
+    Public Function GetHistory(id As Integer) As IComponent Implements IEdmsObjectFactory(Of T, TI).GetHistory
       Dim rcwComponent = GetRcwProperty("History", id)
       Return New Component(rcwComponent, Scope)
     End Function

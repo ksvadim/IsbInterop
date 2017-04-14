@@ -21,18 +21,6 @@ namespace IsbInterop.Data.Wrappers
     /// </summary>
     public TDataSetState State => (TDataSetState)GetRcwProperty("State");
 
-    /// <summary>
-    /// Компонента.
-    /// </summary>
-    public IComponent GetComponent
-    {
-      get
-      {
-        var requisiteRcw = GetRcwProperty("Component");
-        return new Component(requisiteRcw, Scope);
-      }
-    }
-
     #endregion
 
     #region Методы
@@ -59,6 +47,16 @@ namespace IsbInterop.Data.Wrappers
     public void CloseRecord()
     {
       InvokeRcwInstanceMethod("CloseRecord");
+    }
+
+    /// <summary>
+    /// Получает компоненту.
+    /// </summary>
+    /// <returns>Компонента.</returns>
+    public IComponent GetComponent()
+    {
+      var requisiteRcw = GetRcwProperty("Component");
+      return new Component(requisiteRcw, Scope);
     }
 
     /// <summary>

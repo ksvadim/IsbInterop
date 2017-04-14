@@ -35,7 +35,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.ReferencesFactory;
+        var referencesFactory = scope.Application.GetReferencesFactory();
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         var reference = referenceFactory.GetObjectById(tempOrganizationId);
         reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note).Value = "Punch";
@@ -60,7 +60,7 @@ namespace IsbInterop.Tests.Integration
         var context = ContextFactory.CreateContext();
         using (var scope = context.CreateScope())
         {
-          var referencesFactory = scope.Application.ReferencesFactory;
+          var referencesFactory = scope.Application.GetReferencesFactory();
           var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
           var reference = referenceFactory.GetObjectById(recodId);
           reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note).Value = "Pinch";

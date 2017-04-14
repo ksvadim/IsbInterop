@@ -8,15 +8,13 @@ namespace IsbInterop.ComponentTokens.Wrappers
   internal class ComponentToken : EdmsObject<IComponentTokenInfo>, IComponentToken
   {
     /// <summary>
-    /// Информация об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
-    public override IComponentTokenInfo Info
+    /// <returns>Информация об объекте.</returns>
+    public override IComponentTokenInfo GetInfo()
     {
-      get
-      {
-        var rcwIComponentTokenInfo = GetRcwObjectInfo();
-        return new ComponentTokenInfo(rcwIComponentTokenInfo, Scope);
-      }
+      var rcwIComponentTokenInfo = GetRcwObjectInfo();
+      return new ComponentTokenInfo(rcwIComponentTokenInfo, Scope);
     }
 
     /// <summary>

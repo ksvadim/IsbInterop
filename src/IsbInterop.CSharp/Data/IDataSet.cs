@@ -19,11 +19,6 @@ namespace IsbInterop.Data
     TDataSetState State { get; }
 
     /// <summary>
-    /// Компонента.
-    /// </summary>
-    IComponent GetComponent { get; }
-
-    /// <summary>
     /// Применяет изменения.
     /// </summary>
     /// <remarks>
@@ -35,6 +30,12 @@ namespace IsbInterop.Data
     /// Метод инициирует процесс «Сохранение записи справочника».
     /// </remarks>
     void ApplyUpdates();
+
+    /// <summary>
+    /// Получает компоненту.
+    /// </summary>
+    /// <returns>Компонента.</returns>
+    IComponent GetComponent();
 
     /// <summary>
     /// Получает реквизит.

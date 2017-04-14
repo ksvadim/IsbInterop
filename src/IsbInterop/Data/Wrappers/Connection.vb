@@ -11,14 +11,13 @@ Namespace Data.Wrappers
     Implements IConnection
 
     ''' <summary>
-    ''' Информация о системе.
+    ''' Получает информацию о системе.
     ''' </summary>
-    Public ReadOnly Property SystemInfo As ISystemInfo Implements IConnection.SystemInfo
-      Get
-        Dim rcwSystemInfo = GetRcwProperty("SystemInfo")
-        Return New SystemInfo(rcwSystemInfo, Scope)
-      End Get
-    End Property
+    ''' <returns>Информация о системе.</returns>
+    Public Function GetSystemInfo() As ISystemInfo Implements IConnection.GetSystemInfo
+      Dim rcwSystemInfo = GetRcwProperty("SystemInfo")
+      Return New SystemInfo(rcwSystemInfo, Scope)
+    End Function
 
     ''' <summary>
     ''' Конструктор.

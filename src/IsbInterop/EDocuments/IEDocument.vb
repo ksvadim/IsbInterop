@@ -3,17 +3,12 @@ Imports IsbInterop.Base
 Imports IsbInterop.DataTypes.Enumerable
 
 Namespace EDocuments
+
   ''' <summary>
   ''' Электронный документ.
   ''' </summary>
   Public Interface IEDocument
     Inherits IEdmsObject(Of IEDocumentInfo)
-
-    ''' <summary>
-    ''' Список версий документов.
-    ''' </summary>
-    ''' <returns>IsbObjectList.</returns>
-    ReadOnly Property Versions As IList(Of IEDocumentVersion)
 
     ''' <summary>
     ''' Экспортирует электронный документ.
@@ -27,6 +22,12 @@ Namespace EDocuments
     Sub Export(versionNumber As Integer, fileName As String, Optional needLock As Boolean = True,
                Optional needCompress As Boolean = True, Optional inExtendedFormat As Boolean = True,
                Optional signatureType As TExportedSignaturesType = TExportedSignaturesType.estAll)
+
+    ''' <summary>
+    ''' Получить Список версий документов.
+    ''' </summary>
+    ''' <returns>IsbObjectList.</returns>
+    Function GetVersions() As IList(Of IEDocumentVersion)
 
     ''' <summary>
     ''' Импортирует версию из файла.

@@ -21,18 +21,18 @@
     void Add(string name, object value);
 
     /// <summary>
+    /// Получает значение элемента по имени.
+    /// </summary>
+    /// <param name="name">Имя искомого элемента.</param>
+    /// <returns>Значение искомого элемента.</returns>
+    T GetValueByName(string name);
+
+    /// <summary>
     /// Получает значение элемента по индексу.
     /// </summary>
     /// <param name="index">Индекс элемента в списке.</param>
     /// <returns>Значение элемента с указанным индексом.</returns>
     T GetValues(int index);
-
-    /// <summary>
-    /// Получает значение элемента по имени.
-    /// </summary>
-    /// <param name="name">Имя искомого элемента.</param>
-    /// <returns>Значение искомого элемента.</returns>
-    T ValueByName(string name);
 
     /// <summary>
     /// Устанавливает значение элемента.

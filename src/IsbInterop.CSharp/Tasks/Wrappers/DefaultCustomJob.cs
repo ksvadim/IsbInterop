@@ -9,15 +9,13 @@ namespace IsbInterop.Tasks.Wrappers
   internal class DefaultCustomJob : CustomJob<ICustomJobInfo>
   {
     /// <summary>
-    /// Информация об объекте.
+    /// Получить информацию об объекте.
     /// </summary>
-    public override ICustomJobInfo Info
+    /// <returns>Информация об объекте.</returns>
+    public override ICustomJobInfo GetInfo()
     {
-      get
-      {
-        var rcwIJobInfo = GetRcwObjectInfo();
-        return new CustomJobInfo(rcwIJobInfo, Scope);
-      }
+      var rcwIJobInfo = GetRcwObjectInfo();
+      return new CustomJobInfo(rcwIJobInfo, Scope);
     }
 
     /// <summary>

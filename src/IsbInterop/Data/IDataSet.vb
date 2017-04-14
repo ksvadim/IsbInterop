@@ -21,11 +21,6 @@ Namespace Data
     ReadOnly Property State As TDataSetState
 
     ''' <summary>
-    ''' Компонента.
-    ''' </summary>
-    ReadOnly Property Component As IComponent
-
-    ''' <summary>
     ''' Применяет изменения.
     ''' </summary>
     ''' <remarks>
@@ -37,6 +32,12 @@ Namespace Data
     ''' Метод инициирует процесс «Сохранение записи справочника».
     ''' </remarks>
     Sub ApplyUpdates()
+
+    ''' <summary>
+    ''' Получает компоненту.
+    ''' </summary>
+    ''' <returns>Компонента.</returns>
+    Function GetComponent() As IComponent
 
     ''' <summary>
     ''' Получает реквизит.

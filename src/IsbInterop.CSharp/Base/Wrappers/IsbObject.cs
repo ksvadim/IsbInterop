@@ -55,26 +55,9 @@ namespace IsbInterop.Base.Wrappers
     public TCompType ComponentType => (TCompType)GetRcwProperty("ComponentType");
 
     /// <summary>
-    /// Форма-карточка текущего представления объекта.
-    /// </summary>
-    public IForm Form
-    {
-      get
-      {
-        var rcwForm = GetRcwProperty("Form");
-        return new Form(rcwForm, Scope);
-      }
-    }
-
-    /// <summary>
     /// ИД.
     /// </summary>
     public int Id => (int)GetRcwProperty("ID");
-
-    /// <summary>
-    /// Информация об объекте.
-    /// </summary>
-    public abstract TI Info { get; }
 
     /// <summary>
     /// Имя объекта.
@@ -148,6 +131,16 @@ namespace IsbInterop.Base.Wrappers
     }
 
     /// <summary>
+    /// Получает форму-карточку текущего представления объекта.
+    /// </summary>
+    /// <returns>Форма-карточка.</returns>
+    public IForm GetForm()
+    {
+      var rcwForm = GetRcwProperty("Form");
+      return new Form(rcwForm, Scope);
+    }
+
+    /// <summary>
     /// Получает параметры объекта.
     /// </summary>
     /// <typeparam name="TP">Тип параметра.</typeparam>
@@ -157,6 +150,12 @@ namespace IsbInterop.Base.Wrappers
       var rcwParams = GetRcwProperty("Params");
       return new List<TP>(rcwParams, Scope);
     }
+
+    /// <summary>
+    /// Получает информацию об объекте.
+    /// </summary>
+    /// <returns>Информация об объекте.</returns>
+    public abstract TI GetInfo();
 
     /// <summary>
     /// Получает реквизит.

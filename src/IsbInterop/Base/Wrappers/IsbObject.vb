@@ -33,16 +33,6 @@ Namespace Base.Wrappers
     End Property
 
     ''' <summary>
-    ''' Форма-карточка текущего представления объекта.
-    ''' </summary>
-    Public ReadOnly Property Form As IForm Implements IObject(Of TI).Form
-      Get
-        Dim rcwForm = GetRcwProperty("Form")
-        Return New Form(rcwForm, Scope)
-      End Get
-    End Property
-
-    ''' <summary>
     ''' ИД.
     ''' </summary>
     Public ReadOnly Property Id As Integer Implements IObject(Of TI).Id
@@ -50,11 +40,6 @@ Namespace Base.Wrappers
         Return GetRcwProperty("ID")
       End Get
     End Property
-
-    ''' <summary>
-    ''' Информация об объекте.
-    ''' </summary>
-    Public MustOverride ReadOnly Property Info As TI Implements IObject(Of TI).Info
 
     ''' <summary>
     ''' Имя объекта.
@@ -136,6 +121,15 @@ Namespace Base.Wrappers
     End Function
 
     ''' <summary>
+    ''' Получает форму-карточку текущего представления объекта.
+    ''' </summary>
+    ''' <returns>Форма-карточка.</returns>
+    Public Function GetForm() As IForm Implements IObject(Of TI).GetForm
+      Dim rcwForm = GetRcwProperty("Form")
+      Return New Form(rcwForm, Scope)
+    End Function
+
+    ''' <summary>
     ''' Получает параметры объекта.
     ''' </summary>
     ''' <typeparam name="TP">Тип параметров.</typeparam>
@@ -144,6 +138,12 @@ Namespace Base.Wrappers
       Dim rcwParams = GetRcwProperty("Params")
       Return New Accessory.Wrappers.List(Of TP)(rcwParams, Scope)
     End Function
+
+    ''' <summary>
+    ''' Получает информацию об объекте.
+    ''' </summary>
+    ''' <returns>Информация об объекте.</returns>
+    Public MustOverride Function GetInfo() As TI Implements IObject(Of TI).GetInfo
 
     ''' <summary>
     ''' Получает реквизит набора данных.

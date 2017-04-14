@@ -13,26 +13,6 @@ Namespace EDocuments.Wrappers
     Implements IEDocument
 
     ''' <summary>
-    ''' Информация об объекте.
-    ''' </summary>
-    Public Overrides ReadOnly Property Info As IEDocumentInfo
-      Get
-        Dim rcwIEDocumentInfo = GetRcwObjectInfo()
-        Return New EDocumentInfo(rcwIEDocumentInfo, Scope)
-      End Get
-    End Property
-
-    ''' <summary>
-    ''' Список версий документов.
-    ''' </summary>
-    Public ReadOnly Property Versions As IList(Of IEDocumentVersion) Implements IEDocument.Versions
-      Get
-        Dim rcwVersions = GetRcwProperty("Versions")
-        Return New List(Of IEDocumentVersion)(rcwVersions, Scope)
-      End Get
-    End Property
-
-    ''' <summary>
     ''' Экспортирует электронный документ.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии.</param>
@@ -46,6 +26,24 @@ Namespace EDocuments.Wrappers
                       Optional signatureType As TExportedSignaturesType = TExportedSignaturesType.estAll) Implements IEDocument.Export
       InvokeRcwInstanceMethod("Export", New Object() {versionNumber, fileName, needLock, needCompress, inExtendedFormat, CInt(signatureType)})
     End Sub
+
+    ''' <summary>
+    ''' Получить информацию об объекте.
+    ''' </summary>
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As IEDocumentInfo
+      Dim rcwIEDocumentInfo = GetRcwObjectInfo()
+      Return New EDocumentInfo(rcwIEDocumentInfo, Scope)
+    End Function
+
+    ''' <summary>
+    ''' Получить список версий документа.
+    ''' </summary>
+    ''' <returns>Список версий документа.</returns>
+    Public Function GetVersions() As IList(Of IEDocumentVersion) Implements IEDocument.GetVersions
+      Dim rcwVersions = GetRcwProperty("Versions")
+      Return New List(Of IEDocumentVersion)(rcwVersions, Scope)
+    End Function
 
     ''' <summary>
     ''' Импортирует версию из файла.

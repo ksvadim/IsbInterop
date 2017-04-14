@@ -45,7 +45,7 @@
     ''' </summary>
     ''' <param name="name">Имя элемента.</param>
     ''' <returns>Значение элемента.</returns>
-    Public Function ValueByName(name As String) As TI Implements IList(Of TI).ValueByName
+    Public Function GetValueByName(name As String) As TI Implements IList(Of TI).GetValueByName
       Dim rcwObject = InvokeRcwInstanceMethod("ValueByName", New Object() {name})
       Return IsbObjectResolver.Resolve(Of TI)(rcwObject, Scope)
     End Function

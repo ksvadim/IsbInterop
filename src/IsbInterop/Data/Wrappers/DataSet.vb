@@ -31,17 +31,6 @@ Namespace Data.Wrappers
       End Get
     End Property
 
-    ''' <summary>
-    ''' Компонента.
-    ''' </summary>
-    Public ReadOnly Property Component As IComponent Implements IDataSet.Component
-      Get
-        Dim requisiteRcw = GetRcwProperty("Component")
-        Return New Component(requisiteRcw, Scope)
-      End Get
-    End Property
-
-
 #End Region
 
 #Region "Методы"
@@ -66,6 +55,15 @@ Namespace Data.Wrappers
     Public Sub CloseRecord() Implements IDataSet.CloseRecord
       InvokeRcwInstanceMethod("CloseRecord")
     End Sub
+
+    ''' <summary>
+    ''' Получает компоненту.
+    ''' </summary>
+    ''' <returns>Компонента.</returns>
+    Public Function GetComponent() As IComponent Implements IDataSet.GetComponent
+      Dim requisiteRcw = GetRcwProperty("Component")
+      Return New Component(requisiteRcw, Scope)
+    End Function
 
     ''' <summary>
     ''' Получает реквизит.

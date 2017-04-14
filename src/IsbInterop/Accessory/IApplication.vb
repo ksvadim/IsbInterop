@@ -10,6 +10,7 @@ Imports IsbInterop.ServiceForms
 Imports IsbInterop.Tasks
 
 Namespace Accessory
+
   ''' <summary>
   ''' Приложение.
   ''' </summary>
@@ -21,55 +22,10 @@ Namespace Accessory
     ReadOnly Property PID As Integer
 
     ''' <summary>
-    ''' Фабрика вариантов запуска.
+    ''' Получает фабрику вариантов запуска.
     ''' </summary>
-    ReadOnly Property ComponentTokenFactory As IComponentTokenFactory
-
-    ''' <summary>
-    ''' Объект-соединение, посредством которого приложение связано с SQL-сервером.
-    ''' </summary>
-    ReadOnly Property Connection As IConnection
-
-    ''' <summary>
-    ''' Фабрика электронных документов.
-    ''' </summary>
-    ReadOnly Property EDocumentFactory As IEDocumentFactory
-
-    ''' <summary>
-    ''' Фабрика папок.
-    ''' </summary>
-    ReadOnly Property FolderFactory As IFolderFactory
-
-    ''' <summary>
-    ''' Фабрика заданий.
-    ''' </summary>
-    ''' <returns>Фабрика заданий.</returns>
-    ReadOnly Property JobFactory As IJobFactory
-
-    ''' <summary>
-    ''' Фабрика типов справочников.
-    ''' </summary>
-    ReadOnly Property ReferencesFactory As IReferencesFactory
-
-    ''' <summary>
-    ''' Фабрика сценариев.
-    ''' </summary>
-    ReadOnly Property ScriptFactory As IScriptFactory
-
-    ''' <summary>
-    ''' Фабрика поисков.
-    ''' </summary>
-    ReadOnly Property SearchFactory As ISearchFactory
-
-    ''' <summary>
-    ''' Фабрика служебных объектов.
-    ''' </summary>
-    ReadOnly Property ServiceFactory As IServiceFactory
-
-    ''' <summary>
-    ''' Фабрика задач.
-    ''' </summary>
-    ReadOnly Property TaskFactory As ITaskFactory
+    ''' <returns>Фабрика вариантов запуска.</returns>
+    Function GetComponentTokenFactory() As IComponentTokenFactory
 
     ''' <summary>
     ''' Создает блокировку.
@@ -78,6 +34,60 @@ Namespace Accessory
     ''' <param name="objectId">ИД объекта.</param>
     ''' <returns>Объект-блокировка.</returns>
     Function CreateLock(objectType As TCompType, objectId As Integer) As ILock
+
+    ''' <summary>
+    ''' Получает объект-соединение, посредством которого приложение связано с SQL-сервером.
+    ''' </summary>
+    ''' <returns>Объект-соединение.</returns>
+    Function GetConnection() As IConnection
+
+    ''' <summary>
+    ''' Получает фабрику электронных документов.
+    ''' </summary>
+    ''' <returns></returns>
+    Function GetEDocumentFactory() As IEDocumentFactory
+
+    ''' <summary>
+    ''' Получает фабрику папок.
+    ''' </summary>
+    ''' <returns>Фабрика папок.</returns>
+    Function GetFolderFactory() As IFolderFactory
+
+    ''' <summary>
+    ''' Получает фабрику заданий.
+    ''' </summary>
+    ''' <returns>Фабрика заданий.</returns>
+    Function GetJobFactory() As IJobFactory
+
+    ''' <summary>
+    ''' Получает фабрику типов справочников.
+    ''' </summary>
+    ''' <returns>Фабрика типов справочников.</returns>
+    Function GetReferencesFactory() As IReferencesFactory
+
+    ''' <summary>
+    ''' Получает фабрику сценариев.
+    ''' </summary>
+    ''' <returns>Фабрика сценариев.</returns>
+    Function GetScriptFactory() As IScriptFactory
+
+    ''' <summary>
+    ''' Получает фабрику поисков.
+    ''' </summary>
+    ''' <returns>Фабрика поисков.</returns>
+    Function GetSearchFactory() As ISearchFactory
+
+    ''' <summary>
+    ''' Получает фабрику служебных объектов.
+    ''' </summary>
+    ''' <returns>Фабрика служебных объектов.</returns>
+    Function GetServiceFactory() As IServiceFactory
+
+    ''' <summary>
+    ''' Получает фабрику задач.
+    ''' </summary>
+    ''' <returns>Фабрика задач.</returns>
+    Function GetTaskFactory() As ITaskFactory
 
     ''' <summary>
     ''' Завершает работу с приложением.

@@ -21,19 +21,9 @@ Namespace Base
     ReadOnly Property ComponentType As TCompType
 
     ''' <summary>
-    ''' Форма-карточка текущего представления объекта.
-    ''' </summary>
-    ReadOnly Property Form As IForm
-
-    ''' <summary>
     ''' ИД.
     ''' </summary>
     ReadOnly Property Id As Integer
-
-    ''' <summary>
-    ''' Информация об объекте.
-    ''' </summary>
-    ReadOnly Property Info As T
 
     ''' <summary>
     ''' Имя объекта.
@@ -84,11 +74,23 @@ Namespace Base
     Function GetEnvironment(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP)
 
     ''' <summary>
+    ''' Получает форму-карточку текущего представления объекта.
+    ''' </summary>
+    ''' <returns>Форма-карточка.</returns>
+    Function GetForm() As IForm
+
+    ''' <summary>
     ''' Получает параметры объекта.
     ''' </summary>
     ''' <typeparam name="TP">Тип параметров.</typeparam>
     ''' <returns>Список параметров объекта.</returns>
     Function GetParams(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP)
+
+    ''' <summary>
+    ''' Получает информацию об объекте.
+    ''' </summary>
+    ''' <returns>Информация об объекте.</returns>
+    Function GetInfo() As T
 
     ''' <summary>
     ''' Получает реквизит набора данных.

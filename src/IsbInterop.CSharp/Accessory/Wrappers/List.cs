@@ -29,7 +29,7 @@ namespace IsbInterop.Accessory.Wrappers
     /// <param name="value">Значение элемента.</param>
     public void Add(string name, object value)
     {
-      this.InvokeRcwInstanceMethod("Add", new [] { name, value });
+      InvokeRcwInstanceMethod("Add", new [] { name, value });
     }
 
     /// <summary>
@@ -44,11 +44,11 @@ namespace IsbInterop.Accessory.Wrappers
     }
 
     /// <summary>
-    /// Получает значение элемента по имени.
+    /// Получает значение по имени.
     /// </summary>
     /// <param name="name">Имя искомого элемента.</param>
-    /// <returns>Значение искомого элемента.</returns>
-    public TI ValueByName(string name)
+    /// <returns>Имя искомого элемента.</returns>
+    public TI GetValueByName(string name)
     {
       var rcwObject = InvokeRcwInstanceMethod("ValueByName", new object[] { name });
       var value = IsbObjectResolver.Resolve<TI>(rcwObject, Scope);

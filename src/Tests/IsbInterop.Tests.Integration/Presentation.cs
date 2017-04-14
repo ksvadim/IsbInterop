@@ -28,7 +28,7 @@ namespace IsbInterop.Tests.Integration
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
-        var referencesFactory = scope.Application.ReferencesFactory;
+        var referencesFactory = scope.Application.GetReferencesFactory();
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
         var historyComponent = referenceFactory.GetHistory(tempOrganizationId);
         var form = historyComponent.GetComponentForm();

@@ -8,15 +8,13 @@ namespace IsbInterop.Folders.Wrappers
   internal class Folder : EdmsObject<IFolderInfo>, IFolder
   {
     /// <summary>
-    /// Информация об объекте.
+    /// Получить информацию об объекте.
     /// </summary>
-    public override IFolderInfo Info
+    /// <returns>Информация об объекте.</returns>
+    public override IFolderInfo GetInfo()
     {
-      get
-      {
-        var rcwIFolderInfo = GetRcwObjectInfo();
-        return new FolderInfo(rcwIFolderInfo, Scope);
-      }
+      var rcwIFolderInfo = GetRcwObjectInfo();
+      return new FolderInfo(rcwIFolderInfo, Scope);
     }
 
     /// <summary>

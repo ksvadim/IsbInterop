@@ -9,15 +9,13 @@ namespace IsbInterop.Data.Wrappers
   internal class Connection : IsbComObjectWrapper, IConnection
   {
     /// <summary>
-    /// Информация о системе.
+    /// Получает информацию о системе.
     /// </summary>
-    public ISystemInfo SystemInfo
+    /// <returns>Информация о системе.</returns>
+    public ISystemInfo GetSystemInfo()
     {
-      get
-      {
-        var rcwSystemInfo = GetRcwProperty("SystemInfo");
-        return new SystemInfo(rcwSystemInfo, Scope);
-      }
+      var rcwSystemInfo = GetRcwProperty("SystemInfo");
+      return new SystemInfo(rcwSystemInfo, Scope);
     }
 
     /// <summary>

@@ -33,7 +33,7 @@
     ''' </summary>
     ''' <param name="name">Имя элемента.</param>
     ''' <returns>Значение элемента.</returns>
-    Function ValueByName(name As String) As T
+    Function GetValueByName(name As String) As T
 
     ''' <summary>
     ''' Установливает значение элемента.

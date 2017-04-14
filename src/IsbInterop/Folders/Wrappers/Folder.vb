@@ -10,14 +10,13 @@ Namespace Folders.Wrappers
     Implements IFolder
 
     ''' <summary>
-    ''' Информация об объекте.
+    ''' Получить информацию об объекте.
     ''' </summary>
-    Public Overrides ReadOnly Property Info As IFolderInfo
-      Get
-        Dim rcwIFolderInfo = GetRcwObjectInfo()
-        Return New FolderInfo(rcwIFolderInfo, Scope)
-      End Get
-    End Property
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As IFolderInfo
+      Dim rcwIFolderInfo = Me.GetRcwObjectInfo()
+      Return New FolderInfo(rcwIFolderInfo, Scope)
+    End Function
 
     ''' <summary>
     ''' Конструктор.

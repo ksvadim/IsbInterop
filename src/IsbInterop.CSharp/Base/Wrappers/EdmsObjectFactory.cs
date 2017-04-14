@@ -28,15 +28,15 @@ namespace IsbInterop.Base.Wrappers
     }
 
     /// <summary>
-    /// Возвращает историю работы с объектом.
+    /// Получает историю работы с объектом.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
-    /// <returns>Объект IComponent.</returns>
+    /// <returns>История работы с объектом.</returns>
     /// <remarks>
-    /// Возвращает историю работы с объектом типа Kind с идентификатором ID.
+    /// Получает историю работы с объектом типа Kind с идентификатором ID.
     /// Если такого объекта не существует, то будет сгенерировано исключение.
     /// </remarks>
-    public IComponent History(int id)
+    public IComponent GetHistory(int id)
     {
       var rcwComponent = GetRcwProperty("History", id);
       return new Component(rcwComponent, Scope);

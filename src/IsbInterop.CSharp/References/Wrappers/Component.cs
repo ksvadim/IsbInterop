@@ -21,18 +21,6 @@ namespace IsbInterop.References.Wrappers
     }
 
     /// <summary>
-    /// Информация об объекте.
-    /// </summary>
-    public override IObjectInfo Info
-    {
-      get
-      {
-        var rcwIObjectInfo = GetRcwObjectInfo();
-        return new ObjectInfo(rcwIObjectInfo, Scope);
-      }
-    }
-
-    /// <summary>
     /// Количество записей в наборе данных.
     /// </summary>
     public int RecordCount
@@ -84,6 +72,16 @@ namespace IsbInterop.References.Wrappers
     {
       var rcwForm = this.GetRcwProperty("ComponentForm");
       return new Form(rcwForm, this.Scope);
+    }
+
+    /// <summary>
+    /// Получить информацию об объекте.
+    /// </summary>
+    /// <returns>Информация об объекте.</returns>
+    public override IObjectInfo GetInfo()
+    {
+      var rcwIObjectInfo = GetRcwObjectInfo();
+      return new ObjectInfo(rcwIObjectInfo, Scope);
     }
 
     /// <summary>

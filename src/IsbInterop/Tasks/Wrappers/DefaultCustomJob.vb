@@ -10,14 +10,13 @@ Namespace Tasks.Wrappers
     Inherits CustomJob(Of ICustomJobInfo)
 
     ''' <summary>
-    ''' Информация об объекте.
+    ''' Получить информацию об объекте.
     ''' </summary>
-    Public Overrides ReadOnly Property Info As ICustomJobInfo
-      Get
-        Dim rcwIJobInfo = GetRcwObjectInfo()
-        Return New CustomJobInfo(rcwIJobInfo, Scope)
-      End Get
-    End Property
+    ''' <returns>Информация об объекте.</returns>
+    Public Overrides Function GetInfo() As ICustomJobInfo
+      Dim rcwIJobInfo = GetRcwObjectInfo()
+      Return New CustomJobInfo(rcwIJobInfo, Scope)
+    End Function
 
     ''' <summary>
     ''' Конструктор.
