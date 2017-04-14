@@ -24,6 +24,7 @@ namespace IsbInterop.ComponentTokens.Wrappers
     /// </summary>
     /// <param name="rcwIComponentToken">СOM-объект IComponentToken.</param>
     /// <param name="scope">Область видимости.</param>
-    public ComponentToken(object rcwIComponentToken, IScope scope) : base(rcwIComponentToken, scope) { }
+    public ComponentToken(object rcwIComponentToken, IScope scope)
+      : base(rcwIComponentToken, scope) { }
   }
 }

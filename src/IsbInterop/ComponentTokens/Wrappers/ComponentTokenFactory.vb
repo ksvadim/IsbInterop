@@ -10,7 +10,7 @@ Namespace ComponentTokens.Wrappers
     Implements IComponentTokenFactory
 
     ''' <summary>
-    ''' Запустить компоненту.
+    ''' Запускает компоненту.
     ''' </summary>
     ''' <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     Public Sub Execute(objectInfo As IObjectInfo) Implements IComponentTokenFactory.Execute
@@ -18,7 +18,7 @@ Namespace ComponentTokens.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Запустить компоненту в новом процессе.
+    ''' Запускает компоненту в новом процессе.
     ''' </summary>
     ''' <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     Public Sub ExecuteInNewProcess(objectInfo As IObjectInfo) Implements IComponentTokenFactory.ExecuteInNewProcess
@@ -26,7 +26,7 @@ Namespace ComponentTokens.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Получить объект по его ИД.
+    ''' Получает объект по его ИД.
     ''' </summary>
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>

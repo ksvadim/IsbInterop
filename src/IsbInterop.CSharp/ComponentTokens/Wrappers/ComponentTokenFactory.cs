@@ -9,32 +9,32 @@ namespace IsbInterop.ComponentTokens.Wrappers
   internal class ComponentTokenFactory : EdmsObjectFactory<IComponentToken, IComponentTokenInfo>, IComponentTokenFactory
   {
     /// <summary>
-    /// Запустить компоненту.
+    /// Запускает компоненту.
     /// </summary>
     /// <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     public void Execute(IObjectInfo objectInfo)
     {
-      this.InvokeRcwInstanceMethod("Execute", ((IUnsafeRcwHolder)objectInfo).RcwObject);
+      InvokeRcwInstanceMethod("Execute", ((IUnsafeRcwHolder)objectInfo).RcwObject);
     }
 
     /// <summary>
-    /// Запустить компоненту в новом процессе.
+    /// Запускает компоненту в новом процессе.
     /// </summary>
     /// <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     public void ExecuteInNewProcess(IObjectInfo objectInfo)
     {
-      this.InvokeRcwInstanceMethod("ExecuteInNewProcess", ((IUnsafeRcwHolder)objectInfo).RcwObject);
+      InvokeRcwInstanceMethod("ExecuteInNewProcess", ((IUnsafeRcwHolder)objectInfo).RcwObject);
     }
 
     /// <summary>
-    /// Получить объект по его ИД.
+    /// Получает объект по его ИД.
     /// </summary>
     /// <param name="id">ИД.</param>
     /// <returns>Объект.</returns>
     public override IComponentToken GetObjectById(int id)
     {
-      var rcwComponentToken = this.GetRcwObjectById(id);
-      return new ComponentToken(rcwComponentToken, this.Scope);
+      var rcwComponentToken = GetRcwObjectById(id);
+      return new ComponentToken(rcwComponentToken, Scope);
     }
 
     /// <summary>
@@ -53,6 +53,7 @@ namespace IsbInterop.ComponentTokens.Wrappers
     /// </summary>
     /// <param name="rcwIComponentTokenFactory">COM-объект IComponentTokenFactory.</param>
     /// <param name="scope">Область видимости.</param>
-    public ComponentTokenFactory(object rcwIComponentTokenFactory, IScope scope) : base(rcwIComponentTokenFactory, scope) { }
+    public ComponentTokenFactory(object rcwIComponentTokenFactory, IScope scope)
+      : base(rcwIComponentTokenFactory, scope) { }
   }
 }
