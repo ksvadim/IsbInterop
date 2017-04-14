@@ -10,7 +10,13 @@ Namespace EDocuments
     Inherits IEdmsObject(Of IEDocumentInfo)
 
     ''' <summary>
-    ''' Экспорт электронного документа.
+    ''' Список версий документов.
+    ''' </summary>
+    ''' <returns>IsbObjectList.</returns>
+    ReadOnly Property Versions As IList(Of IEDocumentVersion)
+
+    ''' <summary>
+    ''' Экспортирует электронный документ.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии.</param>
     ''' <param name="fileName">Имя файла.</param>
@@ -23,13 +29,7 @@ Namespace EDocuments
                Optional signatureType As TExportedSignaturesType = TExportedSignaturesType.estAll)
 
     ''' <summary>
-    ''' Получить IsbObjectList версий документов.
-    ''' </summary>
-    ''' <returns>IsbObjectList.</returns>
-    Function GetVersions() As IList(Of IEDocumentVersion)
-
-    ''' <summary>
-    ''' Импортировать версию из файла.
+    ''' Импортирует версию из файла.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии.</param>
     ''' <param name="versionNote">Комментарий к версии.</param>
@@ -37,11 +37,12 @@ Namespace EDocuments
     ''' <param name="needLock">Признак необходимости блокировки.</param>
     ''' <param name="editorCode">Код приложения-редактора.</param>
     ''' <param name="inExtendedFormat">Признак, что выполняется импорт из ESD.</param>
-    Sub ImportFromFile(versionNumber As Integer, versionNote As String, fileName As String, Optional needLock As Boolean = True,
-                       Optional editorCode As String = "", Optional inExtendedFormat As Boolean = True)
+    Sub ImportFromFile(versionNumber As Integer, versionNote As String, fileName As String,
+                       Optional needLock As Boolean = True, Optional editorCode As String = "",
+                       Optional inExtendedFormat As Boolean = True)
 
     ''' <summary>
-    ''' Импортировать подписи из ESD.
+    ''' Импортирует подписи из ESD.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии документа.</param>
     ''' <param name="fileName">Имя файла.</param>
@@ -49,7 +50,7 @@ Namespace EDocuments
     Sub ImportSignsFromExtendedFormat(versionNumber As Integer, fileName As String, checkSigns As Boolean)
 
     ''' <summary>
-    ''' Открыть электронный документ.
+    ''' Открывает электронный документ.
     ''' </summary>
     ''' <param name="openForWrite">Признак открытия для редактирования.</param>
     ''' <param name="versionNumber">Номер версии.</param>

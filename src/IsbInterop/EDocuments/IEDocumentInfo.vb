@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace EDocuments
+
   ''' <summary>
   ''' Информация об электронном документе.
   ''' </summary>

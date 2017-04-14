@@ -9,23 +9,25 @@ Namespace EDocuments
     Inherits IEdmsObjectFactory(Of IEDocument, IEDocumentInfo)
 
     ''' <summary>
-    ''' Связать документы.
+    ''' Связывает документы.
     ''' </summary>
     ''' <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     ''' <param name="destinationEdocumentInfo">Информация о документе-приемнике.</param>
-    ''' <remarks>В качестве объекта-источника, с которым производится связывание, 
-    ''' можно указывать электронный документ или запись справочника.</remarks>
+    ''' <remarks>
+    ''' В качестве объекта-источника, с которым производится связывание,
+    ''' можно указывать электронный документ или запись справочника.
+    ''' </remarks>
     Sub BindTo(sourceObjectInfo As IObjectInfo, destinationEdocumentInfo As IEDocumentInfo)
 
     ''' <summary>
-    ''' Связать документы.
+    ''' Связывает документы.
     ''' </summary>
     ''' <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     ''' <param name="destinationDocumentInfos">Информация о документах-приемниках, с которыми производится связывание.</param>
     Sub BindTo(sourceObjectInfo As IObjectInfo, destinationDocumentInfos As IContents(Of IEDocumentInfo))
 
     ''' <summary>
-    ''' Создать новый документа из файла.
+    ''' Создает новый документа из файла.
     ''' </summary>
     ''' <param name="edocumentTypeCode">Имя типа электронного документа. 
     ''' В качестве значения параметра следует передавать имя записи из справочника "Типы карточек электронных документов".</param>

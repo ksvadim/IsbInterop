@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.DataTypes.Enumerable
 
 Namespace EDocuments
+
   ''' <summary>
   ''' Версия электронного документа.
   ''' </summary>
@@ -10,21 +11,21 @@ Namespace EDocuments
     ''' <summary>
     ''' Текущее сосотяние версии.
     ''' </summary>
-    ReadOnly Property CurrentState() As TEDocumentVersionState
+    ReadOnly Property CurrentState As TEDocumentVersionState
 
     ''' <summary>
     ''' Скрытая версия.
     ''' </summary>
-    ReadOnly Property IsHidden() As Boolean
+    ReadOnly Property IsHidden As Boolean
 
     ''' <summary>
     ''' Номер версии.
     ''' </summary>
-    ReadOnly Property Number() As Integer
+    ReadOnly Property Number As Integer
 
     ''' <summary>
     ''' Размер версии.
     ''' </summary>
-    ReadOnly Property Size() As Integer
+    ReadOnly Property Size As Integer
   End Interface
 End Namespace

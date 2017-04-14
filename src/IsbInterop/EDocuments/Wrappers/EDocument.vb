@@ -22,9 +22,18 @@ Namespace EDocuments.Wrappers
       End Get
     End Property
 
+    ''' <summary>
+    ''' Список версий документов.
+    ''' </summary>
+    Public ReadOnly Property Versions As IList(Of IEDocumentVersion) Implements IEDocument.Versions
+      Get
+        Dim rcwVersions = GetRcwProperty("Versions")
+        Return New List(Of IEDocumentVersion)(rcwVersions, Scope)
+      End Get
+    End Property
 
     ''' <summary>
-    ''' Экспорт электронного документа.
+    ''' Экспортирует электронный документ.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии.</param>
     ''' <param name="fileName">Имя файла.</param>
@@ -39,16 +48,7 @@ Namespace EDocuments.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Получить IsbObjectList версий документов.
-    ''' </summary>
-    ''' <returns>Список версий электронного документа.</returns>
-    Public Function GetVersions() As IList(Of IEDocumentVersion) Implements IEDocument.GetVersions
-      Dim rcwVersions = GetRcwProperty("Versions")
-      Return New List(Of IEDocumentVersion)(rcwVersions, Scope)
-    End Function
-
-    ''' <summary>
-    ''' Импортировать версию из файла.
+    ''' Импортирует версию из файла.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии.</param>
     ''' <param name="versionNote">Комментарий к версии.</param>
@@ -63,7 +63,7 @@ Namespace EDocuments.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Импортировать подписи из ESD.
+    ''' Импортирует подписи из ESD.
     ''' </summary>
     ''' <param name="versionNumber">Номер версии документа.</param>
     ''' <param name="fileName">Имя файла.</param>
@@ -74,7 +74,7 @@ Namespace EDocuments.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Открыть электронный документ.
+    ''' Открывает электронный документ.
     ''' </summary>
     ''' <param name="openForWrite">Признак открытия для редактирования.</param>
     ''' <param name="versionNumber">Номер версии.</param>

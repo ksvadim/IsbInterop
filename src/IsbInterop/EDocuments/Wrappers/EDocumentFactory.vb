@@ -12,7 +12,7 @@ Namespace EDocuments.Wrappers
     Implements IEDocumentFactory
 
     ''' <summary>
-    ''' Связать документы.
+    ''' Связывает документы.
     ''' </summary>
     ''' <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     ''' <param name="destinationEdocumentInfo">Информация о документе-приемнике.</param>
@@ -25,11 +25,12 @@ Namespace EDocuments.Wrappers
         Throw New ArgumentNullException("destinationEdocumentInfo")
       End If
 
-      InvokeRcwInstanceMethod("BindTo", New Object() {DirectCast(sourceObjectInfo, IUnsafeRcwHolder).UnsafeRcwObject, DirectCast(destinationEdocumentInfo, IUnsafeRcwHolder).UnsafeRcwObject})
+      InvokeRcwInstanceMethod("BindTo", New Object() { DirectCast(sourceObjectInfo, IUnsafeRcwHolder).UnsafeRcwObject,
+                              DirectCast(destinationEdocumentInfo, IUnsafeRcwHolder).UnsafeRcwObject })
     End Sub
 
     ''' <summary>
-    ''' Связать документы.
+    ''' Связывает документы.
     ''' </summary>
     ''' <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     ''' <param name="destinationDocumentInfos">Информация о документах-приемниках, с которыми производится связывание.</param>
@@ -42,11 +43,12 @@ Namespace EDocuments.Wrappers
         Throw New ArgumentNullException("destinationDocumentInfos")
       End If
 
-      InvokeRcwInstanceMethod("BindTo", New Object() {DirectCast(sourceObjectInfo, IUnsafeRcwHolder).UnsafeRcwObject, DirectCast(destinationDocumentInfos, IUnsafeRcwHolder).UnsafeRcwObject})
+      InvokeRcwInstanceMethod("BindTo", New Object() { DirectCast(sourceObjectInfo, IUnsafeRcwHolder).UnsafeRcwObject,
+                              DirectCast(destinationDocumentInfos, IUnsafeRcwHolder).UnsafeRcwObject })
     End Sub
 
     ''' <summary>
-    ''' Создать новый документа из файла.
+    ''' Создает новый документа из файла.
     ''' </summary>
     ''' <param name="edocumentTypeCode">Имя типа электронного документа. 
     ''' В качестве значения параметра следует передавать имя записи из справочника "Типы карточек электронных документов".</param>
@@ -61,15 +63,16 @@ Namespace EDocuments.Wrappers
     ''' <returns>Электронный документ.</returns>
     Public Function CreateNewFromFile(edocumentTypeCode As String, edocumentKindCode As String, edocumentEditorCode As String,
                                       aSourceFileName As String, Optional inExtendedFormat As Boolean = False) As IEDocument Implements IEDocumentFactory.CreateNewFromFile
-      Dim rcwIEDocument = InvokeRcwInstanceMethod("CreateNewFromFile", New Object() {edocumentTypeCode, edocumentKindCode,
-                                                                                        edocumentEditorCode, aSourceFileName,
-                                                                                        inExtendedFormat})
+      Dim rcwIEDocument = InvokeRcwInstanceMethod("CreateNewFromFile", New Object() {
+                                                  edocumentTypeCode, edocumentKindCode,
+                                                  edocumentEditorCode, aSourceFileName,
+                                                  inExtendedFormat })
       Return New EDocument(rcwIEDocument, Scope)
     End Function
 
 
     ''' <summary>
-    ''' Получить объект по его ИД.
+    ''' Получает объект по его ИД.
     ''' </summary>
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>

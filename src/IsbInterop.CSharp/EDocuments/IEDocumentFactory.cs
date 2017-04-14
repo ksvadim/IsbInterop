@@ -9,25 +9,27 @@ namespace IsbInterop.EDocuments
   public interface IEDocumentFactory : IEdmsObjectFactory<IEDocument, IEDocumentInfo>
   {
     /// <summary>
-    /// Связать документы.
+    /// Связывает документы.
     /// </summary>
     /// <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     /// <param name="destinationEdocumentInfo">Информация о документе-приемнике.</param>
-    /// <remarks>В качестве объекта-источника, с которым производится связывание, 
-    /// можно указывать электронный документ или запись справочника.</remarks>
+    /// <remarks>
+    /// В качестве объекта-источника, с которым производится связывание,
+    /// можно указывать электронный документ или запись справочника.
+    /// </remarks>
     void BindTo(IObjectInfo sourceObjectInfo, IEDocumentInfo destinationEdocumentInfo);
 
     /// <summary>
-    /// Связать документы.
+    /// Связывает документы.
     /// </summary>
     /// <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     /// <param name="destinationDocumentInfos">Информация о документах-приемниках, с которыми производится связывание.</param>
     void BindTo(IObjectInfo sourceObjectInfo, IContents<IEDocumentInfo> destinationDocumentInfos);
 
     /// <summary>
-    /// Создать новый документа из файла.
+    /// Создает новый документа из файла.
     /// </summary>
-    /// <param name="edocumentTypeCode">Имя типа электронного документа. 
+    /// <param name="edocumentTypeCode">Имя типа электронного документа.
     /// В качестве значения параметра следует передавать имя записи из справочника "Типы карточек электронных документов".</param>
     /// <param name="edocumentKindCode">Код вида электронного документа.
     /// В качестве значения параметра следует передавать код записи из справочника "Виды электронных документов".</param>

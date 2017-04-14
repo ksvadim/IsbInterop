@@ -11,43 +11,43 @@ namespace IsbInterop.EDocuments.Wrappers
   internal class EDocumentFactory : EdmsObjectFactory<IEDocument, IEDocumentInfo>, IEDocumentFactory
   {
     /// <summary>
-    /// Связать документы.
+    /// Связывает документы.
     /// </summary>
     /// <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     /// <param name="destinationEdocumentInfo">Информация о документе-приемнике.</param>
     public void BindTo(IObjectInfo sourceObjectInfo, IEDocumentInfo destinationEdocumentInfo)
     {
       if (sourceObjectInfo == null)
-        throw new ArgumentNullException("sourceObjectInfo");
+        throw new ArgumentNullException(nameof(sourceObjectInfo));
 
       if (destinationEdocumentInfo == null)
-        throw new ArgumentNullException("destinationEdocumentInfo");
+        throw new ArgumentNullException(nameof(destinationEdocumentInfo));
 
-      this.InvokeRcwInstanceMethod("BindTo", new object[] { 
-        ((IUnsafeRcwHolder)sourceObjectInfo).RcwObject, 
+      InvokeRcwInstanceMethod("BindTo", new[] {
+        ((IUnsafeRcwHolder)sourceObjectInfo).RcwObject,
         ((IUnsafeRcwHolder)destinationEdocumentInfo).RcwObject });
     }
     
     /// <summary>
-    /// Связать документы.
+    /// Связывает документы.
     /// </summary>
     /// <param name="sourceObjectInfo">Информация о объекте-источнике.</param>
     /// <param name="destinationDocumentInfos">Информация о документах-приемниках, с которыми производится связывание.</param>
     public void BindTo(IObjectInfo sourceObjectInfo, IContents<IEDocumentInfo> destinationDocumentInfos)
     {
       if (sourceObjectInfo == null)
-        throw new ArgumentNullException("sourceObjectInfo");
+        throw new ArgumentNullException(nameof(sourceObjectInfo));
 
       if (destinationDocumentInfos == null)
-        throw new ArgumentNullException("destinationDocumentInfos");
+        throw new ArgumentNullException(nameof(destinationDocumentInfos));
 
-      this.InvokeRcwInstanceMethod("BindTo", new object[] { 
-        ((IUnsafeRcwHolder)sourceObjectInfo).RcwObject, 
+      InvokeRcwInstanceMethod("BindTo", new[] {
+        ((IUnsafeRcwHolder)sourceObjectInfo).RcwObject,
         ((IUnsafeRcwHolder)destinationDocumentInfos).RcwObject });
     }
 
     /// <summary>
-    /// Создать новый документа из файла.
+    /// Создает новый документа из файла.
     /// </summary>
     /// <param name="edocumentTypeCode">Имя типа электронного документа. 
     /// В качестве значения параметра следует передавать имя записи из справочника "Типы карточек электронных документов".</param>
@@ -63,22 +63,23 @@ namespace IsbInterop.EDocuments.Wrappers
     public IEDocument CreateNewFromFile(string edocumentTypeCode, string edocumentKindCode,
       string edocumentEditorCode, string aSourceFileName, bool inExtendedFormat = false)
     {
-      var rcwIEDocument = this.InvokeRcwInstanceMethod("CreateNewFromFile", new object[] { edocumentTypeCode, edocumentKindCode, 
+      var rcwIEDocument = InvokeRcwInstanceMethod("CreateNewFromFile", new object[] {
+        edocumentTypeCode, edocumentKindCode,
         edocumentEditorCode, aSourceFileName, inExtendedFormat});
 
-      return new EDocument(rcwIEDocument, this.Scope);
+      return new EDocument(rcwIEDocument, Scope);
     }
 
     /// <summary>
-    /// Получить объект по его ИД.
+    /// Получает объект по его ИД.
     /// </summary>
     /// <param name="id">ИД.</param>
     /// <returns>Объект.</returns>
     public override IEDocument GetObjectById(int id)
     {
-      var rcwObject = this.GetRcwObjectById(id);
+      var rcwObject = GetRcwObjectById(id);
 
-      return new EDocument(rcwObject, this.Scope);
+      return new EDocument(rcwObject, Scope);
     }
 
     /// <summary>
@@ -97,6 +98,7 @@ namespace IsbInterop.EDocuments.Wrappers
     /// </summary>
     /// <param name="rcwIEDocumentFactory">Фабрика электронных документов.</param>
     /// <param name="scope">Область видимости.</param>
-    internal EDocumentFactory(object rcwIEDocumentFactory, IScope scope) : base(rcwIEDocumentFactory, scope) { }
+    internal EDocumentFactory(object rcwIEDocumentFactory, IScope scope)
+      : base(rcwIEDocumentFactory, scope) { }
   }
 }

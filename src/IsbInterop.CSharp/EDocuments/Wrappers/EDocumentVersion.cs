@@ -15,7 +15,7 @@ namespace IsbInterop.EDocuments.Wrappers
     {
       get
       {
-        int state = (int)this.GetRcwProperty("CurrentState");
+        int state = (int)GetRcwProperty("CurrentState");
 
         if (Enum.IsDefined(typeof(TEDocumentVersionState), state))
           return (TEDocumentVersionState)state;
@@ -27,26 +27,17 @@ namespace IsbInterop.EDocuments.Wrappers
     /// <summary>
     /// Скрытая версия.
     /// </summary>
-    public bool IsHidden
-    {
-      get { return (bool)this.GetRcwProperty("IsHidden"); }
-    }
+    public bool IsHidden => (bool)GetRcwProperty("IsHidden");
 
     /// <summary>
     /// Номер версии.
     /// </summary>
-    public int Number
-    {
-      get { return (int)this.GetRcwProperty("Number"); }
-    }
+    public int Number => (int)GetRcwProperty("Number");
 
     /// <summary>
     /// Размер версии.
     /// </summary>
-    public int Size
-    {
-      get { return (int)this.GetRcwProperty("Size"); }
-    }
+    public int Size => (int)GetRcwProperty("Size");
 
     /// <summary>
     /// Конструктор.
