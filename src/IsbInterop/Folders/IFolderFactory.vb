@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Folders
+
   ''' <summary>
   ''' Фабрика папок.
   ''' </summary>

@@ -8,13 +8,13 @@ namespace IsbInterop.Folders.Wrappers
   internal class FolderFactory : EdmsObjectFactory<IFolder, IFolderInfo>, IFolderFactory
   {
     /// <summary>
-    /// Получить объект по его ИД.
+    /// Получает объект по его ИД.
     /// </summary>
     /// <param name="id">ИД.</param>
     /// <returns>Объект.</returns>
     public override IFolder GetObjectById(int id)
     {
-      var rcwObject = this.GetRcwObjectById(id);
+      var rcwObject = GetRcwObjectById(id);
       return new Folder(rcwObject, this.Scope);
     }
 
@@ -34,6 +34,7 @@ namespace IsbInterop.Folders.Wrappers
     /// </summary>
     /// <param name="rcwIFolderFactory">COM-объект IFolderFactory.</param>
     /// <param name="scope">Область видимости.</param>
-    public FolderFactory(object rcwIFolderFactory, IScope scope) : base(rcwIFolderFactory, scope) { }
+    public FolderFactory(object rcwIFolderFactory, IScope scope)
+      : base(rcwIFolderFactory, scope) { }
   }
 }

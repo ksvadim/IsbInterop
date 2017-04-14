@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Folders
+
   ''' <summary>
   ''' Информация о папке.
   ''' </summary>

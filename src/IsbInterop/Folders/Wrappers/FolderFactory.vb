@@ -10,7 +10,7 @@ Namespace Folders.Wrappers
     Implements IFolderFactory
 
     ''' <summary>
-    ''' Получить объект по его ИД.
+    ''' Получает объект по его ИД.
     ''' </summary>
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>

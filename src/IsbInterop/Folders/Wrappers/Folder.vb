@@ -14,7 +14,7 @@ Namespace Folders.Wrappers
     ''' </summary>
     Public Overrides ReadOnly Property Info As IFolderInfo
       Get
-        Dim rcwIFolderInfo = Me.GetRcwObjectInfo()
+        Dim rcwIFolderInfo = GetRcwObjectInfo()
         Return New FolderInfo(rcwIFolderInfo, Scope)
       End Get
     End Property
