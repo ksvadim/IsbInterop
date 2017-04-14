@@ -8,13 +8,13 @@ namespace IsbInterop.Presentation
   public interface IAction : IIsbComObjectWrapper
   {
     /// <summary>
-    /// Выполнить действие.
+    /// Выполняет действие.
     /// </summary>
     /// <returns>True, если действие было выполнено, иначе false.</returns>
     bool Execute();
 
     /// <summary>
-    /// Выполнить действие.
+    /// Выполняет действие.
     /// </summary>
     /// <param name="timeout">Таймаут.</param>
     /// <returns>True, если действие было выполнено, иначе false.</returns>

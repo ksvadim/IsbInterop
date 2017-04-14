@@ -8,13 +8,13 @@ namespace IsbInterop.Presentation.Wrappers
   internal class ActionList : List<IAction>, IActionList
   {
     /// <summary>
-    /// Получить действие по имени.
+    /// Получает действие по имени.
     /// </summary>
     /// <param name="name">Имя действия.</param>
     /// <returns>Действие из списка с именем name, если оно существует, иначе null.</returns>
     public IAction FindAction(string name)
     {
-      var actionRcw = this.InvokeRcwInstanceMethod("FindAction", name);
+      var actionRcw = InvokeRcwInstanceMethod("FindAction", name);
       return actionRcw != null ? new Action(actionRcw, this.Scope) : null;
     }
 

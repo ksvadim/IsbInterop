@@ -8,7 +8,7 @@
     Implements IForm
 
     ''' <summary>
-    ''' Получить действия формы.
+    ''' Получает действия формы.
     ''' </summary>
     ''' <returns></returns>
     Public Function GetActions() As IActionList Implements IForm.GetActions
@@ -17,14 +17,14 @@
     End Function
 
     ''' <summary>
-    ''' Показать форму в модальном режиме.
+    ''' Показывает форму в модальном режиме.
     ''' </summary>
     Public Sub ShowModal() Implements IForm.ShowModal
       InvokeRcwInstanceMethod("ShowModal")
     End Sub
 
     ''' <summary>
-    ''' Показать форму в немодальном режиме.
+    ''' Показывает форму в немодальном режиме.
     ''' </summary>
     Public Sub ShowNoModal() Implements IForm.ShowNoModal
       InvokeRcwInstanceMethod("ShowNoModal")

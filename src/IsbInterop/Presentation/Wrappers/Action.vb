@@ -8,7 +8,7 @@
     Implements IAction
 
     ''' <summary>
-    ''' Выполнить действие.
+    ''' Выполняет действие.
     ''' </summary>
     ''' <returns>True, если действие было выполнено, иначе false.</returns>
     Public Function Execute() As Boolean Implements IAction.Execute
@@ -17,7 +17,7 @@
     End Function
 
     ''' <summary>
-    ''' Выполнить действие.
+    ''' Выполняет действие.
     ''' </summary>
     ''' <param name="timeout">Таймаут.</param>
     ''' <returns>True, если действие было выполнено, иначе false.</returns>

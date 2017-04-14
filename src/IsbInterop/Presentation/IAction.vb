@@ -1,17 +1,19 @@
 ﻿Namespace Presentation
+
   ''' <summary>
   ''' Действие формы.
   ''' </summary>
   Public Interface IAction
     Inherits IIsbComObjectWrapper
+
     ''' <summary>
-    ''' Выполнить действие.
+    ''' Выполняет действие.
     ''' </summary>
     ''' <returns>True, если действие было выполнено, иначе false.</returns>
     Function Execute() As Boolean
 
     ''' <summary>
-    ''' Выполнить действие.
+    ''' Выполняет действие.
     ''' </summary>
     ''' <param name="timeout">Таймаут.</param>
     ''' <returns>True, если действие было выполнено, иначе false.</returns>

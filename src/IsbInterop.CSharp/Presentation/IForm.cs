@@ -8,13 +8,13 @@ namespace IsbInterop.Presentation
   public interface IForm : IDisposable
   {
     /// <summary>
-    /// Получить действия формы.
+    /// Получает действия формы.
     /// </summary>
     /// <returns>Список действий формы.</returns>
     IActionList GetActions();
 
     /// <summary>
-    /// Показать форму в модальном режиме.
+    /// Показывает форму в модальном режиме.
     /// </summary>
     /// <remarks>
     /// Для форм справочников и электронных документов перед показом формы 
@@ -23,7 +23,7 @@ namespace IsbInterop.Presentation
     void ShowModal();
 
     /// <summary>
-    /// Показать форму в немодальном режиме.
+    /// Показывает форму в немодальном режиме.
     /// </summary>
     /// <remarks>
     /// Для форм справочников и электронных документов перед показом формы 

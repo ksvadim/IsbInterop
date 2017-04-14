@@ -8,23 +8,23 @@ namespace IsbInterop.Presentation.Wrappers
   internal class Action : IsbComObjectWrapper, IAction
   {
     /// <summary>
-    /// Выполнить действие.
+    /// Выполняет действие.
     /// </summary>
     /// <returns>True, если действие было выполнено, иначе false.</returns>
     public bool Execute()
     {
-      var result = (bool)this.InvokeRcwInstanceMethod("Execute", null, null);
+      var result = (bool)InvokeRcwInstanceMethod("Execute", null, null);
       return result;
     }
 
     /// <summary>
-    /// Выполнить действие.
+    /// Выполняет действие.
     /// </summary>
     /// <param name="timeout">Таймаут.</param>
     /// <returns>True, если действие было выполнено, иначе false.</returns>
     public bool Execute(TimeSpan timeout)
     {
-      var result = (bool)this.InvokeRcwInstanceMethod("Execute", null, timeout);
+      var result = (bool)InvokeRcwInstanceMethod("Execute", null, timeout);
       return result;
     }
 
