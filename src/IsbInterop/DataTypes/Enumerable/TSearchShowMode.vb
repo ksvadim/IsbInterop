@@ -1,4 +1,5 @@
 ﻿Namespace DataTypes.Enumerable
+
   ''' <summary>
   ''' Режим отображения результатов поиска.
   ''' </summary>

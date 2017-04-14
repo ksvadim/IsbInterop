@@ -1,4 +1,5 @@
 ﻿Namespace DataTypes.Enumerable
+
   ''' <summary>
   ''' Тип экспортируемых подписей.
   ''' </summary>

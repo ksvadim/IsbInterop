@@ -1,4 +1,5 @@
 ﻿Namespace DataTypes.Enumerable
+
     ''' <summary>
     ''' Состояние детального раздела.
     ''' </summary>
