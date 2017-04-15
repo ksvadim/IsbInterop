@@ -8,25 +8,25 @@ namespace IsbInterop.References
   public interface IReferenceFactory : IFactory<IReference, IReferenceInfo>
   {
     /// <summary>
-    /// Получить имя фабрики.
+    /// Имя фабрики.
     /// </summary>
     string Name { get; }
 
     /// <summary>
-    /// Получить историю записи справочника.
-    /// Возвращает компоненту История работы с записью для записи справочника. 
+    /// Получает историю записи справочника.
+    /// Возвращает компоненту История работы с записью для записи справочника.
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Объект IComponent.</returns>
     IComponent GetHistory(int id);
 
     /// <summary>
-    /// Создать запись справочника.
+    /// Создает запись справочника.
     /// </summary>
     /// <returns>Запись справочника.</returns>
     /// <remarks>
-    /// Результатом метода является объект IReference, 
-    /// набор данных которого содержит одну новую запись и находится в режиме вставки. 
+    /// Результатом метода является объект IReference,
+    /// набор данных которого содержит одну новую запись и находится в режиме вставки.
     /// Метод инициирует процессы открытия справочника и добавления записи справочника.
     /// После заполнения реквизитов следует либо сохранить изменения методами IObject.Save, IDataSet.ApplyUpdates,
     /// либо откатить методами IObject.Cancel, IDataSet.CancelUpdates.
@@ -34,19 +34,19 @@ namespace IsbInterop.References
     IReference CreateNew();
 
     /// <summary>
-    /// Удалить запись справочника по ИД.
+    /// Удаляет запись справочника по ИД.
     /// </summary>
     /// <param name="id">ИД записи справочника.</param>
     void DeleteById(int id);
 
     /// <summary>
-    /// Получить компоненту справочника.
+    /// Получает компоненту справочника.
     /// </summary>
     /// <returns>Компонента справочника.</returns>
     IReference GetComponent();
 
     /// <summary>
-    /// Получить объект по коду.
+    /// Получает объект по коду.
     /// </summary>
     /// <param name="code">Код.</param>
     /// <returns>Объект.</returns>

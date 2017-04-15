@@ -1,4 +1,5 @@
 ﻿Namespace References
+
   ''' <summary>
   ''' Справочник.
   ''' </summary>

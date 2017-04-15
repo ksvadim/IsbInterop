@@ -1,4 +1,5 @@
 ﻿Namespace References
+
   ''' <summary>
   ''' Фабрика типов справочников.
   ''' </summary>
@@ -6,11 +7,10 @@
     Inherits IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Получить фабрику справочника.
+    ''' Получает фабрику справочника.
     ''' </summary>
-    ''' <param name="name">Имя фабрика справочника.</param>
+    ''' <param name="name">Имя фабрики справочника.</param>
     ''' <returns>Фабрика справочника с заданным именем.</returns>
     Function GetReferenceFactory(name As String) As IReferenceFactory
-
   End Interface
 End NameSpace

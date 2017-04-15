@@ -163,7 +163,7 @@ namespace IsbInterop.Base.Wrappers
     /// <param name="requisiteName">Имя реквизита.</param>
     /// <returns>Реквизит.</returns>
     /// <remarks>Умышленно делаем метод виртуальным, чтобы использовать вместе с IRequisiteAutoCleaner.</remarks>
-    public virtual IRequisite GetRequisite(string requisiteName)
+    public IRequisite GetRequisite(string requisiteName)
     {
       var rcwRequisite = GetRcwProperty("Requisites", requisiteName);
       return DerivedRequisiteFactory.CreateRequisite(rcwRequisite, Scope);

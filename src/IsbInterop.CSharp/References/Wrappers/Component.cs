@@ -15,67 +15,58 @@ namespace IsbInterop.References.Wrappers
     /// <summary>
     /// Признак конца набора данных.
     /// </summary>
-    public bool EOF
-    {
-      get { return (bool)this.GetRcwProperty("EOF"); }
-    }
+    public bool EOF => (bool)GetRcwProperty("EOF");
 
     /// <summary>
     /// Количество записей в наборе данных.
     /// </summary>
-    public int RecordCount
-    {
-      get { return (int)this.GetRcwProperty("RecordCount"); }
-    }
+    public int RecordCount => (int)GetRcwProperty("RecordCount");
 
     /// <summary>
     /// Признак открытости записи набора данных.
     /// </summary>
-    public bool RecordOpened
-    {
-      get { return (bool)this.GetRcwProperty("RecordOpened"); }
-    }
+    public bool RecordOpened => (bool)GetRcwProperty("RecordOpened");
 
     #endregion
 
     #region Методы
 
     /// <summary>
-    /// Добавить запись.
+    /// Добавляет запись.
     /// </summary>
     public void Append()
     {
-      this.InvokeRcwInstanceMethod("Append");
+      InvokeRcwInstanceMethod("Append");
     }
 
     /// <summary>
-    /// Закрыть набор данных компоненты.
+    /// Закрывает набор данных компоненты.
     /// </summary>
     public void Close()
     {
-      this.InvokeRcwInstanceMethod("Close");
+      InvokeRcwInstanceMethod("Close");
     }
 
     /// <summary>
-    /// Закрыть запись.
+    /// Закрывает запись.
     /// </summary>
     public void CloseRecord()
     {
-      this.InvokeRcwInstanceMethod("CloseRecord");
+      InvokeRcwInstanceMethod("CloseRecord");
     }
 
     /// <summary>
-    /// Получить форму-список.
+    /// Получает форму-список.
     /// </summary>
     /// <returns>Форма-список.</returns>
     public IForm GetComponentForm()
     {
-      var rcwForm = this.GetRcwProperty("ComponentForm");
-      return new Form(rcwForm, this.Scope);
+      var rcwForm = GetRcwProperty("ComponentForm");
+      return new Form(rcwForm, Scope);
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <returns>Информация об объекте.</returns>
     public override IObjectInfo GetInfo()
@@ -85,51 +76,51 @@ namespace IsbInterop.References.Wrappers
     }
 
     /// <summary>
-    /// Перейти на первую запись набора данных.
+    /// Переходит на первую запись набора данных.
     /// </summary>
     public void First()
     {
-      this.InvokeRcwInstanceMethod("First");
+      InvokeRcwInstanceMethod("First");
     }
 
     /// <summary>
-    /// Перейти на последнюю запись набора данных.
+    /// Переходит на последнюю запись набора данных.
     /// </summary>
     public void Last()
     {
-      this.InvokeRcwInstanceMethod("Last");
+      InvokeRcwInstanceMethod("Last");
     }
 
     /// <summary>
-    /// Перейти на следующую запись набора данных.
+    /// Переходит на следующую запись набора данных.
     /// </summary>
     public void Next()
     {
-      this.InvokeRcwInstanceMethod("Next");
+      InvokeRcwInstanceMethod("Next");
     }
 
     /// <summary>
-    /// Открыть набор данных компоненты.
+    /// Открывает набор данных компоненты.
     /// </summary>
     public void Open()
     {
-      this.InvokeRcwInstanceMethod("Open");
+      InvokeRcwInstanceMethod("Open");
     }
 
     /// <summary>
-    /// Открыть запись.
+    /// Открывает запись.
     /// </summary>
     public void OpenRecord()
     {
-      this.InvokeRcwInstanceMethod("OpenRecord");
+      InvokeRcwInstanceMethod("OpenRecord");
     }
 
     /// <summary>
-    /// Перейти на предыдущую запись набора данных.
+    /// Переходит на предыдущую запись набора данных.
     /// </summary>
     public void Prior()
     {
-      this.InvokeRcwInstanceMethod("Prior");
+      InvokeRcwInstanceMethod("Prior");
     }
 
     #endregion

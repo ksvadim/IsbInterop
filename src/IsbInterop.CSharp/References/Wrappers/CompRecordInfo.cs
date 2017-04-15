@@ -10,16 +10,14 @@ namespace IsbInterop.References.Wrappers
     /// <summary>
     /// Код записи.
     /// </summary>
-    public string Code
-    {
-      get { return (string)this.GetRcwProperty("Code"); }
-    }
+    public string Code => (string)GetRcwProperty("Code");
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwICompRecordInfo">COM-объект ICompRecordInfo.</param>
     /// <param name="scope">Область видимости.</param>
-    protected CompRecordInfo(object rcwICompRecordInfo, IScope scope) : base(rcwICompRecordInfo, scope) { }
+    protected CompRecordInfo(object rcwICompRecordInfo, IScope scope)
+      : base(rcwICompRecordInfo, scope) { }
   }
 }

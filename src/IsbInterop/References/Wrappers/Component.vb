@@ -46,28 +46,28 @@ Namespace References.Wrappers
 #Region "Методы"
 
     ''' <summary>
-    ''' Добавить запись.
+    ''' Добавляет запись.
     ''' </summary>
     Public Sub Append() Implements IComponent.Append
       InvokeRcwInstanceMethod("Append")
     End Sub
 
     ''' <summary>
-    ''' Закрыть набор данных компоненты.
+    ''' Закрывает набор данных компоненты.
     ''' </summary>
     Public Sub Close() Implements IComponent.Close
       InvokeRcwInstanceMethod("Close")
     End Sub
 
     ''' <summary>
-    ''' Закрыть запись.
+    ''' Закрывает запись.
     ''' </summary>
     Public Sub CloseRecord() Implements IComponent.CloseRecord
       InvokeRcwInstanceMethod("CloseRecord")
     End Sub
 
     ''' <summary>
-    ''' Получить форму-список.
+    ''' Получает форму-список.
     ''' </summary>
     ''' <returns>Форма-список.</returns>
     Public Function GetComponentForm() As IForm Implements IComponent.GetComponentForm
@@ -76,7 +76,7 @@ Namespace References.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить информацию об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
     ''' <returns>Информация об объекте.</returns>
     Public Overrides Function GetInfo() As IObjectInfo
@@ -85,42 +85,42 @@ Namespace References.Wrappers
     End Function
 
     ''' <summary>
-    ''' Перейти на первую запись набора данных.
+    ''' Переходит на первую запись набора данных.
     ''' </summary>
     Public Sub First() Implements IComponent.First
       InvokeRcwInstanceMethod("First")
     End Sub
 
     ''' <summary>
-    ''' Перейти на последнюю запись набора данных.
+    ''' Переходит на последнюю запись набора данных.
     ''' </summary>
     Public Sub Last() Implements IComponent.Last
       InvokeRcwInstanceMethod("Last")
     End Sub
 
     ''' <summary>
-    ''' Перейти на следующую запись набора данных.
+    ''' Переходит на следующую запись набора данных.
     ''' </summary>
     Public Sub [Next]() Implements IComponent.Next
       InvokeRcwInstanceMethod("Next")
     End Sub
 
     ''' <summary>
-    ''' Открыть набор данных компоненты.
+    ''' Открывает набор данных компоненты.
     ''' </summary>
     Public Sub Open() Implements IComponent.Open
       InvokeRcwInstanceMethod("Open")
     End Sub
 
     ''' <summary>
-    ''' Открыть запись.
+    ''' Открывает запись.
     ''' </summary>
     Public Sub OpenRecord() Implements IComponent.OpenRecord
       InvokeRcwInstanceMethod("OpenRecord")
     End Sub
 
     ''' <summary>
-    ''' Перейти на предыдущую запись набора данных.
+    ''' Переходит на предыдущую запись набора данных.
     ''' </summary>
     Public Sub Prior() Implements IComponent.Prior
       InvokeRcwInstanceMethod("Prior")

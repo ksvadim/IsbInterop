@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace References
+
   ''' <summary>
   ''' Информация о записи компоненты.
   ''' </summary>
@@ -10,6 +11,6 @@ Namespace References
     ''' <summary>
     ''' Код записи.
     ''' </summary>
-    ReadOnly Property Code() As String
+    ReadOnly Property Code As String
   End Interface
 End NameSpace

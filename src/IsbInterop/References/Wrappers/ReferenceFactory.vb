@@ -25,7 +25,7 @@ Namespace References.Wrappers
 #Region "Методы"
 
     ''' <summary>
-    ''' Создать запись справочника.
+    ''' Создает запись справочника.
     ''' </summary>
     ''' <returns>Запись справочника.</returns>
     Public Function CreateNew() As IReference Implements IReferenceFactory.CreateNew
@@ -34,7 +34,7 @@ Namespace References.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить историю записи справочника.
+    ''' Получает историю записи справочника.
     ''' Возвращает компоненту История работы с записью для записи справочника. 
     ''' </summary>
     ''' <param name="id">ИД объекта.</param>
@@ -45,7 +45,7 @@ Namespace References.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить объект по его ИД.
+    ''' Получает объект по его ИД.
     ''' </summary>
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>
@@ -66,7 +66,7 @@ Namespace References.Wrappers
     End Function
 
     ''' <summary>
-    ''' Удалить запись справочника по ИД.
+    ''' Удаляет запись справочника по ИД.
     ''' </summary>
     ''' <param name="id">ИД записи справочника.</param>
     Public Sub DeleteById(id As Integer) Implements IReferenceFactory.DeleteById
@@ -74,7 +74,7 @@ Namespace References.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Получить компоненту справочника.
+    ''' Получает компоненту справочника.
     ''' </summary>
     ''' <returns>Компонента справочника.</returns>
     Public Function GetComponent() As IReference Implements IReferenceFactory.GetComponent
@@ -83,7 +83,7 @@ Namespace References.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить запись справочника по коду.
+    ''' Получает запись справочника по коду.
     ''' </summary>
     ''' <param name="referenceEntryCode">Код записи справочника.</param>
     ''' <returns>Запись справочника.</returns>

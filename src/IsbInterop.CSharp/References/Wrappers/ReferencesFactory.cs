@@ -6,14 +6,14 @@
   internal class ReferencesFactory : IsbComObjectWrapper, IReferencesFactory
   {
     /// <summary>
-    /// Получить фабрику типов справочников.
+    /// Получает фабрику справочника.
     /// </summary>
-    /// <param name="referenceFactoryName">Имя фабрики типов справочников.</param>
-    /// <returns>Фабрика типов справочников.</returns>
+    /// <param name="referenceFactoryName">Имя фабрики справочника.</param>
+    /// <returns>Фабрика справочника.</returns>
     public IReferenceFactory GetReferenceFactory(string referenceFactoryName)
     {
-      var rcwReferenceFactory = this.GetRcwProperty("ReferenceFactory", referenceFactoryName);
-      var referenceFactory = new ReferenceFactory(rcwReferenceFactory, this.Scope);
+      var rcwReferenceFactory = GetRcwProperty("ReferenceFactory", referenceFactoryName);
+      var referenceFactory = new ReferenceFactory(rcwReferenceFactory, Scope);
 
       return referenceFactory;
     }
@@ -23,6 +23,7 @@
     /// </summary>
     /// <param name="rcwReferencesFactory">COM-объект ReferencesFactory.</param>
     /// <param name="scope">Область видимости.</param>
-    internal ReferencesFactory(object rcwReferencesFactory, IScope scope) : base(rcwReferencesFactory, scope) { }
+    internal ReferencesFactory(object rcwReferencesFactory, IScope scope)
+      : base(rcwReferencesFactory, scope) { }
   }
 }

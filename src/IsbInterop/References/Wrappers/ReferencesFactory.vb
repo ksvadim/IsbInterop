@@ -1,4 +1,5 @@
 ﻿Namespace References.Wrappers
+
     ''' <summary>
     ''' Оберка над IReferencesFactory.
     ''' </summary>
@@ -7,7 +8,7 @@
         Implements IReferencesFactory
 
         ''' <summary>
-        ''' Получить фабрику типов справочников.
+        ''' Получает фабрику типов справочников.
         ''' </summary>
         ''' <param name="referenceFactoryName">Имя фабрики типов справочников.</param>
         ''' <returns>Фабрика типов справочников.</returns>

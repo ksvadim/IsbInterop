@@ -6,9 +6,9 @@
   public interface IReferencesFactory : IIsbComObjectWrapper
   {
     /// <summary>
-    /// Получить фабрику справочника.
+    /// Получает фабрику справочника.
     /// </summary>
-    /// <param name="name">Имя фабрика справочника.</param>
+    /// <param name="name">Имя фабрики справочника.</param>
     /// <returns>Фабрика справочника с заданным именем.</returns>
     IReferenceFactory GetReferenceFactory(string name);
   }

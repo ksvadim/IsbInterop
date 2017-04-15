@@ -1,5 +1,4 @@
 ﻿using IsbInterop.Base.Wrappers;
-using IsbInterop.Properties;
 
 namespace IsbInterop.References.Wrappers
 {
@@ -11,49 +10,46 @@ namespace IsbInterop.References.Wrappers
     #region Поля и свойства
 
     /// <summary>
-    /// Получить имя фабрики.
+    /// Имя фабрики.
     /// </summary>
-    public string Name
-    {
-      get { return (string)this.GetRcwProperty("Name"); }
-    }
+    public string Name => (string)GetRcwProperty("Name");
 
     #endregion
 
     #region Методы
 
     /// <summary>
-    /// Создать запись справочника.
+    /// Создает запись справочника.
     /// </summary>
     /// <returns>Запись справочника.</returns>
     public IReference CreateNew()
     {
-      var rcwReferenceEntry = this.InvokeRcwInstanceMethod("CreateNew");
-      return new Reference(rcwReferenceEntry, this.Scope);
+      var rcwReferenceEntry = InvokeRcwInstanceMethod("CreateNew");
+      return new Reference(rcwReferenceEntry, Scope);
     }
 
     /// <summary>
-    /// Получить историю записи справочника.
+    /// Получает историю записи справочника.
     /// Возвращает компоненту История работы с записью для записи справочника. 
     /// </summary>
     /// <param name="id">ИД объекта.</param>
     /// <returns>Объект IComponent.</returns>
     public IComponent GetHistory(int id)
     {
-      var rcwComponent = this.GetRcwProperty("History", id);
-      return new Component(rcwComponent, this.Scope);
+      var rcwComponent = GetRcwProperty("History", id);
+      return new Component(rcwComponent, Scope);
     }
 
     /// <summary>
-    /// Получить объект по его ИД.
+    /// Получает объект по его ИД.
     /// </summary>
     /// <param name="id">ИД.</param>
     /// <returns>Объект.</returns>
     public override IReference GetObjectById(int id)
     {
-      var rcwObject = this.GetRcwObjectById(id);
+      var rcwObject = GetRcwObjectById(id);
 
-      return new Reference(rcwObject, this.Scope);
+      return new Reference(rcwObject, Scope);
     }
 
     /// <summary>
@@ -68,33 +64,33 @@ namespace IsbInterop.References.Wrappers
     }
 
     /// <summary>
-    /// Удалить запись справочника по ИД.
+    /// Удаляет запись справочника по ИД.
     /// </summary>
     /// <param name="id">ИД записи справочника.</param>
     public void DeleteById(int id)
     {
-      this.InvokeRcwInstanceMethod("DeleteById", id);
+      InvokeRcwInstanceMethod("DeleteById", id);
     }
 
     /// <summary>
-    /// Получить компоненту справочника.
+    /// Получает компоненту справочника.
     /// </summary>
     /// <returns>Компонента справочника.</returns>
     public IReference GetComponent()
     {
-      var rcwReference = this.InvokeRcwInstanceMethod("GetComponent");
-      return new Reference(rcwReference, this.Scope);
+      var rcwReference = InvokeRcwInstanceMethod("GetComponent");
+      return new Reference(rcwReference, Scope);
     }
 
     /// <summary>
-    /// Получить запись справочника по коду.
+    /// Получает запись справочника по коду.
     /// </summary>
     /// <param name="referenceEntryCode">Код записи справочника.</param>
     /// <returns>Запись справочника.</returns>
     public IReference GetObjectByCode(string referenceEntryCode)
     {
-      var rcwReferenceEntry = this.InvokeRcwInstanceMethod("GetObjectByCode", referenceEntryCode);
-      return new Reference(rcwReferenceEntry, this.Scope);
+      var rcwReferenceEntry = InvokeRcwInstanceMethod("GetObjectByCode", referenceEntryCode);
+      return new Reference(rcwReferenceEntry, Scope);
     }
 
     #endregion
@@ -106,7 +102,8 @@ namespace IsbInterop.References.Wrappers
     /// </summary>
     /// <param name="rcwIReferenceFactory">COM-объект IReferenceFactory.</param>
     /// <param name="scope">Область видимости.</param>
-    internal ReferenceFactory(object rcwIReferenceFactory, IScope scope) : base(rcwIReferenceFactory, scope) { }
+    internal ReferenceFactory(object rcwIReferenceFactory, IScope scope)
+      : base(rcwIReferenceFactory, scope) { }
 
     #endregion
   }

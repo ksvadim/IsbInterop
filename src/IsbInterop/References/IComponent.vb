@@ -11,12 +11,12 @@ Namespace References
     ''' <summary>
     ''' Признак конца набора данных.
     ''' </summary>
-    ReadOnly Property EOF() As Boolean
+    ReadOnly Property EOF As Boolean
 
     ''' <summary>
     ''' Количество записей в наборе данных.
     ''' </summary>
-    ReadOnly Property RecordCount() As Integer
+    ReadOnly Property RecordCount As Integer
 
     ''' <summary>
     ''' Признак открытости записи набора данных.
@@ -24,56 +24,56 @@ Namespace References
     ''' <remarks>
     ''' Свойство устанавливается в True после выполнения метода OpenRecord, в False – после выполнения метода CloseRecord.
     ''' </remarks>
-    ReadOnly Property RecordOpened() As Boolean
+    ReadOnly Property RecordOpened As Boolean
 
     ''' <summary>
-    ''' Добавить запись.
+    ''' Добавляет запись.
     ''' </summary>
     Sub Append()
 
     ''' <summary>
-    ''' Закрыть набор данных компоненты.
+    ''' Закрывает набор данных компоненты.
     ''' </summary>
     Sub Close()
 
     ''' <summary>
-    ''' Закрыть запись.
+    ''' Закрывает запись.
     ''' </summary>
     Sub CloseRecord()
 
     ''' <summary>
-    ''' Получить форму-список.
+    ''' Получает форму-список.
     ''' </summary>
     ''' <returns>Форма-список.</returns>
     Function  GetComponentForm() As IForm
 
     ''' <summary>
-    ''' Перейти на первую запись набора данных.
+    ''' Переходит на первую запись набора данных.
     ''' </summary>
     Sub First()
 
     ''' <summary>
-    ''' Перейти на последнюю запись набора данных.
+    ''' Переходит на последнюю запись набора данных.
     ''' </summary>
     Sub Last()
 
     ''' <summary>
-    ''' Перейти на следующую запись набора данных.
+    ''' Переходит на следующую запись набора данных.
     ''' </summary>
     Sub [Next]()
 
     ''' <summary>
-    ''' Открыть набор данных компоненты.
+    ''' Открывает набор данных компоненты.
     ''' </summary>
     Sub Open()
 
     ''' <summary>
-    ''' Открыть запись.
+    ''' Открывает запись.
     ''' </summary>
     Sub OpenRecord()
 
     ''' <summary>
-    ''' Перейти на предыдущую запись набора данных.
+    ''' Переходит на предыдущую запись набора данных.
     ''' </summary>
     Sub Prior()
   End Interface
