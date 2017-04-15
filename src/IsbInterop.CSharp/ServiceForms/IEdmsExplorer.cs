@@ -15,7 +15,7 @@ namespace IsbInterop.ServiceForms
     TItemShow ShowTree { get; set; }
 
     /// <summary>
-    /// Получить содержимое дерева проводника.
+    /// Получает содержимое дерева проводника.
     /// </summary>
     /// <returns>Объект IContents, состоящий из элементов типа IFolderInfo.</returns>
     /// <remarks>
@@ -27,19 +27,19 @@ namespace IsbInterop.ServiceForms
     IContents<IFolderInfo> GetTreeRootContents();
 
     /// <summary>
-    /// Установить содержимое дерева проводника.
+    /// Устанавливает содержимое дерева проводника.
     /// </summary>
     /// <param name="value">Значение.</param>
     void SetTreeRootContents(IFolderInfo value);
 
     /// <summary>
-    /// Установить содержимое дерева проводника.
+    /// Устанавливает содержимое дерева проводника.
     /// </summary>
     /// <param name="value">Значение.</param>
     void SetTreeRootContents(IContents<IFolderInfo> value);
 
     /// <summary>
-    /// Показать проводник.
+    /// Показывает проводник.
     /// </summary>
     void Show();
   }

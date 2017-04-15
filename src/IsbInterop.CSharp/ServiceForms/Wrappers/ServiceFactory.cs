@@ -6,13 +6,13 @@
   public class ServiceFactory : IsbComObjectWrapper, IServiceFactory
   {
     /// <summary>
-    /// Получить проводник системы.
+    /// Получает проводник системы.
     /// </summary>
     /// <param name="isMain">Признак получения главной формы проводника системы.</param>
     /// <returns>Проводник системы.</returns>
     public IEdmsExplorer GetExplorer(bool isMain)
     {
-      var rcwExplorer = this.InvokeRcwInstanceMethod("GetExplorer", isMain);
+      var rcwExplorer = InvokeRcwInstanceMethod("GetExplorer", isMain);
       return new EdmsExplorer(rcwExplorer, Scope);
     }
 
@@ -21,6 +21,7 @@
     /// </summary>
     /// <param name="rcwIServiceFactory">COM-объект IServiceFactory.</param>
     /// <param name="scope">Область видимости.</param>
-    internal ServiceFactory(object rcwIServiceFactory, IScope scope) : base(rcwIServiceFactory, scope) { }
+    internal ServiceFactory(object rcwIServiceFactory, IScope scope)
+      : base(rcwIServiceFactory, scope) { }
   }
 }

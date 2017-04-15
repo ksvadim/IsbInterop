@@ -15,44 +15,44 @@ namespace IsbInterop.ServiceForms.Wrappers
     /// </summary>
     public TItemShow ShowTree
     {
-      get { return (TItemShow)this.GetRcwProperty("ShowTree"); }
-      set { this.SetRcwProperty("ShowTree", (int)value); }
+      get { return (TItemShow)GetRcwProperty("ShowTree"); }
+      set { SetRcwProperty("ShowTree", (int)value); }
     }
 
     /// <summary>
-    /// Получить содержимое дерева проводника.
+    /// Получает содержимое дерева проводника.
     /// </summary>
     /// <returns>Объект IContents, состоящий из элементов типа IFolderInfo.</returns>
     public IContents<IFolderInfo> GetTreeRootContents()
     {
-      var rcwTreeRootContents = this.GetRcwProperty("TreeRootContents");
-      return new Contents<IFolderInfo>(rcwTreeRootContents, this.Scope);
+      var rcwTreeRootContents = GetRcwProperty("TreeRootContents");
+      return new Contents<IFolderInfo>(rcwTreeRootContents, Scope);
     }
 
     /// <summary>
-    /// Установить содержимое дерева проводника.
+    /// Устанавливает содержимое дерева проводника.
     /// </summary>
     /// <param name="value">Значение.</param>
     public void SetTreeRootContents(IFolderInfo value)
     {
-      this.SetRcwProperty("TreeRootContents", ((IUnsafeRcwHolder)value).RcwObject);
+      SetRcwProperty("TreeRootContents", ((IUnsafeRcwHolder)value).RcwObject);
     }
 
     /// <summary>
-    /// Установить содержимое дерева проводника.
+    /// Устанавливает содержимое дерева проводника.
     /// </summary>
     /// <param name="value">Значение.</param>
     public void SetTreeRootContents(IContents<IFolderInfo> value)
     {
-      this.SetRcwProperty("TreeRootContents", ((IUnsafeRcwHolder)value).RcwObject);
+      SetRcwProperty("TreeRootContents", ((IUnsafeRcwHolder)value).RcwObject);
     }
 
     /// <summary>
-    /// Показать проводник.
+    /// Показывает проводник.
     /// </summary>
     public void Show()
     {
-      this.InvokeRcwInstanceMethod("Show");
+      InvokeRcwInstanceMethod("Show");
     }
 
     /// <summary>

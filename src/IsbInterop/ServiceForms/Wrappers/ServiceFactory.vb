@@ -8,7 +8,7 @@
     Implements IServiceFactory
 
     ''' <summary>
-    ''' Получить проводник системы.
+    ''' Получает проводник системы.
     ''' </summary>
     ''' <param name="isMain">Признак получения главной формы проводника системы.</param>
     ''' <returns>Проводник системы.</returns>

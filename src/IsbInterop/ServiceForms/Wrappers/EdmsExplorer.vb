@@ -25,7 +25,7 @@ Namespace ServiceForms.Wrappers
     End Property
 
     ''' <summary>
-    ''' Получить содержимое дерева проводника.
+    ''' Получает содержимое дерева проводника.
     ''' </summary>
     ''' <returns>Объект IContents, состоящий из элементов типа IFolderInfo.</returns>
     Public Function GetTreeRootContents() As IContents(Of IFolderInfo) Implements IEdmsExplorer.GetTreeRootContents
@@ -34,7 +34,7 @@ Namespace ServiceForms.Wrappers
     End Function
 
     ''' <summary>
-    ''' Установить содержимое дерева проводника.
+    ''' Устанавливает содержимое дерева проводника.
     ''' </summary>
     ''' <param name="value">Значение.</param>
     Public Sub SetTreeRootContents(value As IFolderInfo) Implements IEdmsExplorer.SetTreeRootContents
@@ -42,7 +42,7 @@ Namespace ServiceForms.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Установить содержимое дерева проводника.
+    ''' Устанавливает содержимое дерева проводника.
     ''' </summary>
     ''' <param name="value">Значение.</param>
     Public Sub SetTreeRootContents(value As IContents(Of IFolderInfo)) Implements IEdmsExplorer.SetTreeRootContents
@@ -50,7 +50,7 @@ Namespace ServiceForms.Wrappers
     End Sub
 
     ''' <summary>
-    ''' Показать проводник.
+    ''' Показывает проводник.
     ''' </summary>
     Public Sub Show() Implements IEdmsExplorer.Show
       InvokeRcwInstanceMethod("Show")
