@@ -10,18 +10,18 @@ namespace IsbInterop.Scripts.Wrappers
   internal class ScriptFactory : Factory<IScript, IObjectInfo>, IScriptFactory
   {
     /// <summary>
-    /// Получить сценарий по имени.
+    /// Получает сценарий по имени.
     /// </summary>
     /// <param name="scriptName">Имя сценария.</param>
     /// <returns>Сценарий.</returns>
     public IScript GetObjectByName(string scriptName)
     {
-      var rcwScript = this.InvokeRcwInstanceMethod("GetObjectByName", scriptName);
-      return new Script(rcwScript, this.Scope);
+      var rcwScript = InvokeRcwInstanceMethod("GetObjectByName", scriptName);
+      return new Script(rcwScript, Scope);
     }
 
     /// <summary>
-    /// Получить объект по его ИД.
+    /// Получает объект по его ИД.
     /// </summary>
     /// <param name="id">ИД.</param>
     /// <returns>Объект.</returns>

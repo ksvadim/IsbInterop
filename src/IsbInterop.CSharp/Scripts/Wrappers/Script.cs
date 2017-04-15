@@ -11,40 +11,40 @@ namespace IsbInterop.Scripts.Wrappers
   internal class Script : IsbObject<IObjectInfo>, IScript
   {
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <returns>Результат.</returns>
     public IIsbComObjectWrapper Execute()
     {
-      var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, null);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, null);
       return new BaseIsbObjectWrapper(rcwObject, Scope);
     }
 
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
     public IIsbComObjectWrapper Execute(TimeSpan timeout)
     {
-      var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, timeout);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, timeout);
       return new BaseIsbObjectWrapper(rcwObject, Scope);
     }
 
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     /// <returns>Результат.</returns>
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
     public T Execute<T>() where T : IIsbComObjectWrapper
     {
-      var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, null);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, null);
       return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
     }
 
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     /// <param name="timeout">Таймаут.</param>
@@ -52,12 +52,12 @@ namespace IsbInterop.Scripts.Wrappers
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
     public T Execute<T>(TimeSpan timeout) where T : IIsbComObjectWrapper
     {
-      var rcwObject = this.InvokeRcwInstanceMethod("Execute", null, timeout);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, timeout);
       return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
     }
 
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <returns>Информация об объекте.</returns>
     public override IObjectInfo GetInfo()
@@ -66,7 +66,7 @@ namespace IsbInterop.Scripts.Wrappers
     }
 
     /// <summary>
-    /// Получить параметры.
+    /// Получает параметры.
     /// </summary>
     /// <returns>IsbObjectList.</returns>
     public IList<IIsbComObjectWrapper> GetParams()

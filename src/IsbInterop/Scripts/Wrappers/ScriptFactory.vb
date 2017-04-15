@@ -11,7 +11,7 @@ Namespace Scripts.Wrappers
         Implements IScriptFactory
 
         ''' <summary>
-        ''' Получить сценарий по имени.
+        ''' Получает сценарий по имени.
         ''' </summary>
         ''' <param name="scriptName">Имя сценария.</param>
         ''' <returns>Сценарий.</returns>
@@ -21,7 +21,7 @@ Namespace Scripts.Wrappers
         End Function
 
         ''' <summary>
-        ''' Получить объект по его ИД.
+        ''' Получает объект по его ИД.
         ''' </summary>
         ''' <param name="id">ИД.</param>
         ''' <returns>Объект.</returns>

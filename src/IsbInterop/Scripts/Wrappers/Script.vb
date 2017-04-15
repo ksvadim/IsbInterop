@@ -11,7 +11,7 @@ Namespace Scripts.Wrappers
     Implements IScript
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <returns>Результат.</returns>
     Public Function Execute() As IIsbComObjectWrapper Implements IScript.Execute
@@ -20,7 +20,7 @@ Namespace Scripts.Wrappers
     End Function
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <param name="timeout">Таймаут.</param>
     ''' <returns>Результат.</returns>
@@ -30,7 +30,7 @@ Namespace Scripts.Wrappers
     End Function
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     ''' <returns>Результат.</returns>
@@ -41,7 +41,7 @@ Namespace Scripts.Wrappers
     End Function
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     ''' <param name="timeout">Таймаут.</param>
@@ -53,7 +53,7 @@ Namespace Scripts.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить информацию об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
     ''' <returns>Информация об объекте.</returns>
     Public Overrides Function GetInfo() As IObjectInfo
@@ -61,7 +61,7 @@ Namespace Scripts.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить параметры.
+    ''' Получает параметры.
     ''' </summary>
     ''' <returns>IsbObjectList.</returns>
     Public Overloads Function GetParams() As Accessory.IList(Of IIsbComObjectWrapper) Implements IScript.GetParams

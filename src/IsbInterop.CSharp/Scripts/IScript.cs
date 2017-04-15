@@ -10,27 +10,27 @@ namespace IsbInterop.Scripts
   public interface IScript : IObject<IObjectInfo>
   {
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <returns>Результат.</returns>
     IIsbComObjectWrapper Execute();
 
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
     IIsbComObjectWrapper Execute(TimeSpan timeout);
 
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <returns>Результат.</returns>
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
     T Execute<T>() where T : IIsbComObjectWrapper;
 
     /// <summary>
-    /// Выполнить скрипт.
+    /// Выполняет скрипт.
     /// </summary>
     /// <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     /// <param name="timeout">Таймаут.</param>
@@ -39,7 +39,7 @@ namespace IsbInterop.Scripts
     T Execute<T>(TimeSpan timeout) where T : IIsbComObjectWrapper;
 
     /// <summary>
-    /// Получить параметры.
+    /// Получает параметры.
     /// </summary>
     /// <returns>IsbObjectList.</returns>
     IList<IIsbComObjectWrapper> GetParams();

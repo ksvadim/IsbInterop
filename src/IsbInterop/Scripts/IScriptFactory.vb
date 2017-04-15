@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Scripts
+
   ''' <summary>
   ''' Фабрика сценариев.
   ''' </summary>
@@ -8,7 +9,7 @@ Namespace Scripts
     Inherits IFactory(Of IScript, IObjectInfo)
 
     ''' <summary>
-    ''' Получить сценарий по имени.
+    ''' Получает сценарий по имени.
     ''' </summary>
     ''' <param name="scriptName">Имя сценария.</param>
     ''' <returns>Сценарий.</returns>

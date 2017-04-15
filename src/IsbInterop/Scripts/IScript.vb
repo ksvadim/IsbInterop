@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Scripts
+
   ''' <summary>
   ''' Сценарий.
   ''' </summary>
@@ -8,26 +9,26 @@ Namespace Scripts
     Inherits IObject(Of IObjectInfo)
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <returns>Результат.</returns>
     Function Execute() As IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <param name="timeout">Таймаут.</param>
     ''' <returns>Результат.</returns>
     Function Execute(timeout As TimeSpan) As IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <returns>Результат.</returns>
     Function Execute(Of T As IIsbComObjectWrapper)() As T
 
     ''' <summary>
-    ''' Выполнить скрипт.
+    ''' Выполняет скрипт.
     ''' </summary>
     ''' <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     ''' <param name="timeout">Таймаут.</param>
@@ -36,7 +37,7 @@ Namespace Scripts
     Function Execute(Of T As IIsbComObjectWrapper)(timeout As TimeSpan) As T
 
     ''' <summary>
-    ''' Получить параметры.
+    ''' Получает параметры.
     ''' </summary>
     ''' <returns>IsbObjectList.</returns>
     Overloads Function GetParams() As Accessory.IList(Of IIsbComObjectWrapper)

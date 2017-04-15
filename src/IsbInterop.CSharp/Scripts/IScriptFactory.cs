@@ -8,7 +8,7 @@ namespace IsbInterop.Scripts
   public interface IScriptFactory : IFactory<IScript, IObjectInfo>
   {
     /// <summary>
-    /// Получить сценарий по имени.
+    /// Получает сценарий по имени.
     /// </summary>
     /// <param name="scriptName">Имя сценария.</param>
     /// <returns>Сценарий.</returns>
