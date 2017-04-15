@@ -147,7 +147,7 @@ Namespace Accessory.Wrappers
     ''' Завершает работу с приложением.
     ''' </summary>
     Public Sub DoFinalize() Implements IApplication.DoFinalize
-      Me.InvokeRcwInstanceMethod("Finalize")
+      InvokeRcwInstanceMethod("Finalize")
     End Sub
 
     #End Region

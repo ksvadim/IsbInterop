@@ -12,13 +12,13 @@ namespace IsbInterop
   {
     #region Singleton
 
-    private static readonly Lazy<IsbApplicationManager> instance =
-      new Lazy<IsbApplicationManager>(() => new IsbApplicationManager(), true);
-
     /// <summary>
     /// Экземпляр одиночки.
     /// </summary>
-    public static IsbApplicationManager Instance { get { return instance.Value; } }
+    public static IsbApplicationManager Instance => _instance.Value;
+
+    private static readonly Lazy<IsbApplicationManager> _instance =
+      new Lazy<IsbApplicationManager>(() => new IsbApplicationManager(), true);
 
     /// <summary>
     /// Приватный конструктор.
@@ -32,29 +32,29 @@ namespace IsbInterop
     /// <summary>
     /// Объект блокировки.
     /// </summary>
-    private static readonly object lockRoot = new object();
+    private static readonly object LockRoot = new object();
 
     /// <summary>
     /// Объект блокировки для получения LoginPoint.
     /// </summary>
-    private static readonly object loginPointLocker = new object();
+    private static readonly object LoginPointLocker = new object();
 
     /// <summary>
     /// Точка подключения.
     /// </summary>
-    private ILoginPoint currentLoginPoint;
+    private ILoginPoint _currentLoginPoint;
 
     /// <summary>
     /// Признак необходимости обновления текущей точки подключения.
     /// </summary>
-    private static volatile bool needUpdateCurrentLoginPoint = false;
+    private static volatile bool _needUpdateCurrentLoginPoint = false;
 
     #endregion
 
     #region Методы
 
     /// <summary>
-    /// Получить RCW-объект приложения IS-Builder.
+    /// Получает RCW-объект приложения IS-Builder.
     /// </summary>
     /// <param name="connectionParams">Параметры подключения.</param>
     /// <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>
@@ -65,59 +65,59 @@ namespace IsbInterop
       if (connectionParams == null)
         throw new ArgumentNullException(nameof(connectionParams));
 
-      if (this.currentLoginPoint != null)
+      if (_currentLoginPoint != null)
       {
         try
         {
-          int id = this.currentLoginPoint.PID;
+          int id = _currentLoginPoint.PID;
         }
         catch (Exception)
         {
           bool lockedHere = false;
 
-          lock (lockRoot)
+          lock (LockRoot)
           {
-            if (!needUpdateCurrentLoginPoint)
+            if (!_needUpdateCurrentLoginPoint)
             {
-              needUpdateCurrentLoginPoint = true;
+              _needUpdateCurrentLoginPoint = true;
               lockedHere = true;
             }
           }
 
           if (lockedHere)
           {
-            lock (loginPointLocker)
+            lock (LoginPointLocker)
             {
-              this.currentLoginPoint = LoginPoint.GetLoginPoint();
-              needUpdateCurrentLoginPoint = false;
-              return InternalGetNewIsbApplication(connectionParams, storeInCache, (LoginPoint)this.currentLoginPoint);
+              _currentLoginPoint = LoginPoint.GetLoginPoint();
+              _needUpdateCurrentLoginPoint = false;
+              return InternalGetNewIsbApplication(connectionParams, storeInCache, (LoginPoint)_currentLoginPoint);
             }
           }
           else
           {
-            lock (loginPointLocker)
+            lock (LoginPointLocker)
             {
-              return InternalGetNewIsbApplication(connectionParams, storeInCache, this.currentLoginPoint);
+              return InternalGetNewIsbApplication(connectionParams, storeInCache, _currentLoginPoint);
             }
           }
         }
 
-        return InternalGetNewIsbApplication(connectionParams, storeInCache, this.currentLoginPoint);
+        return InternalGetNewIsbApplication(connectionParams, storeInCache, _currentLoginPoint);
       }
       else
       {
-        lock (lockRoot)
+        lock (LockRoot)
         {
-          if (this.currentLoginPoint == null)
-            this.currentLoginPoint = LoginPoint.GetLoginPoint();
+          if (_currentLoginPoint == null)
+            _currentLoginPoint = LoginPoint.GetLoginPoint();
 
-          return InternalGetNewIsbApplication(connectionParams, storeInCache, this.currentLoginPoint);
+          return InternalGetNewIsbApplication(connectionParams, storeInCache, _currentLoginPoint);
         }
       }
     }
 
     /// <summary>
-    /// Получить новый объект приложения IS-Builder.
+    /// Получает новый объект приложения IS-Builder.
     /// </summary>
     /// <param name="currentLoginPoint">Текущая точка подключения.</param>
     /// <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>

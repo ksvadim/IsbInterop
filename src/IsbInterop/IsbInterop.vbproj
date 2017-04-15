@@ -160,8 +160,6 @@
     <Compile Include="Folders\Wrappers\FolderFactory.vb" />
     <Compile Include="Folders\Wrappers\FolderInfo.vb" />
     <Compile Include="IIsbComObjectWrapper.vb" />
-    <Compile Include="IRequisiteAutoCleaner.vb" />
-    <Compile Include="IRequisiteContainer.vb" />
     <Compile Include="IsbApplicationManager.vb" />
     <Compile Include="IsbComObjectWrapper.vb" />
     <Compile Include="IsbInteropException.vb" />
@@ -204,7 +202,6 @@
     <Compile Include="References\Wrappers\ReferenceInfo.vb" />
     <Compile Include="References\Wrappers\ReferencesFactory.vb" />
     <Compile Include="ReferenceUtils.vb" />
-    <Compile Include="RequisiteContainer.vb" />
     <Compile Include="Scripts\IScript.vb" />
     <Compile Include="Scripts\IScriptFactory.vb" />
     <Compile Include="Scripts\Wrappers\Script.vb" />

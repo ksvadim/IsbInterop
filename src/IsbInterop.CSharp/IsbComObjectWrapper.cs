@@ -19,28 +19,25 @@ namespace IsbInterop
     {
       get
       {
-        if (this.disposed)
-          throw new ObjectDisposedException(this.typeName);
+        if (_disposed)
+          throw new ObjectDisposedException(_typeName);
 
-        return rcwObject;
+        return _rcwObject;
       }
-      private set { rcwObject = value; }
+      private set { _rcwObject = value; }
     }
 
-    private object rcwObject;
+    private object _rcwObject;
 
     /// <summary>
     /// Имя типа.
     /// </summary>
-    private readonly string typeName;
+    private readonly string _typeName;
 
     /// <summary>
     /// COM-объект IS-Builder.
     /// </summary>
-    object IUnsafeRcwHolder.RcwObject
-    {
-      get { return this.RcwObject; }
-    }
+    object IUnsafeRcwHolder.RcwObject => RcwObject;
 
     /// <summary>
     /// Область видимости.
@@ -51,37 +48,37 @@ namespace IsbInterop
 
     #region IDisposable
 
-    private bool disposed;
+    private bool _disposed;
 
     /// <summary>
     /// Финализатор.
     /// </summary>
     ~IsbComObjectWrapper()
     {
-      this.Dispose(false);
+      Dispose(false);
     }
 
     public void Dispose()
     {
-      this.Dispose(true);
+      Dispose(true);
       GC.SuppressFinalize(this);
     }
 
     protected virtual void Dispose(bool disposing)
     {
-      if (this.disposed)
+      if (_disposed)
         return;
 
       if (disposing)
       {
-        if (this.rcwObject != null)
+        if (_rcwObject != null)
         {
-          if (Marshal.IsComObject(this.rcwObject))
-            Marshal.ReleaseComObject(this.rcwObject);
-          this.rcwObject = null;
+          if (Marshal.IsComObject(_rcwObject))
+            Marshal.ReleaseComObject(_rcwObject);
+          _rcwObject = null;
         }
 
-        this.disposed = true;
+        _disposed = true;
       }
     }
 
@@ -90,29 +87,29 @@ namespace IsbInterop
     #region Методы
 
     /// <summary>
-    /// Вызвать экземплярный метод COM-объекта.
+    /// Вызывает экземплярный метод COM-объекта.
     /// </summary>
     /// <param name="methodName">Имя метода.</param>
     /// <param name="parameter">Параметр.</param>
     /// <returns>Результат.</returns>
     protected object InvokeRcwInstanceMethod(string methodName, object parameter)
     {
-      return ComUtils.InvokeRcwInstanceMethod(this.RcwObject, methodName, parameter);
+      return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameter);
     }
 
     /// <summary>
-    /// Вызвать экземплярный метод COM-объекта.
+    /// Вызывает экземплярный метод COM-объекта.
     /// </summary>
     /// <param name="methodName">Имя метода.</param>
     /// <param name="parameters">Параметры.</param>
     /// <returns>Результат.</returns>
     protected object InvokeRcwInstanceMethod(string methodName, object[] parameters = null)
     {
-      return ComUtils.InvokeRcwInstanceMethod(this.RcwObject, methodName, parameters);
+      return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameters);
     }
 
     /// <summary>
-    /// Вызвать экземплярный метод COM-объекта.
+    /// Вызывает экземплярный метод COM-объекта.
     /// </summary>
     /// <param name="methodName">Имя метода.</param>
     /// <param name="parameters">Параметры.</param>
@@ -120,39 +117,39 @@ namespace IsbInterop
     /// <returns>Результат.</returns>
     protected object InvokeRcwInstanceMethod(string methodName, object[] parameters, TimeSpan? timeout)
     {
-      return ComUtils.InvokeRcwInstanceMethod(this.RcwObject, methodName, parameters, timeout);
+      return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameters, timeout);
     }
 
     /// <summary>
-    /// Получить свойство COM-объекта.
+    /// Получает свойство COM-объекта.
     /// </summary>
     /// <param name="propertyName">Имя свойства.</param>
     /// <param name="parameter">Параметр.</param>
     /// <returns>Результат.</returns>
     protected object GetRcwProperty(string propertyName, object parameter)
     {
-      return ComUtils.GetRcwProperty(this.RcwObject, propertyName, parameter);
+      return ComUtils.GetRcwProperty(RcwObject, propertyName, parameter);
     }
 
     /// <summary>
-    /// Получить свойство COM-объекта.
+    /// Получает свойство COM-объекта.
     /// </summary>
     /// <param name="propertyName">Имя свойства.</param>
     /// <param name="parameters">Параметры.</param>
     /// <returns>Результат.</returns>
     protected object GetRcwProperty(string propertyName, object[] parameters = null)
     {
-      return ComUtils.GetRcwProperty(this.RcwObject, propertyName, parameters);
+      return ComUtils.GetRcwProperty(RcwObject, propertyName, parameters);
     }
 
     /// <summary>
-    /// Установить свойство COM-объекта.
+    /// Устанавливает свойство COM-объекта.
     /// </summary>
     /// <param name="propertyName">Имя свойства.</param>
     /// <param name="value">Значение.</param>
     protected void SetRcwProperty(string propertyName, object value)
     {
-      ComUtils.SetRcwProperty(this.RcwObject, propertyName, value);
+      ComUtils.SetRcwProperty(RcwObject, propertyName, value);
     }
 
     #endregion
@@ -171,9 +168,9 @@ namespace IsbInterop
     /// <param name="scope">Область видимости.</param>
     protected IsbComObjectWrapper(object rcwObject, IScope scope)
     {
-      this.RcwObject = rcwObject;
-      this.typeName = Information.TypeName(rcwObject);
-      this.Scope = scope;
+      RcwObject = rcwObject;
+      Scope = scope;
+      _typeName = Information.TypeName(rcwObject);
 
       ((Scope)scope)?.Add(this);
     }

@@ -28,7 +28,7 @@ namespace IsbInterop
     #endregion
 
     /// <summary>
-    /// Создать контекст.
+    /// Создает контекст.
     /// </summary>
     /// <param name="connectionString">Строка подключения.</param>
     /// <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>
@@ -42,7 +42,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Создать контекст.
+    /// Создает контекст.
     /// </summary>
     /// <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>
     /// <returns>Контекст.</returns>
@@ -56,7 +56,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Получить параметры подключения из строки подключения.
+    /// Получает параметры подключения из строки подключения.
     /// </summary>
     /// <param name="connectionString">Строка подключения.</param>
     /// <returns>Параметры подключения.</returns>

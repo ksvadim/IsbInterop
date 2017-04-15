@@ -12,38 +12,38 @@ namespace IsbInterop.Tests.Integration
     /// <summary>
     /// ИД временной организации.
     /// </summary>
-    private int tempOrganizationId = 0;
+    private int _tempOrganizationId = 0;
 
     /// <summary>
     /// Путь к тестовому файлу.
     /// </summary>
-    private string testFilePath;
+    private string _testFilePath;
 
     /// <summary>
     /// ИД первого тестового документа.
     /// </summary>
-    private int testDocumentId = 0;
+    private int _testDocumentId = 0;
 
     [SetUp]
     public void Init()
     {
-      this.tempOrganizationId = OrganizationUtils.CreateOrganization("test");
+      _tempOrganizationId = OrganizationUtils.CreateOrganization("test");
 
-      this.testFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestDocument.txt");
-      this.testDocumentId = DocumentUtils.CreateDocument("TestDocument", testFilePath);
+      _testFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestDocument.txt");
+      _testDocumentId = DocumentUtils.CreateDocument("TestDocument", _testFilePath);
     }
 
     [TearDown]
     public void Clean()
     {
-      OrganizationUtils.RemoveOrganization(this.tempOrganizationId);
+      OrganizationUtils.RemoveOrganization(_tempOrganizationId);
 
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
         var edocumentFactory = scope.Application.GetEDocumentFactory();
-        edocumentFactory.DeleteById(this.testDocumentId);
-        this.testDocumentId = 0;
+        edocumentFactory.DeleteById(_testDocumentId);
+        _testDocumentId = 0;
       }
     }
 
@@ -56,7 +56,7 @@ namespace IsbInterop.Tests.Integration
 
         var referencesFactory = scope.Application.GetReferencesFactory();
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
-        var reference = referenceFactory.GetObjectById(this.tempOrganizationId);
+        var reference = referenceFactory.GetObjectById(_tempOrganizationId);
 
         Assert.NotNull(reference);
       }
@@ -72,7 +72,7 @@ namespace IsbInterop.Tests.Integration
       {
         var edocumentFactory = scope.Application.GetEDocumentFactory();
 
-        var document = edocumentFactory.GetObjectById(this.testDocumentId);
+        var document = edocumentFactory.GetObjectById(_testDocumentId);
         documentId = document.Id;
       }
 
@@ -86,7 +86,7 @@ namespace IsbInterop.Tests.Integration
       using (var scope = context.CreateScope())
       {
         var edocumentFactory = scope.Application.GetEDocumentFactory();
-        var document = edocumentFactory.GetObjectById(this.testDocumentId);
+        var document = edocumentFactory.GetObjectById(_testDocumentId);
         var documentVersionList = document.GetVersions();
         var version = documentVersionList.GetValues(0);
 
@@ -139,7 +139,7 @@ namespace IsbInterop.Tests.Integration
       {
         var referencesFactory = scope.Application.GetReferencesFactory();
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
-        var reference = referenceFactory.GetObjectById(this.tempOrganizationId);
+        var reference = referenceFactory.GetObjectById(_tempOrganizationId);
         var stateRequisite = reference.GetRequisite(ReferenceConfiguration.CommonRequisites.State) as IPickRequisite;
 
         Assert.NotNull(stateRequisite);

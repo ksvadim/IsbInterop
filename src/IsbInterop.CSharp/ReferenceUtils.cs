@@ -14,7 +14,7 @@ namespace IsbInterop
   public static class ReferenceUtils
   {
     /// <summary>
-    ///  Добавить условие ограничения на реквизит в запрос набора данных справочника.
+    ///  Добавляет условие ограничения на реквизит в запрос набора данных справочника.
     /// </summary>
     /// <param name="reference">Справочник.</param>
     /// <param name="requisite">Реквизит справочника, по которому добавляется ограничение.</param>
@@ -23,19 +23,18 @@ namespace IsbInterop
     public static int AddWhereWithRequisite(this IReference reference, IRequisite requisite, int restrictValue)
     {
       if (reference == null)
-        throw new ArgumentNullException("reference");
+        throw new ArgumentNullException(nameof(reference));
 
       if (requisite == null)
-        throw new ArgumentNullException("requisite");
+        throw new ArgumentNullException(nameof(requisite));
 
-      var queryWhereSection = string.Format("{0}.{1} = {2}", reference.SqlTableName,
-        requisite.FieldName, restrictValue);
+      var queryWhereSection = $"{reference.SqlTableName}.{requisite.FieldName} = {restrictValue}";
 
       return AddWhereSection(reference, queryWhereSection);
     }
 
     /// <summary>
-    ///  Добавить условие ограничения на реквизит в запрос набора данных справочника.
+    ///  Добавляет условие ограничения на реквизит в запрос набора данных справочника.
     /// </summary>
     /// <param name="reference">Справочник.</param>
     /// <param name="requisite">Реквизит справочника, по которому добавляется ограничение.</param>
@@ -44,17 +43,16 @@ namespace IsbInterop
     public static int AddWhereWithRequisite(this IReference reference, IRequisite requisite, string restrictingValue)
     {
       if (reference == null)
-        throw new ArgumentNullException("reference");
+        throw new ArgumentNullException(nameof(reference));
 
       var requisiteSqlFieldValue = GetRequisiteSqlFieldValue(requisite, restrictingValue);
-      var queryWhereSection = string.Format("{0}.{1} = '{2}'", reference.SqlTableName,
-        requisite.FieldName, requisiteSqlFieldValue);
+      var queryWhereSection = $"{reference.SqlTableName}.{requisite.FieldName} = '{requisiteSqlFieldValue}'";
 
       return AddWhereSection(reference, queryWhereSection);
     }
 
     /// <summary>
-    ///  Добавить условие ограничения на реквизит в запрос набора данных справочника.
+    ///  Добавляет условие ограничения на реквизит в запрос набора данных справочника.
     /// </summary>
     /// <param name="reference">Справочник.</param>
     /// <param name="requisite">Реквизит справочника, по которому добавляется ограничение.</param>
@@ -63,39 +61,37 @@ namespace IsbInterop
     public static int AddWhereWithRequisite(this IReference reference, IRequisite requisite, IEnumerable<string> restrictingValues)
     {
       if (reference == null)
-        throw new ArgumentNullException("reference");
+        throw new ArgumentNullException(nameof(reference));
 
       if (requisite == null)
-        throw new ArgumentNullException("requisite");
+        throw new ArgumentNullException(nameof(requisite));
 
       if (!restrictingValues.Any())
         throw new ArgumentException("restrictingValues");
 
       var restrictingCondition = string.Join(", ",
-        restrictingValues.Select(v => string.Format("'{0}'", GetRequisiteSqlFieldValue(requisite, v))));
+        restrictingValues.Select(v => $"'{GetRequisiteSqlFieldValue(requisite, v)}'"));
 
-      var queryWhereSection = string.Format("{0}.{1} in ({2})", reference.SqlTableName,
-        requisite.FieldName, restrictingCondition);
+      var queryWhereSection = $"{reference.SqlTableName}.{requisite.FieldName} in ({restrictingCondition})";
 
       return AddWhereSection(reference, queryWhereSection);
     }
 
     /// <summary>
-    ///  Добавить условие, что реквизит не ревен Null в запрос набора данных справочника.
+    ///  Добавляет условие, что реквизит не ревен Null в запрос набора данных справочника.
     /// </summary>
     /// <param name="reference">Справочник.</param>
     /// <param name="requisite">Реквизит справочника, по которому добавляется ограничение.</param>
     /// <returns>ИД условия в запросе.</returns>
     public static int AddWhereWithRequisiteIsNotNull(this IReference reference, IRequisite requisite)
     {
-      var queryWhereSection = string.Format("{0}.{1} is not null",
-        reference.SqlTableName, requisite.FieldName);
+      var queryWhereSection = $"{reference.SqlTableName}.{requisite.FieldName} is not null";
 
       return AddWhereSection(reference, queryWhereSection);
     }
 
     /// <summary>
-    /// Получить значение sql-поля реквизита по именованному значению.
+    /// Получает значение sql-поля реквизита по именованному значению.
     /// </summary>
     /// <param name="requisite">Реквизит.</param>
     /// <param name="namedValue">Именованное значение.</param>
@@ -121,7 +117,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Добавить секцию Where в запрос набора данных справочника.
+    /// Добавляет секцию Where в запрос набора данных справочника.
     /// </summary>
     /// <param name="reference">Справочник.</param>
     /// <param name="queryWhereSection">Секция where запроса.</param>

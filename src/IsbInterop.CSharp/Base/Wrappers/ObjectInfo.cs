@@ -8,12 +8,12 @@
     /// <summary>
     /// ИД объекта.
     /// </summary>
-    public int Id => (int)this.GetRcwProperty("ID");
+    public int Id => (int)GetRcwProperty("ID");
 
     /// <summary>
     /// Имя объекта.
     /// </summary>
-    public string Name => (string)this.GetRcwProperty("Name");
+    public string Name => (string)GetRcwProperty("Name");
 
     /// <summary>
     /// Конструктор.

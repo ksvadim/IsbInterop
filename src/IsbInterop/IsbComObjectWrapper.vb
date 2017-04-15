@@ -16,8 +16,8 @@ Public MustInherit Class IsbComObjectWrapper
   ''' </summary>
   Protected Property RcwObject As Object
     Get
-      If disposed Then
-        Throw New ObjectDisposedException(Me.typeName)
+      If _disposed Then
+        Throw New ObjectDisposedException(_typeName)
       End If
 
       Return _rcwObject
@@ -32,7 +32,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <summary>
   ''' Имя типа.
   ''' </summary>
-  Private ReadOnly typeName As String
+  Private ReadOnly _typeName As String
 
   ''' <summary>
   ''' COM-объект IS-Builder.
@@ -52,7 +52,7 @@ Public MustInherit Class IsbComObjectWrapper
 
 #Region "IDisposable"
 
-  Private disposed As Boolean
+  Private _disposed As Boolean
 
   ''' <summary>
   ''' Финализатор.
@@ -71,7 +71,7 @@ Public MustInherit Class IsbComObjectWrapper
   End Sub
 
   Protected Overridable Sub Dispose(disposing As Boolean)
-    If disposed Then
+    If _disposed Then
       Return
     End If
 
@@ -80,10 +80,10 @@ Public MustInherit Class IsbComObjectWrapper
         If Marshal.IsComObject(_rcwObject) Then
           Marshal.ReleaseComObject(_rcwObject)
         End If
-        Me._rcwObject = Nothing
+        _rcwObject = Nothing
       End If
 
-      disposed = True
+      _disposed = True
     End If
   End Sub
 
@@ -92,7 +92,7 @@ Public MustInherit Class IsbComObjectWrapper
 #Region "Методы"
 
   '''' <summary>
-  '''' Вызвать экземплярный метод COM-объекта.
+  '''' Вызывает экземплярный метод COM-объекта.
   '''' </summary>
   '''' <param name="methodName">Имя метода.</param>
   '''' <param name="parameter">Параметр.</param>
@@ -102,7 +102,7 @@ Public MustInherit Class IsbComObjectWrapper
   End Function
 
   ''' <summary>
-  ''' Вызвать экземплярный метод COM-объекта.
+  ''' Вызывает экземплярный метод COM-объекта.
   ''' </summary>
   ''' <param name="methodName">Имя метода.</param>
   ''' <param name="parameters">Параметры.</param>
@@ -112,7 +112,7 @@ Public MustInherit Class IsbComObjectWrapper
   End Function
 
   ''' <summary>
-  ''' Вызвать экземплярный метод COM-объекта.
+  ''' Вызывает экземплярный метод COM-объекта.
   ''' </summary>
   ''' <param name="methodName">Имя метода.</param>
   ''' <param name="parameters">Параметры.</param>
@@ -124,7 +124,7 @@ Public MustInherit Class IsbComObjectWrapper
 
 
   ''' <summary>
-  ''' Получить свойство COM-объекта.
+  ''' Получает свойство COM-объекта.
   ''' </summary>
   ''' <param name="propertyName">Имя свойства.</param>
   ''' <param name="parameter">Параметр.</param>
@@ -134,7 +134,7 @@ Public MustInherit Class IsbComObjectWrapper
   End Function
 
   ''' <summary>
-  ''' Получить свойство COM-объекта.
+  ''' Получает свойство COM-объекта.
   ''' </summary>
   ''' <param name="propertyName">Имя свойства.</param>
   ''' <param name="parameters">Параметры.</param>
@@ -144,7 +144,7 @@ Public MustInherit Class IsbComObjectWrapper
   End Function
 
   ''' <summary>
-  ''' Установить свойство COM-объекта.
+  ''' Устанавливает свойство COM-объекта.
   ''' </summary>
   ''' <param name="propertyName">Имя свойства.</param>
   ''' <param name="value">Значение.</param>
@@ -168,9 +168,9 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <param name="rcwObject">COM-объект IS-Builder.</param>
   ''' <param name="scope">Область видимости.</param>
   Protected Sub New(rcwObject As Object, scope As IScope)
-    Me.RcwObject = rcwObject
-    typeName = Information.TypeName(rcwObject)
-    Me.Scope = scope
+    RcwObject = rcwObject
+    Scope = scope
+    _typeName = Information.TypeName(rcwObject)
 
     If scope IsNot Nothing Then
       DirectCast(scope, Scope).Add(Me)

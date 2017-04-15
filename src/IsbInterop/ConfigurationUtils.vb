@@ -13,7 +13,7 @@ Public NotInheritable Class ConfigurationUtils
     Private Shared ReadOnly isbInteropConfiguration As New Lazy(Of Configuration)(AddressOf TryGetIsbInteropConfiguration, True)
 
     ''' <summary>
-    ''' Получить настройки строки подключения.
+    ''' Получат настройки строки подключения.
     ''' </summary>
     ''' <returns>Настройки строки подключения.</returns>
     Public Shared Function GetConnectionString() As String
@@ -32,7 +32,7 @@ Public NotInheritable Class ConfigurationUtils
     End Function
 
     ''' <summary>
-    ''' Получить настройку секции appSettings.
+    ''' Получает настройку секции appSettings.
     ''' </summary>
     ''' <typeparam name="T">Тип результата.</typeparam>
     ''' <param name="settingName">Имя настройки/</param>
@@ -63,7 +63,7 @@ Public NotInheritable Class ConfigurationUtils
     End Function
 
     ''' <summary>
-    ''' Получить конфигурацию сборки IsbInterop.
+    ''' Получает конфигурацию сборки IsbInterop.
     ''' </summary>
     ''' <returns>Конфигурация, если она существует, иначе null.</returns>
     Private Shared Function TryGetIsbInteropConfiguration() As Configuration
@@ -91,7 +91,7 @@ Public NotInheritable Class ConfigurationUtils
     End Function
 
     ''' <summary>
-    ''' Сконвертировать строку в заданный тип.
+    ''' Конвертирует строку в заданный тип.
     ''' </summary>
     ''' <typeparam name="T">Тип результата.</typeparam>
     ''' <param name="source">Исходное значение.</param>
@@ -112,7 +112,7 @@ Public NotInheritable Class ConfigurationUtils
     End Function
 
     ''' <summary>
-    ''' Зашифровать строки подключения.
+    ''' Шифрует строки подключения.
     ''' </summary>
     Public Shared Sub EncryptConnectionStrings()
         Dim configuration = isbInteropConfiguration.Value

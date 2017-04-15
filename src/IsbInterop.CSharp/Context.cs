@@ -11,32 +11,32 @@ namespace IsbInterop
   {
     #region IDisposable
 
-    private bool disposed;
+    private bool _disposed;
 
     /// <summary>
     /// Финализатор.
     /// </summary>
     ~Context()
     {
-      this.Dispose(false);
+      Dispose(false);
     }
 
     public void Dispose()
     {
-      this.Dispose(true);
+      Dispose(true);
       GC.SuppressFinalize(this);
     }
 
     protected virtual void Dispose(bool disposing)
     {
-      if (this.disposed)
+      if (_disposed)
         return;
 
       if (disposing)
       {
-        application?.Dispose();
+        _application?.Dispose();
 
-        this.disposed = true;
+        _disposed = true;
       }
     }
 
@@ -45,17 +45,17 @@ namespace IsbInterop
     /// <summary>
     /// Приложение IsBuilder.
     /// </summary>
-    public readonly IApplication application;
+    private readonly IApplication _application;
 
     /// <summary>
     /// Параметры подключения.
     /// </summary>
-    private readonly string connectionParams;
+    private readonly string _connectionParams;
 
     /// <summary>
     /// Признак необходимости добавления информации о соединении в кэш.
     /// </summary>
-    private readonly bool storeInCache;
+    private readonly bool _storeInCache;
 
     /// <summary>
     /// Создать область видимости.
@@ -63,7 +63,7 @@ namespace IsbInterop
     /// <returns>Область видимости.</returns>
     public IScope CreateScope()
     {
-      var rcwApp = IsbApplicationManager.Instance.GetRcwApplication(connectionParams, storeInCache);
+      var rcwApp = IsbApplicationManager.Instance.GetRcwApplication(_connectionParams, _storeInCache);
       var scope = new Scope(rcwApp);
 
       return scope;
@@ -77,9 +77,9 @@ namespace IsbInterop
     /// <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>
     public Context(object rcwApp, string connectionParams, bool storeInCache)
     {
-      this.application = new Application(rcwApp, null);
-      this.connectionParams = connectionParams;
-      this.storeInCache = storeInCache;
+      _application = new Application(rcwApp, null);
+      _connectionParams = connectionParams;
+      _storeInCache = storeInCache;
     }
   }
 }

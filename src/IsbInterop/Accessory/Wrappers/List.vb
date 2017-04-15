@@ -36,7 +36,7 @@
     ''' <param name="index">Индекс элемента в списке.</param>
     ''' <returns>Значение элемента с указанным индексом.</returns>
     Public Function GetValues(index As Integer) As TI Implements IList(Of TI).GetValues
-      Dim rcwObjectResult = Me.GetRcwProperty("Values", index)
+      Dim rcwObjectResult = GetRcwProperty("Values", index)
       Return IsbObjectResolver.Resolve(Of TI)(rcwObjectResult, Scope)
     End Function
 
@@ -59,9 +59,9 @@
       Dim isbObject = TryCast(value, IUnsafeRcwHolder)
 
       If isbObject IsNot Nothing Then
-        Me.InvokeRcwInstanceMethod("SetVar", New Object() {name, isbObject.UnsafeRcwObject})
+        InvokeRcwInstanceMethod("SetVar", New Object() {name, isbObject.UnsafeRcwObject})
       Else
-        Me.InvokeRcwInstanceMethod("SetVar", New Object() {name, value})
+        InvokeRcwInstanceMethod("SetVar", New Object() {name, value})
       End If
     End Sub
 

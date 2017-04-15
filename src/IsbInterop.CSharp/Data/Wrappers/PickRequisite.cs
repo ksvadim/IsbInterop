@@ -13,7 +13,7 @@
       get
       {
         var rcwItems = GetRcwProperty("Items");
-        return new PickRequisiteItems(rcwItems, this.Scope);
+        return new PickRequisiteItems(rcwItems, Scope);
       }
     }
 

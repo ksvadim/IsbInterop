@@ -8,7 +8,7 @@ Imports IsbInterop.DataTypes.Enumerable
 Friend NotInheritable Class DerivedRequisiteFactory
 
   ''' <summary>
-  ''' Создать реквизит.
+  ''' Создает реквизит.
   ''' </summary>
   ''' <param name="rcwRequisite">RCW-объект реквизита.</param>
   ''' <param name="scope">Область видимости.</param>

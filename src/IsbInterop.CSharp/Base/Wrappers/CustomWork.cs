@@ -16,8 +16,8 @@ namespace IsbInterop.Base.Wrappers
     /// <returns>Список вложений.</returns>
     public IAttachmentList GetAttachments(bool isForFamilyTask)
     {
-      var rcwIAttachmentList = this.InvokeRcwInstanceMethod("GetAttachments", isForFamilyTask);
-      return new AttachmentList(rcwIAttachmentList, this.Scope);
+      var rcwIAttachmentList = InvokeRcwInstanceMethod("GetAttachments", isForFamilyTask);
+      return new AttachmentList(rcwIAttachmentList, Scope);
     }
 
     /// <summary>

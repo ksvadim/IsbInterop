@@ -67,7 +67,7 @@
     ''' Переходит к предыдущей записи.
     ''' </summary>
     Public Sub Prior() Implements IQuery.Prior
-      Me.InvokeRcwInstanceMethod("Prior")
+      InvokeRcwInstanceMethod("Prior")
     End Sub
 
     ''' <summary>

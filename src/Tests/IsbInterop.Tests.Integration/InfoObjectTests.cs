@@ -11,50 +11,50 @@ namespace IsbInterop.Tests.Integration
     /// <summary>
     /// ИД временной организации.
     /// </summary>
-    private int tempOrganizationId = 0;
+    private int _tempOrganizationId = 0;
 
     /// <summary>
     /// Путь к тестовому файлу.
     /// </summary>
-    private string testFilePath;
+    private string _testFilePath;
 
     /// <summary>
     /// ИД первого тестового документа.
     /// </summary>
-    private int firstTestDocumentId = 0;
+    private int _firstTestDocumentId = 0;
 
     /// <summary>
     /// ИД второго тестового документа.
     /// </summary>
-    private int secondTestDocumentId = 0;
+    private int _secondTestDocumentId = 0;
 
     [SetUp]
     public void Init()
     {
-      this.tempOrganizationId = OrganizationUtils.CreateOrganization("test");
+      _tempOrganizationId = OrganizationUtils.CreateOrganization("test");
 
-      this.testFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestDocument.txt");
+      _testFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestDocument.txt");
 
-      this.firstTestDocumentId = DocumentUtils.CreateDocument("FirstTestDocument", testFilePath);
-      this.secondTestDocumentId = DocumentUtils.CreateDocument("SecondTestDocument", testFilePath);
+      _firstTestDocumentId = DocumentUtils.CreateDocument("FirstTestDocument", _testFilePath);
+      _secondTestDocumentId = DocumentUtils.CreateDocument("SecondTestDocument", _testFilePath);
 
-      DocumentUtils.BindDocument(this.firstTestDocumentId, this.secondTestDocumentId);
+      DocumentUtils.BindDocument(_firstTestDocumentId, _secondTestDocumentId);
     }
 
     [TearDown]
     public void Clean()
     {
-      OrganizationUtils.RemoveOrganization(this.tempOrganizationId);
-      this.tempOrganizationId = 0;
+      OrganizationUtils.RemoveOrganization(_tempOrganizationId);
+      _tempOrganizationId = 0;
 
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
         var edocumentFactory = scope.Application.GetEDocumentFactory();
-        edocumentFactory.DeleteById(this.firstTestDocumentId);
-        this.firstTestDocumentId = 0;
-        edocumentFactory.DeleteById(this.secondTestDocumentId);
-        this.secondTestDocumentId = 0;
+        edocumentFactory.DeleteById(_firstTestDocumentId);
+        _firstTestDocumentId = 0;
+        edocumentFactory.DeleteById(_secondTestDocumentId);
+        _secondTestDocumentId = 0;
       }
     }
 
@@ -67,7 +67,7 @@ namespace IsbInterop.Tests.Integration
         var referencesFactory = scope.Application.GetReferencesFactory();
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
 
-        var referenceInfo = referenceFactory.GetObjectInfo(this.tempOrganizationId);
+        var referenceInfo = referenceFactory.GetObjectInfo(_tempOrganizationId);
 
         Assert.NotNull(referenceInfo);
       }
@@ -80,7 +80,7 @@ namespace IsbInterop.Tests.Integration
       using (var scope = context.CreateScope())
       {
         var edocumentFactory = scope.Application.GetEDocumentFactory();
-        var edocumentInfo = edocumentFactory.GetObjectInfo(this.firstTestDocumentId);
+        var edocumentInfo = edocumentFactory.GetObjectInfo(_firstTestDocumentId);
 
         Assert.NotNull(edocumentInfo);
       }
@@ -95,7 +95,7 @@ namespace IsbInterop.Tests.Integration
         var searchFactory = scope.Application.GetSearchFactory();
         var searchDescription = searchFactory.Load("BOUND_EDOCUMENT_SEARCH");
         var edocumentFactory = scope.Application.GetEDocumentFactory();
-        var edocumentInfo = edocumentFactory.GetObjectInfo(this.firstTestDocumentId);
+        var edocumentInfo = edocumentFactory.GetObjectInfo(_firstTestDocumentId);
 
         searchDescription.InitializeSearch(edocumentInfo);
         var documentInfos = searchDescription.Execute<IEDocumentInfo>();

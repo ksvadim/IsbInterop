@@ -9,7 +9,7 @@ Public Module IsbObjectResolver
   Private ReadOnly container As IContainer
 
   ''' <summary>
-  ''' Получить экземпляр объекта.
+  ''' Получает экземпляр объекта.
   ''' </summary>
   ''' <typeparam name="TI">Интерфейс объекта.</typeparam>
   ''' <param name="rcwObject">COM-объект.</param>

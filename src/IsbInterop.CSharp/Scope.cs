@@ -13,7 +13,7 @@ namespace IsbInterop
     /// <summary>
     /// Рабочий набор.
     /// </summary>
-    private readonly Stack<IIsbComObjectWrapper> workingSet = new Stack<IIsbComObjectWrapper>();
+    private readonly Stack<IIsbComObjectWrapper> _workingSet = new Stack<IIsbComObjectWrapper>();
 
     /// <summary>
     /// Приложение IS-Builder.
@@ -23,15 +23,16 @@ namespace IsbInterop
     #region IDisposable
 
     /// <summary>
-    /// Выполнить очистку.
+    /// Выполняет очистку.
     /// </summary>
     public void Dispose()
     {
-      foreach (var isbObject in workingSet)
+      while (_workingSet.Count > 0)
       {
+        var requisite = _workingSet.Pop();
         try
         {
-          isbObject.Dispose();
+          requisite.Dispose();
         }
         catch (ObjectDisposedException)
         {
@@ -39,18 +40,18 @@ namespace IsbInterop
         }
       }
 
-      workingSet.Clear();
+      _workingSet.Clear();
     }
 
     #endregion
 
     /// <summary>
-    /// Добавить объект в область видимости.
+    /// Добавляет объект в область видимости.
     /// </summary>
     /// <param name="isbObject">Объект IS-Builder.</param>
     public void Add(IIsbComObjectWrapper isbObject)
     {
-      workingSet.Push(isbObject);
+      _workingSet.Push(isbObject);
     }
 
     /// <summary>
@@ -59,7 +60,7 @@ namespace IsbInterop
     /// <param name="rcwApp">RCW-объект IApplication.</param>
     public Scope(object rcwApp)
     {
-      this.Application = new Application(rcwApp, this);
+      Application = new Application(rcwApp, this);
     }
   }
 

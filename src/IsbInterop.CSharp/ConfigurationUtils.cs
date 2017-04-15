@@ -13,30 +13,29 @@ namespace IsbInterop
     /// <summary>
     /// Конфигурация isbInterop.
     /// </summary>
-    private static readonly Lazy<Configuration> isbInteropConfiguration = new Lazy<Configuration>(TryGetIsbInteropConfiguration, true);
+    private static readonly Lazy<Configuration> IsbInteropConfiguration = new Lazy<Configuration>(TryGetIsbInteropConfiguration, true);
 
     /// <summary>
-    /// Получить настройки строки подключения.
+    /// Получает настройки строки подключения.
     /// </summary>
     /// <returns>Настройки строки подключения.</returns>
     public static string GetConnectionString()
     {
       ConnectionStringSettings connectionStringSettings;
 
-      var standaloneConfiguration = isbInteropConfiguration.Value;
+      var standaloneConfiguration = IsbInteropConfiguration.Value;
       if (standaloneConfiguration != null)
         connectionStringSettings = standaloneConfiguration.ConnectionStrings.ConnectionStrings["IsbInterop"];
       else
         connectionStringSettings = ConfigurationManager.ConnectionStrings["IsbInterop"];
 
-      var connectionString = connectionStringSettings != null ?
-        connectionStringSettings.ConnectionString : null;
+      var connectionString = connectionStringSettings?.ConnectionString;
 
       return connectionString;
     }
 
     /// <summary>
-    /// Получить настройку секции appSettings.
+    /// Получает настройку секции appSettings.
     /// </summary>
     /// <typeparam name="T">Тип результата.</typeparam>
     /// <param name="settingName">Имя настройки/</param>
@@ -45,11 +44,11 @@ namespace IsbInterop
     public static bool TryGetAppSetting<T>(string settingName, ref T result)
     {
       if (settingName == null)
-        throw new ArgumentNullException("settingName");
+        throw new ArgumentNullException(nameof(settingName));
 
       string settingValue = null;
 
-      var standaloneConfiguration = isbInteropConfiguration.Value;
+      var standaloneConfiguration = IsbInteropConfiguration.Value;
       if (standaloneConfiguration != null)
       {
         var setting = standaloneConfiguration.AppSettings.Settings[settingName];
@@ -66,7 +65,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Получить конфигурацию сборки IsbInterop.
+    /// Получает конфигурацию сборки IsbInterop.
     /// </summary>
     /// <returns>Конфигурация, если она существует, иначе null.</returns>
     private static Configuration TryGetIsbInteropConfiguration()
@@ -74,7 +73,7 @@ namespace IsbInterop
       var currentAssembly = typeof(IsbApplicationManager).Assembly;
       var assemblyPath = new Uri(currentAssembly.CodeBase).LocalPath;
       var assemblyPathWithoutExtenstion = assemblyPath.Substring(0, assemblyPath.Length - 4);
-      var configPath = string.Format("{0}.dll.config", assemblyPathWithoutExtenstion);
+      var configPath = $"{assemblyPathWithoutExtenstion}.dll.config";
 
       // Проверяем, что файл существует, т.к.метод OpenMappedExeConfiguration всегда создает объект конфигурации.
       if (!File.Exists(configPath))
@@ -97,7 +96,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Сконвертировать строку в заданный тип.
+    /// Конвертирует строку в заданный тип.
     /// </summary>
     /// <typeparam name="T">Тип результата.</typeparam>
     /// <param name="source">Исходное значение.</param>
@@ -123,11 +122,11 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Зашифровать строки подключения.
+    /// Шифрует строки подключения.
     /// </summary>
     public static void EncryptConnectionStrings()
     {
-      var configuration = isbInteropConfiguration.Value;
+      var configuration = IsbInteropConfiguration.Value;
       if (configuration == null)
       {
         try

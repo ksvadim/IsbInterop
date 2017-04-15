@@ -3,6 +3,7 @@
 ''' </summary>
 Public Class FatalIsbInteropException
     Inherits Exception
+
     ''' <summary>
     ''' Конструктор.
     ''' </summary>

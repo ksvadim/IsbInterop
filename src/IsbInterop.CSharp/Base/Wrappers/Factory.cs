@@ -78,8 +78,8 @@ namespace IsbInterop.Base.Wrappers
     /// <returns>Info-объект.</returns>
     protected object GetRcwObjectInfo(int id, out TCompType objectType)
     {
-      var rcwFactoryObject = this.GetRcwObjectInfo(id);
-      objectType = (TCompType)this.GetRcwProperty("ComponentType");
+      var rcwFactoryObject = GetRcwObjectInfo(id);
+      objectType = (TCompType)GetRcwProperty("ComponentType");
 
       return rcwFactoryObject;
     }
@@ -91,7 +91,7 @@ namespace IsbInterop.Base.Wrappers
     /// <returns>Info-объект.</returns>
     protected object GetRcwObjectInfo(int id)
     {
-      var rcwObjectInfo = this.GetRcwProperty("ObjectInfo", id);
+      var rcwObjectInfo = GetRcwProperty("ObjectInfo", id);
 
       return rcwObjectInfo;
     }

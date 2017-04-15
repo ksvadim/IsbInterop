@@ -11,7 +11,7 @@ namespace IsbInterop
   public static class DataSetUtils
   {
     /// <summary>
-    ///  Добавить условие ограничения на реквизит в запрос детального набора данных справочника.
+    ///  Добавляет условие ограничения на реквизит в запрос детального набора данных справочника.
     /// </summary>
     /// <param name="detailDataSet">Детальный набор данных.</param>
     /// <param name="requisite">Реквизит, по которому добавляется ограничение.</param>
@@ -21,10 +21,9 @@ namespace IsbInterop
       IRequisite requisite, int restrictValue)
     {
       if (detailDataSet == null)
-        throw new ArgumentNullException("detailDataSet");
+        throw new ArgumentNullException(nameof(detailDataSet));
 
-      var queryWhereSection = string.Format("{0}.{1} = {2}", detailDataSet.SqlTableName,
-        requisite.FieldName, restrictValue);
+      var queryWhereSection = $"{detailDataSet.SqlTableName}.{requisite.FieldName} = {restrictValue}";
       try
       {
         int conditionId = detailDataSet.AddWhere(queryWhereSection);
@@ -48,12 +47,13 @@ namespace IsbInterop
 
         var errorMessage = string.Format(Resources.UnableToSpecifyDataSetQueryTemplate,
           componentName, queryWhereSection);
+
         throw new IsbInteropException(errorMessage, ex.InnerException);
       }
     }
 
     /// <summary>
-    ///  Добавить условие ограничения на реквизит в запрос детального набора данных справочника.
+    ///  Добавляет условие ограничения на реквизит в запрос детального набора данных справочника.
     /// </summary>
     /// <param name="detailDataSet">Детальный набор данных.</param>
     /// <param name="requisite">Реквизит, по которому добавляется ограничение.</param>
@@ -63,7 +63,7 @@ namespace IsbInterop
       IRequisite requisite, string restrictValue)
     {
       if (detailDataSet == null)
-        throw new ArgumentNullException("detailDataSet");
+        throw new ArgumentNullException(nameof(detailDataSet));
 
       var dbRestrictValue = restrictValue;
 
@@ -82,8 +82,7 @@ namespace IsbInterop
         }
       }
 
-      var queryWhereSection = string.Format("{0}.{1} = '{2}'", detailDataSet.SqlTableName,
-        requisite.FieldName, dbRestrictValue);
+      var queryWhereSection = $"{detailDataSet.SqlTableName}.{requisite.FieldName} = '{dbRestrictValue}'";
 
       try
       {
@@ -108,6 +107,7 @@ namespace IsbInterop
 
         var errorMessage = string.Format(Resources.UnableToSpecifyDataSetQueryTemplate,
           componentName, queryWhereSection);
+
         throw new IsbInteropException(errorMessage, ex.InnerException);
       }
     }

@@ -13,7 +13,7 @@
     ''' <param name="isMain">Признак получения главной формы проводника системы.</param>
     ''' <returns>Проводник системы.</returns>
     Public Function GetExplorer(isMain As Boolean) As IEdmsExplorer Implements IServiceFactory.GetExplorer
-      Dim rcwExplorer = Me.InvokeRcwInstanceMethod("GetExplorer", isMain)
+      Dim rcwExplorer = InvokeRcwInstanceMethod("GetExplorer", isMain)
       Return New EdmsExplorer(rcwExplorer, Scope)
     End Function
 

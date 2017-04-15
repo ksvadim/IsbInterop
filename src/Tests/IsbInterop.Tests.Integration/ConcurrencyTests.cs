@@ -12,32 +12,32 @@ namespace IsbInterop.Tests.Integration
     /// <summary>
     /// ИД временной организации.
     /// </summary>
-    private int tempOrganizationId = 0;
+    private int _tempOrganizationId = 0;
 
     [SetUp]
     public void Init()
     {
-      this.tempOrganizationId = OrganizationUtils.CreateOrganization("test");
+      _tempOrganizationId = OrganizationUtils.CreateOrganization("test");
     }
 
     [TearDown]
     public void Clean()
     {
-      OrganizationUtils.RemoveOrganization(this.tempOrganizationId);
+      OrganizationUtils.RemoveOrganization(_tempOrganizationId);
     }
 
     [Test]
     public void UpdateRecord_WithTwoThreads_ShouldSucceed()
     {
       bool operationSucceed = false;
-      var secondThread = new Thread(() => operationSucceed = this.ActWithReference(tempOrganizationId));
+      var secondThread = new Thread(() => operationSucceed = ActWithReference(_tempOrganizationId));
 
       var context = ContextFactory.CreateContext();
       using (var scope = context.CreateScope())
       {
         var referencesFactory = scope.Application.GetReferencesFactory();
         var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
-        var reference = referenceFactory.GetObjectById(tempOrganizationId);
+        var reference = referenceFactory.GetObjectById(_tempOrganizationId);
         reference.GetRequisite(ReferenceConfiguration.Organizations.Requisites.Note).Value = "Punch";
         secondThread.Start();
         blocker.Set();

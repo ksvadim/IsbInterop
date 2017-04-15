@@ -3,6 +3,7 @@
 ''' </summary>
 Public Class IsbInteropTimeoutException
     Inherits IsbInteropException
+
     ''' <summary>
     ''' Конструктор.
     ''' </summary>

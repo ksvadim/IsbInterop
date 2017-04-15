@@ -6,6 +6,7 @@ Imports IsbInterop.Accessory
 ''' </summary>
 ''' <remarks>Кэширует экземпляр IApplication.</remarks>
 Friend Class IsbApplicationManager
+
 #Region "Singleton"
 
   ''' <summary>
@@ -13,11 +14,11 @@ Friend Class IsbApplicationManager
   ''' </summary>
   Public Shared ReadOnly Property Instance As IsbApplicationManager
     Get
-      Return m_instance.Value
+      Return _instance.Value
     End Get
   End Property
 
-  Private Shared ReadOnly m_instance As New Lazy(Of IsbApplicationManager)(Function() New IsbApplicationManager(), True)
+  Private Shared ReadOnly _instance As New Lazy(Of IsbApplicationManager)(Function() New IsbApplicationManager(), True)
 
   ''' <summary>
   ''' Приватный конструктор.
@@ -47,7 +48,7 @@ Friend Class IsbApplicationManager
   ''' <summary>
   ''' Признак необходимости обновления текущей точки подключения.
   ''' </summary>
-  Private Shared needUpdateCurrentLoginPoint As Boolean = False
+  Private Shared _needUpdateCurrentLoginPoint As Boolean = False
 
 #End Region
 
@@ -65,15 +66,15 @@ Friend Class IsbApplicationManager
       Throw New ArgumentNullException(NameOf(connectionParams))
     End If
 
-    If Me.currentLoginPoint IsNot Nothing Then
+    If currentLoginPoint IsNot Nothing Then
       Try
         Dim id As Integer = currentLoginPoint.PID
       Catch generatedExceptionName As Exception
         Dim lockedHere As Boolean = False
 
         SyncLock lockRoot
-          If Not needUpdateCurrentLoginPoint Then
-            needUpdateCurrentLoginPoint = True
+          If Not _needUpdateCurrentLoginPoint Then
+            _needUpdateCurrentLoginPoint = True
             lockedHere = True
           End If
         End SyncLock
@@ -81,7 +82,7 @@ Friend Class IsbApplicationManager
         If lockedHere Then
           SyncLock loginPointLocker
             currentLoginPoint = LoginPoint.GetLoginPoint()
-            needUpdateCurrentLoginPoint = False
+            _needUpdateCurrentLoginPoint = False
             Return InternalGetNewIsbApplication(connectionParams, storeInCache, DirectCast(currentLoginPoint, LoginPoint))
           End SyncLock
         Else
@@ -126,7 +127,7 @@ Friend Class IsbApplicationManager
       If storeInCache Then
         Throw New FatalIsbInteropException(My.Resources.Resources.CannotGetIsbApplication)
       Else
-        Throw New FatalIsbInteropException(String.Format(My.Resources.Resources.CannotGetIsbApplicationTemplate, 
+        Throw New FatalIsbInteropException(String.Format(My.Resources.Resources.CannotGetIsbApplicationTemplate,
                                                          String.Format(My.Resources.Resources.InternalErrorCodeStringTemplate, errorCode)))
       End If
     End If
@@ -135,4 +136,5 @@ Friend Class IsbApplicationManager
   End Function
 
 #End Region
+
 End Class

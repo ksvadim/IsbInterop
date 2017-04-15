@@ -15,7 +15,7 @@ namespace IsbInterop.Presentation.Wrappers
     public IAction FindAction(string name)
     {
       var actionRcw = InvokeRcwInstanceMethod("FindAction", name);
-      return actionRcw != null ? new Action(actionRcw, this.Scope) : null;
+      return actionRcw != null ? new Action(actionRcw, Scope) : null;
     }
 
     /// <summary>

@@ -9,7 +9,7 @@ Friend Class Scope
   ''' <summary>
   ''' Рабочий набор.
   ''' </summary>
-  Private ReadOnly workingSet As New Stack(Of IIsbComObjectWrapper)()
+  Private ReadOnly _workingSet As New Stack(Of IIsbComObjectWrapper)()
 
   ''' <summary>
   ''' Приложение IS-Builder.
@@ -19,28 +19,29 @@ Friend Class Scope
 #Region "IDisposable"
 
   ''' <summary>
-  ''' Выполнить очистку.
+  ''' Выполняет очистку.
   ''' </summary>
   Public Sub Dispose() Implements IDisposable.Dispose
-    For Each isbObject As IIsbComObjectWrapper In workingSet
+    While _workingSet.Count > 0
+      Dim requisite = _workingSet.Pop()
       Try
-        isbObject.Dispose()
+        requisite.Dispose()
         ' Гасим исключение, если объект уже освобожден.
-      Catch generatedExceptionName As ObjectDisposedException
+      Catch exception As ObjectDisposedException
       End Try
-    Next
+    End While
 
-    workingSet.Clear()
+    _workingSet.Clear()
   End Sub
 
 #End Region
 
   ''' <summary>
-  ''' Добавить объект в область видимости.
+  ''' Добавляет объект в область видимости.
   ''' </summary>
   ''' <param name="isbObject">Объект IS-Builder.</param>
   Public Sub Add(isbObject As IIsbComObjectWrapper)
-    workingSet.Push(isbObject)
+    _workingSet.Push(isbObject)
   End Sub
 
   ''' <summary>
@@ -48,7 +49,7 @@ Friend Class Scope
   ''' </summary>
   ''' <param name="rcwApp">RCW-объект IApplication.</param>
   Public Sub New(rcwApp As Object)
-    Me.Application = New Application(rcwApp, Me)
+    Application = New Application(rcwApp, Me)
   End Sub
 End Class
 

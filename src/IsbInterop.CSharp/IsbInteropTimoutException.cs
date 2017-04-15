@@ -7,7 +7,7 @@ namespace IsbInterop
   /// </summary>
   public class IsbInteropTimoutException : IsbInteropException
   {
-        /// <summary>
+    /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="message">Сообщение.</param>

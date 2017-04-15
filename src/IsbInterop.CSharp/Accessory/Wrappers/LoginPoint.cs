@@ -94,9 +94,9 @@ namespace IsbInterop
       {
         try
         {
-          rcwApplication = this.RcwObject.GetType()
+          rcwApplication = RcwObject.GetType()
             .InvokeMember("GetApplication", BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public, null,
-              this.RcwObject, parameters);
+              RcwObject, parameters);
         }
         catch (TargetInvocationException ex)
         {
@@ -135,10 +135,10 @@ namespace IsbInterop
 
         try
         {
-          rcwApplication = this.RcwObject.GetType()
+          rcwApplication = RcwObject.GetType()
             .InvokeMember("GetApplicationEx",
               BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public,
-              null, this.RcwObject, parameters, mods, null, null);
+              null, RcwObject, parameters, mods, null, null);
         }
         catch (TargetInvocationException ex)
         {

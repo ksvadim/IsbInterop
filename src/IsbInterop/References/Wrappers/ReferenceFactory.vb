@@ -70,7 +70,7 @@ Namespace References.Wrappers
     ''' </summary>
     ''' <param name="id">ИД записи справочника.</param>
     Public Sub DeleteById(id As Integer) Implements IReferenceFactory.DeleteById
-      Me.InvokeRcwInstanceMethod("DeleteById", id)
+      InvokeRcwInstanceMethod("DeleteById", id)
     End Sub
 
     ''' <summary>

@@ -8,7 +8,7 @@ Imports IsbInterop.DataTypes.Enumerable
 Public Module DataSetUtils
 
     ''' <summary>
-    '''  Добавить условие ограничения на реквизит в запрос детального набора данных справочника.
+    '''  Добавляет условие ограничения на реквизит в запрос детального набора данных справочника.
     ''' </summary>
     ''' <param name="detailDataSet">Детальный набор данных.</param>
     ''' <param name="requisite">Реквизит, по которому добавляется ограничение.</param>
@@ -37,7 +37,7 @@ Public Module DataSetUtils
     End Function
 
     ''' <summary>
-    '''  Добавить условие ограничения на реквизит в запрос детального набора данных справочника.
+    '''  Добавляет условие ограничения на реквизит в запрос детального набора данных справочника.
     ''' </summary>
     ''' <param name="detailDataSet">Детальный набор данных.</param>
     ''' <param name="requisite">Реквизит, по которому добавляется ограничение.</param>
@@ -83,7 +83,7 @@ Public Module DataSetUtils
     End Function
 
     ''' <summary>
-    ''' Удалить ограничение Where из запроса детального набора данных справочника.
+    ''' Удаляет ограничение Where из запроса детального набора данных справочника.
     ''' </summary>
     ''' <param name="detailDataSet">Детальный набор данных.</param>
     ''' <param name="queryConditionId">ИД условия в запросе.</param>

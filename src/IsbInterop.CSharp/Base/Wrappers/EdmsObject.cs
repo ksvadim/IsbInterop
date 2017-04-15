@@ -42,7 +42,7 @@ namespace IsbInterop.Base.Wrappers
     public bool TryEdit(TEditMode editMode, out string errorMessage)
     {
       var methodParams = new object[] { (int)editMode, null };
-      bool canEdit = (bool)this.InvokeRcwInstanceMethod("TryEdit", methodParams);
+      bool canEdit = (bool)InvokeRcwInstanceMethod("TryEdit", methodParams);
 
       if (canEdit)
         errorMessage = string.Empty;

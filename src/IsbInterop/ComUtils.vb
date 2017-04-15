@@ -7,6 +7,7 @@ Imports System.Runtime.InteropServices
 Public NotInheritable Class ComUtils
   Private Sub New()
   End Sub
+
   ''' <summary>
   ''' Таймаут выполнения COM-метода по умолчанию, секунд.
   ''' </summary>
@@ -18,7 +19,7 @@ Public NotInheritable Class ComUtils
   Private Shared ReadOnly comMethodExecutionTimeout As New Lazy(Of Integer)(AddressOf GetComMethodExecutionTimeoutValue, True)
 
   ''' <summary>
-  ''' Вызвать экземплярный метод COM-объекта.
+  ''' Вызывает экземплярный метод COM-объекта.
   ''' </summary>
   ''' <param name="rcwObject">COM-объект.</param>
   ''' <param name="methodName">Имя метода.</param>
@@ -29,7 +30,7 @@ Public NotInheritable Class ComUtils
   End Function
 
   ''' <summary>
-  ''' Вызвать экземплярный метод COM-объекта.
+  ''' Вызывает экземплярный метод COM-объекта.
   ''' </summary>
   ''' <param name="rcwObject">COM-объект.</param>
   ''' <param name="methodName">Имя метода.</param>
@@ -59,7 +60,7 @@ Public NotInheritable Class ComUtils
   End Function
 
   ''' <summary>
-  ''' Вызвать экземплярный метод COM-объекта.
+  ''' Вызывает экземплярный метод COM-объекта.
   ''' </summary>
   ''' <param name="rcwObject">COM-объект.</param>
   ''' <param name="methodName">Имя метода.</param>
@@ -93,7 +94,7 @@ Public NotInheritable Class ComUtils
   End Function
 
   ''' <summary>
-  ''' Получить свойство COM-объекта.
+  ''' Получает свойство COM-объекта.
   ''' </summary>
   ''' <param name="rcwObject">COM-объект.</param>
   ''' <param name="propertyName">Имя свойства.</param>
@@ -104,7 +105,7 @@ Public NotInheritable Class ComUtils
   End Function
 
   ''' <summary>
-  ''' Получить свойство COM-объекта.
+  ''' Получает свойство COM-объекта.
   ''' </summary>
   ''' <param name="rcwObject">COM-объект.</param>
   ''' <param name="propertyName">Имя свойства.</param>
@@ -130,7 +131,7 @@ Public NotInheritable Class ComUtils
   End Function
 
   ''' <summary>
-  ''' Установить свойство COM-объекта.
+  ''' Устанавливает свойство COM-объекта.
   ''' </summary>
   ''' <param name="rcwObject">COM-объект.</param>
   ''' <param name="propertyName">Имя свойства.</param>
@@ -151,7 +152,7 @@ Public NotInheritable Class ComUtils
   End Sub
 
   ''' <summary>
-  ''' Получить значение таймаута выполнения COM-метода.
+  ''' Получает значение таймаута выполнения COM-метода.
   ''' </summary>
   ''' <returns>Таймаут в секундах.</returns>
   Private Shared Function GetComMethodExecutionTimeoutValue() As Integer

@@ -25,7 +25,7 @@ Public NotInheritable Class ContextFactory
 #End Region
 
   ''' <summary>
-  ''' Создать контекст.
+  ''' Создает контекст.
   ''' </summary>
   ''' <param name="connectionString">Строка подключения.</param>
   ''' <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>
@@ -38,7 +38,7 @@ Public NotInheritable Class ContextFactory
   End Function
 
   ''' <summary>
-  ''' Создать контекст.
+  ''' Создает контекст.
   ''' </summary>
   ''' <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>
   ''' <returns>Контекст.</returns>
@@ -51,7 +51,7 @@ Public NotInheritable Class ContextFactory
   End Function
 
   ''' <summary>
-  ''' Получить параметры подключения из строки подключения.
+  ''' Получает параметры подключения из строки подключения.
   ''' </summary>
   ''' <param name="connectionString">Строка подключения.</param>
   ''' <returns>Параметры подключения.</returns>

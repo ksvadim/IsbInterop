@@ -133,8 +133,6 @@
     <Compile Include="References\IReferenceInfo.cs" />
     <Compile Include="References\IReferencesFactory.cs" />
     <Compile Include="Data\IRequisite.cs" />
-    <Compile Include="IRequisiteAutoCleaner.cs" />
-    <Compile Include="IRequisiteContainer.cs" />
     <Compile Include="DerivedRequisiteFactory.cs" />
     <Compile Include="ReferenceUtils.cs" />
     <Compile Include="Scripts\IScript.cs" />
@@ -179,7 +177,6 @@
     <Compile Include="References\Wrappers\ReferenceInfo.cs" />
     <Compile Include="References\Wrappers\ReferencesFactory.cs" />
     <Compile Include="Data\Wrappers\Requisite.cs" />
-    <Compile Include="RequisiteContainer.cs" />
     <Compile Include="Scripts\Wrappers\Script.cs" />
     <Compile Include="Scripts\Wrappers\ScriptFactory.cs" />
     <Compile Include="Searches\Wrappers\SearchFactory.cs" />

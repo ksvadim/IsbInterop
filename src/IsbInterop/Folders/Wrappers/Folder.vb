@@ -14,7 +14,7 @@ Namespace Folders.Wrappers
     ''' </summary>
     ''' <returns>Информация об объекте.</returns>
     Public Overrides Function GetInfo() As IFolderInfo
-      Dim rcwIFolderInfo = Me.GetRcwObjectInfo()
+      Dim rcwIFolderInfo = GetRcwObjectInfo()
       Return New FolderInfo(rcwIFolderInfo, Scope)
     End Function
 

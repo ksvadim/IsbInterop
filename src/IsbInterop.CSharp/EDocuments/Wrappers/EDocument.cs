@@ -33,8 +33,8 @@ namespace IsbInterop.EDocuments.Wrappers
     /// <returns>Информация об объекте</returns>
     public override IEDocumentInfo GetInfo()
     {
-      var rcwIEDocumentInfo = this.GetRcwObjectInfo();
-      return new EDocumentInfo(rcwIEDocumentInfo, this.Scope);
+      var rcwIEDocumentInfo = GetRcwObjectInfo();
+      return new EDocumentInfo(rcwIEDocumentInfo, Scope);
     }
 
     /// <summary>

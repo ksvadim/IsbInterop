@@ -10,7 +10,7 @@ namespace IsbInterop
   {
     // Альтернативный вариант.
     ///// <summary>
-    ///// Выполнить функцию с таймаутом.
+    ///// Выполняет функцию с таймаутом.
     ///// </summary>
     ///// <param name="function">Функция.</param>
     ///// <param name="timeout">Таймаут.</param>
@@ -32,7 +32,7 @@ namespace IsbInterop
     //}
 
     /// <summary>
-    /// Выполнить функцию с таймаутом.
+    /// Выполняет функцию с таймаутом.
     /// </summary>
     /// <typeparam name="T">Тип результата функции.</typeparam>
     /// <param name="function">Функция.</param>
@@ -52,7 +52,7 @@ namespace IsbInterop
             (state, timedOut) => function.EndInvoke(functionResult),
             null, -1, true);
 
-        throw new IsbInteropTimoutException(string.Format("The operation has timed out after {0}.", timeout));
+        throw new IsbInteropTimoutException($"The operation has timed out after {timeout}.");
       }
 
       return function.EndInvoke(functionResult);

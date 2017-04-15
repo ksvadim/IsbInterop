@@ -65,7 +65,7 @@ Namespace Scripts.Wrappers
     ''' </summary>
     ''' <returns>IsbObjectList.</returns>
     Public Overloads Function GetParams() As Accessory.IList(Of IIsbComObjectWrapper) Implements IScript.GetParams
-      Return Me.GetParams(Of IIsbComObjectWrapper)
+      Return MyBase.GetParams(Of IIsbComObjectWrapper)
     End Function
 
     ''' <summary>

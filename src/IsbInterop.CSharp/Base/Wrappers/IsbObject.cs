@@ -26,16 +26,16 @@ namespace IsbInterop.Base.Wrappers
     ///// <param name="disposing">Признак, что метод Dispose вызван явно.</param>
     //protected override void Dispose(bool disposing)
     //{
-    //  if (this.disposed)
+    //  if (disposed)
     //    return;
 
     //  if (disposing)
     //  {
-    //    if (this.RcwObject != null)
-    //      this.DoFinalize();
+    //    if (RcwObject != null)
+    //      DoFinalize();
     //  }
 
-    //  this.disposed = true;
+    //  disposed = true;
 
     //  base.Dispose(disposing);
     //}

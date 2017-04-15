@@ -4,8 +4,9 @@
 '''Утилиты для работы с потоком выполнения.
 ''' </summary>
 Public NotInheritable Class ThreadUtils
+
     ''' <summary>
-    ''' Выполнить функцию с таймаутом.
+    ''' Выполняет функцию с таймаутом.
     ''' </summary>
     ''' <typeparam name="T">Тип результата функции.</typeparam>
     ''' <param name="function">Функция.</param>

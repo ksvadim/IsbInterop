@@ -10,6 +10,7 @@
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="scope">Область видимости.</param>
-    public BaseIsbObjectWrapper(object rcwObject, IScope scope) : base(rcwObject, scope) { }
+    public BaseIsbObjectWrapper(object rcwObject, IScope scope)
+      : base(rcwObject, scope) { }
   }
 }

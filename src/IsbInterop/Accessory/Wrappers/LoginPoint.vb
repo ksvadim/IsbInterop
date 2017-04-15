@@ -91,7 +91,7 @@ Public Class LoginPoint
 
     Dim rcwApplication As Object = ThreadUtils.Invoke(Function()
                                                         Try
-                                                          rcwApplication = RcwObject.[GetType]().InvokeMember("GetApplication", BindingFlags.InvokeMethod Or BindingFlags.Instance Or BindingFlags.[Public], Nothing, Me.RcwObject, parameters)
+                                                          rcwApplication = RcwObject.[GetType]().InvokeMember("GetApplication", BindingFlags.InvokeMethod Or BindingFlags.Instance Or BindingFlags.[Public], Nothing, RcwObject, parameters)
                                                         Catch ex As TargetInvocationException
                                                           Dim errorMessage = String.Format(My.Resources.Resources.CannotExecuteObjectMethodTemplate, "GetApplication", GetType(ILoginPoint).Name)
 
@@ -125,7 +125,7 @@ Public Class LoginPoint
                                                         Dim mods As ParameterModifier() = {p}
 
                                                         Try
-                                                          rcwApplication = RcwObject.[GetType]().InvokeMember("GetApplicationEx", BindingFlags.InvokeMethod Or BindingFlags.Instance Or BindingFlags.[Public], Nothing, Me.RcwObject, parameters, mods,
+                                                          rcwApplication = RcwObject.[GetType]().InvokeMember("GetApplicationEx", BindingFlags.InvokeMethod Or BindingFlags.Instance Or BindingFlags.[Public], Nothing, RcwObject, parameters, mods,
                                                             Nothing, Nothing)
                                                         Catch ex As TargetInvocationException
                                                           If TypeOf ex.InnerException Is COMException Then

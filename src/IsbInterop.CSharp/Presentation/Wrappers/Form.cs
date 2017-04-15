@@ -12,7 +12,7 @@
     public IActionList GetActions()
     {
       var rcwActions = GetRcwProperty("Actions");
-      return new ActionList(rcwActions, this.Scope);
+      return new ActionList(rcwActions, Scope);
     }
 
     /// <summary>

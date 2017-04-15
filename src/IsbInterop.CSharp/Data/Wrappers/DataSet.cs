@@ -75,7 +75,7 @@ namespace IsbInterop.Data.Wrappers
     /// </summary>
     public void OpenRecord()
     {
-      this.InvokeRcwInstanceMethod("OpenRecord");
+      InvokeRcwInstanceMethod("OpenRecord");
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ namespace IsbInterop.Data.Wrappers
     /// </summary>
     public void Refresh()
     {
-      this.InvokeRcwInstanceMethod("Refresh");
+      InvokeRcwInstanceMethod("Refresh");
     }
 
     #endregion

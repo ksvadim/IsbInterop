@@ -11,7 +11,7 @@ namespace IsbInterop
   /// </summary>
   public static class IsbObjectResolver
   {
-    private static readonly IContainer container;
+    private static readonly IContainer Container;
 
     /// <summary>
     /// Конструктор.
@@ -29,11 +29,11 @@ namespace IsbInterop
           .Where(i => i.Name.EndsWith(t.Name)))
         .InstancePerDependency();
 
-      container = builder.Build();
+      Container = builder.Build();
     }
 
     /// <summary>
-    /// Получить экземпляр объекта.
+    /// Получает экземпляр объекта.
     /// </summary>
     /// <typeparam name="TI">Интерфейс объекта.</typeparam>
     /// <param name="rcwObject">COM-объект.</param>
@@ -45,8 +45,8 @@ namespace IsbInterop
       TI result;
       try
       {
-        result = container.Resolve<TI>(
-          new TypedParameter(typeof(object), rcwObject), 
+        result = Container.Resolve<TI>(
+          new TypedParameter(typeof(object), rcwObject),
           new TypedParameter(typeof(IScope), scope));
       }
       catch (ComponentNotRegisteredException)

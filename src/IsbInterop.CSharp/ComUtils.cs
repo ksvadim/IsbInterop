@@ -19,10 +19,10 @@ namespace IsbInterop
     /// <summary>
     /// Таймаут выполнения COM-метода, секунд.
     /// </summary>
-    private static readonly Lazy<int> comMethodExecutionTimeout = new Lazy<int>(GetComMethodExecutionTimeoutValue, true);
+    private static readonly Lazy<int> ComMethodExecutionTimeout = new Lazy<int>(GetComMethodExecutionTimeoutValue, true);
 
     /// <summary>
-    /// Вызвать экземплярный метод COM-объекта.
+    /// Вызывает экземплярный метод COM-объекта.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="methodName">Имя метода.</param>
@@ -30,11 +30,11 @@ namespace IsbInterop
     /// <returns>Результат.</returns>
     public static object InvokeRcwInstanceMethod(object rcwObject, string methodName, object parameter)
     {
-      return InvokeRcwInstanceMethod(rcwObject, methodName, new object[] { parameter });
+      return InvokeRcwInstanceMethod(rcwObject, methodName, new [] { parameter });
     }
 
     /// <summary>
-    /// Вызвать экземплярный метод COM-объекта.
+    /// Вызывает экземплярный метод COM-объекта.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="methodName">Имя метода.</param>
@@ -72,7 +72,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Вызвать экземплярный метод COM-объекта.
+    /// Вызывает экземплярный метод COM-объекта.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="methodName">Имя метода.</param>
@@ -100,13 +100,13 @@ namespace IsbInterop
         }
 
         return result;
-      }, TimeSpan.FromSeconds(comMethodExecutionTimeout.Value));
+      }, TimeSpan.FromSeconds(ComMethodExecutionTimeout.Value));
 
       return result;
     }
 
     /// <summary>
-    /// Получить свойство COM-объекта.
+    /// Получает свойство COM-объекта.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="propertyName">Имя свойства.</param>
@@ -114,11 +114,11 @@ namespace IsbInterop
     /// <returns>Результат.</returns>
     public static object GetRcwProperty(object rcwObject, string propertyName, object parameter)
     {
-      return GetRcwProperty(rcwObject, propertyName, new object[] { parameter });
+      return GetRcwProperty(rcwObject, propertyName, new [] { parameter });
     }
 
     /// <summary>
-    /// Получить свойство COM-объекта.
+    /// Получает свойство COM-объекта.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="propertyName">Имя свойства.</param>
@@ -149,7 +149,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Установить свойство COM-объекта.
+    /// Установливает свойство COM-объекта.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="propertyName">Имя свойства.</param>
@@ -175,7 +175,7 @@ namespace IsbInterop
     }
 
     /// <summary>
-    /// Получить значение таймаута выполнения COM-метода.
+    /// Получает значение таймаута выполнения COM-метода.
     /// </summary>
     /// <returns>Таймаут в секундах.</returns>
     private static int GetComMethodExecutionTimeoutValue()

@@ -15,7 +15,7 @@ namespace IsbInterop.Folders.Wrappers
     public override IFolder GetObjectById(int id)
     {
       var rcwObject = GetRcwObjectById(id);
-      return new Folder(rcwObject, this.Scope);
+      return new Folder(rcwObject, Scope);
     }
 
     /// <summary>

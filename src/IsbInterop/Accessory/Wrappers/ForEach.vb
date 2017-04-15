@@ -30,7 +30,7 @@
     ''' </summary>
     ''' <returns>Значение текущего элемента списка.</returns>
     Public Function GetValue() As TI Implements IForEach(Of TI).GetValue
-      Dim curentValueRcw = Me.GetRcwProperty("Value")
+      Dim curentValueRcw = GetRcwProperty("Value")
       Dim value = IsbObjectResolver.Resolve(Of TI)(curentValueRcw, Scope)
 
       Return value
@@ -40,14 +40,14 @@
     ''' Перейти к следующему объекту набора данных.
     ''' </summary>
     Public Sub [Next]() Implements IForEach(Of TI).[Next]
-      Me.InvokeRcwInstanceMethod("Next")
+      InvokeRcwInstanceMethod("Next")
     End Sub
 
     ''' <summary>
     ''' Устанавливить указатель текущего элемента списка на первый элемент списка.
     ''' </summary>
     Public Sub Reset() Implements IForEach(Of TI).Reset
-      Me.InvokeRcwInstanceMethod("Reset")
+      InvokeRcwInstanceMethod("Reset")
     End Sub
 
     ''' <summary>
