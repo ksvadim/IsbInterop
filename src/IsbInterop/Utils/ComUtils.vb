@@ -13,7 +13,7 @@ Namespace Utils
     ''' <summary>
     ''' Таймаут выполнения COM-метода по умолчанию, секунд.
     ''' </summary>
-    Private Const DefaultComMethodExecutionTimeout As Integer = 20
+    Private Const DefaultComMethodExecutionTimeout As Integer = 60
 
     ''' <summary>
     ''' Таймаут выполнения COM-метода, секунд.

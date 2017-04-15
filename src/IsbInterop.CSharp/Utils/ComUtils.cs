@@ -14,7 +14,7 @@ namespace IsbInterop.Utils
     /// <summary>
     /// Таймаут выполнения COM-метода по умолчанию, секунд.
     /// </summary>
-    private const int DefaultComMethodExecutionTimeout = 20;
+    private const int DefaultComMethodExecutionTimeout = 60;
 
     /// <summary>
     /// Таймаут выполнения COM-метода, секунд.
@@ -160,7 +160,7 @@ namespace IsbInterop.Utils
       {
         var result = rcwObject.GetType()
           .InvokeMember(propertyName, BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.Public, null,
-          rcwObject, new object[] { value });
+          rcwObject, new[] { value });
       }
       catch (TargetInvocationException ex)
       {
