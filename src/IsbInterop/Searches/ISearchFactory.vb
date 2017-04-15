@@ -1,4 +1,5 @@
 ﻿Namespace Searches
+
   ''' <summary>
   ''' Фабрика поисков.
   ''' </summary>
@@ -6,7 +7,7 @@
     Inherits IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Загрузить описание поиска.
+    ''' Загружает описание поиска.
     ''' </summary>
     ''' <param name="searchName">Имя поиска.</param>
     ''' <returns>Описание поиска с указанным именем.</returns>

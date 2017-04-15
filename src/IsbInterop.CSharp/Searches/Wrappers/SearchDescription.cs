@@ -11,25 +11,25 @@ namespace IsbInterop.Searches.Wrappers
   internal abstract class SearchDescription : IsbComObjectWrapper, ISearchDescription
   {
     /// <summary>
-    /// Выполнить поиск.
+    /// Выполняет поиск.
     /// </summary>
     /// <returns>Объект Contents.</returns>
     public IContents<TI> Execute<TI>() where TI: IObjectInfo
     {
-      var rcwContents = this.InvokeRcwInstanceMethod("Execute");
-      return new Contents<TI>(rcwContents, this.Scope);
+      var rcwContents = InvokeRcwInstanceMethod("Execute");
+      return new Contents<TI>(rcwContents, Scope);
     }
 
     /// <summary>
-    /// Выполнить поиск и показать его результаты.
+    /// Выполняет поиск и показывает его результаты.
     /// </summary>
     /// <param name="mode">Режим отображения результатов поиска.</param>
-    /// <param name="suppressQuerySearchCriteria">Признак подавления показа диалога для заполнения значений критериев поиска: 
-    /// True, если не нужно показывать диалог, 
+    /// <param name="suppressQuerySearchCriteria">Признак подавления показа диалога для заполнения значений критериев поиска:
+    /// True, если не нужно показывать диалог,
     /// False, если диалог нужно показывать в зависимости от наличия запрашиваемых реквизитов.</param>
     public void Show(TSearchShowMode mode, bool suppressQuerySearchCriteria)
     {
-      this.InvokeRcwInstanceMethod("Show", new object[] { mode, suppressQuerySearchCriteria });
+      InvokeRcwInstanceMethod("Show", new object[] { mode, suppressQuerySearchCriteria });
     }
 
     /// <summary>
@@ -37,6 +37,7 @@ namespace IsbInterop.Searches.Wrappers
     /// </summary>
     /// <param name="rcwISearchDescription">COM-объект ISearchDescription.</param>
     /// <param name="scope">Область видимости.</param>
-    protected SearchDescription(object rcwISearchDescription, IScope scope) : base(rcwISearchDescription, scope) { }
+    protected SearchDescription(object rcwISearchDescription, IScope scope)
+      : base(rcwISearchDescription, scope) { }
   }
 }

@@ -10,7 +10,7 @@ Namespace Searches.Wrappers
         Implements ISearchForObjectDescription
 
         ''' <summary>
-        ''' Инициализировать поиск.
+        ''' Инициализирует поиск.
         ''' </summary>
         ''' <param name="objectInfo"></param>
         Public Sub InitializeSearch(objectInfo As IObjectInfo) Implements ISearchForObjectDescription.InitializeSearch

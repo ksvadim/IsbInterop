@@ -8,12 +8,12 @@
         Implements ISearchFactory
 
         ''' <summary>
-        ''' Загрузить описание поиска.
+        ''' Загружает описание поиска.
         ''' </summary>
         ''' <param name="searchName">Имя поиска.</param>
         ''' <returns>Описание поиска с указанным именем.</returns>
         Public Function Load(searchName As String) As ISearchForObjectDescription Implements ISearchFactory.Load
-            Dim rcwSearchForObjectDescription = Me.InvokeRcwInstanceMethod("Load", searchName)
+            Dim rcwSearchForObjectDescription = InvokeRcwInstanceMethod("Load", searchName)
             Return New SearchForObjectDescription(rcwSearchForObjectDescription, Scope)
         End Function
 

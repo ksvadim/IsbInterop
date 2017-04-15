@@ -9,15 +9,15 @@ namespace IsbInterop.Searches.Wrappers
   internal class SearchForObjectDescription : SearchDescription, ISearchForObjectDescription
   {
     /// <summary>
-    /// Инициализировать поиск.
+    /// Инициализирует поиск.
     /// </summary>
     /// <param name="objectInfo">Информация об объекте поиска.</param>
     public void InitializeSearch(IObjectInfo objectInfo)
     {
       if (objectInfo == null)
-        throw new ArgumentNullException("objectInfo");
+        throw new ArgumentNullException(nameof(objectInfo));
 
-      this.InvokeRcwInstanceMethod("InitializeSearch", ((IUnsafeRcwHolder)objectInfo).RcwObject);
+      InvokeRcwInstanceMethod("InitializeSearch", ((IUnsafeRcwHolder)objectInfo).RcwObject);
     }
 
     /// <summary>
@@ -25,6 +25,7 @@ namespace IsbInterop.Searches.Wrappers
     /// </summary>
     /// <param name="rcwISearchForObjectDescription">COM-объект ISearchForObjectDescription.</param>
     /// <param name="scope">Область видимости.</param>
-    internal SearchForObjectDescription(object rcwISearchForObjectDescription, IScope scope) : base(rcwISearchForObjectDescription, scope) { }
+    internal SearchForObjectDescription(object rcwISearchForObjectDescription, IScope scope)
+      : base(rcwISearchForObjectDescription, scope) { }
   }
 }

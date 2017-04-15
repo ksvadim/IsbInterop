@@ -3,6 +3,7 @@ Imports IsbInterop.Base
 Imports IsbInterop.DataTypes.Enumerable
 
 Namespace Searches
+
   ''' <summary>
   ''' Описание поиска.
   ''' </summary>
@@ -10,18 +11,18 @@ Namespace Searches
     Inherits IIsbComObjectWrapper
 
     ''' <summary>
-    ''' Выполнить поиск.
+    ''' Выполняет поиск.
     ''' </summary>
     ''' <returns>Объект Contents.</returns>
     Function Execute(Of TI As IObjectInfo)() As IContents(Of TI)
 
-        ''' <summary>
-    ''' Выполнить поиск и показать его результаты.
+    ''' <summary>
+    ''' Выполняет поиск и показывает его результаты.
     ''' </summary>
     ''' <param name="mode">Режим отображения результатов поиска.</param>
-    ''' <param name="suppressQuerySearchCriteria">Признак подавления показа диалога для заполнения значений критериев поиска: 
-    ''' True, если не нужно показывать диалог, 
+    ''' <param name="suppressQuerySearchCriteria">Признак подавления показа диалога для заполнения значений критериев поиска:
+    ''' True, если не нужно показывать диалог,
     ''' False, если диалог нужно показывать в зависимости от наличия запрашиваемых реквизитов.</param>
     Sub Show(mode As TSearchShowMode, suppressQuerySearchCriteria As Boolean)
   End Interface
-End NameSpace
+End Namespace

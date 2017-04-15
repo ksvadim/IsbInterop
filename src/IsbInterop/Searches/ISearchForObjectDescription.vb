@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Searches
+
   ''' <summary>
   ''' Описание поиска для объекта.
   ''' </summary>
@@ -8,10 +9,9 @@ Namespace Searches
     Inherits ISearchDescription
 
     ''' <summary>
-    ''' Инициализировать поиск.
+    ''' Инициализирует поиск.
     ''' </summary>
     ''' <param name="directumObject">Информация об объекте поиска.</param>
     Sub InitializeSearch(directumObject As IObjectInfo)
-
   End Interface
 End NameSpace

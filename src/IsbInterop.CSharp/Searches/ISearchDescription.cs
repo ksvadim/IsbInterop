@@ -10,17 +10,17 @@ namespace IsbInterop.Searches
   public interface ISearchDescription: IIsbComObjectWrapper 
   {
     /// <summary>
-    /// Выполнить поиск.
+    /// Выполняет поиск.
     /// </summary>
     /// <returns>Объект Contents.</returns>
     IContents<TI> Execute<TI>() where TI : IObjectInfo;
 
     /// <summary>
-    /// Выполнить поиск и показать его результаты.
+    /// Выполняет поиск и показывает его результаты.
     /// </summary>
     /// <param name="mode">Режим отображения результатов поиска.</param>
-    /// <param name="suppressQuerySearchCriteria">Признак подавления показа диалога для заполнения значений критериев поиска: 
-    /// True, если не нужно показывать диалог, 
+    /// <param name="suppressQuerySearchCriteria">Признак подавления показа диалога для заполнения значений критериев поиска:
+    /// True, если не нужно показывать диалог,
     /// False, если диалог нужно показывать в зависимости от наличия запрашиваемых реквизитов.</param>
     void Show(TSearchShowMode mode, bool suppressQuerySearchCriteria);
   }
