@@ -1,5 +1,5 @@
 ﻿using IsbInterop.Data;
-using IsbInterop.Data.Wrappers;
+using IsbInterop.Data.Proxies;
 using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Utils;
 using System;

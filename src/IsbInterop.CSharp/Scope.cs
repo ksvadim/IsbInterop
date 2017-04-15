@@ -1,5 +1,5 @@
 ﻿using IsbInterop.Accessory;
-using IsbInterop.Accessory.Wrappers;
+using IsbInterop.Accessory.Proxy;
 using System;
 using System.Collections.Generic;
 

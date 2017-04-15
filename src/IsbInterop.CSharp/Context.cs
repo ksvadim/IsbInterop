@@ -1,6 +1,6 @@
 ﻿using IsbInterop.Accessory;
 using System;
-using IsbInterop.Accessory.Wrappers;
+using IsbInterop.Accessory.Proxy;
 
 namespace IsbInterop
 {
