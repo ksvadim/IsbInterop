@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.IO;
 
-namespace IsbInterop
+namespace IsbInterop.Utils
 {
   /// <summary>
   /// Утилиты для работы с конфигурацией.

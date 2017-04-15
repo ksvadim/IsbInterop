@@ -6,12 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace IsbInterop
+namespace IsbInterop.Extensions
 {
   /// <summary>
-  /// Утилиты для работы со справочником.
+  /// Методы расширения для работы со справочником.
   /// </summary>
-  public static class ReferenceUtils
+  public static class ReferenceExtensions
   {
     /// <summary>
     ///  Добавляет условие ограничения на реквизит в запрос набора данных справочника.
@@ -112,6 +112,7 @@ namespace IsbInterop
       {
         var errorMessage = string.Format(Resources.UnableToGetRequisiteSqlFieldValueTemplate,
           requisite.Name, namedValue);
+
         throw new IsbInteropException(errorMessage, ex.InnerException);
       }
     }
@@ -132,6 +133,7 @@ namespace IsbInterop
       {
         var errorMessage = string.Format(Resources.UnableToSpecifyDataSetQueryTemplate,
           reference.Name, queryWhereSection);
+
         throw new IsbInteropException(errorMessage, ex.InnerException);
       }
     }

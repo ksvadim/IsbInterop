@@ -68,7 +68,7 @@
     <Compile Include="DataTypes\Enumerable\TSearchShowMode.cs" />
     <Compile Include="Folders\Wrappers\FolderFactory.cs" />
     <Compile Include="Scope.cs" />
-    <Compile Include="ThreadUtils.cs" />
+    <Compile Include="Utils\ThreadUtils.cs" />
     <Compile Include="IsblSystemConstants\DataConstants\ObjectRequisites\PredefinedEdocumentsRequisites.cs" />
     <Compile Include="IsbObjectResolver.cs" />
     <Compile Include="Searches\PredefinedSearchesNames.cs" />
@@ -81,13 +81,13 @@
     <Compile Include="Base\Wrappers\CustomJob.cs" />
     <Compile Include="Base\Wrappers\CustomWork.cs" />
     <Compile Include="Base\Wrappers\EdmsObjectInfo.cs" />
-    <Compile Include="ConfigurationUtils.cs" />
+    <Compile Include="Utils\ConfigurationUtils.cs" />
     <Compile Include="DataTypes\Enumerable\TContentKind.cs" />
     <Compile Include="Data\IPickRequisite.cs" />
     <Compile Include="DataTypes\Enumerable\TDataSetState.cs" />
     <Compile Include="Data\Wrappers\PickRequisite.cs" />
     <Compile Include="BaseIsbObjectWrapper.cs" />
-    <Compile Include="ComUtils.cs" />
+    <Compile Include="Utils\ComUtils.cs" />
     <Compile Include="Accessory\IApplication.cs" />
     <Compile Include="Data\IPickRequisiteItem.cs" />
     <Compile Include="FatalIsbInteropException.cs" />
@@ -134,7 +134,7 @@
     <Compile Include="References\IReferencesFactory.cs" />
     <Compile Include="Data\IRequisite.cs" />
     <Compile Include="DerivedRequisiteFactory.cs" />
-    <Compile Include="ReferenceUtils.cs" />
+    <Compile Include="Extensions\ReferenceExtensions.cs" />
     <Compile Include="Scripts\IScript.cs" />
     <Compile Include="Searches\ISearchFactory.cs" />
     <Compile Include="Scripts\IScriptFactory.cs" />
@@ -144,7 +144,7 @@
     <Compile Include="References\Wrappers\CompRecordInfo.cs" />
     <Compile Include="Accessory\Wrappers\Lock.cs" />
     <Compile Include="Searches\Wrappers\SearchDescription.cs" />
-    <Compile Include="DataSetUtils.cs" />
+    <Compile Include="Extensions\DataSetExtensions.cs" />
     <Compile Include="IsbInteropException.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -1,4 +1,5 @@
 ﻿Imports IsbInterop.DataTypes.Enumerable
+Imports IsbInterop.Utils
 
 Namespace Base.Wrappers
 

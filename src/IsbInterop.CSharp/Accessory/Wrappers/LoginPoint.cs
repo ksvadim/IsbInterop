@@ -1,6 +1,7 @@
 ﻿using IsbInterop.Accessory;
 using IsbInterop.Accessory.Wrappers;
 using IsbInterop.Properties;
+using IsbInterop.Utils;
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;

@@ -1,6 +1,6 @@
 ﻿''' <summary>
-''' Интерфейс прямого доступа к объекту RCW.
+''' Интерфейс доступа к RCW-объекту.
 ''' </summary>
 Public Interface IUnsafeRcwHolder
-    ReadOnly Property UnsafeRcwObject As Object
+    ReadOnly Property RcwObject As Object
 End Interface

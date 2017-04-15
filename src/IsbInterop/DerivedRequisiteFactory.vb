@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Data
 Imports IsbInterop.Data.Wrappers
 Imports IsbInterop.DataTypes.Enumerable
+Imports IsbInterop.Utils
 
 ''' <summary>
 ''' Фабрика реквизитов, унаследованных от IRequisite.

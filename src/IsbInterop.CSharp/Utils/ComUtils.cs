@@ -4,7 +4,7 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace IsbInterop
+namespace IsbInterop.Utils
 {
   /// <summary>
   /// Утилиты для работы с COM-объектами.

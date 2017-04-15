@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace IsbInterop
+namespace IsbInterop.Utils
 {
   /// <summary>
   /// Утилиты для работы с потоком выполнения.

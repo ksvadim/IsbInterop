@@ -116,10 +116,10 @@
     <Compile Include="Context.vb" />
     <Compile Include="ContextFactory.vb" />
     <Compile Include="Scope.vb" />
-    <Compile Include="ThreadUtils.vb" />
-    <Compile Include="ComUtils.vb" />
-    <Compile Include="ConfigurationUtils.vb" />
-    <Compile Include="DataSetUtils.vb" />
+    <Compile Include="Utils\ThreadUtils.vb" />
+    <Compile Include="Utils\ComUtils.vb" />
+    <Compile Include="Utils\ConfigurationUtils.vb" />
+    <Compile Include="Extensions\DataSetExtensions.vb" />
     <Compile Include="DataTypes\Enumerable\TCompType.vb" />
     <Compile Include="DataTypes\Enumerable\TContentKind.vb" />
     <Compile Include="DataTypes\Enumerable\TEditMode.vb" />
@@ -201,7 +201,7 @@
     <Compile Include="References\Wrappers\ReferenceFactory.vb" />
     <Compile Include="References\Wrappers\ReferenceInfo.vb" />
     <Compile Include="References\Wrappers\ReferencesFactory.vb" />
-    <Compile Include="ReferenceUtils.vb" />
+    <Compile Include="Extensions\ReferenceExtensions.vb" />
     <Compile Include="Scripts\IScript.vb" />
     <Compile Include="Scripts\IScriptFactory.vb" />
     <Compile Include="Scripts\Wrappers\Script.vb" />

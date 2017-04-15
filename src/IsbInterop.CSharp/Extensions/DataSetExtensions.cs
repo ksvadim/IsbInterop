@@ -1,14 +1,14 @@
 ﻿using IsbInterop.Data;
+using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Properties;
 using System;
-using IsbInterop.DataTypes.Enumerable;
 
-namespace IsbInterop
+namespace IsbInterop.Extensions
 {
   /// <summary>
-  /// Утилиты для работы с набором данных.
+  /// Методы расширения для работы с набором данных.
   /// </summary>
-  public static class DataSetUtils
+  public static class DataSetExtensions
   {
     /// <summary>
     ///  Добавляет условие ограничения на реквизит в запрос детального набора данных справочника.
@@ -33,6 +33,7 @@ namespace IsbInterop
       catch (IsbInteropException ex)
       {
         string componentName = "Unknown";
+
         try
         {
           using (var component = detailDataSet.GetComponent())

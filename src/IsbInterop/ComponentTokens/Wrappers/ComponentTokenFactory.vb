@@ -14,7 +14,7 @@ Namespace ComponentTokens.Wrappers
     ''' </summary>
     ''' <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     Public Sub Execute(objectInfo As IObjectInfo) Implements IComponentTokenFactory.Execute
-      InvokeRcwInstanceMethod("Execute", DirectCast(objectInfo, IUnsafeRcwHolder).UnsafeRcwObject)
+      InvokeRcwInstanceMethod("Execute", DirectCast(objectInfo, IUnsafeRcwHolder).RcwObject)
     End Sub
 
     ''' <summary>
@@ -22,7 +22,7 @@ Namespace ComponentTokens.Wrappers
     ''' </summary>
     ''' <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     Public Sub ExecuteInNewProcess(objectInfo As IObjectInfo) Implements IComponentTokenFactory.ExecuteInNewProcess
-      InvokeRcwInstanceMethod("ExecuteInNewProcess", DirectCast(objectInfo, IUnsafeRcwHolder).UnsafeRcwObject)
+      InvokeRcwInstanceMethod("ExecuteInNewProcess", DirectCast(objectInfo, IUnsafeRcwHolder).RcwObject)
     End Sub
 
     ''' <summary>

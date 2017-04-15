@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports IsbInterop.Utils
 
 ''' <summary>
 ''' Фабрика контекста.

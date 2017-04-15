@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.ConstrainedExecution
 Imports System.Runtime.InteropServices
+Imports IsbInterop.Utils
 
 ''' <summary>
 ''' Базовый объект.
@@ -37,7 +38,7 @@ Public MustInherit Class IsbComObjectWrapper
   ''' <summary>
   ''' COM-объект IS-Builder.
   ''' </summary>
-  Private ReadOnly Property IUnsafeRcwObjectAccessor_UnsafeRcwObject As Object Implements IUnsafeRcwHolder.UnsafeRcwObject
+  Private ReadOnly Property IUnsafeRcwHolder_RcwObject As Object Implements IUnsafeRcwHolder.RcwObject
     Get
       Return RcwObject
     End Get

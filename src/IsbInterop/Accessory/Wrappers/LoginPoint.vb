@@ -2,6 +2,7 @@
 Imports System.Runtime.InteropServices
 Imports IsbInterop.Accessory
 Imports IsbInterop.Accessory.Wrappers
+Imports IsbInterop.Utils
 
 ' LoginPoint - публичный класс, он должен быть виден из namespace IsbInterop.
 ' ReSharper disable once CheckNamespace

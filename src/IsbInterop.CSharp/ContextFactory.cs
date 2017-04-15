@@ -1,4 +1,5 @@
 ﻿using IsbInterop.Properties;
+using IsbInterop.Utils;
 using System.Data.SqlClient;
 
 namespace IsbInterop

@@ -1,4 +1,5 @@
 ﻿using IsbInterop.DataTypes.Enumerable;
+using IsbInterop.Utils;
 using System;
 
 namespace IsbInterop.Base.Wrappers
