@@ -151,7 +151,7 @@ Namespace Base.Wrappers
     ''' <param name="requisiteName">Имя реквизита.</param>
     ''' <returns>Реквизит.</returns>
     ''' <remarks>Умышленно делаем метод виртуальным, чтобы использовать вместе с IRequisiteAutoCleaner.</remarks>
-    Public Overridable Function GetRequisite(requisiteName As String) As IRequisite Implements IObject(Of TI).GetRequisite
+    Public Function GetRequisite(requisiteName As String) As IRequisite Implements IObject(Of TI).GetRequisite
       Dim rcwRequisite = GetRcwProperty("Requisites", requisiteName)
       Return DerivedRequisiteFactory.CreateRequisite(rcwRequisite, Scope)
     End Function
