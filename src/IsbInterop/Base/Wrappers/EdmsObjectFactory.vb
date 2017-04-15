@@ -8,7 +8,7 @@ Namespace Base.Wrappers
   ''' </summary>
   ''' <typeparam name="T">Тип объекта фабрики.</typeparam>
   ''' <typeparam name="TI">Тип, предоставляющий информацию об объекте ЭДО.</typeparam>
-  Friend MustInherit Class EdmsObjectFactory(Of T As IIsbComObjectWrapper, TI As IEdmsObjectInfo)
+  Friend MustInherit Class EdmsObjectFactory(Of T As IBaseIsbObject, TI As IEdmsObjectInfo)
     Inherits Factory(Of T, TI)
     Implements IEdmsObjectFactory(Of T, TI)
 

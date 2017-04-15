@@ -1,12 +1,14 @@
 ﻿Namespace Accessory
+
   ''' <summary>
   ''' Информация о системе.
   ''' </summary>
   Public Interface ISystemInfo
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
+
     ''' <summary>
     ''' Версия клиента.
     ''' </summary>
-    ReadOnly Property ClientVerson() As String
+    ReadOnly Property ClientVerson As String
   End Interface
 End NameSpace

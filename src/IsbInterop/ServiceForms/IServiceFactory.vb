@@ -4,7 +4,7 @@
   ''' Фабрика служебных объектов.
   ''' </summary>
   Public Interface IServiceFactory
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Получает проводник системы.

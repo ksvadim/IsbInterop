@@ -7,7 +7,7 @@ Namespace Data.Wrappers
   ''' Обертка над IConnection.
   ''' </summary>
   Friend Class Connection
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IConnection
 
     ''' <summary>

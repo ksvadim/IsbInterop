@@ -3,7 +3,7 @@
   ''' <summary>
   ''' Список.
   ''' </summary>
-  Public Interface IList(Of Out T As IIsbComObjectWrapper)
+  Public Interface IList(Of Out T As IBaseIsbObject)
     Inherits IForEach(Of T)
 
     ''' <summary>
@@ -12,7 +12,7 @@
     ''' <typeparam name="TP">Тип параметра.</typeparam>
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>
-    Sub Add(Of TP As IIsbComObjectWrapper)(name As String, value As TP)
+    Sub Add(Of TP As IBaseIsbObject)(name As String, value As TP)
 
     ''' <summary>
     ''' Добавляет элемент в список.

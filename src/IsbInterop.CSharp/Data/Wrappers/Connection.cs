@@ -6,7 +6,7 @@ namespace IsbInterop.Data.Wrappers
   /// <summary>
   /// Обертка над IConnection.
   /// </summary>
-  internal class Connection : IsbComObjectWrapper, IConnection
+  internal class Connection : BaseIsbObject, IConnection
   {
     /// <summary>
     /// Получает информацию о системе.

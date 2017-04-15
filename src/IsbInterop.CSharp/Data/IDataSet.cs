@@ -6,7 +6,7 @@ namespace IsbInterop.Data
   /// <summary>
   /// Набор данных.
   /// </summary>
-  public interface IDataSet : IQuery, IIsbComObjectWrapper
+  public interface IDataSet : IQuery, IBaseIsbObject
   {
     /// <summary>
     /// Имя таблицы детального раздела.

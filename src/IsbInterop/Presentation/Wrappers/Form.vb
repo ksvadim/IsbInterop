@@ -4,7 +4,7 @@
   ''' Обертка над IForm.
   ''' </summary>
   Friend Class Form
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IForm
 
     ''' <summary>

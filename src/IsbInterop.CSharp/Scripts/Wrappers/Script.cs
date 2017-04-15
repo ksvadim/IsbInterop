@@ -14,10 +14,10 @@ namespace IsbInterop.Scripts.Wrappers
     /// Выполняет скрипт.
     /// </summary>
     /// <returns>Результат.</returns>
-    public IIsbComObjectWrapper Execute()
+    public IBaseIsbObject Execute()
     {
       var rcwObject = InvokeRcwInstanceMethod("Execute", null, null);
-      return new BaseIsbObjectWrapper(rcwObject, Scope);
+      return new BaseIsbObjectImp(rcwObject, Scope);
     }
 
     /// <summary>
@@ -25,10 +25,10 @@ namespace IsbInterop.Scripts.Wrappers
     /// </summary>
     /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
-    public IIsbComObjectWrapper Execute(TimeSpan timeout)
+    public IBaseIsbObject Execute(TimeSpan timeout)
     {
       var rcwObject = InvokeRcwInstanceMethod("Execute", null, timeout);
-      return new BaseIsbObjectWrapper(rcwObject, Scope);
+      return new BaseIsbObjectImp(rcwObject, Scope);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ namespace IsbInterop.Scripts.Wrappers
     /// <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     /// <returns>Результат.</returns>
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
-    public T Execute<T>() where T : IIsbComObjectWrapper
+    public T Execute<T>() where T : IBaseIsbObject
     {
       var rcwObject = InvokeRcwInstanceMethod("Execute", null, null);
       return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
@@ -50,7 +50,7 @@ namespace IsbInterop.Scripts.Wrappers
     /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
-    public T Execute<T>(TimeSpan timeout) where T : IIsbComObjectWrapper
+    public T Execute<T>(TimeSpan timeout) where T : IBaseIsbObject
     {
       var rcwObject = InvokeRcwInstanceMethod("Execute", null, timeout);
       return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
@@ -69,9 +69,9 @@ namespace IsbInterop.Scripts.Wrappers
     /// Получает параметры.
     /// </summary>
     /// <returns>IsbObjectList.</returns>
-    public IList<IIsbComObjectWrapper> GetParams()
+    public IList<IBaseIsbObject> GetParams()
     {
-      return GetParams<IIsbComObjectWrapper>();
+      return GetParams<IBaseIsbObject>();
     }
 
     /// <summary>

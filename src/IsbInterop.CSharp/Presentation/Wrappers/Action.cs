@@ -5,7 +5,7 @@ namespace IsbInterop.Presentation.Wrappers
   /// <summary>
   /// Обертка над IAction.
   /// </summary>
-  internal class Action : IsbComObjectWrapper, IAction
+  internal class Action : BaseIsbObject, IAction
   {
     /// <summary>
     /// Выполняет действие.

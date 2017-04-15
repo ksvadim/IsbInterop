@@ -6,7 +6,7 @@ namespace IsbInterop.EDocuments.Wrappers
   /// <summary>
   /// Обертка над IEDocumentVersion.
   /// </summary>
-  internal class EDocumentVersion : IsbComObjectWrapper, IEDocumentVersion
+  internal class EDocumentVersion : BaseIsbObject, IEDocumentVersion
   {
     /// <summary>
     /// Текущее сосотяние версии.

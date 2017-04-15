@@ -1,9 +1,10 @@
 ﻿Namespace Data
+
   ''' <summary>
   ''' Описание допустимого значения реквизита типа «Признак».
   ''' </summary>
   Public Interface IPickRequisiteItem
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Внутренний ИД допустимого значения реквизита, хранящийся в базе данных.

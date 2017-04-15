@@ -3,7 +3,7 @@
   ''' Информация об объекте.
   ''' </summary>
   Public Interface IObjectInfo
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
     ''' <summary>
     ''' ИД документа.
     ''' </summary>

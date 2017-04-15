@@ -4,7 +4,7 @@
   ''' Фабрика поисков.
   ''' </summary>
   Public Interface ISearchFactory
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Загружает описание поиска.

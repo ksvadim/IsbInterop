@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над IObjectInfo.
   /// </summary>
-  internal class ObjectInfo : IsbComObjectWrapper, IObjectInfo
+  internal class ObjectInfo : BaseIsbObject, IObjectInfo
   {
     /// <summary>
     /// ИД объекта.

@@ -8,7 +8,7 @@ namespace IsbInterop.Base
   /// <summary>
   /// Базовый объект.
   /// </summary>
-  public interface IObject<out T> : IIsbComObjectWrapper where T : IObjectInfo
+  public interface IObject<out T> : IBaseIsbObject where T : IObjectInfo
   {
     /// <summary>
     /// Признак открытости набора данных.
@@ -70,7 +70,7 @@ namespace IsbInterop.Base
     /// </summary>
     /// <typeparam name="TP">Тип параметров.</typeparam>
     /// <returns>Список переменных окружения объекта.</returns>
-    IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper;
+    IList<TP> GetEnvironment<TP>() where TP : IBaseIsbObject;
 
     /// <summary>
     /// Получает форму-карточку текущего представления объекта.
@@ -83,7 +83,7 @@ namespace IsbInterop.Base
     /// </summary>
     /// <typeparam name="TP">Тип параметров.</typeparam>
     /// <returns>Список параметров объекта.</returns>
-    IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper;
+    IList<TP> GetParams<TP>() where TP : IBaseIsbObject;
 
     /// <summary>
     /// Получает информацию об объекте.

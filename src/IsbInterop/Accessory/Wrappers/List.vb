@@ -3,7 +3,7 @@
   ''' <summary>
   ''' Обертка над IList.
   ''' </summary>
-  Friend Class List(Of TI As IIsbComObjectWrapper)
+  Friend Class List(Of TI As IBaseIsbObject)
     Inherits ForEach(Of TI)
     Implements IList(Of TI)
 
@@ -13,7 +13,7 @@
     ''' <typeparam name="TP">Тип параметра.</typeparam>
     ''' <param name="name">Имя элемента.</param>
     ''' <param name="value">Значение элемента.</param>
-    Public Sub Add(Of TP As IIsbComObjectWrapper)(name As String, value As TP) Implements IList(Of TI).Add
+    Public Sub Add(Of TP As IBaseIsbObject)(name As String, value As TP) Implements IList(Of TI).Add
       If TypeOf value Is TI Then
         InvokeRcwInstanceMethod("Add", New Object() {name, DirectCast(value, IUnsafeRcwHolder).RcwObject})
       Else

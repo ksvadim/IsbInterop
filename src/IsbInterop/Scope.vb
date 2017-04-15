@@ -9,7 +9,7 @@ Friend Class Scope
   ''' <summary>
   ''' Рабочий набор.
   ''' </summary>
-  Private ReadOnly _workingSet As New Stack(Of IIsbComObjectWrapper)()
+  Private ReadOnly _workingSet As New Stack(Of IBaseIsbObject)()
 
   ''' <summary>
   ''' Приложение IS-Builder.
@@ -40,7 +40,7 @@ Friend Class Scope
   ''' Добавляет объект в область видимости.
   ''' </summary>
   ''' <param name="isbObject">Объект IS-Builder.</param>
-  Public Sub Add(isbObject As IIsbComObjectWrapper)
+  Public Sub Add(isbObject As IBaseIsbObject)
     _workingSet.Push(isbObject)
   End Sub
 

@@ -7,8 +7,8 @@ namespace IsbInterop.Base.Wrappers
   /// <summary>
   /// Обертка над IFactory.
   /// </summary>
-  public abstract class Factory<T, TI> : IsbComObjectWrapper, IFactory<T, TI>
-    where T : IIsbComObjectWrapper
+  public abstract class Factory<T, TI> : BaseIsbObject, IFactory<T, TI>
+    where T : IBaseIsbObject
     where TI : IObjectInfo
   {
     #region Поля и свойства

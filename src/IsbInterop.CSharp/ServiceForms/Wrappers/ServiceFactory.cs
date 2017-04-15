@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над IServiceFactory.
   /// </summary>
-  public class ServiceFactory : IsbComObjectWrapper, IServiceFactory
+  public class ServiceFactory : BaseIsbObject, IServiceFactory
   {
     /// <summary>
     /// Получает проводник системы.

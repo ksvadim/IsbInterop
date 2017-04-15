@@ -6,7 +6,7 @@ namespace IsbInterop.Accessory.Wrappers
   /// Обертка над IList.
   /// </summary>
   internal class List<TI> : ForEach<TI>, IList<TI>
-    where TI : IIsbComObjectWrapper
+    where TI : IBaseIsbObject
   {
     /// <summary>
     /// Добавляет элемент в список.
@@ -14,7 +14,7 @@ namespace IsbInterop.Accessory.Wrappers
     /// <typeparam name="TP">Тип параметра.</typeparam>
     /// <param name="name">Имя элемента.</param>
     /// <param name="value">Значение элемента.</param>
-    public void Add<TP>(string name, TP value) where TP : IIsbComObjectWrapper
+    public void Add<TP>(string name, TP value) where TP : IBaseIsbObject
     {
       if (value is TI)
         InvokeRcwInstanceMethod("Add", new [] { name, ((IUnsafeRcwHolder)value).RcwObject });

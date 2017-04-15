@@ -24,7 +24,7 @@ Namespace Accessory.Wrappers
   ''' Обертка над IApplication.
   ''' </summary>
   Friend Class Application
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IApplication
 
     #Region "Поля и свойства"

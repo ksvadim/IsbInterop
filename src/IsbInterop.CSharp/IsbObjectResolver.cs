@@ -20,11 +20,11 @@ namespace IsbInterop
     {
       var builder = new ContainerBuilder();
 
-      builder.RegisterType<BaseIsbObjectWrapper>()
-        .As<IIsbComObjectWrapper>();
+      builder.RegisterType<BaseIsbObjectImp>()
+        .As<IBaseIsbObject>();
 
       builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-        .AssignableTo(typeof(IsbComObjectWrapper))
+        .AssignableTo(typeof(BaseIsbObject))
         .As(t => t.GetInterfaces()
           .Where(i => i.Name.EndsWith(t.Name)))
         .InstancePerDependency();
@@ -40,7 +40,7 @@ namespace IsbInterop
     /// <param name="scope">Область видимости.</param>
     /// <returns>Объект.</returns>
     //[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
-    public static TI Resolve<TI>(object rcwObject, IScope scope) where TI : IIsbComObjectWrapper
+    public static TI Resolve<TI>(object rcwObject, IScope scope) where TI : IBaseIsbObject
     {
       TI result;
       try

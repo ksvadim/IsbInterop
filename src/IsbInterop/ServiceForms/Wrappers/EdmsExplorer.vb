@@ -9,7 +9,7 @@ Namespace ServiceForms.Wrappers
   ''' Обертка над IEdmsExplorer.
   ''' </summary>
   Public Class EdmsExplorer
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IEdmsExplorer
 
     ''' <summary>

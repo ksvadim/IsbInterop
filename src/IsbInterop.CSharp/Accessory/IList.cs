@@ -3,7 +3,7 @@
   /// <summary>
   /// Список.
   /// </summary>
-  public interface IList<out T> : IForEach<T> where T : IIsbComObjectWrapper
+  public interface IList<out T> : IForEach<T> where T : IBaseIsbObject
   {
     /// <summary>
     /// Добавляет элемент в список.
@@ -11,7 +11,7 @@
     /// <typeparam name="TP">Тип параметра.</typeparam>
     /// <param name="name">Имя элемента.</param>
     /// <param name="value">Значение элемента.</param>
-    void Add<TP>(string name, TP value) where TP : IIsbComObjectWrapper;
+    void Add<TP>(string name, TP value) where TP : IBaseIsbObject;
 
     /// <summary>
     /// Добавляет элемент в список.

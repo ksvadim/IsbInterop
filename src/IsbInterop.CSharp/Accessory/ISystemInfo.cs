@@ -3,7 +3,7 @@
   /// <summary>
   /// Информация о системе.
   /// </summary>
-  public interface ISystemInfo : IIsbComObjectWrapper
+  public interface ISystemInfo : IBaseIsbObject
   {
     /// <summary>
     /// Версия клиента.

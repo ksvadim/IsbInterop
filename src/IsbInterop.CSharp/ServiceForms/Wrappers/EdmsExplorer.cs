@@ -8,7 +8,7 @@ namespace IsbInterop.ServiceForms.Wrappers
   /// <summary>
   /// Обертка над IEdmsExplorer.
   /// </summary>
-  public class EdmsExplorer : IsbComObjectWrapper, IEdmsExplorer
+  public class EdmsExplorer : BaseIsbObject, IEdmsExplorer
   {
     /// <summary>
     /// Тип отображения дерева проводника.

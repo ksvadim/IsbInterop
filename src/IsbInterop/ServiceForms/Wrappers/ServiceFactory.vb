@@ -4,7 +4,7 @@
   ''' Обертка над IServiceFactory.
   ''' </summary>
   Public Class ServiceFactory
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IServiceFactory
 
     ''' <summary>

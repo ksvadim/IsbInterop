@@ -4,7 +4,7 @@
   ''' Обертка над ISystemInfo.
   ''' </summary>
   Friend Class SystemInfo
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements ISystemInfo
 
     ''' <summary>

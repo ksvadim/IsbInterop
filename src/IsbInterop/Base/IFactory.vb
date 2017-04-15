@@ -7,8 +7,8 @@ Namespace Base
   ''' </summary>
   ''' <typeparam name="T">Тип объекта фабрики.</typeparam>
   ''' <typeparam name="TI">Тип, предоставляющий информацию об объекте фабрики.</typeparam>
-  Public Interface IFactory(Of Out T As IIsbComObjectWrapper, Out TI As IObjectInfo)
-    Inherits IIsbComObjectWrapper
+  Public Interface IFactory(Of Out T As IBaseIsbObject, Out TI As IObjectInfo)
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Тип объектов, к которым предоставляет доступ фабрика.

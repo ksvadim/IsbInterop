@@ -6,7 +6,7 @@ Namespace EDocuments
   ''' Версия электронного документа.
   ''' </summary>
   Public Interface IEDocumentVersion
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Текущее сосотяние версии.

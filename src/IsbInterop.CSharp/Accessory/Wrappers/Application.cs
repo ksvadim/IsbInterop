@@ -23,7 +23,7 @@ namespace IsbInterop.Accessory.Wrappers
   /// <summary>
   /// Обертка над IApplication.
   /// </summary>
-  internal class Application : IsbComObjectWrapper, IApplication
+  internal class Application : BaseIsbObject, IApplication
   {
     #region Поля и свойства
 

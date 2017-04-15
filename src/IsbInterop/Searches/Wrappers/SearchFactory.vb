@@ -4,7 +4,7 @@
     ''' Фабрика поисков.
     ''' </summary>
     Friend Class SearchFactory
-        Inherits IsbComObjectWrapper
+        Inherits BaseIsbObject
         Implements ISearchFactory
 
         ''' <summary>

@@ -7,8 +7,8 @@ namespace IsbInterop.Base
   /// </summary>
   /// <typeparam name="T">Тип объекта фабрики.</typeparam>
   /// <typeparam name="TI">Тип, предоставляющий информацию об объекте фабрики.</typeparam>
-  public interface IFactory<out T, out TI> : IIsbComObjectWrapper 
-    where T : IIsbComObjectWrapper
+  public interface IFactory<out T, out TI> : IBaseIsbObject 
+    where T : IBaseIsbObject
     where TI :IObjectInfo
   {
     /// <summary>

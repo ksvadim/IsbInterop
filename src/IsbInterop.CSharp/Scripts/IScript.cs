@@ -13,21 +13,21 @@ namespace IsbInterop.Scripts
     /// Выполняет скрипт.
     /// </summary>
     /// <returns>Результат.</returns>
-    IIsbComObjectWrapper Execute();
+    IBaseIsbObject Execute();
 
     /// <summary>
     /// Выполняет скрипт.
     /// </summary>
     /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
-    IIsbComObjectWrapper Execute(TimeSpan timeout);
+    IBaseIsbObject Execute(TimeSpan timeout);
 
     /// <summary>
     /// Выполняет скрипт.
     /// </summary>
     /// <returns>Результат.</returns>
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
-    T Execute<T>() where T : IIsbComObjectWrapper;
+    T Execute<T>() where T : IBaseIsbObject;
 
     /// <summary>
     /// Выполняет скрипт.
@@ -36,12 +36,12 @@ namespace IsbInterop.Scripts
     /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
-    T Execute<T>(TimeSpan timeout) where T : IIsbComObjectWrapper;
+    T Execute<T>(TimeSpan timeout) where T : IBaseIsbObject;
 
     /// <summary>
     /// Получает параметры.
     /// </summary>
     /// <returns>IsbObjectList.</returns>
-    IList<IIsbComObjectWrapper> GetParams();
+    IList<IBaseIsbObject> GetParams();
   }
 }

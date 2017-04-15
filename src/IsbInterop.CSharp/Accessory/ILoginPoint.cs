@@ -3,7 +3,7 @@
   /// <summary>
   /// Интерфейс ILoginPoint.
   /// </summary>
-  public interface ILoginPoint : IIsbComObjectWrapper
+  public interface ILoginPoint : IBaseIsbObject
   {
     /// <summary>
     /// ИД процесса.

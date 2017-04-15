@@ -1,8 +1,8 @@
 ﻿''' <summary>
-''' Базовая обертка над объектом IS-Builder.
+''' Имплементация базового объекта IS-Builder.
 ''' </summary>
-Friend Class BaseIsbObjectWrapper
-  Inherits IsbComObjectWrapper
+Friend Class BaseIsbObjectImp
+  Inherits BaseIsbObject
 
   ''' <summary>
   ''' Конструктор.

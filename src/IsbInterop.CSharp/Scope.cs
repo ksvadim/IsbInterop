@@ -13,7 +13,7 @@ namespace IsbInterop
     /// <summary>
     /// Рабочий набор.
     /// </summary>
-    private readonly Stack<IIsbComObjectWrapper> _workingSet = new Stack<IIsbComObjectWrapper>();
+    private readonly Stack<IBaseIsbObject> _workingSet = new Stack<IBaseIsbObject>();
 
     /// <summary>
     /// Приложение IS-Builder.
@@ -49,7 +49,7 @@ namespace IsbInterop
     /// Добавляет объект в область видимости.
     /// </summary>
     /// <param name="isbObject">Объект IS-Builder.</param>
-    public void Add(IIsbComObjectWrapper isbObject)
+    public void Add(IBaseIsbObject isbObject)
     {
       _workingSet.Push(isbObject);
     }

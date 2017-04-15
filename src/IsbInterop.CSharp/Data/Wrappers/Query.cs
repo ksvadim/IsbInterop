@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над объектом IQuery.
   /// </summary>
-  internal abstract class Query : IsbComObjectWrapper, IQuery
+  internal abstract class Query : BaseIsbObject, IQuery
   {
     /// <summary>
     /// Признак конца набора данных.

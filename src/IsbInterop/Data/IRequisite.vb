@@ -6,7 +6,7 @@ Namespace Data
   ''' Реквизит.
   ''' </summary>
   Public Interface IRequisite
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Целочисленное значение реквизита.

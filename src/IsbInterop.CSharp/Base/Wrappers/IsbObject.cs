@@ -11,7 +11,7 @@ namespace IsbInterop.Base.Wrappers
   /// <summary>
   /// Обертка над IObject.
   /// </summary>
-  internal abstract class IsbObject<TI> : IsbComObjectWrapper, IObject<TI>
+  internal abstract class IsbObject<TI> : BaseIsbObject, IObject<TI>
     where TI : IObjectInfo
   {
     #region IDisposable
@@ -124,7 +124,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     /// <typeparam name="TP">Тип параметров.</typeparam>
     /// <returns>Список переменных окружения объекта.</returns>
-    public IList<TP> GetEnvironment<TP>() where TP : IIsbComObjectWrapper
+    public IList<TP> GetEnvironment<TP>() where TP : IBaseIsbObject
     {
       var rcwEnvironment = GetRcwProperty("Environment");
       return new List<TP>(rcwEnvironment, Scope);
@@ -145,7 +145,7 @@ namespace IsbInterop.Base.Wrappers
     /// </summary>
     /// <typeparam name="TP">Тип параметра.</typeparam>
     /// <returns>Список параметров объекта.</returns>
-    public IList<TP> GetParams<TP>() where TP : IIsbComObjectWrapper
+    public IList<TP> GetParams<TP>() where TP : IBaseIsbObject
     {
       var rcwParams = GetRcwProperty("Params");
       return new List<TP>(rcwParams, Scope);

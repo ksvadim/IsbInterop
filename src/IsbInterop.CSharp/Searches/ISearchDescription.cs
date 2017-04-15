@@ -7,7 +7,7 @@ namespace IsbInterop.Searches
   /// <summary>
   /// Описание поиска.
   /// </summary>
-  public interface ISearchDescription: IIsbComObjectWrapper 
+  public interface ISearchDescription: IBaseIsbObject 
   {
     /// <summary>
     /// Выполняет поиск.

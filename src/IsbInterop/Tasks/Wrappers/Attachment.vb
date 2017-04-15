@@ -4,7 +4,7 @@
   ''' Обертка над IAttachment.
   ''' </summary>
   Friend Class Attachment
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IAttachment
 
     ''' <summary>

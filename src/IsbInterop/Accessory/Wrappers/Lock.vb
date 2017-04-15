@@ -6,7 +6,7 @@ Namespace Accessory.Wrappers
   ''' Обертка над ILock.
   ''' </summary>
   Public Class Lock
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements ILock
 
 #Region "Поля и свойства"

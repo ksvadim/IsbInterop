@@ -4,6 +4,6 @@
   ''' Вложение.
   ''' </summary>
   Public Interface IAttachment
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
   End Interface
 End NameSpace

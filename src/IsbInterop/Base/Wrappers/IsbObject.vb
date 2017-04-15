@@ -9,7 +9,7 @@ Namespace Base.Wrappers
   ''' Обертка над IObject.
   ''' </summary>
   Friend MustInherit Class IsbObject(Of TI As IObjectInfo)
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IObject(Of TI)
 
 #Region "Поля и свойства"
@@ -115,7 +115,7 @@ Namespace Base.Wrappers
     ''' </summary>
     ''' <typeparam name="TP">Тип параметров.</typeparam>
     ''' <returns>Список переменных окружения объекта.</returns>
-    Public Function GetEnvironment(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP) Implements IObject(Of TI).GetEnvironment
+    Public Function GetEnvironment(Of TP As IBaseIsbObject)() As Accessory.IList(Of TP) Implements IObject(Of TI).GetEnvironment
       Dim rcwEnvironment = GetRcwProperty("Environment")
       Return New Accessory.Wrappers.List(Of TP)(rcwEnvironment, Scope)
     End Function
@@ -134,7 +134,7 @@ Namespace Base.Wrappers
     ''' </summary>
     ''' <typeparam name="TP">Тип параметров.</typeparam>
     ''' <returns>Список параметров объекта.</returns>
-    Public Function GetParams(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP) Implements IObject(Of TI).GetParams
+    Public Function GetParams(Of TP As IBaseIsbObject)() As Accessory.IList(Of TP) Implements IObject(Of TI).GetParams
       Dim rcwParams = GetRcwProperty("Params")
       Return New Accessory.Wrappers.List(Of TP)(rcwParams, Scope)
     End Function

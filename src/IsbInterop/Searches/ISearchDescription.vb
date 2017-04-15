@@ -8,7 +8,7 @@ Namespace Searches
   ''' Описание поиска.
   ''' </summary>
   Public Interface ISearchDescription
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Выполняет поиск.

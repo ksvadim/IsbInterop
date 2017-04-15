@@ -6,7 +6,7 @@ Namespace Data.Wrappers
   ''' Обертка над IRequisite.
   ''' </summary>
   Friend Class Requisite
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IRequisite
 
 #Region "Поля и свойства"

@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над IReferencesFactory.
   /// </summary>
-  internal class ReferencesFactory : IsbComObjectWrapper, IReferencesFactory
+  internal class ReferencesFactory : BaseIsbObject, IReferencesFactory
   {
     /// <summary>
     /// Получает фабрику справочника.

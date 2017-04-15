@@ -3,7 +3,7 @@
   /// <summary>
   /// Фабрика поисков.
   /// </summary>
-  public interface ISearchFactory : IIsbComObjectWrapper
+  public interface ISearchFactory : IBaseIsbObject
   {
     /// <summary>
     /// Загружает описание поиска.

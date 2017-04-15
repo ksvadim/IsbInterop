@@ -8,7 +8,7 @@ Namespace ServiceForms
   ''' Проводник системы.
   ''' </summary>
   Public Interface IEdmsExplorer
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Тип отображения дерева проводника.

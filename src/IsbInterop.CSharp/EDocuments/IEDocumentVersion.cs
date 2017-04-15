@@ -5,7 +5,7 @@ namespace IsbInterop.EDocuments
   /// <summary>
   /// Версия электронного документа.
   /// </summary>
-  public interface IEDocumentVersion : IIsbComObjectWrapper
+  public interface IEDocumentVersion : IBaseIsbObject
   {
     /// <summary>
     /// Текущее сосотяние версии.

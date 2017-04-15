@@ -8,7 +8,7 @@ Namespace Base
   ''' Базовый объект.
   ''' </summary>
   Public Interface IObject(Of Out T As IObjectInfo)
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Признак открытости набора данных.
@@ -71,7 +71,7 @@ Namespace Base
     ''' </summary>
     ''' <typeparam name="TP">Тип параметров.</typeparam>
     ''' <returns>Список переменных окружения объекта.</returns>
-    Function GetEnvironment(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP)
+    Function GetEnvironment(Of TP As IBaseIsbObject)() As Accessory.IList(Of TP)
 
     ''' <summary>
     ''' Получает форму-карточку текущего представления объекта.
@@ -84,7 +84,7 @@ Namespace Base
     ''' </summary>
     ''' <typeparam name="TP">Тип параметров.</typeparam>
     ''' <returns>Список параметров объекта.</returns>
-    Function GetParams(Of TP As IIsbComObjectWrapper)() As Accessory.IList(Of TP)
+    Function GetParams(Of TP As IBaseIsbObject)() As Accessory.IList(Of TP)
 
     ''' <summary>
     ''' Получает информацию об объекте.

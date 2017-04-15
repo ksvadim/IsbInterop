@@ -3,8 +3,8 @@
   ''' <summary>
   ''' Обертка над IForEach.
   ''' </summary>
-  Friend MustInherit Class ForEach(Of TI As IIsbComObjectWrapper)
-    Inherits IsbComObjectWrapper
+  Friend MustInherit Class ForEach(Of TI As IBaseIsbObject)
+    Inherits BaseIsbObject
     Implements IForEach(Of TI)
 
     ''' <summary>

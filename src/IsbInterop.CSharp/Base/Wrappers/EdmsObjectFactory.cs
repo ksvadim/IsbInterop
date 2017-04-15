@@ -9,7 +9,7 @@ namespace IsbInterop.Base.Wrappers
   /// <typeparam name="T">Тип объекта фабрики.</typeparam>
   /// <typeparam name="TI">Тип, предоставляющий информацию об объекте ЭДО.</typeparam>
   internal abstract class EdmsObjectFactory<T, TI> : Factory<T, TI>, IEdmsObjectFactory<T, TI>
-    where T : IIsbComObjectWrapper
+    where T : IBaseIsbObject
     where TI : IEdmsObjectInfo
   {
     /// <summary>

@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над IForm.
   /// </summary>
-  internal class Form : IsbComObjectWrapper, IForm
+  internal class Form : BaseIsbObject, IForm
   {
     /// <summary>
     /// Получает действия формы.

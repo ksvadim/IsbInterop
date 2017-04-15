@@ -6,7 +6,7 @@ Namespace Data
   ''' Соединение.
   ''' </summary>
   Public Interface IConnection
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Получает информацию о системе.

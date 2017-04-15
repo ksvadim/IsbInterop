@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над ISystemInfo.
   /// </summary>
-  internal class SystemInfo : IsbComObjectWrapper, ISystemInfo
+  internal class SystemInfo : BaseIsbObject, ISystemInfo
   {
     /// <summary>
     /// Версия клиента.

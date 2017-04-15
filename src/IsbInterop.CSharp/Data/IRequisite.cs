@@ -6,7 +6,7 @@ namespace IsbInterop.Data
   /// <summary>
   /// Реквизит.
   /// </summary>
-  public interface IRequisite : IIsbComObjectWrapper
+  public interface IRequisite : IBaseIsbObject
   {
     /// <summary>
     /// Целочисленное значение реквизита.

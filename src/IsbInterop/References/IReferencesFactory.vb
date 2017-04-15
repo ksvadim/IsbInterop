@@ -4,7 +4,7 @@
   ''' Фабрика типов справочников.
   ''' </summary>
   Public Interface IReferencesFactory
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Получает фабрику справочника.

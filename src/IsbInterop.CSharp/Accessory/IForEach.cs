@@ -3,7 +3,7 @@
   /// <summary>
   /// Однонаправленный список.
   /// </summary>
-  public interface IForEach<out T> : IIsbComObjectWrapper where T : IIsbComObjectWrapper
+  public interface IForEach<out T> : IBaseIsbObject where T : IBaseIsbObject
   {
     /// <summary>
     /// Количество элементов в списке.

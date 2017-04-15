@@ -3,8 +3,8 @@
   ''' <summary>
   ''' Однонаправленный список.
   ''' </summary>
-  Public Interface IForEach(Of Out T As IIsbComObjectWrapper)
-    Inherits IIsbComObjectWrapper
+  Public Interface IForEach(Of Out T As IBaseIsbObject)
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Количество элементов в списке.

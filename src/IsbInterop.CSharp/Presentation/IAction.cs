@@ -5,7 +5,7 @@ namespace IsbInterop.Presentation
   /// <summary>
   /// Действие формы.
   /// </summary>
-  public interface IAction : IIsbComObjectWrapper
+  public interface IAction : IBaseIsbObject
   {
     /// <summary>
     /// Выполняет действие.

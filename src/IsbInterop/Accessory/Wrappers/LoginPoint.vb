@@ -11,7 +11,7 @@ Imports IsbInterop.Utils
 ''' Обертка над ILoginPoint.
 ''' </summary>
 Public Class LoginPoint
-  Inherits IsbComObjectWrapper
+  Inherits BaseIsbObject
   Implements ILoginPoint
 
 #Region "Поля и свойства"

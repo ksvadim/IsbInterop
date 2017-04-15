@@ -8,7 +8,7 @@ Namespace Data
   ''' </summary>
   Public Interface IDataSet
     Inherits IQuery
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Имя таблицы детального раздела.

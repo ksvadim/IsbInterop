@@ -3,7 +3,7 @@
   /// <summary>
   /// Информация об объекте.
   /// </summary>
-  public interface IObjectInfo : IIsbComObjectWrapper
+  public interface IObjectInfo : IBaseIsbObject
   {
     /// <summary>
     /// ИД документа.

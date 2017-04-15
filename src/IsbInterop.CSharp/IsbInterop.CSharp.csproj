@@ -86,7 +86,7 @@
     <Compile Include="Data\IPickRequisite.cs" />
     <Compile Include="DataTypes\Enumerable\TDataSetState.cs" />
     <Compile Include="Data\Wrappers\PickRequisite.cs" />
-    <Compile Include="BaseIsbObjectWrapper.cs" />
+    <Compile Include="BaseIsbObjectImp.cs" />
     <Compile Include="Utils\ComUtils.cs" />
     <Compile Include="Accessory\IApplication.cs" />
     <Compile Include="Data\IPickRequisiteItem.cs" />
@@ -121,7 +121,7 @@
     <Compile Include="Base\IFactory.cs" />
     <Compile Include="Accessory\IList.cs" />
     <Compile Include="Accessory\IForEach.cs" />
-    <Compile Include="IIsbComObjectWrapper.cs" />
+    <Compile Include="IBaseIsbObject.cs" />
     <Compile Include="Accessory\ILock.cs" />
     <Compile Include="Accessory\ILoginPoint.cs" />
     <Compile Include="Base\IObject.cs" />
@@ -165,7 +165,7 @@
     <Compile Include="Base\Wrappers\Factory.cs" />
     <Compile Include="Accessory\Wrappers\List.cs" />
     <Compile Include="Accessory\Wrappers\ForEach.cs" />
-    <Compile Include="IsbComObjectWrapper.cs" />
+    <Compile Include="BaseIsbObject.cs" />
     <Compile Include="Base\Wrappers\IsbObject.cs" />
     <Compile Include="IUnsafeRcwHolder.cs" />
     <Compile Include="Accessory\Wrappers\LoginPoint.cs" />

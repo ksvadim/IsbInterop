@@ -6,7 +6,7 @@ namespace IsbInterop.Data.Wrappers
   /// <summary>
   /// Обертка над IRequisite.
   /// </summary>
-  internal class Requisite : IsbComObjectWrapper, IRequisite
+  internal class Requisite : BaseIsbObject, IRequisite
   {
     #region Поля и свойства
 

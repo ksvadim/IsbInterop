@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над IAttachment.
   /// </summary>
-  internal class Attachment : IsbComObjectWrapper, IAttachment
+  internal class Attachment : BaseIsbObject, IAttachment
   {
     /// <summary>
     /// Конструктор.

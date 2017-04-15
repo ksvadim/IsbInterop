@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 namespace IsbInterop
 {
   /// <summary>
-  /// Базовый объект.
+  /// Базовый объект IS-Builder.
   /// </summary>
-  public abstract class IsbComObjectWrapper : CriticalFinalizerObject, IIsbComObjectWrapper, IUnsafeRcwHolder
+  public abstract class BaseIsbObject : CriticalFinalizerObject, IBaseIsbObject, IUnsafeRcwHolder
   {
     #region Поля и свойства
 
@@ -54,7 +54,7 @@ namespace IsbInterop
     /// <summary>
     /// Финализатор.
     /// </summary>
-    ~IsbComObjectWrapper()
+    ~BaseIsbObject()
     {
       Dispose(false);
     }
@@ -160,14 +160,14 @@ namespace IsbInterop
     /// <summary>
     /// Конструктор.
     /// </summary>
-    protected IsbComObjectWrapper() { }
+    protected BaseIsbObject() { }
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="rcwObject">COM-объект IS-Builder.</param>
     /// <param name="scope">Область видимости.</param>
-    protected IsbComObjectWrapper(object rcwObject, IScope scope)
+    protected BaseIsbObject(object rcwObject, IScope scope)
     {
       RcwObject = rcwObject;
       Scope = scope;

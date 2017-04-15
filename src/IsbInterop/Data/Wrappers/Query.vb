@@ -4,7 +4,7 @@
   ''' Обертка над IQuery.
   ''' </summary>
   Friend MustInherit Class Query
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IQuery
 
     ''' <summary>

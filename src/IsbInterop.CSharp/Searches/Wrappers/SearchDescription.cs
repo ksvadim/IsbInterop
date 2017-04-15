@@ -8,7 +8,7 @@ namespace IsbInterop.Searches.Wrappers
   /// <summary>
   /// Обертка над ISearchDescription.
   /// </summary>
-  internal abstract class SearchDescription : IsbComObjectWrapper, ISearchDescription
+  internal abstract class SearchDescription : BaseIsbObject, ISearchDescription
   {
     /// <summary>
     /// Выполняет поиск.

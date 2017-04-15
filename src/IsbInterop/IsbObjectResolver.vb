@@ -15,7 +15,7 @@ Public Module IsbObjectResolver
   ''' <param name="rcwObject">COM-объект.</param>
   ''' <param name="scope">Область видимости.</param>
   ''' <returns>Объект.</returns>
-  Public Function Resolve(Of TI As IIsbComObjectWrapper)(rcwObject As Object, scope As IScope) As TI
+  Public Function Resolve(Of TI As IBaseIsbObject)(rcwObject As Object, scope As IScope) As TI
     Dim result As TI
     Try
       result = container.Resolve(Of TI)(
@@ -35,10 +35,10 @@ Public Module IsbObjectResolver
   Sub New()
     Dim builder = New ContainerBuilder()
 
-    builder.RegisterType(Of BaseIsbObjectWrapper)().[As](Of IIsbComObjectWrapper)()
+    builder.RegisterType(Of BaseIsbObjectImp)().[As](Of IBaseIsbObject)()
 
     builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).
-      AssignableTo(GetType(IsbComObjectWrapper)).
+      AssignableTo(GetType(BaseIsbObject)).
       [As](Function(t) t.GetInterfaces().
       Where(Function(i) i.Name.EndsWith(t.Name))).
       InstancePerDependency()

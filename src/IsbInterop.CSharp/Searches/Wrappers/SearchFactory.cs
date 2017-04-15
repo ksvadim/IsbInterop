@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над ISearchFactory.
   /// </summary>
-  internal class SearchFactory : IsbComObjectWrapper, ISearchFactory
+  internal class SearchFactory : BaseIsbObject, ISearchFactory
   {
     /// <summary>
     /// Загружает описание поиска.

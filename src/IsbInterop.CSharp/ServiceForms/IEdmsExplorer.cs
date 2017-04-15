@@ -7,7 +7,7 @@ namespace IsbInterop.ServiceForms
   /// <summary>
   /// Проводник системы.
   /// </summary>
-  public interface IEdmsExplorer : IIsbComObjectWrapper
+  public interface IEdmsExplorer : IBaseIsbObject
   {
     /// <summary>
     /// Тип отображения дерева проводника.

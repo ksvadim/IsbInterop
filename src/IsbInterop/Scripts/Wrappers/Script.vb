@@ -14,9 +14,9 @@ Namespace Scripts.Wrappers
     ''' Выполняет скрипт.
     ''' </summary>
     ''' <returns>Результат.</returns>
-    Public Function Execute() As IIsbComObjectWrapper Implements IScript.Execute
+    Public Function Execute() As IBaseIsbObject Implements IScript.Execute
       Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, Nothing)
-      Return New BaseIsbObjectWrapper(rcwObjectResult, Scope)
+      Return New BaseIsbObjectImp(rcwObjectResult, Scope)
     End Function
 
     ''' <summary>
@@ -24,9 +24,9 @@ Namespace Scripts.Wrappers
     ''' </summary>
     ''' <param name="timeout">Таймаут.</param>
     ''' <returns>Результат.</returns>
-    Public Function Execute(timeout As TimeSpan) As IIsbComObjectWrapper Implements IScript.Execute
+    Public Function Execute(timeout As TimeSpan) As IBaseIsbObject Implements IScript.Execute
       Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, timeout)
-      Return New BaseIsbObjectWrapper(rcwObjectResult, Scope)
+      Return New BaseIsbObjectImp(rcwObjectResult, Scope)
     End Function
 
     ''' <summary>
@@ -35,7 +35,7 @@ Namespace Scripts.Wrappers
     ''' <typeparam name="T">Тип возвращаемого объекта.</typeparam>
     ''' <returns>Результат.</returns>
     ''' <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
-    Public Function Execute(Of T As IIsbComObjectWrapper)() As T Implements IScript.Execute
+    Public Function Execute(Of T As IBaseIsbObject)() As T Implements IScript.Execute
       Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, Nothing)
       Return IsbObjectResolver.Resolve(Of T)(rcwObjectResult, Scope)
     End Function
@@ -47,7 +47,7 @@ Namespace Scripts.Wrappers
     ''' <param name="timeout">Таймаут.</param>
     ''' <returns>Результат.</returns>
     ''' <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
-    Public Function Execute(Of T As IIsbComObjectWrapper)(timeout As TimeSpan) As T Implements IScript.Execute
+    Public Function Execute(Of T As IBaseIsbObject)(timeout As TimeSpan) As T Implements IScript.Execute
       Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, timeout)
       Return IsbObjectResolver.Resolve(Of T)(rcwObjectResult, Scope)
     End Function
@@ -64,8 +64,8 @@ Namespace Scripts.Wrappers
     ''' Получает параметры.
     ''' </summary>
     ''' <returns>IsbObjectList.</returns>
-    Public Overloads Function GetParams() As Accessory.IList(Of IIsbComObjectWrapper) Implements IScript.GetParams
-      Return MyBase.GetParams(Of IIsbComObjectWrapper)
+    Public Overloads Function GetParams() As Accessory.IList(Of IBaseIsbObject) Implements IScript.GetParams
+      Return MyBase.GetParams(Of IBaseIsbObject)
     End Function
 
     ''' <summary>

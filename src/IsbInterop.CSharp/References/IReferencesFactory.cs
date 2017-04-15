@@ -3,7 +3,7 @@
   /// <summary>
   /// Фабрика типов справочников.
   /// </summary>
-  public interface IReferencesFactory : IIsbComObjectWrapper
+  public interface IReferencesFactory : IBaseIsbObject
   {
     /// <summary>
     /// Получает фабрику справочника.

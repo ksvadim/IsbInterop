@@ -151,7 +151,7 @@
     <Compile Include="EDocuments\Wrappers\EDocumentFactory.vb" />
     <Compile Include="EDocuments\Wrappers\EDocumentInfo.vb" />
     <Compile Include="EDocuments\Wrappers\EDocumentVersion.vb" />
-    <Compile Include="BaseIsbObjectWrapper.vb" />
+    <Compile Include="BaseIsbObjectImp.vb" />
     <Compile Include="FatalIsbInteropException.vb" />
     <Compile Include="Folders\IFolder.vb" />
     <Compile Include="Folders\IFolderFactory.vb" />
@@ -159,9 +159,9 @@
     <Compile Include="Folders\Wrappers\Folder.vb" />
     <Compile Include="Folders\Wrappers\FolderFactory.vb" />
     <Compile Include="Folders\Wrappers\FolderInfo.vb" />
-    <Compile Include="IIsbComObjectWrapper.vb" />
+    <Compile Include="IBaseIsbObject.vb" />
     <Compile Include="IsbApplicationManager.vb" />
-    <Compile Include="IsbComObjectWrapper.vb" />
+    <Compile Include="BaseIsbObject.vb" />
     <Compile Include="IsbInteropException.vb" />
     <Compile Include="IsbInteropTimeoutException.vb" />
     <Compile Include="IsblSystemConstants\DataConstants\ObjectRequisites\PredefinedEDocumentsRequisites.vb" />

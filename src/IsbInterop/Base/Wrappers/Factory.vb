@@ -6,8 +6,8 @@ Namespace Base.Wrappers
   ''' <summary>
   ''' Обертка над IFactory.
   ''' </summary>
-  Public MustInherit Class Factory(Of T As IIsbComObjectWrapper, TI As IObjectInfo)
-    Inherits IsbComObjectWrapper
+  Public MustInherit Class Factory(Of T As IBaseIsbObject, TI As IObjectInfo)
+    Inherits BaseIsbObject
     Implements IFactory(Of T, TI)
 
     #Region "Поля и свойства"

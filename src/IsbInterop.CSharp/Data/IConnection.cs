@@ -5,7 +5,7 @@ namespace IsbInterop.Data
   /// <summary>
   /// Соединение.
   /// </summary>
-  public interface IConnection : IIsbComObjectWrapper
+  public interface IConnection : IBaseIsbObject
   {
     /// <summary>
     /// Получает информацию о системе.

@@ -3,7 +3,7 @@
   /// <summary>
   /// Обертка над IForEach.
   /// </summary>
-  internal abstract class ForEach<TI> : IsbComObjectWrapper, IForEach<TI> where TI : IIsbComObjectWrapper
+  internal abstract class ForEach<TI> : BaseIsbObject, IForEach<TI> where TI : IBaseIsbObject
   {
     /// <summary>
     /// Количество элементов в списке.

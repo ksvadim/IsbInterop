@@ -4,7 +4,7 @@
   ''' Действие формы.
   ''' </summary>
   Public Interface IAction
-    Inherits IIsbComObjectWrapper
+    Inherits IBaseIsbObject
 
     ''' <summary>
     ''' Выполняет действие.

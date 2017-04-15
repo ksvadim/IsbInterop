@@ -3,11 +3,11 @@ Imports System.Runtime.InteropServices
 Imports IsbInterop.Utils
 
 ''' <summary>
-''' Базовый объект.
+''' Базовый объект IS-Builder.
 ''' </summary>
-Public MustInherit Class IsbComObjectWrapper
+Public MustInherit Class BaseIsbObject
   Inherits CriticalFinalizerObject
-  Implements IIsbComObjectWrapper
+  Implements IBaseIsbObject
   Implements IUnsafeRcwHolder
 
 #Region "Поля и свойства"

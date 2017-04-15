@@ -6,7 +6,7 @@ namespace IsbInterop.Accessory.Wrappers
   /// <summary>
   /// Обертка над ILock.
   /// </summary>
-  public class Lock : IsbComObjectWrapper, ILock
+  public class Lock : BaseIsbObject, ILock
   {
     #region Поля и свойства
 

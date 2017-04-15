@@ -4,7 +4,7 @@
     ''' Обертка над IObjectInfo.
     ''' </summary>
     Friend Class ObjectInfo
-        Inherits IsbComObjectWrapper
+        Inherits BaseIsbObject
         Implements IObjectInfo
 
         ''' <summary>

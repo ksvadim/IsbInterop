@@ -9,7 +9,7 @@ Namespace Searches.Wrappers
   ''' Обертка над ISearchDescription.
   ''' </summary>
   Friend MustInherit Class SearchDescription
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements ISearchDescription
 
     ''' <summary>

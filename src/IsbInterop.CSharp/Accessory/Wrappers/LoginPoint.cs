@@ -13,7 +13,7 @@ namespace IsbInterop
   /// <summary>
   /// Обертка над ILoginPoint.
   /// </summary>
-  public class LoginPoint : IsbComObjectWrapper, ILoginPoint
+  public class LoginPoint : BaseIsbObject, ILoginPoint
   {
     #region Поля и свойства
 

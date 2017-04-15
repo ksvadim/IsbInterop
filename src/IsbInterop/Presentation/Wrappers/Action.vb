@@ -4,7 +4,7 @@
   ''' Обертка над IAction.
   ''' </summary>
   Friend Class Action
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IAction
 
     ''' <summary>

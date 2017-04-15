@@ -6,7 +6,7 @@ Namespace EDocuments.Wrappers
   ''' Обертка над IEDocumentVersion.
   ''' </summary>
   Friend Class EDocumentVersion
-    Inherits IsbComObjectWrapper
+    Inherits BaseIsbObject
     Implements IEDocumentVersion
 
     ''' <summary>

@@ -4,7 +4,7 @@
     ''' Оберка над IReferencesFactory.
     ''' </summary>
     Friend Class ReferencesFactory
-        Inherits IsbComObjectWrapper
+        Inherits BaseIsbObject
         Implements IReferencesFactory
 
         ''' <summary>

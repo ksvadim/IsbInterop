@@ -3,7 +3,7 @@
   /// <summary>
   /// Вложение.
   /// </summary>
-  public interface IAttachment : IIsbComObjectWrapper
+  public interface IAttachment : IBaseIsbObject
   {
   }
 }

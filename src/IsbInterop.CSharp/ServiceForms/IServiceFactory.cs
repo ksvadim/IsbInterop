@@ -3,7 +3,7 @@
   /// <summary>
   /// Фабрика служебных объектов.
   /// </summary>
-  public interface IServiceFactory : IIsbComObjectWrapper
+  public interface IServiceFactory : IBaseIsbObject
   {
     /// <summary>
     /// Получает проводник системы.

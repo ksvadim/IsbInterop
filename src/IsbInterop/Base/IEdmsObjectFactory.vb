@@ -7,7 +7,7 @@ Namespace Base
   ''' </summary>
   ''' <typeparam name="T">Тип объекта фабрики.</typeparam>
   ''' <typeparam name="TI">Тип, предоставляющий информацию об объекте ЭДО.</typeparam>
-  Public Interface IEdmsObjectFactory(Of Out T As IIsbComObjectWrapper, Out TI As IObjectInfo)
+  Public Interface IEdmsObjectFactory(Of Out T As IBaseIsbObject, Out TI As IObjectInfo)
     Inherits IFactory(Of T, TI)
 
     ''' <summary>
