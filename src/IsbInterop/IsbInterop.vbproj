@@ -166,7 +166,7 @@
     <Compile Include="IsbInteropTimeoutException.vb" />
     <Compile Include="IsblSystemConstants\DataConstants\ObjectRequisites\PredefinedEDocumentsRequisites.vb" />
     <Compile Include="IsbObjectResolver.vb" />
-    <Compile Include="IUnsafeRcwHolder.vb" />
+    <Compile Include="IRcwProxy.vb" />
     <Compile Include="My Project\ProductInfo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

@@ -8,7 +8,7 @@ Imports IsbInterop.Utils
 Public MustInherit Class BaseIsbObject
   Inherits CriticalFinalizerObject
   Implements IBaseIsbObject
-  Implements IUnsafeRcwHolder
+  Implements IRcwProxy
 
 #Region "Поля и свойства"
 
@@ -38,7 +38,7 @@ Public MustInherit Class BaseIsbObject
   ''' <summary>
   ''' COM-объект IS-Builder.
   ''' </summary>
-  Private ReadOnly Property IUnsafeRcwHolder_RcwObject As Object Implements IUnsafeRcwHolder.RcwObject
+  Private ReadOnly Property IUnsafeRcwHolder_RcwObject As Object Implements IRcwProxy.RcwObject
     Get
       Return RcwObject
     End Get

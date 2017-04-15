@@ -38,7 +38,7 @@ Namespace ServiceForms.Wrappers
     ''' </summary>
     ''' <param name="value">Значение.</param>
     Public Sub SetTreeRootContents(value As IFolderInfo) Implements IEdmsExplorer.SetTreeRootContents
-      SetRcwProperty("TreeRootContents", DirectCast(value, IUnsafeRcwHolder).RcwObject)
+      SetRcwProperty("TreeRootContents", DirectCast(value, IRcwProxy).RcwObject)
     End Sub
 
     ''' <summary>
@@ -46,7 +46,7 @@ Namespace ServiceForms.Wrappers
     ''' </summary>
     ''' <param name="value">Значение.</param>
     Public Sub SetTreeRootContents(value As IContents(Of IFolderInfo)) Implements IEdmsExplorer.SetTreeRootContents
-      SetRcwProperty("TreeRootContents", DirectCast(value, IUnsafeRcwHolder).RcwObject)
+      SetRcwProperty("TreeRootContents", DirectCast(value, IRcwProxy).RcwObject)
     End Sub
 
     ''' <summary>

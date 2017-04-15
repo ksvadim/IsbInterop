@@ -14,7 +14,7 @@ namespace IsbInterop.ComponentTokens.Wrappers
     /// <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     public void Execute(IObjectInfo objectInfo)
     {
-      InvokeRcwInstanceMethod("Execute", ((IUnsafeRcwHolder)objectInfo).RcwObject);
+      InvokeRcwInstanceMethod("Execute", ((IRcwProxy)objectInfo).RcwObject);
     }
 
     /// <summary>
@@ -23,7 +23,7 @@ namespace IsbInterop.ComponentTokens.Wrappers
     /// <param name="objectInfo">Информация о варианте запуска компоненты.</param>
     public void ExecuteInNewProcess(IObjectInfo objectInfo)
     {
-      InvokeRcwInstanceMethod("ExecuteInNewProcess", ((IUnsafeRcwHolder)objectInfo).RcwObject);
+      InvokeRcwInstanceMethod("ExecuteInNewProcess", ((IRcwProxy)objectInfo).RcwObject);
     }
 
     /// <summary>

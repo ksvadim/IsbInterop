@@ -17,7 +17,7 @@ namespace IsbInterop.Searches.Wrappers
       if (objectInfo == null)
         throw new ArgumentNullException(nameof(objectInfo));
 
-      InvokeRcwInstanceMethod("InitializeSearch", ((IUnsafeRcwHolder)objectInfo).RcwObject);
+      InvokeRcwInstanceMethod("InitializeSearch", ((IRcwProxy)objectInfo).RcwObject);
     }
 
     /// <summary>

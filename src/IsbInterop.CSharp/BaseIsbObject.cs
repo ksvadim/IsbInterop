@@ -9,7 +9,7 @@ namespace IsbInterop
   /// <summary>
   /// Базовый объект IS-Builder.
   /// </summary>
-  public abstract class BaseIsbObject : CriticalFinalizerObject, IBaseIsbObject, IUnsafeRcwHolder
+  public abstract class BaseIsbObject : CriticalFinalizerObject, IBaseIsbObject, IRcwProxy
   {
     #region Поля и свойства
 
@@ -38,7 +38,7 @@ namespace IsbInterop
     /// <summary>
     /// COM-объект IS-Builder.
     /// </summary>
-    object IUnsafeRcwHolder.RcwObject => RcwObject;
+    object IRcwProxy.RcwObject => RcwObject;
 
     /// <summary>
     /// Область видимости.

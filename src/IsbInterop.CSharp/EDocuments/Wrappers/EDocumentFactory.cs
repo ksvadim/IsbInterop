@@ -24,8 +24,8 @@ namespace IsbInterop.EDocuments.Wrappers
         throw new ArgumentNullException(nameof(destinationEdocumentInfo));
 
       InvokeRcwInstanceMethod("BindTo", new[] {
-        ((IUnsafeRcwHolder)sourceObjectInfo).RcwObject,
-        ((IUnsafeRcwHolder)destinationEdocumentInfo).RcwObject });
+        ((IRcwProxy)sourceObjectInfo).RcwObject,
+        ((IRcwProxy)destinationEdocumentInfo).RcwObject });
     }
     
     /// <summary>
@@ -42,8 +42,8 @@ namespace IsbInterop.EDocuments.Wrappers
         throw new ArgumentNullException(nameof(destinationDocumentInfos));
 
       InvokeRcwInstanceMethod("BindTo", new[] {
-        ((IUnsafeRcwHolder)sourceObjectInfo).RcwObject,
-        ((IUnsafeRcwHolder)destinationDocumentInfos).RcwObject });
+        ((IRcwProxy)sourceObjectInfo).RcwObject,
+        ((IRcwProxy)destinationDocumentInfos).RcwObject });
     }
 
     /// <summary>

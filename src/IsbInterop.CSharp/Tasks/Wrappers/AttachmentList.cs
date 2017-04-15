@@ -14,7 +14,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// <param name="attachmentInfo">Информация о добавляемом вложении.</param>
     public void Add(IObjectInfo attachmentInfo)
     {
-      var rcwAttachmentInfo = ((IUnsafeRcwHolder) attachmentInfo).RcwObject;
+      var rcwAttachmentInfo = ((IRcwProxy) attachmentInfo).RcwObject;
       InvokeRcwInstanceMethod("Add", rcwAttachmentInfo);
     }
 

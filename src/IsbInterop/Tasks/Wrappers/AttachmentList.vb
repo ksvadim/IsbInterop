@@ -15,7 +15,7 @@ Namespace Tasks.Wrappers
     ''' </summary>
     ''' <param name="attachmentInfo">Информация о добавляемом вложении.</param>
     Public Sub Add(attachmentInfo As IObjectInfo) Implements IAttachmentList.Add
-      Dim rcwAttachmentInfo = DirectCast(attachmentInfo, IUnsafeRcwHolder).RcwObject
+      Dim rcwAttachmentInfo = DirectCast(attachmentInfo, IRcwProxy).RcwObject
       InvokeRcwInstanceMethod("Add", rcwAttachmentInfo)
     End Sub
 

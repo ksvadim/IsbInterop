@@ -25,8 +25,8 @@ Namespace EDocuments.Wrappers
         Throw New ArgumentNullException("destinationEdocumentInfo")
       End If
 
-      InvokeRcwInstanceMethod("BindTo", New Object() { DirectCast(sourceObjectInfo, IUnsafeRcwHolder).RcwObject,
-                              DirectCast(destinationEdocumentInfo, IUnsafeRcwHolder).RcwObject })
+      InvokeRcwInstanceMethod("BindTo", New Object() { DirectCast(sourceObjectInfo, IRcwProxy).RcwObject,
+                              DirectCast(destinationEdocumentInfo, IRcwProxy).RcwObject })
     End Sub
 
     ''' <summary>
@@ -43,8 +43,8 @@ Namespace EDocuments.Wrappers
         Throw New ArgumentNullException("destinationDocumentInfos")
       End If
 
-      InvokeRcwInstanceMethod("BindTo", New Object() { DirectCast(sourceObjectInfo, IUnsafeRcwHolder).RcwObject,
-                              DirectCast(destinationDocumentInfos, IUnsafeRcwHolder).RcwObject })
+      InvokeRcwInstanceMethod("BindTo", New Object() { DirectCast(sourceObjectInfo, IRcwProxy).RcwObject,
+                              DirectCast(destinationDocumentInfos, IRcwProxy).RcwObject })
     End Sub
 
     ''' <summary>
