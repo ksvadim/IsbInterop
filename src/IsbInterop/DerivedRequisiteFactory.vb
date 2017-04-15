@@ -1,5 +1,5 @@
 ﻿Imports IsbInterop.Data
-Imports IsbInterop.Data.Wrappers
+Imports IsbInterop.Data.Proxies
 Imports IsbInterop.DataTypes.Enumerable
 Imports IsbInterop.Utils
 

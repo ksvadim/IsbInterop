@@ -1,5 +1,5 @@
 ﻿Imports IsbInterop.Accessory
-Imports IsbInterop.Accessory.Wrappers
+Imports IsbInterop.Accessory.Proxies
 
 ''' <summary>
 ''' Область видимости.
