@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Tasks
+
   ''' <summary>
   ''' Фабрика заданий.
   ''' </summary>

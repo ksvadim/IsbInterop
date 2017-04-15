@@ -15,7 +15,7 @@ namespace IsbInterop.Tasks.Wrappers
     public void Add(IObjectInfo attachmentInfo)
     {
       var rcwAttachmentInfo = ((IUnsafeRcwHolder) attachmentInfo).RcwObject;
-      this.InvokeRcwInstanceMethod("Add", rcwAttachmentInfo);
+      InvokeRcwInstanceMethod("Add", rcwAttachmentInfo);
     }
 
     /// <summary>
@@ -23,6 +23,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// </summary>
     /// <param name="rcwIAttachment">СOM-объект IAttachment.</param>
     /// <param name="scope">Область видимости.</param>
-    public AttachmentList(object rcwIAttachment, IScope scope) : base(rcwIAttachment, scope) { }
+    public AttachmentList(object rcwIAttachment, IScope scope)
+      : base(rcwIAttachment, scope) { }
   }
 }

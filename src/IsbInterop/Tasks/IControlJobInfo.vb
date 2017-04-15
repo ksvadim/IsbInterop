@@ -1,6 +1,7 @@
 ﻿Imports IsbInterop.Base
 
 Namespace Tasks
+
   ''' <summary>
   ''' Информация о задании-контроле.
   ''' </summary>

@@ -12,6 +12,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// </summary>
     /// <param name="rcwICustomJobInfo">COM-объект ICustomJobInfo.</param>
     /// <param name="scope">Область видимости.</param>
-    public CustomJobInfo(object rcwICustomJobInfo, IScope scope) : base(rcwICustomJobInfo, scope) { }
+    public CustomJobInfo(object rcwICustomJobInfo, IScope scope)
+      : base(rcwICustomJobInfo, scope) { }
   }
 }

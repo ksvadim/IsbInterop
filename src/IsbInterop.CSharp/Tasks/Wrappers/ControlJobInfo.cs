@@ -10,6 +10,7 @@
     /// </summary>
     /// <param name="rcwIControlJobInfo">COM-объект IControlJobInfo.</param>
     /// <param name="scope">Область видимости.</param>
-    public ControlJobInfo(object rcwIControlJobInfo, IScope scope) : base(rcwIControlJobInfo, scope) { }
+    public ControlJobInfo(object rcwIControlJobInfo, IScope scope)
+      : base(rcwIControlJobInfo, scope) { }
   }
 }

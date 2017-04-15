@@ -2,11 +2,13 @@
 Imports IsbInterop.Base
 
 Namespace Tasks
+
   ''' <summary>
   ''' Список вложений.
   ''' </summary>
   Public Interface IAttachmentList
     Inherits IForEach(Of IAttachment)
+
     ''' <summary>
     ''' Добавить вложение.
     ''' </summary>

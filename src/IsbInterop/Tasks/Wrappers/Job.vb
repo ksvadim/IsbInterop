@@ -10,7 +10,7 @@ Namespace Tasks.Wrappers
     Implements IJob
 
     ''' <summary>
-    ''' Получить информацию об объекте.
+    ''' Получает информацию об объекте.
     ''' </summary>
     ''' <returns>Информация об объекте.</returns>
     Public Overrides Function GetInfo() As IJobInfo

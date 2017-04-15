@@ -10,7 +10,7 @@ Namespace Tasks.Wrappers
     Implements ITaskFactory
 
     ''' <summary>
-    ''' Создать новую задачу.
+    ''' Создает новую задачу.
     ''' </summary>
     ''' <returns>Новая задача.</returns>
     Public Function CreateNew() As ITask Implements ITaskFactory.CreateNew
@@ -19,7 +19,7 @@ Namespace Tasks.Wrappers
     End Function
 
     ''' <summary>
-    ''' Получить объект по его ИД.
+    ''' Получает объект по его ИД.
     ''' </summary>
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>

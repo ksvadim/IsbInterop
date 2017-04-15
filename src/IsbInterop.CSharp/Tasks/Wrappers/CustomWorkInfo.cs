@@ -13,6 +13,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// </summary>
     /// <param name="rcwICustomWorkInfo">COM-объект ICustomWorkInfo.</param>
     /// <param name="scope">Область видимости.</param>
-    public CustomWorkInfo(object rcwICustomWorkInfo, IScope scope) : base(rcwICustomWorkInfo, scope) { }
+    public CustomWorkInfo(object rcwICustomWorkInfo, IScope scope)
+      : base(rcwICustomWorkInfo, scope) { }
   }
 }

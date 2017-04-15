@@ -12,7 +12,7 @@ Namespace Tasks.Wrappers
     Implements IJobFactory
 
     ''' <summary>
-    ''' Получить объект по его ИД.
+    ''' Получает объект по его ИД.
     ''' </summary>
     ''' <param name="id">ИД.</param>
     ''' <returns>Объект.</returns>

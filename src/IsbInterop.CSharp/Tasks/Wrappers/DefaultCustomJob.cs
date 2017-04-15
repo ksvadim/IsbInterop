@@ -9,7 +9,7 @@ namespace IsbInterop.Tasks.Wrappers
   internal class DefaultCustomJob : CustomJob<ICustomJobInfo>
   {
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <returns>Информация об объекте.</returns>
     public override ICustomJobInfo GetInfo()
@@ -23,6 +23,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// </summary>
     /// <param name="rcwICustomJob">COM-объект ICustomJob.</param>
     /// <param name="scope">Область видимости.</param>
-    public DefaultCustomJob(object rcwICustomJob, IScope scope) : base(rcwICustomJob, scope) { }
+    public DefaultCustomJob(object rcwICustomJob, IScope scope)
+      : base(rcwICustomJob, scope) { }
   }
 }

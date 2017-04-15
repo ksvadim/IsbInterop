@@ -8,24 +8,24 @@ namespace IsbInterop.Tasks.Wrappers
   internal class TaskFactory : EdmsObjectFactory<ITask, ITaskInfo>, ITaskFactory
   {
     /// <summary>
-    /// Создать новую задачу.
+    /// Создает новую задачу.
     /// </summary>
     /// <returns>Новая задача.</returns>
     public ITask CreateNew()
     {
-      var rcwITask = this.InvokeRcwInstanceMethod("CreateNew");
-      return new Task(rcwITask, this.Scope);
+      var rcwITask = InvokeRcwInstanceMethod("CreateNew");
+      return new Task(rcwITask, Scope);
     }
 
     /// <summary>
-    /// Получить объект по его ИД.
+    /// Получает объект по его ИД.
     /// </summary>
     /// <param name="id">ИД.</param>
     /// <returns>Объект.</returns>
     public override ITask GetObjectById(int id)
     {
-      var rcwObject = this.GetRcwObjectById(id);
-      return new Task(rcwObject, this.Scope);
+      var rcwObject = GetRcwObjectById(id);
+      return new Task(rcwObject, Scope);
     }
 
     /// <summary>
@@ -44,6 +44,7 @@ namespace IsbInterop.Tasks.Wrappers
     /// </summary>
     /// <param name="rcwITaskFactory">COM-объект ITaskFactory.</param>
     /// <param name="scope">Область видимости.</param>
-    public TaskFactory(object rcwITaskFactory, IScope scope) : base(rcwITaskFactory, scope) { }
+    public TaskFactory(object rcwITaskFactory, IScope scope)
+      : base(rcwITaskFactory, scope) { }
   }
 }

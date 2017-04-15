@@ -8,7 +8,7 @@ namespace IsbInterop.Tasks.Wrappers
   internal class Job : CustomJob<IJobInfo>, IJob
   {
     /// <summary>
-    /// Получить информацию об объекте.
+    /// Получает информацию об объекте.
     /// </summary>
     /// <returns>Информация об объекте.</returns>
     public override IJobInfo GetInfo()
