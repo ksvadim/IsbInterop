@@ -12,16 +12,6 @@ namespace IsbInterop.Utils
   internal static class ComUtils
   {
     /// <summary>
-    /// Таймаут выполнения COM-метода по умолчанию, секунд.
-    /// </summary>
-    private const int DefaultComMethodExecutionTimeout = 60;
-
-    /// <summary>
-    /// Таймаут выполнения COM-метода, секунд.
-    /// </summary>
-    private static readonly Lazy<int> ComMethodExecutionTimeout = new Lazy<int>(GetComMethodExecutionTimeoutValue, true);
-
-    /// <summary>
     /// Вызывает экземплярный метод COM-объекта.
     /// </summary>
     /// <param name="rcwObject">COM-объект.</param>
@@ -39,36 +29,11 @@ namespace IsbInterop.Utils
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="methodName">Имя метода.</param>
     /// <param name="parameters">Параметры.</param>
-    /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
-    public static object InvokeRcwInstanceMethod(object rcwObject, string methodName, object[] parameters, TimeSpan? timeout)
+    public static object InvokeRcwInstanceMethod(object rcwObject, string methodName, object[] parameters = null)
     {
-      Func<object> func = () =>
-      {
-        object result;
-        try
-        {
-          result = rcwObject.GetType()
-            .InvokeMember(methodName, BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public, null,
-              rcwObject, parameters);
-        }
-        catch (TargetInvocationException ex)
-        {
-          var errorMessage = string.Format(Resources.CannotExecuteObjectMethodTemplate,
-            methodName, Information.TypeName(rcwObject));
-
-          if (ex.InnerException is COMException)
-            throw new IsbInteropException(errorMessage, ex.InnerException);
-
-          throw new IsbInteropException(errorMessage, ex);
-        }
-
-        return result;
-      };
-
-      var methodResult = timeout != null ? ThreadUtils.Invoke(func, timeout.Value) : func.Invoke();
-
-      return methodResult;
+      var timeout = TimeSpan.FromSeconds(IsbInteropConfiguration.IsbMethodExecutionTimeout);
+      return InvokeRcwInstanceMethod(rcwObject, methodName, parameters, timeout);
     }
 
     /// <summary>
@@ -77,8 +42,9 @@ namespace IsbInterop.Utils
     /// <param name="rcwObject">COM-объект.</param>
     /// <param name="methodName">Имя метода.</param>
     /// <param name="parameters">Параметры.</param>
+    /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
-    public static object InvokeRcwInstanceMethod(object rcwObject, string methodName, object[] parameters = null)
+    public static object InvokeRcwInstanceMethod(object rcwObject, string methodName, object[] parameters, TimeSpan timeout)
     {
       object result = ThreadUtils.Invoke(() =>
       {
@@ -100,7 +66,44 @@ namespace IsbInterop.Utils
         }
 
         return result;
-      }, TimeSpan.FromSeconds(ComMethodExecutionTimeout.Value));
+      }, timeout);
+
+      return result;
+    }
+
+    /// <summary>
+    /// Вызывает экземплярный метод COM-объекта.
+    /// </summary>
+    /// <param name="rcwObject">COM-объект.</param>
+    /// <param name="methodName">Имя метода.</param>
+    /// <param name="parameters">Параметры.</param>
+    /// <param name="modifiers">Атрибуты параметров.</param>
+    /// <param name="timeout">Таймаут.</param>
+    /// <returns>Результат.</returns>
+    internal static object InvokeRcwInstanceMethod(object rcwObject, string methodName,
+      object[] parameters, ParameterModifier[] modifiers, TimeSpan timeout)
+    {
+      object result = ThreadUtils.Invoke(() =>
+      {
+        try
+        {
+          result = rcwObject.GetType()
+            .InvokeMember(methodName, BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public, null,
+              rcwObject, parameters, modifiers, null, null);
+        }
+        catch (TargetInvocationException ex)
+        {
+          var errorMessage = string.Format(Resources.CannotExecuteObjectMethodTemplate,
+            methodName, Information.TypeName(rcwObject));
+
+          if (ex.InnerException is COMException)
+            throw new IsbInteropException(errorMessage, ex.InnerException);
+
+          throw new IsbInteropException(errorMessage, ex);
+        }
+
+        return result;
+      }, timeout);
 
       return result;
     }
@@ -172,23 +175,6 @@ namespace IsbInterop.Utils
 
         throw new IsbInteropException(errorMessage, ex);
       }
-    }
-
-    /// <summary>
-    /// Получает значение таймаута выполнения COM-метода.
-    /// </summary>
-    /// <returns>Таймаут в секундах.</returns>
-    private static int GetComMethodExecutionTimeoutValue()
-    {
-      int timeout = DefaultComMethodExecutionTimeout;
-
-      if (ConfigurationUtils.TryGetAppSetting("IsbInteropTimeout", ref timeout))
-      {
-        if (timeout <= 0)
-          timeout = DefaultComMethodExecutionTimeout;
-      }
-
-      return timeout;
     }
   }
 }

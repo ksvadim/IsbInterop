@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports IsbInterop.Utils
 
 ''' <summary>
 ''' Фабрика контекста.
@@ -44,7 +43,7 @@ Public NotInheritable Class ContextFactory
   ''' <param name="storeInCache">Признак необходимости добавления информации о соединении в кэш.</param>
   ''' <returns>Контекст.</returns>
   Public Shared Function CreateContext(Optional storeInCache As Boolean = True) As Context
-    Dim connectionString = ConfigurationUtils.GetConnectionString()
+    Dim connectionString = IsbInteropConfiguration.GetConnectionString()
     Dim connectionParams = GetConnectionParams(connectionString)
     Dim rcwApp = IsbApplicationManager.Instance.GetRcwApplication(connectionParams, storeInCache)
 

@@ -1,5 +1,4 @@
 ﻿using IsbInterop.Properties;
-using IsbInterop.Utils;
 using System.Data.SqlClient;
 
 namespace IsbInterop
@@ -49,7 +48,7 @@ namespace IsbInterop
     /// <returns>Контекст.</returns>
     public static Context CreateContext(bool storeInCache = true)
     {
-      var connectionString = ConfigurationUtils.GetConnectionString();
+      var connectionString = IsbInteropConfiguration.GetConnectionString();
       var connectionParams = GetConnectionParams(connectionString);
       var rcwApp = IsbApplicationManager.Instance.GetRcwApplication(connectionParams, storeInCache);
 

@@ -116,7 +116,7 @@ namespace IsbInterop
     /// <param name="parameters">Параметры.</param>
     /// <param name="timeout">Таймаут.</param>
     /// <returns>Результат.</returns>
-    protected object InvokeRcwInstanceMethod(string methodName, object[] parameters, TimeSpan? timeout)
+    protected object InvokeRcwInstanceMethod(string methodName, object[] parameters, TimeSpan timeout)
     {
       return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameters, timeout);
     }

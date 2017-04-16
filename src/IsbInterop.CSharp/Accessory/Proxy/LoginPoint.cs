@@ -4,7 +4,6 @@ using IsbInterop.Properties;
 using IsbInterop.Utils;
 using System;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 // ReSharper disable once CheckNamespace
 // LoginPoint - публичный класс, он должен быть виден из namespace IsbInterop.
@@ -16,11 +15,6 @@ namespace IsbInterop
   public class LoginPoint : BaseIsbObject, ILoginPoint
   {
     #region Поля и свойства
-
-    /// <summary>
-    /// Таймаут на создание объекта приложения.
-    /// </summary>
-    private readonly TimeSpan _applicationCreationTimeout = TimeSpan.FromSeconds(20);
 
     /// <summary>
     /// ИД процесса.
@@ -63,8 +57,9 @@ namespace IsbInterop
     {
       var rcwApplication = GetRcwApplication(connectionParams, storeInCache);
 
-      return rcwApplication == null ? null :
-        new Application(rcwApplication, null);
+      return rcwApplication == null
+        ? null
+        : new Application(rcwApplication, null);
     }
 
     /// <summary>
@@ -91,27 +86,8 @@ namespace IsbInterop
     {
       var parameters = new object[] { connectionParams, storeInCache };
 
-      object rcwApplication = ThreadUtils.Invoke(() =>
-      {
-        try
-        {
-          rcwApplication = RcwObject.GetType()
-            .InvokeMember("GetApplication", BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public, null,
-              RcwObject, parameters);
-        }
-        catch (TargetInvocationException ex)
-        {
-          var errorMessage = string.Format(Resources.CannotExecuteObjectMethodTemplate,
-            "GetApplication", typeof(ILoginPoint).Name);
-
-          if (ex.InnerException is COMException)
-            throw new IsbInteropException(errorMessage, ex.InnerException);
-
-          throw new IsbInteropException(errorMessage, ex);
-        }
-
-        return rcwApplication;
-      }, _applicationCreationTimeout);
+      var timeout = TimeSpan.FromSeconds(IsbInteropConfiguration.IsbAppCreationTimeout);
+      var rcwApplication = ComUtils.InvokeRcwInstanceMethod(RcwObject, "GetApplication", parameters, timeout);
 
       return rcwApplication;
     }
@@ -128,35 +104,14 @@ namespace IsbInterop
 
       var parameters = new object[] { connectionParams, defaultErrorCode };
 
-      object rcwApplication = ThreadUtils.Invoke(() =>
-      {
-        var p = new ParameterModifier(2);
-        p[1] = true;
-        ParameterModifier[] mods = { p };
+      var p = new ParameterModifier(2);
+      p[1] = true;
+      ParameterModifier[] mods = { p };
 
-        try
-        {
-          rcwApplication = RcwObject.GetType()
-            .InvokeMember("GetApplicationEx",
-              BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public,
-              null, RcwObject, parameters, mods, null, null);
-        }
-        catch (TargetInvocationException ex)
-        {
-          if (ex.InnerException is COMException)
-          {
-            throw new IsbInteropException(
-              string.Format(Resources.CannotExecuteObjectMethodTemplate, "GetApplicationEx", typeof(ILoginPoint).Name),
-              ex);
-          }
-
-          throw ex.InnerException;
-        }
-        return rcwApplication;
-      }, _applicationCreationTimeout);
+      var timeout = TimeSpan.FromSeconds(IsbInteropConfiguration.IsbAppCreationTimeout);
+      var rcwApplication = ComUtils.InvokeRcwInstanceMethod(RcwObject, "GetApplication", parameters, mods, timeout);
 
       errorCode = (int)parameters[1];
-
       return rcwApplication;
     }
 

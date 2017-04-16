@@ -12,7 +12,7 @@
     ''' </summary>
     ''' <returns>True, если действие было выполнено, иначе false.</returns>
     Public Function Execute() As Boolean Implements IAction.Execute
-      Dim result = CBool(InvokeRcwInstanceMethod("Execute", Nothing, Nothing))
+      Dim result = CBool(InvokeRcwInstanceMethod("Execute", Nothing, TimeSpan.MaxValue))
       Return result
     End Function
 

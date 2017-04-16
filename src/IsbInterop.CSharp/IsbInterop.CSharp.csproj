@@ -58,6 +58,7 @@
     <Compile Include="ComponentTokens\Proxies\ComponentToken.cs" />
     <Compile Include="ComponentTokens\Proxies\ComponentTokenFactory.cs" />
     <Compile Include="ComponentTokens\Proxies\ComponentTokenInfo.cs" />
+    <Compile Include="IsbInteropConfiguration.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="ContextFactory.cs" />
     <Compile Include="DataTypes\Enumerable\TEditMode.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Base\Proxies\CustomJob.cs" />
     <Compile Include="Base\Proxies\CustomWork.cs" />
     <Compile Include="Base\Proxies\EdmsObjectInfo.cs" />
-    <Compile Include="Utils\ConfigurationUtils.cs" />
     <Compile Include="DataTypes\Enumerable\TContentKind.cs" />
     <Compile Include="Data\IPickRequisite.cs" />
     <Compile Include="DataTypes\Enumerable\TDataSetState.cs" />

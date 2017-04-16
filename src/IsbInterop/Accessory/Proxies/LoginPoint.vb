@@ -1,5 +1,4 @@
 ﻿Imports System.Reflection
-Imports System.Runtime.InteropServices
 Imports IsbInterop.Accessory
 Imports IsbInterop.Accessory.Proxies
 Imports IsbInterop.Utils
@@ -15,11 +14,6 @@ Public Class LoginPoint
   Implements ILoginPoint
 
 #Region "Поля и свойства"
-
-  ''' <summary>
-  ''' Таймаут на создание объекта приложения.
-  ''' </summary>
-  Private ReadOnly _applicationCreationTimeout As TimeSpan = TimeSpan.FromSeconds(20)
 
   ''' <summary>
   ''' ИД процесса.
@@ -90,22 +84,8 @@ Public Class LoginPoint
   Friend Function GetRcwApplication(connectionParams As String, Optional storeInCache As Boolean = True) As Object
     Dim parameters = New Object() {connectionParams, storeInCache}
 
-    Dim rcwApplication As Object = ThreadUtils.Invoke(Function()
-                                                        Try
-                                                          rcwApplication = RcwObject.[GetType]().InvokeMember("GetApplication", BindingFlags.InvokeMethod Or BindingFlags.Instance Or BindingFlags.[Public], Nothing, RcwObject, parameters)
-                                                        Catch ex As TargetInvocationException
-                                                          Dim errorMessage = String.Format(My.Resources.Resources.CannotExecuteObjectMethodTemplate, "GetApplication", GetType(ILoginPoint).Name)
-
-                                                          If TypeOf ex.InnerException Is COMException Then
-                                                            Throw New IsbInteropException(errorMessage, ex.InnerException)
-                                                          End If
-
-                                                          Throw New IsbInteropException(errorMessage, ex)
-                                                        End Try
-
-                                                        Return rcwApplication
-
-                                                      End Function, _applicationCreationTimeout)
+    Dim timeout = TimeSpan.FromSeconds(IsbInteropConfiguration.IsbAppCreationTimeout)
+    Dim rcwApplication = ComUtils.InvokeRcwInstanceMethod(RcwObject, "GetApplication", parameters, timeout)
 
     Return rcwApplication
   End Function
@@ -118,26 +98,15 @@ Public Class LoginPoint
   ''' <returns>Объект приложения IApplication, либо null, если его не удалось получить.</returns>
   Friend Function GetRcwApplicationEx(connectionParams As String, ByRef errorCode As Integer) As Object
     Const defaultErrorCode As Integer = -1
+
     Dim parameters = New Object() {connectionParams, defaultErrorCode}
 
-    Dim rcwApplication As Object = ThreadUtils.Invoke(Function()
-                                                        Dim p = New ParameterModifier(2)
-                                                        p(1) = True
-                                                        Dim mods As ParameterModifier() = {p}
+    Dim p = New ParameterModifier(2)
+    p(1) = True
+    Dim mods As ParameterModifier() = {p}
 
-                                                        Try
-                                                          rcwApplication = RcwObject.[GetType]().InvokeMember("GetApplicationEx", BindingFlags.InvokeMethod Or BindingFlags.Instance Or BindingFlags.[Public], Nothing, RcwObject, parameters, mods,
-                                                            Nothing, Nothing)
-                                                        Catch ex As TargetInvocationException
-                                                          If TypeOf ex.InnerException Is COMException Then
-                                                            Throw New IsbInteropException(String.Format(My.Resources.Resources.CannotExecuteObjectMethodTemplate, "GetApplicationEx", GetType(ILoginPoint).Name), ex)
-                                                          End If
-
-                                                          Throw ex.InnerException
-                                                        End Try
-                                                        Return rcwApplication
-
-                                                      End Function, _applicationCreationTimeout)
+    Dim timeout = TimeSpan.FromSeconds(IsbInteropConfiguration.IsbAppCreationTimeout)
+    Dim rcwApplication = ComUtils.InvokeRcwInstanceMethod(RcwObject, "GetApplication", parameters, mods, timeout)
 
     errorCode = CInt(parameters(1))
 

@@ -119,7 +119,7 @@ Public MustInherit Class BaseIsbObject
   ''' <param name="parameters">Параметры.</param>
   ''' <param name="timeout">Таймаут.</param>
   ''' <returns>Результат.</returns>
-  Protected Function InvokeRcwInstanceMethod(methodName As String, parameters As Object(), timeout As TimeSpan?) As Object
+  Protected Function InvokeRcwInstanceMethod(methodName As String, parameters As Object(), timeout As TimeSpan) As Object
     Return ComUtils.InvokeRcwInstanceMethod(RcwObject, methodName, parameters, timeout)
   End Function
 

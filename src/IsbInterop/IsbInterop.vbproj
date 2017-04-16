@@ -115,10 +115,10 @@
     <Compile Include="ComponentTokens\Proxies\ComponentTokenInfo.vb" />
     <Compile Include="Context.vb" />
     <Compile Include="ContextFactory.vb" />
+    <Compile Include="IsbInteropConfiguration.vb" />
     <Compile Include="Scope.vb" />
     <Compile Include="Utils\ThreadUtils.vb" />
     <Compile Include="Utils\ComUtils.vb" />
-    <Compile Include="Utils\ConfigurationUtils.vb" />
     <Compile Include="Extensions\DataSetExtensions.vb" />
     <Compile Include="DataTypes\Enumerable\TCompType.vb" />
     <Compile Include="DataTypes\Enumerable\TContentKind.vb" />

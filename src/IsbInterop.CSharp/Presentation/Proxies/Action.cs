@@ -13,7 +13,7 @@ namespace IsbInterop.Presentation.Proxies
     /// <returns>True, если действие было выполнено, иначе false.</returns>
     public bool Execute()
     {
-      var result = (bool)InvokeRcwInstanceMethod("Execute", null, null);
+      var result = (bool)InvokeRcwInstanceMethod("Execute", null, TimeSpan.MaxValue);
       return result;
     }
 

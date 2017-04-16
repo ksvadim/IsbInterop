@@ -16,7 +16,7 @@ namespace IsbInterop.Scripts.Proxies
     /// <returns>Результат.</returns>
     public IBaseIsbObject Execute()
     {
-      var rcwObject = InvokeRcwInstanceMethod("Execute", null, null);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, TimeSpan.MaxValue);
       return new BaseIsbObjectImp(rcwObject, Scope);
     }
 
@@ -39,7 +39,7 @@ namespace IsbInterop.Scripts.Proxies
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
     public T Execute<T>() where T : IBaseIsbObject
     {
-      var rcwObject = InvokeRcwInstanceMethod("Execute", null, null);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, TimeSpan.MaxValue);
       return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
     }
 

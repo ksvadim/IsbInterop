@@ -15,7 +15,7 @@ Namespace Scripts.Proxies
     ''' </summary>
     ''' <returns>Результат.</returns>
     Public Function Execute() As IBaseIsbObject Implements IScript.Execute
-      Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, Nothing)
+      Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, TimeSpan.MaxValue)
       Return New BaseIsbObjectImp(rcwObjectResult, Scope)
     End Function
 
@@ -36,7 +36,7 @@ Namespace Scripts.Proxies
     ''' <returns>Результат.</returns>
     ''' <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
     Public Function Execute(Of T As IBaseIsbObject)() As T Implements IScript.Execute
-      Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, Nothing)
+      Dim rcwObjectResult = InvokeRcwInstanceMethod("Execute", Nothing, TimeSpan.MaxValue)
       Return IsbObjectResolver.Resolve(Of T)(rcwObjectResult, Scope)
     End Function
 
