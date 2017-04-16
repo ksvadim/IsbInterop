@@ -167,14 +167,14 @@ Public MustInherit Class BaseIsbObject
   ''' Конструктор.
   ''' </summary>
   ''' <param name="isbRcwObject">COM-объект IS-Builder.</param>
-  ''' <param name="scope">Область видимости.</param>
-  Protected Sub New(isbRcwObject As Object, scope As IScope)
-    RcwObject = isbRcwObject 
-    Scope = scope
+  ''' <param name="currentScope">Область видимости.</param>
+  Protected Sub New(isbRcwObject As Object, currentScope As IScope)
+    RcwObject = isbRcwObject
+    Scope = currentScope
     _typeName = Information.TypeName(isbRcwObject)
 
-    If scope IsNot Nothing Then
-      DirectCast(scope, Scope).Add(Me)
+    If currentScope IsNot Nothing Then
+      DirectCast(currentScope, Scope).Add(Me)
     End If
   End Sub
 
