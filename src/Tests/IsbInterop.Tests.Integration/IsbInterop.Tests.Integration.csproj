@@ -76,9 +76,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\IsbInterop.CSharp\IsbInterop.CSharp.csproj">
+    <ProjectReference Include="..\..\IsbInterop\IsbInterop.csproj">
       <Project>{00e2d276-c353-4de5-869f-4618a19f171b}</Project>
-      <Name>IsbInterop.CSharp</Name>
+      <Name>IsbInterop</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

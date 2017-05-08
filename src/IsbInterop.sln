@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{12B4DF5E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsbInterop.Tests.Integration", "Tests\IsbInterop.Tests.Integration\IsbInterop.Tests.Integration.csproj", "{14BDC4DB-3CC1-41B6-AD6A-7E8F71A4DE14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsbInterop.CSharp", "IsbInterop.CSharp\IsbInterop.CSharp.csproj", "{00E2D276-C353-4DE5-869F-4618A19F171B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsbInterop", "IsbInterop\IsbInterop.csproj", "{00E2D276-C353-4DE5-869F-4618A19F171B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
