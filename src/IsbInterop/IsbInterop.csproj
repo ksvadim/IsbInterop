@@ -37,7 +37,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -48,10 +49,10 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\ICustomJob.cs" />
-    <Compile Include="Base\ICustomJobInfo.cs" />
-    <Compile Include="Base\ICustomWork.cs" />
-    <Compile Include="Base\ICustomWorkInfo.cs" />
+    <Compile Include="Edms\ICustomJob.cs" />
+    <Compile Include="Edms\ICustomJobInfo.cs" />
+    <Compile Include="Edms\ICustomWork.cs" />
+    <Compile Include="Edms\ICustomWorkInfo.cs" />
     <Compile Include="ComponentTokens\IComponentToken.cs" />
     <Compile Include="ComponentTokens\IComponentTokenFactory.cs" />
     <Compile Include="ComponentTokens\IComponentTokenInfo.cs" />
@@ -79,17 +80,17 @@
     <Compile Include="Tasks\Proxies\Attachment.cs" />
     <Compile Include="Tasks\Proxies\DefaultCustomJob.cs" />
     <Compile Include="DataTypes\Enumerable\TCompType.cs" />
-    <Compile Include="Base\Proxies\CustomJob.cs" />
-    <Compile Include="Base\Proxies\CustomWork.cs" />
-    <Compile Include="Base\Proxies\EdmsObjectInfo.cs" />
+    <Compile Include="Edms\Proxies\CustomJob.cs" />
+    <Compile Include="Edms\Proxies\CustomWork.cs" />
+    <Compile Include="Edms\Proxies\EdmsObjectInfo.cs" />
     <Compile Include="DataTypes\Enumerable\TContentKind.cs" />
-    <Compile Include="Data\IPickRequisite.cs" />
+    <Compile Include="Data\Requisites\IPickRequisite.cs" />
     <Compile Include="DataTypes\Enumerable\TDataSetState.cs" />
-    <Compile Include="Data\Proxies\PickRequisite.cs" />
+    <Compile Include="Data\Proxies\Requisites\PickRequisite.cs" />
     <Compile Include="BaseIsbObjectImp.cs" />
     <Compile Include="Utils\ComUtils.cs" />
-    <Compile Include="Accessory\IApplication.cs" />
-    <Compile Include="Data\IPickRequisiteItem.cs" />
+    <Compile Include="System\IApplication.cs" />
+    <Compile Include="Data\Requisites\IPickRequisiteItem.cs" />
     <Compile Include="FatalIsbInteropException.cs" />
     <Compile Include="Folders\IFolder.cs" />
     <Compile Include="Folders\IFolderFactory.cs" />
@@ -108,31 +109,31 @@
     <Compile Include="References\IComponent.cs" />
     <Compile Include="References\ICompRecordInfo.cs" />
     <Compile Include="Data\IConnection.cs" />
-    <Compile Include="Accessory\IContents.cs" />
+    <Compile Include="Collections\IContents.cs" />
     <Compile Include="Data\IDataSet.cs" />
-    <Compile Include="Base\IDeaObjectInfo.cs" />
-    <Compile Include="Base\IEdmsObject.cs" />
-    <Compile Include="Base\IEdmsObjectFactory.cs" />
-    <Compile Include="Base\IEdmsObjectInfo.cs" />
+    <Compile Include="Edms\IDeaObjectInfo.cs" />
+    <Compile Include="Edms\IEdmsObject.cs" />
+    <Compile Include="Edms\IEdmsObjectFactory.cs" />
+    <Compile Include="Edms\IEdmsObjectInfo.cs" />
     <Compile Include="EDocuments\IEDocument.cs" />
     <Compile Include="EDocuments\IEDocumentFactory.cs" />
     <Compile Include="EDocuments\IEDocumentInfo.cs" />
-    <Compile Include="EDocuments\IEDocumentVersion.cs" />
+    <Compile Include="EDocuments\Versions\IEDocumentVersion.cs" />
     <Compile Include="Base\IFactory.cs" />
-    <Compile Include="Accessory\IList.cs" />
-    <Compile Include="Accessory\IForEach.cs" />
+    <Compile Include="Collections\IList.cs" />
+    <Compile Include="Collections\IForEach.cs" />
     <Compile Include="IBaseIsbObject.cs" />
     <Compile Include="Accessory\ILock.cs" />
-    <Compile Include="Accessory\ILoginPoint.cs" />
+    <Compile Include="System\ILoginPoint.cs" />
     <Compile Include="Base\IObject.cs" />
     <Compile Include="Base\IObjectInfo.cs" />
-    <Compile Include="Data\IPickRequisiteItems.cs" />
+    <Compile Include="Data\Requisites\IPickRequisiteItems.cs" />
     <Compile Include="Data\IQuery.cs" />
     <Compile Include="References\IReference.cs" />
     <Compile Include="References\IReferenceFactory.cs" />
     <Compile Include="References\IReferenceInfo.cs" />
     <Compile Include="References\IReferencesFactory.cs" />
-    <Compile Include="Data\IRequisite.cs" />
+    <Compile Include="Data\Requisites\IRequisite.cs" />
     <Compile Include="DerivedRequisiteFactory.cs" />
     <Compile Include="Extensions\ReferenceExtensions.cs" />
     <Compile Include="Scripts\IScript.cs" />
@@ -140,7 +141,7 @@
     <Compile Include="Scripts\IScriptFactory.cs" />
     <Compile Include="Searches\ISearchDescription.cs" />
     <Compile Include="Searches\ISearchForObjectDescription.cs" />
-    <Compile Include="Accessory\ISystemInfo.cs" />
+    <Compile Include="System\ISystemInfo.cs" />
     <Compile Include="References\Proxies\CompRecordInfo.cs" />
     <Compile Include="Accessory\Proxies\Lock.cs" />
     <Compile Include="Searches\Proxies\SearchDescription.cs" />
@@ -151,37 +152,37 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Accessory\Proxies\Application.cs" />
+    <Compile Include="System\Proxies\Application.cs" />
     <Compile Include="References\Proxies\Component.cs" />
     <Compile Include="Data\Proxies\Connection.cs" />
-    <Compile Include="Accessory\Proxies\Contents.cs" />
+    <Compile Include="Collections\Proxies\Contents.cs" />
     <Compile Include="Data\Proxies\DataSet.cs" />
-    <Compile Include="Base\Proxies\EdmsObject.cs" />
-    <Compile Include="Base\Proxies\EdmsObjectFactory.cs" />
+    <Compile Include="Edms\Proxies\EdmsObject.cs" />
+    <Compile Include="Edms\Proxies\EdmsObjectFactory.cs" />
     <Compile Include="EDocuments\Proxies\EDocument.cs" />
     <Compile Include="EDocuments\Proxies\EDocumentFactory.cs" />
     <Compile Include="EDocuments\Proxies\EDocumentInfo.cs" />
-    <Compile Include="EDocuments\Proxies\EDocumentVersion.cs" />
+    <Compile Include="EDocuments\Proxies\Versions\EDocumentVersion.cs" />
     <Compile Include="Base\Proxies\Factory.cs" />
-    <Compile Include="Accessory\Proxies\List.cs" />
-    <Compile Include="Accessory\Proxies\ForEach.cs" />
+    <Compile Include="Collections\Proxies\List.cs" />
+    <Compile Include="Collections\Proxies\ForEach.cs" />
     <Compile Include="BaseIsbObject.cs" />
     <Compile Include="Base\Proxies\IsbObject.cs" />
     <Compile Include="IRcwProxy.cs" />
-    <Compile Include="Accessory\Proxies\LoginPoint.cs" />
+    <Compile Include="System\Proxies\LoginPoint.cs" />
     <Compile Include="Base\Proxies\ObjectInfo.cs" />
-    <Compile Include="Data\Proxies\PickRequisiteItems.cs" />
+    <Compile Include="Data\Proxies\Requisites\PickRequisiteItems.cs" />
     <Compile Include="Data\Proxies\Query.cs" />
     <Compile Include="References\Proxies\Reference.cs" />
     <Compile Include="References\Proxies\ReferenceFactory.cs" />
     <Compile Include="References\Proxies\ReferenceInfo.cs" />
     <Compile Include="References\Proxies\ReferencesFactory.cs" />
-    <Compile Include="Data\Proxies\Requisite.cs" />
+    <Compile Include="Data\Proxies\Requisites\Requisite.cs" />
     <Compile Include="Scripts\Proxies\Script.cs" />
     <Compile Include="Scripts\Proxies\ScriptFactory.cs" />
     <Compile Include="Searches\Proxies\SearchFactory.cs" />
     <Compile Include="Searches\Proxies\SearchForObjectDescription.cs" />
-    <Compile Include="Accessory\Proxies\SystemInfo.cs" />
+    <Compile Include="System\Proxies\SystemInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceForms\IEdmsExplorer.cs" />
     <Compile Include="ServiceForms\IServiceFactory.cs" />

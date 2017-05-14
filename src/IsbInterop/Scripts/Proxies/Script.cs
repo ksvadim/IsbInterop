@@ -2,6 +2,7 @@
 using IsbInterop.Base;
 using IsbInterop.Base.Proxies;
 using System;
+using IsbInterop.Collections;
 
 namespace IsbInterop.Scripts.Proxies
 {

@@ -1,4 +1,5 @@
-﻿using IsbInterop.DataTypes.Enumerable;
+﻿using IsbInterop.Data.Requisites;
+using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.References;
 
 namespace IsbInterop.Data

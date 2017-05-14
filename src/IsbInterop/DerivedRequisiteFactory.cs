@@ -3,6 +3,8 @@ using IsbInterop.Data.Proxies;
 using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Utils;
 using System;
+using IsbInterop.Data.Proxies.Requisites;
+using IsbInterop.Data.Requisites;
 
 namespace IsbInterop
 {

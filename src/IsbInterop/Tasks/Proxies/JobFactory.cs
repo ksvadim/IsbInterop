@@ -1,6 +1,8 @@
 ﻿using IsbInterop.Base;
 using IsbInterop.Base.Proxies;
 using IsbInterop.DataTypes.Enumerable;
+using IsbInterop.Edms;
+using IsbInterop.Edms.Proxies;
 
 namespace IsbInterop.Tasks.Proxies
 {

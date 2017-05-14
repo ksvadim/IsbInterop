@@ -2,6 +2,8 @@
 using IsbInterop.Accessory.Proxies;
 using System;
 using System.Collections.Generic;
+using IsbInterop.System;
+using IsbInterop.System.Proxies;
 
 namespace IsbInterop
 {

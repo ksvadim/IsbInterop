@@ -1,5 +1,5 @@
-﻿using IsbInterop.Accessory;
-using IsbInterop.Accessory.Proxies;
+﻿using IsbInterop.System;
+using IsbInterop.System.Proxies;
 
 namespace IsbInterop.Data.Proxies
 {

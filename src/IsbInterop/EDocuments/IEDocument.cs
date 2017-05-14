@@ -1,6 +1,9 @@
 ﻿using IsbInterop.Accessory;
 using IsbInterop.Base;
+using IsbInterop.Collections;
 using IsbInterop.DataTypes.Enumerable;
+using IsbInterop.Edms;
+using IsbInterop.EDocuments.Versions;
 
 namespace IsbInterop.EDocuments
 {

@@ -1,7 +1,11 @@
 ﻿using IsbInterop.Accessory;
 using IsbInterop.Accessory.Proxies;
 using IsbInterop.Base.Proxies;
+using IsbInterop.Collections;
+using IsbInterop.Collections.Proxies;
 using IsbInterop.DataTypes.Enumerable;
+using IsbInterop.Edms.Proxies;
+using IsbInterop.EDocuments.Versions;
 
 namespace IsbInterop.EDocuments.Proxies
 {

@@ -1,6 +1,8 @@
 ﻿using IsbInterop.Accessory;
 using IsbInterop.Accessory.Proxies;
 using System;
+using IsbInterop.System;
+using IsbInterop.System.Proxies;
 
 namespace IsbInterop
 {

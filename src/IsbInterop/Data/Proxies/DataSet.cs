@@ -1,4 +1,6 @@
-﻿using IsbInterop.DataTypes.Enumerable;
+﻿using IsbInterop.Data.Proxies.Requisites;
+using IsbInterop.Data.Requisites;
+using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.References;
 using IsbInterop.References.Proxies;
 

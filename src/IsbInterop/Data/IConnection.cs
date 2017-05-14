@@ -1,4 +1,4 @@
-﻿using IsbInterop.Accessory;
+﻿using IsbInterop.System;
 
 namespace IsbInterop.Data
 {

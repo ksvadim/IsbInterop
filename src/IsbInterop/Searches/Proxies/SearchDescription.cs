@@ -1,6 +1,8 @@
 ﻿using IsbInterop.Accessory;
 using IsbInterop.Accessory.Proxies;
 using IsbInterop.Base;
+using IsbInterop.Collections;
+using IsbInterop.Collections.Proxies;
 using IsbInterop.DataTypes.Enumerable;
 
 namespace IsbInterop.Searches.Proxies

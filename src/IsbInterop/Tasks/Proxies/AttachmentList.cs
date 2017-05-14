@@ -1,5 +1,6 @@
 ﻿using IsbInterop.Accessory.Proxies;
 using IsbInterop.Base;
+using IsbInterop.Collections.Proxies;
 
 namespace IsbInterop.Tasks.Proxies
 {

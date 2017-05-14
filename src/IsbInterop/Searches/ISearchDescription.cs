@@ -1,5 +1,6 @@
 ﻿using IsbInterop.Accessory;
 using IsbInterop.Base;
+using IsbInterop.Collections;
 using IsbInterop.DataTypes.Enumerable;
 
 namespace IsbInterop.Searches

@@ -1,4 +1,5 @@
 ﻿using IsbInterop.Accessory.Proxies;
+using IsbInterop.Collections.Proxies;
 
 namespace IsbInterop.Presentation.Proxies
 {

@@ -2,6 +2,8 @@
 using IsbInterop.Base;
 using IsbInterop.Base.Proxies;
 using System;
+using IsbInterop.Collections;
+using IsbInterop.Edms.Proxies;
 
 namespace IsbInterop.EDocuments.Proxies
 {

@@ -1,5 +1,6 @@
-﻿using IsbInterop.Accessory;
+﻿using IsbInterop.Collections;
 using IsbInterop.Data;
+using IsbInterop.Data.Requisites;
 using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Presentation;
 

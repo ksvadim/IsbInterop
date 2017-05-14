@@ -1,4 +1,5 @@
 ﻿using IsbInterop.Base;
+using IsbInterop.Edms;
 
 namespace IsbInterop.ComponentTokens
 {

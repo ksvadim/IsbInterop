@@ -1,5 +1,7 @@
 ﻿using IsbInterop.Accessory;
 using IsbInterop.Accessory.Proxies;
+using IsbInterop.Collections;
+using IsbInterop.Collections.Proxies;
 using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Folders;
 

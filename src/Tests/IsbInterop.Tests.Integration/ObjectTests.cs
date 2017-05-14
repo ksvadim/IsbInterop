@@ -1,4 +1,4 @@
-﻿using IsbInterop.Data;
+﻿using IsbInterop.Data.Requisites;
 using NUnit.Framework;
 using System;
 using System.IO;

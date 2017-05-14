@@ -1,4 +1,5 @@
 ﻿using IsbInterop.Data;
+using IsbInterop.Data.Requisites;
 using IsbInterop.DataTypes.Enumerable;
 using IsbInterop.Properties;
 using System;
