@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00E2D276-C353-4DE5-869F-4618A19F171B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IsbInterop</RootNamespace>
+    <AssemblyName>IsbInterop</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Edms\ICustomJob.cs" />
+    <Compile Include="Edms\ICustomJobInfo.cs" />
+    <Compile Include="Edms\ICustomWork.cs" />
+    <Compile Include="Edms\ICustomWorkInfo.cs" />
+    <Compile Include="ComponentTokens\IComponentToken.cs" />
+    <Compile Include="ComponentTokens\IComponentTokenFactory.cs" />
+    <Compile Include="ComponentTokens\IComponentTokenInfo.cs" />
+    <Compile Include="ComponentTokens\Proxies\ComponentToken.cs" />
+    <Compile Include="ComponentTokens\Proxies\ComponentTokenFactory.cs" />
+    <Compile Include="ComponentTokens\Proxies\ComponentTokenInfo.cs" />
+    <Compile Include="IsbInteropConfiguration.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="ContextFactory.cs" />
+    <Compile Include="DataTypes\Enumerable\TEditMode.cs" />
+    <Compile Include="DataTypes\Enumerable\TEDocumentVersionState.cs" />
+    <Compile Include="DataTypes\Enumerable\TExportedSignaturesType.cs" />
+    <Compile Include="DataTypes\Enumerable\TItemShow.cs" />
+    <Compile Include="DataTypes\Enumerable\TReqDataType.cs" />
+    <Compile Include="DataTypes\Enumerable\TSearchShowMode.cs" />
+    <Compile Include="Folders\Proxies\FolderFactory.cs" />
+    <Compile Include="Scope.cs" />
+    <Compile Include="Utils\ThreadUtils.cs" />
+    <Compile Include="IsblSystemConstants\DataConstants\ObjectRequisites\PredefinedEdocumentsRequisites.cs" />
+    <Compile Include="IsbObjectResolver.cs" />
+    <Compile Include="Searches\PredefinedSearchesNames.cs" />
+    <Compile Include="Tasks\IAttachment.cs" />
+    <Compile Include="Tasks\IAttachmentList.cs" />
+    <Compile Include="Tasks\Proxies\AttachmentList.cs" />
+    <Compile Include="Tasks\Proxies\Attachment.cs" />
+    <Compile Include="Tasks\Proxies\DefaultCustomJob.cs" />
+    <Compile Include="DataTypes\Enumerable\TCompType.cs" />
+    <Compile Include="Edms\Proxies\CustomJob.cs" />
+    <Compile Include="Edms\Proxies\CustomWork.cs" />
+    <Compile Include="Edms\Proxies\EdmsObjectInfo.cs" />
+    <Compile Include="DataTypes\Enumerable\TContentKind.cs" />
+    <Compile Include="Data\Requisites\IPickRequisite.cs" />
+    <Compile Include="DataTypes\Enumerable\TDataSetState.cs" />
+    <Compile Include="Data\Proxies\Requisites\PickRequisite.cs" />
+    <Compile Include="BaseIsbObjectImp.cs" />
+    <Compile Include="Utils\ComUtils.cs" />
+    <Compile Include="System\IApplication.cs" />
+    <Compile Include="Data\Requisites\IPickRequisiteItem.cs" />
+    <Compile Include="FatalIsbInteropException.cs" />
+    <Compile Include="Folders\IFolder.cs" />
+    <Compile Include="Folders\IFolderFactory.cs" />
+    <Compile Include="Folders\IFolderInfo.cs" />
+    <Compile Include="Folders\Proxies\Folder.cs" />
+    <Compile Include="Folders\Proxies\FolderInfo.cs" />
+    <Compile Include="IsbApplicationManager.cs" />
+    <Compile Include="IsbInteropTimoutException.cs" />
+    <Compile Include="Presentation\IAction.cs" />
+    <Compile Include="Presentation\IActionList.cs" />
+    <Compile Include="Presentation\IForm.cs" />
+    <Compile Include="Presentation\Proxies\Action.cs" />
+    <Compile Include="Presentation\Proxies\ActionList.cs" />
+    <Compile Include="Presentation\Proxies\Form.cs" />
+    <Compile Include="Properties\ProductInfo.cs" />
+    <Compile Include="References\IComponent.cs" />
+    <Compile Include="References\ICompRecordInfo.cs" />
+    <Compile Include="Data\IConnection.cs" />
+    <Compile Include="Collections\IContents.cs" />
+    <Compile Include="Data\IDataSet.cs" />
+    <Compile Include="Edms\IDeaObjectInfo.cs" />
+    <Compile Include="Edms\IEdmsObject.cs" />
+    <Compile Include="Edms\IEdmsObjectFactory.cs" />
+    <Compile Include="Edms\IEdmsObjectInfo.cs" />
+    <Compile Include="EDocuments\IEDocument.cs" />
+    <Compile Include="EDocuments\IEDocumentFactory.cs" />
+    <Compile Include="EDocuments\IEDocumentInfo.cs" />
+    <Compile Include="EDocuments\Versions\IEDocumentVersion.cs" />
+    <Compile Include="Base\IFactory.cs" />
+    <Compile Include="Collections\IList.cs" />
+    <Compile Include="Collections\IForEach.cs" />
+    <Compile Include="IBaseIsbObject.cs" />
+    <Compile Include="Accessory\ILock.cs" />
+    <Compile Include="System\ILoginPoint.cs" />
+    <Compile Include="Base\IObject.cs" />
+    <Compile Include="Base\IObjectInfo.cs" />
+    <Compile Include="Data\Requisites\IPickRequisiteItems.cs" />
+    <Compile Include="Data\IQuery.cs" />
+    <Compile Include="References\IReference.cs" />
+    <Compile Include="References\IReferenceFactory.cs" />
+    <Compile Include="References\IReferenceInfo.cs" />
+    <Compile Include="References\IReferencesFactory.cs" />
+    <Compile Include="Data\Requisites\IRequisite.cs" />
+    <Compile Include="DerivedRequisiteFactory.cs" />
+    <Compile Include="Extensions\ReferenceExtensions.cs" />
+    <Compile Include="Scripts\IScript.cs" />
+    <Compile Include="Searches\ISearchFactory.cs" />
+    <Compile Include="Scripts\IScriptFactory.cs" />
+    <Compile Include="Searches\ISearchDescription.cs" />
+    <Compile Include="Searches\ISearchForObjectDescription.cs" />
+    <Compile Include="System\ISystemInfo.cs" />
+    <Compile Include="References\Proxies\CompRecordInfo.cs" />
+    <Compile Include="Accessory\Proxies\Lock.cs" />
+    <Compile Include="Searches\Proxies\SearchDescription.cs" />
+    <Compile Include="Extensions\DataSetExtensions.cs" />
+    <Compile Include="IsbInteropException.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="System\Proxies\Application.cs" />
+    <Compile Include="References\Proxies\Component.cs" />
+    <Compile Include="Data\Proxies\Connection.cs" />
+    <Compile Include="Collections\Proxies\Contents.cs" />
+    <Compile Include="Data\Proxies\DataSet.cs" />
+    <Compile Include="Edms\Proxies\EdmsObject.cs" />
+    <Compile Include="Edms\Proxies\EdmsObjectFactory.cs" />
+    <Compile Include="EDocuments\Proxies\EDocument.cs" />
+    <Compile Include="EDocuments\Proxies\EDocumentFactory.cs" />
+    <Compile Include="EDocuments\Proxies\EDocumentInfo.cs" />
+    <Compile Include="EDocuments\Proxies\Versions\EDocumentVersion.cs" />
+    <Compile Include="Base\Proxies\Factory.cs" />
+    <Compile Include="Collections\Proxies\List.cs" />
+    <Compile Include="Collections\Proxies\ForEach.cs" />
+    <Compile Include="BaseIsbObject.cs" />
+    <Compile Include="Base\Proxies\IsbObject.cs" />
+    <Compile Include="IRcwProxy.cs" />
+    <Compile Include="System\Proxies\LoginPoint.cs" />
+    <Compile Include="Base\Proxies\ObjectInfo.cs" />
+    <Compile Include="Data\Proxies\Requisites\PickRequisiteItems.cs" />
+    <Compile Include="Data\Proxies\Query.cs" />
+    <Compile Include="References\Proxies\Reference.cs" />
+    <Compile Include="References\Proxies\ReferenceFactory.cs" />
+    <Compile Include="References\Proxies\ReferenceInfo.cs" />
+    <Compile Include="References\Proxies\ReferencesFactory.cs" />
+    <Compile Include="Data\Proxies\Requisites\Requisite.cs" />
+    <Compile Include="Scripts\Proxies\Script.cs" />
+    <Compile Include="Scripts\Proxies\ScriptFactory.cs" />
+    <Compile Include="Searches\Proxies\SearchFactory.cs" />
+    <Compile Include="Searches\Proxies\SearchForObjectDescription.cs" />
+    <Compile Include="System\Proxies\SystemInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceForms\IEdmsExplorer.cs" />
+    <Compile Include="ServiceForms\IServiceFactory.cs" />
+    <Compile Include="ServiceForms\Proxies\EdmsExplorer.cs" />
+    <Compile Include="ServiceForms\Proxies\ServiceFactory.cs" />
+    <Compile Include="Tasks\IControlJob.cs" />
+    <Compile Include="Tasks\IJobFactory.cs" />
+    <Compile Include="Tasks\IJob.cs" />
+    <Compile Include="Tasks\IControlJobInfo.cs" />
+    <Compile Include="Tasks\IJobInfo.cs" />
+    <Compile Include="Tasks\INoticeInfo.cs" />
+    <Compile Include="Tasks\ITask.cs" />
+    <Compile Include="Tasks\ITaskFactory.cs" />
+    <Compile Include="Tasks\INotice.cs" />
+    <Compile Include="Tasks\ITaskInfo.cs" />
+    <Compile Include="Tasks\Proxies\CustomWorkInfo.cs" />
+    <Compile Include="Tasks\Proxies\CustomJobInfo.cs" />
+    <Compile Include="Tasks\Proxies\ControlJobInfo.cs" />
+    <Compile Include="Tasks\Proxies\ControlJob.cs" />
+    <Compile Include="Tasks\Proxies\TaskInfo.cs" />
+    <Compile Include="Tasks\Proxies\NoticeInfo.cs" />
+    <Compile Include="Tasks\Proxies\JobInfo.cs" />
+    <Compile Include="Tasks\Proxies\Notice.cs" />
+    <Compile Include="Tasks\Proxies\Job.cs" />
+    <Compile Include="Tasks\Proxies\Task.cs" />
+    <Compile Include="Tasks\Proxies\JobFactory.cs" />
+    <Compile Include="Tasks\Proxies\TaskFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

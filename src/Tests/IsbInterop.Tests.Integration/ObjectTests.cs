@@ -1,5 +1,4 @@
-﻿using IsbInterop.Data;
-using IsbInterop.Scripts;
+﻿using IsbInterop.Data.Requisites;
 using NUnit.Framework;
 using System;
 using System.IO;
@@ -13,50 +12,51 @@ namespace IsbInterop.Tests.Integration
     /// <summary>
     /// ИД временной организации.
     /// </summary>
-    private int tempOrganizationId = 0;
+    private int _tempOrganizationId = 0;
 
     /// <summary>
     /// Путь к тестовому файлу.
     /// </summary>
-    private string testFilePath;
+    private string _testFilePath;
 
     /// <summary>
     /// ИД первого тестового документа.
     /// </summary>
-    private int testDocumentId = 0;
+    private int _testDocumentId = 0;
 
     [SetUp]
     public void Init()
     {
-      this.tempOrganizationId = OrganizationUtils.CreateOrganization("test");
+      _tempOrganizationId = OrganizationUtils.CreateOrganization("test");
 
-      this.testFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestDocument.txt");
-      this.testDocumentId = DocumentUtils.CreateDocument("TestDocument", testFilePath);
+      _testFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestDocument.txt");
+      _testDocumentId = DocumentUtils.CreateDocument("TestDocument", _testFilePath);
     }
 
     [TearDown]
     public void Clean()
     {
-      OrganizationUtils.RemoveOrganization(this.tempOrganizationId);
+      OrganizationUtils.RemoveOrganization(_tempOrganizationId);
 
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var edocumentFactory = app.GetEDocumentFactory())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        edocumentFactory.DeleteById(this.testDocumentId);
-        this.testDocumentId = 0;
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        edocumentFactory.DeleteById(_testDocumentId);
+        _testDocumentId = 0;
       }
     }
 
     [Test]
     public void References_GetObjectById_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        var reference = referenceFactory.GetObjectById(this.tempOrganizationId);
+
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+        var reference = referenceFactory.GetObjectById(_tempOrganizationId);
 
         Assert.NotNull(reference);
       }
@@ -65,100 +65,99 @@ namespace IsbInterop.Tests.Integration
     [Test]
     public void EDocuments_GetObjectById_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-
       int? documentId = null;
 
-      using (var edocumentFactory = app.GetEDocumentFactory())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        
-        using (var document = edocumentFactory.GetObjectById(this.testDocumentId))
-        {
-          documentId = document.Id;
-        }
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
+
+        var document = edocumentFactory.GetObjectById(_testDocumentId);
+        documentId = document.Id;
       }
+
       Assert.NotNull(documentId);
     }
 
     [Test]
     public void EDocument_GetVersion_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-      using (var edocumentFactory = app.GetEDocumentFactory())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        using (var document = edocumentFactory.GetObjectById(this.testDocumentId))
-        {
-          using (var documentVersionList = document.GetVersions())
-          {
-            using (var version = documentVersionList.GetValues(0))
-              Assert.NotNull(version);
-          }
-        }
+        var edocumentFactory = scope.Application.GetEDocumentFactory();
+        var document = edocumentFactory.GetObjectById(_testDocumentId);
+        var documentVersionList = document.GetVersions();
+        var version = documentVersionList.GetValues(0);
+
+        Assert.NotNull(version);
       }
     }
 
     [Test]
     public void Script_GetParamValue_ShouldSucceed()
     {
-      var isbApplicaion = IsbApplicationManager.Instance.GetApplication();
-      using (var scriptFactory = isbApplicaion.GetScriptFactory())
-      using (IScript script = scriptFactory.GetObjectByName(ReferenceConfiguration.Scripts.ConstantValue.ScriptName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        using (var scriptParams = script.GetParams())
-        {
-          scriptParams.SetVar(ReferenceConfiguration.Scripts.ConstantValue.Params.ConstName, "Weight");
-          var param = scriptParams.GetValues(0);
-          var rcwObject = ((IUnsafeRcwObjectAccessor) param).UnsafeRcwObject;
-          Assert.NotNull(rcwObject);
-        }
+        var scriptFactory = scope.Application.GetScriptFactory();
+        var script = scriptFactory.GetObjectByName(ReferenceConfiguration.Scripts.ConstantValue.ScriptName);
+        var scriptParams = script.GetParams();
+        scriptParams.SetVar(ReferenceConfiguration.Scripts.ConstantValue.Params.ConstName, "Weight");
+        var param = scriptParams.GetValues(0);
+        var rcwObject = ((IRcwProxy)param).RcwObject;
+
+        Assert.NotNull(rcwObject);
       }
     }
 
     [Test]
     public void Script_DisposeIntegerParam_ShouldSucceed()
     {
-      var isbApplicaion = IsbApplicationManager.Instance.GetApplication();
-      using (var scriptFactory = isbApplicaion.GetScriptFactory())
-      using (IScript script = scriptFactory.GetObjectByName(ReferenceConfiguration.Scripts.ConstantValue.ScriptName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        using (var scriptParams = script.GetParams())
-        {
-          scriptParams.SetVar(ReferenceConfiguration.Scripts.ConstantValue.Params.ConstValue, 123);
-          var param = scriptParams.GetValues(0);
-          param.Dispose();
+        var scriptFactory = scope.Application.GetScriptFactory();
+        var script = scriptFactory.GetObjectByName(ReferenceConfiguration.Scripts.ConstantValue.ScriptName);
 
-          TestDelegate getRcwAction = () => { var a = ((IUnsafeRcwObjectAccessor) param).UnsafeRcwObject; };
+        var scriptParams = script.GetParams();
+        scriptParams.SetVar(ReferenceConfiguration.Scripts.ConstantValue.Params.ConstValue, 123);
+        var param = scriptParams.GetValues(0);
+        param.Dispose();
 
-          Assert.Throws<ObjectDisposedException>(getRcwAction);
-        }
+        TestDelegate getRcwAction = () => { var a = ((IRcwProxy)param).RcwObject; };
+
+        Assert.Throws<ObjectDisposedException>(getRcwAction);
       }
     }
 
     [Test]
     public void IReference_GetIPickRequisite_ShouldSucceed()
     {
-      var isbApplicaion = IsbApplicationManager.Instance.GetApplication();
-      using (var referencesFactory = isbApplicaion.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
-        using (var reference = referenceFactory.GetObjectById(this.tempOrganizationId))
-        {
-          var stateRequisite = reference.GetRequisite(ReferenceConfiguration.CommonRequisites.State) as IPickRequisite;
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+        var reference = referenceFactory.GetObjectById(_tempOrganizationId);
+        var stateRequisite = reference.GetRequisite(ReferenceConfiguration.CommonRequisites.State) as IPickRequisite;
 
-          Assert.NotNull(stateRequisite);
-        }
+        Assert.NotNull(stateRequisite);
       }
     }
 
+    [Ignore("Создайте сценарий MyTestScript с функцией Exit()")]
     [Test]
     public void ExecuteScript_WithExitFunction_ShouldSucceed()
     {
       TestDelegate executeScriptAction = () =>
       {
-        var isbApplicaion = IsbApplicationManager.Instance.GetApplication();
-        using (var scriptFctory = isbApplicaion.GetScriptFactory())
-        using (var script = scriptFctory.GetObjectByName("MyTestScript"))
+        var context = ContextFactory.CreateContext();
+        using (var scope = context.CreateScope())
         {
+          var scriptFctory = scope.Application.GetScriptFactory();
+          var script = scriptFctory.GetObjectByName("MyTestScript");
+        
           script.Execute();
         }
       };

@@ -8,29 +8,31 @@ namespace IsbInterop.Tests.Integration
     /// <summary>
     /// ИД временной организации.
     /// </summary>
-    private int tempOrganizationId = 0;
+    private int _tempOrganizationId = 0;
 
     [SetUp]
     public void Init()
     {
-      this.tempOrganizationId = OrganizationUtils.CreateOrganization("test");
+      _tempOrganizationId = OrganizationUtils.CreateOrganization("test");
     }
 
     [TearDown]
     public void Clean()
     {
-      OrganizationUtils.RemoveOrganization(this.tempOrganizationId);
+      OrganizationUtils.RemoveOrganization(_tempOrganizationId);
     }
 
     [Test, Category("UI")]
     public void Object_GetForm_ShouldSucceed()
     {
-      var app = IsbApplicationManager.Instance.GetApplication();
-      using (var referencesFactory = app.GetReferencesFactory())
-      using (var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName))
-      using (var historyComponent = referenceFactory.GetHistory(tempOrganizationId))
-      using (var form = historyComponent.GetComponentForm())
+      var context = ContextFactory.CreateContext();
+      using (var scope = context.CreateScope())
       {
+        var referencesFactory = scope.Application.GetReferencesFactory();
+        var referenceFactory = referencesFactory.GetReferenceFactory(ReferenceConfiguration.Organizations.ReferenceName);
+        var historyComponent = referenceFactory.GetHistory(_tempOrganizationId);
+        var form = historyComponent.GetComponentForm();
+      
         form.ShowNoModal();
       }
     }
