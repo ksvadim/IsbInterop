@@ -8,6 +8,12 @@ namespace IsbInterop.Utils
   /// </summary>
   public static class ThreadUtils
   {
+    /// <summary>
+    /// Бесконечный таймаут.
+    /// </summary>
+    /// <remarks>Для использования в методе <see cref="Invoke{T}"/></remarks>
+    public static readonly TimeSpan InfiniteTimeout = TimeSpan.FromMilliseconds(-1);
+
     // Альтернативный вариант.
     ///// <summary>
     ///// Выполняет функцию с таймаутом.

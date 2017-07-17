@@ -1,8 +1,8 @@
-﻿using IsbInterop.Accessory;
-using IsbInterop.Base;
+﻿using IsbInterop.Base;
 using IsbInterop.Base.Proxies;
-using System;
 using IsbInterop.Collections;
+using IsbInterop.Utils;
+using System;
 
 namespace IsbInterop.Scripts.Proxies
 {
@@ -17,7 +17,7 @@ namespace IsbInterop.Scripts.Proxies
     /// <returns>Результат.</returns>
     public IBaseIsbObject Execute()
     {
-      var rcwObject = InvokeRcwInstanceMethod("Execute", null, TimeSpan.MaxValue);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, ThreadUtils.InfiniteTimeout);
       return new BaseIsbObjectImp(rcwObject, Scope);
     }
 
@@ -40,7 +40,7 @@ namespace IsbInterop.Scripts.Proxies
     /// <exception cref="IsbInteropException">Выбрасывает исключение, если не удалось привести результат к указанному типу.</exception>
     public T Execute<T>() where T : IBaseIsbObject
     {
-      var rcwObject = InvokeRcwInstanceMethod("Execute", null, TimeSpan.MaxValue);
+      var rcwObject = InvokeRcwInstanceMethod("Execute", null, ThreadUtils.InfiniteTimeout);
       return IsbObjectResolver.Resolve<T>(rcwObject, Scope);
     }
 

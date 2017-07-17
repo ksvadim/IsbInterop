@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IsbInterop.Utils;
+using System;
 
 namespace IsbInterop.Presentation.Proxies
 {
@@ -13,7 +14,7 @@ namespace IsbInterop.Presentation.Proxies
     /// <returns>True, если действие было выполнено, иначе false.</returns>
     public bool Execute()
     {
-      var result = (bool)InvokeRcwInstanceMethod("Execute", null, TimeSpan.MaxValue);
+      var result = (bool)InvokeRcwInstanceMethod("Execute", null, ThreadUtils.InfiniteTimeout);
       return result;
     }
 
