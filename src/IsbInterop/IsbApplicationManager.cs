@@ -1,7 +1,6 @@
-﻿using IsbInterop.Accessory;
-using IsbInterop.Properties;
-using System;
+﻿using IsbInterop.Properties;
 using IsbInterop.System;
+using System;
 
 namespace IsbInterop
 {
