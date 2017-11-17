@@ -62,8 +62,8 @@ namespace IsbInterop.Data.Proxies.Requisites
     /// </summary>
     public object Value
     {
-      get { return GetRcwProperty("Value"); }
-      set { SetRcwProperty("Value", value); }
+      get => GetRcwProperty("Value");
+      set => SetRcwProperty("Value", value);
     }
 
     #endregion

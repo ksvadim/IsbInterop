@@ -34,6 +34,16 @@ namespace IsbInterop.System.Proxies
     /// </summary>
     public int PID => (int)GetRcwProperty("PID");
 
+    /// <summary>
+    /// Контекст организации.
+    /// </summary>
+    public string OurFirmContext
+    {
+      get => (string)GetRcwProperty("OurFirmContext");
+      set => SetRcwProperty("OurFirmContext", value);
+
+    }
+
     #endregion
 
     #region Методы

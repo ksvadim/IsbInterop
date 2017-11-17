@@ -1,5 +1,4 @@
-﻿using IsbInterop.Base.Proxies;
-using IsbInterop.Edms.Proxies;
+﻿using IsbInterop.Edms.Proxies;
 
 namespace IsbInterop.ComponentTokens.Proxies
 {

@@ -24,6 +24,11 @@ namespace IsbInterop.System
     int PID { get; }
 
     /// <summary>
+    /// Контекст организации.
+    /// </summary>
+    string OurFirmContext { get; set; }
+
+    /// <summary>
     /// Получает фабрику вариантов запуска.
     /// </summary>
     /// <returns>Фабрика вариантов запуска.</returns>

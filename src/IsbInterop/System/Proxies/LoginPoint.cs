@@ -1,10 +1,9 @@
-﻿using IsbInterop.Accessory;
-using IsbInterop.Properties;
+﻿using IsbInterop.Properties;
+using IsbInterop.System;
 using IsbInterop.System.Proxies;
 using IsbInterop.Utils;
 using System;
 using System.Reflection;
-using IsbInterop.System;
 
 // ReSharper disable once CheckNamespace
 // LoginPoint - публичный класс, он должен быть виден из namespace IsbInterop.
